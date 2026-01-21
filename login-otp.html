@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP | MoHS Sample Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="login-page">
+    <div class="login-container">
+        <!-- Login Header -->
+        <header class="login-header">
+            <div class="login-logo">
+                <img src="Assets/mohs_logo-removebg-preview.png" alt="Ministry of Health and Sanitation Logo">
+            </div>
+            <h1 class="login-title">MoHS Sample Archiving System</h1>
+            <p class="login-subtitle">Ministry of Health and Sanitation – Sierra Leone</p>
+        </header>
+
+        <!-- OTP Verification Card -->
+        <main class="login-card">
+            <div class="otp-header">
+                <h2>Enter Verification Code</h2>
+                <p class="text-muted">A 6-digit code has been sent to your email address</p>
+            </div>
+
+            <form class="login-form">
+                <!-- OTP Field -->
+                <div class="form-group">
+                    <label class="form-label" for="otp">One-Time Password</label>
+                    <input type="text" id="otp" name="otp" class="form-input otp-field" placeholder="Enter 6-digit code"
+                        maxlength="6" value="472851" readonly>
+                    <p class="form-hint">Demo: Code pre-filled for prototype</p>
+                </div>
+            </form>
+
+            <!-- Login Options -->
+            <div class="login-options">
+                <p class="options-label">Select account to continue:</p>
+
+                <a href="dashboard-super-admin.html" class="login-option">
+                    <span class="option-avatar super">SA</span>
+                    <span class="option-info">
+                        <strong>System Administrator</strong>
+                        <small>Super Admin • Central Archive Unit</small>
+                    </span>
+                </a>
+
+                <a href="dashboard-directorate-admin.html" class="login-option">
+                    <span class="option-avatar admin">MC</span>
+                    <span class="option-info">
+                        <strong>M. Conteh</strong>
+                        <small>Directorate Admin • HRH</small>
+                    </span>
+                </a>
+
+                <a href="dashboard-directorate-user.html" class="login-option">
+                    <span class="option-avatar user">AS</span>
+                    <span class="option-info">
+                        <strong>A. Sesay</strong>
+                        <small>Directorate User • HRH</small>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Back Link -->
+            <div class="login-back">
+                <a href="index.html">← Back to login</a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="login-footer">
+            <p>© 2026 Ministry of Health and Sanitation, Sierra Leone</p>
+            <div class="security-notice">
+                <span>🔒</span>
+                <span>Authorized Personnel Only</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

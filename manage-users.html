@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern active">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Manage Users</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search users..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span>›</span>
+                    <span class="current">Manage Users</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>System Users</h2>
+                        <p>Manage user accounts and access permissions</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="add-admin.html" class="btn btn-primary">+ Add New User</a>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="user-stats-row">
+                    <div class="user-stat-card">
+                        <span class="user-stat-value">42</span>
+                        <span class="user-stat-label">Total Users</span>
+                    </div>
+                    <div class="user-stat-card">
+                        <span class="user-stat-value">5</span>
+                        <span class="user-stat-label">Dir. Admins</span>
+                    </div>
+                    <div class="user-stat-card">
+                        <span class="user-stat-value">37</span>
+                        <span class="user-stat-label">Dir. Users</span>
+                    </div>
+                    <div class="user-stat-card">
+                        <span class="user-stat-value">40</span>
+                        <span class="user-stat-label">Active</span>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>All Users</h3>
+                        <div class="table-filters">
+                            <select class="form-select form-select-sm">
+                                <option>All Roles</option>
+                                <option>Directorate Admin</option>
+                                <option>Directorate User</option>
+                            </select>
+                            <select class="form-select form-select-sm">
+                                <option>All Directorates</option>
+                                <option>HRH</option>
+                                <option>DPPI</option>
+                                <option>DPC</option>
+                                <option>Pharmaceuticals</option>
+                                <option>Admin & Finance</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Directorate</th>
+                                    <th>Status</th>
+                                    <th>Last Active</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table blue">MC</div>
+                                            <span>M. Conteh</span>
+                                        </div>
+                                    </td>
+                                    <td>m.conteh@mohs.gov.sl</td>
+                                    <td><span class="role-badge admin">Dir. Admin</span></td>
+                                    <td><span class="dir-tag blue">HRH</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>Today, 10:15</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table purple">SK</div>
+                                            <span>S. Koroma</span>
+                                        </div>
+                                    </td>
+                                    <td>s.koroma@mohs.gov.sl</td>
+                                    <td><span class="role-badge admin">Dir. Admin</span></td>
+                                    <td><span class="dir-tag purple">DPPI</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>Today, 09:45</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table green">FK</div>
+                                            <span>F. Kamara</span>
+                                        </div>
+                                    </td>
+                                    <td>f.kamara@mohs.gov.sl</td>
+                                    <td><span class="role-badge admin">Dir. Admin</span></td>
+                                    <td><span class="dir-tag green">DPC</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>Yesterday</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table orange">AB</div>
+                                            <span>A. Bangura</span>
+                                        </div>
+                                    </td>
+                                    <td>a.bangura@mohs.gov.sl</td>
+                                    <td><span class="role-badge admin">Dir. Admin</span></td>
+                                    <td><span class="dir-tag orange">PHRM</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>Today, 08:30</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table cyan">JT</div>
+                                            <span>J. Turay</span>
+                                        </div>
+                                    </td>
+                                    <td>j.turay@mohs.gov.sl</td>
+                                    <td><span class="role-badge admin">Dir. Admin</span></td>
+                                    <td><span class="dir-tag cyan">ADMN</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>Yesterday</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table blue">AS</div>
+                                            <span>A. Sesay</span>
+                                        </div>
+                                    </td>
+                                    <td>a.sesay@mohs.gov.sl</td>
+                                    <td><span class="role-badge user">Dir. User</span></td>
+                                    <td><span class="dir-tag blue">HRH</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>Today, 11:00</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table purple">IB</div>
+                                            <span>I. Bah</span>
+                                        </div>
+                                    </td>
+                                    <td>i.bah@mohs.gov.sl</td>
+                                    <td><span class="role-badge user">Dir. User</span></td>
+                                    <td><span class="dir-tag purple">DPPI</span></td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                    <td>19 Jan 2026</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div class="user-avatar-table green">MK</div>
+                                            <span>M. Kargbo</span>
+                                        </div>
+                                    </td>
+                                    <td>m.kargbo@mohs.gov.sl</td>
+                                    <td><span class="role-badge user">Dir. User</span></td>
+                                    <td><span class="dir-tag green">DPC</span></td>
+                                    <td><span class="status-badge-modern inactive">Inactive</span></td>
+                                    <td>15 Jan 2026</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-pagination">
+                        <span class="pagination-info">Showing 1-8 of 42 users</span>
+                        <div class="pagination-controls">
+                            <button class="btn btn-sm btn-secondary" disabled>Previous</button>
+                            <button class="btn btn-sm btn-secondary">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Directorates | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern active">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">All Directorates</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search directorates..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span>›</span>
+                    <span class="current">All Directorates</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Ministry Directorates</h2>
+                        <p>Manage archive access for all MoHS directorates</p>
+                    </div>
+                    <div class="header-actions">
+                        <span class="stat-pill purple">5 Active Directorates</span>
+                    </div>
+                </div>
+
+                <!-- Directorates Grid -->
+                <div class="directorates-list-grid">
+                    <!-- HRH -->
+                    <div class="directorate-detail-card">
+                        <div class="dir-card-header">
+                            <div class="dir-badge blue">HRH</div>
+                            <span class="status-pill active">Active</span>
+                        </div>
+                        <h3 class="dir-card-title">Human Resources for Health</h3>
+                        <p class="dir-card-desc">Personnel records, training documentation, workforce planning</p>
+                        <div class="dir-card-stats">
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">3,421</span>
+                                <span class="dir-stat-label">Records</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">8</span>
+                                <span class="dir-stat-label">Users</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">12</span>
+                                <span class="dir-stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="dir-card-footer">
+                            <span class="dir-admin">Admin: M. Conteh</span>
+                            <a href="archive-records.html" class="btn btn-sm btn-primary">View Archive</a>
+                        </div>
+                    </div>
+
+                    <!-- DPPI -->
+                    <div class="directorate-detail-card">
+                        <div class="dir-card-header">
+                            <div class="dir-badge purple">DPPI</div>
+                            <span class="status-pill active">Active</span>
+                        </div>
+                        <h3 class="dir-card-title">Directorate of Policy, Planning & Information</h3>
+                        <p class="dir-card-desc">Policy documents, strategic plans, statistical reports</p>
+                        <div class="dir-card-stats">
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">2,856</span>
+                                <span class="dir-stat-label">Records</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">6</span>
+                                <span class="dir-stat-label">Users</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">5</span>
+                                <span class="dir-stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="dir-card-footer">
+                            <span class="dir-admin">Admin: S. Koroma</span>
+                            <a href="archive-records.html" class="btn btn-sm btn-primary">View Archive</a>
+                        </div>
+                    </div>
+
+                    <!-- Disease Prevention -->
+                    <div class="directorate-detail-card">
+                        <div class="dir-card-header">
+                            <div class="dir-badge green">DPC</div>
+                            <span class="status-pill active">Active</span>
+                        </div>
+                        <h3 class="dir-card-title">Disease Prevention and Control</h3>
+                        <p class="dir-card-desc">Surveillance data, outbreak reports, immunization records</p>
+                        <div class="dir-card-stats">
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">2,489</span>
+                                <span class="dir-stat-label">Records</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">10</span>
+                                <span class="dir-stat-label">Users</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">8</span>
+                                <span class="dir-stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="dir-card-footer">
+                            <span class="dir-admin">Admin: F. Kamara</span>
+                            <a href="archive-records.html" class="btn btn-sm btn-primary">View Archive</a>
+                        </div>
+                    </div>
+
+                    <!-- Pharmaceuticals -->
+                    <div class="directorate-detail-card">
+                        <div class="dir-card-header">
+                            <div class="dir-badge orange">PHRM</div>
+                            <span class="status-pill active">Active</span>
+                        </div>
+                        <h3 class="dir-card-title">Pharmaceuticals and Medical Supplies</h3>
+                        <p class="dir-card-desc">Drug inventory, procurement records, supply chain documentation</p>
+                        <div class="dir-card-stats">
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">2,134</span>
+                                <span class="dir-stat-label">Records</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">7</span>
+                                <span class="dir-stat-label">Users</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">15</span>
+                                <span class="dir-stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="dir-card-footer">
+                            <span class="dir-admin">Admin: A. Bangura</span>
+                            <a href="archive-records.html" class="btn btn-sm btn-primary">View Archive</a>
+                        </div>
+                    </div>
+
+                    <!-- Admin & Finance -->
+                    <div class="directorate-detail-card">
+                        <div class="dir-card-header">
+                            <div class="dir-badge cyan">ADMN</div>
+                            <span class="status-pill active">Active</span>
+                        </div>
+                        <h3 class="dir-card-title">Administration and Finance</h3>
+                        <p class="dir-card-desc">Financial records, procurement, administrative correspondence</p>
+                        <div class="dir-card-stats">
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">1,947</span>
+                                <span class="dir-stat-label">Records</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">11</span>
+                                <span class="dir-stat-label">Users</span>
+                            </div>
+                            <div class="dir-stat">
+                                <span class="dir-stat-value">3</span>
+                                <span class="dir-stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="dir-card-footer">
+                            <span class="dir-admin">Admin: J. Turay</span>
+                            <a href="archive-records.html" class="btn btn-sm btn-primary">View Archive</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorate Admin Dashboard | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-directorate-admin.html" class="nav-item-modern active">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◈</span>
+                    <span>Register Record</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◎</span>
+                    <span>Pending Approvals</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Reports</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search records..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm"
+                            style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);">MC</div>
+                        <div class="user-details">
+                            <span class="user-name">M. Conteh</span>
+                            <span class="user-role">Dir. Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Directorate Badge -->
+                <div class="directorate-badge">
+                    <span class="dir-badge blue">HRH</span>
+                    <div>
+                        <h2>Human Resources for Health</h2>
+                        <span class="role-indicator-modern">Directorate Administrator</span>
+                    </div>
+                </div>
+
+                <!-- Stat Cards Row -->
+                <section class="modern-stats-row">
+                    <div class="modern-stat-card blue">
+                        <div class="stat-icon-box">
+                            <span>▣</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Total Records</span>
+                            <span class="stat-value-modern">3,421</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card green">
+                        <div class="stat-icon-box">
+                            <span>◫</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Approved</span>
+                            <span class="stat-value-modern">3,156</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card orange">
+                        <div class="stat-icon-box">
+                            <span>◎</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Pending Review</span>
+                            <span class="stat-value-modern">12</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card purple">
+                        <div class="stat-icon-box">
+                            <span>◯</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Directorate Users</span>
+                            <span class="stat-value-modern">8</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Grid -->
+                <section class="dashboard-main-grid">
+                    <!-- Left Column -->
+                    <div class="dashboard-right">
+                        <!-- Pending Approvals -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Pending Approvals</h3>
+                                <span class="card-badge">12 records</span>
+                            </div>
+                            <div class="table-container">
+                                <table class="modern-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Record ID</th>
+                                            <th>Title</th>
+                                            <th>Submitted By</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="record-id-cell">HRH/2026/HR/017</td>
+                                            <td>Staff Performance Review Q4</td>
+                                            <td>A. Sesay</td>
+                                            <td>21 Jan 2026</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Review</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="record-id-cell">HRH/2026/TR/003</td>
+                                            <td>In-Service Training Report</td>
+                                            <td>M. Kargbo</td>
+                                            <td>20 Jan 2026</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Review</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="record-id-cell">HRH/2026/HR/016</td>
+                                            <td>New Staff Onboarding Docs</td>
+                                            <td>A. Sesay</td>
+                                            <td>19 Jan 2026</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Review</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="record-id-cell">HRH/2026/LV/008</td>
+                                            <td>Leave Records January</td>
+                                            <td>F. Bangura</td>
+                                            <td>18 Jan 2026</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Review</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Archive Statistics -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Records by Category</h3>
+                                <span class="card-badge">This Year</span>
+                            </div>
+                            <div class="stat-bars">
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Personnel Records</span>
+                                        <span class="stat-bar-value">1,245</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill blue" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Training</span>
+                                        <span class="stat-bar-value">892</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill purple" style="width: 65%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Leave & Attendance</span>
+                                        <span class="stat-bar-value">654</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill green" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Performance</span>
+                                        <span class="stat-bar-value">430</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill orange" style="width: 35%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Recruitment</span>
+                                        <span class="stat-bar-value">200</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill cyan" style="width: 20%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="dashboard-left">
+                        <!-- Quick Actions -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Quick Actions</h3>
+                            </div>
+                            <div class="quick-actions-grid">
+                                <a href="#" class="quick-action-btn">
+                                    <span class="qa-icon blue">+</span>
+                                    <span>Register Record</span>
+                                </a>
+                                <a href="#" class="quick-action-btn">
+                                    <span class="qa-icon green">◎</span>
+                                    <span>View Pending</span>
+                                </a>
+                                <a href="#" class="quick-action-btn">
+                                    <span class="qa-icon purple">◯</span>
+                                    <span>Add User</span>
+                                </a>
+                                <a href="#" class="quick-action-btn">
+                                    <span class="qa-icon orange">◇</span>
+                                    <span>Run Report</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+                            <div class="activities-list">
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot blue"></span>
+                                    <div class="activity-details">
+                                        <p>Record <strong>HRH/2026/HR/016</strong> submitted</p>
+                                        <span class="activity-time">Today, 10:32</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot green"></span>
+                                    <div class="activity-details">
+                                        <p>Approved <strong>5 records</strong></p>
+                                        <span class="activity-time">Today, 09:15</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot purple"></span>
+                                    <div class="activity-details">
+                                        <p>User <strong>A. Sesay</strong> logged in</p>
+                                        <span class="activity-time">Yesterday, 16:45</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot orange"></span>
+                                    <div class="activity-details">
+                                        <p>Record rejected: <strong>HRH/2026/TR/002</strong></p>
+                                        <span class="activity-time">Yesterday, 14:20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Directorate Users -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Directorate Users</h3>
+                                <a href="#" class="view-all-link">Manage</a>
+                            </div>
+                            <div class="current-admins-list">
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar blue">AS</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">A. Sesay</span>
+                                        <span class="ca-dir">Dir. User</span>
+                                    </div>
+                                </div>
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar purple">MK</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">M. Kargbo</span>
+                                        <span class="ca-dir">Dir. User</span>
+                                    </div>
+                                </div>
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar green">FB</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">F. Bangura</span>
+                                        <span class="ca-dir">Dir. User</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

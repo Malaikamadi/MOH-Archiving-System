@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Directorate Admin | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern active">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Add Directorate Admin</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span>›</span>
+                    <a href="manage-users.html">Manage Users</a>
+                    <span>›</span>
+                    <span class="current">Add Admin</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>New Directorate Administrator</h2>
+                        <p>Create a new administrator account for a Directorate</p>
+                    </div>
+                </div>
+
+                <!-- Form Grid -->
+                <div class="form-grid-layout">
+                    <!-- Main Form -->
+                    <div class="form-main-section">
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Administrator Details</h3>
+                            </div>
+
+                            <form class="modern-form">
+                                <div class="form-section-label">Personal Information</div>
+
+                                <div class="form-row-modern">
+                                    <div class="form-group-modern">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-input-modern" placeholder="Enter first name">
+                                    </div>
+                                    <div class="form-group-modern">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-input-modern" placeholder="Enter last name">
+                                    </div>
+                                </div>
+
+                                <div class="form-row-modern">
+                                    <div class="form-group-modern">
+                                        <label>Official Email</label>
+                                        <input type="email" class="form-input-modern" placeholder="name@mohs.gov.sl">
+                                        <span class="form-hint-modern">OTP codes will be sent to this email</span>
+                                    </div>
+                                    <div class="form-group-modern">
+                                        <label>Phone Number</label>
+                                        <input type="tel" class="form-input-modern" placeholder="+232 XX XXX XXXX">
+                                    </div>
+                                </div>
+
+                                <div class="form-group-modern">
+                                    <label>Staff ID</label>
+                                    <input type="text" class="form-input-modern" placeholder="e.g., MOHS/HRH/001">
+                                </div>
+
+                                <div class="form-section-label">Directorate Assignment</div>
+
+                                <div class="form-group-modern">
+                                    <label>Assign to Directorate</label>
+                                    <select class="form-select-modern">
+                                        <option value="" disabled selected>Select a Directorate</option>
+                                        <option value="hrh">Human Resources for Health (HRH)</option>
+                                        <option value="dppi">Directorate of Policy, Planning & Information (DPPI)
+                                        </option>
+                                        <option value="pharm">Pharmaceuticals and Medical Supplies</option>
+                                        <option value="dpc">Disease Prevention and Control</option>
+                                        <option value="admin">Administration and Finance</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-section-label">Permissions</div>
+
+                                <div class="permissions-grid">
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>Manage Directorate Archive</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>Approve/Reject Records</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>Manage Directorate Users</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked disabled>
+                                        <span>View Directorate Reports</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox" checked>
+                                        <span>Request Record Disposal</span>
+                                    </label>
+                                    <label class="permission-item">
+                                        <input type="checkbox">
+                                        <span>Export Data</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-actions-modern">
+                                    <a href="manage-users.html" class="btn btn-secondary">Cancel</a>
+                                    <button type="submit" class="btn btn-primary">Create Administrator</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="form-sidebar-section">
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Role Info</h3>
+                            </div>
+                            <div class="role-info-content">
+                                <p>Directorate Administrators have full control over their assigned Directorate's
+                                    archive:</p>
+                                <ul class="role-permissions-list">
+                                    <li>Approve or reject record submissions</li>
+                                    <li>Manage user access within the Directorate</li>
+                                    <li>Monitor archive status and retention</li>
+                                    <li>Generate Directorate-level reports</li>
+                                    <li>Request disposal of expired records</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Current Admins</h3>
+                            </div>
+                            <div class="current-admins-list">
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar blue">MC</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">M. Conteh</span>
+                                        <span class="ca-dir">HRH</span>
+                                    </div>
+                                </div>
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar purple">SK</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">S. Koroma</span>
+                                        <span class="ca-dir">DPPI</span>
+                                    </div>
+                                </div>
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar green">FK</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">F. Kamara</span>
+                                        <span class="ca-dir">DPC</span>
+                                    </div>
+                                </div>
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar orange">AB</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">A. Bangura</span>
+                                        <span class="ca-dir">Pharmaceuticals</span>
+                                    </div>
+                                </div>
+                                <div class="current-admin-item">
+                                    <div class="ca-avatar cyan">JT</div>
+                                    <div class="ca-info">
+                                        <span class="ca-name">J. Turay</span>
+                                        <span class="ca-dir">Admin & Finance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

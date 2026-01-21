@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MoHS Sample Archiving System - Secure login portal">
+    <title>Login | MoHS Sample Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="login-page">
+    <div class="login-container">
+        <!-- Login Header with Ministry Branding -->
+        <header class="login-header">
+            <div class="login-logo">
+                <img src="Assets/mohs_logo-removebg-preview.png" alt="Ministry of Health and Sanitation Logo">
+            </div>
+            <h1 class="login-title">MoHS Sample Archiving System</h1>
+            <p class="login-subtitle">Ministry of Health and Sanitation – Sierra Leone</p>
+        </header>
+
+        <!-- Login Form Card -->
+        <main class="login-card">
+            <form class="login-form" action="login-otp.html" method="GET">
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label class="form-label" for="email">Official Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input"
+                        placeholder="Enter your official email" required autocomplete="email">
+                    <p class="form-hint">A one-time password will be sent to your email</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Request OTP Code
+                </button>
+            </form>
+
+            <!-- Demo Users (for prototype) -->
+            <div class="login-demo-section">
+                <p class="demo-label">Prototype Demo Access:</p>
+                <div class="demo-buttons">
+                    <a href="login-otp.html?user=super" class="btn btn-secondary">Super Admin</a>
+                    <a href="login-otp.html?user=admin" class="btn btn-secondary">Dir. Admin</a>
+                    <a href="login-otp.html?user=user" class="btn btn-secondary">Dir. User</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Login Footer -->
+        <footer class="login-footer">
+            <p>© 2026 Ministry of Health and Sanitation, Sierra Leone</p>
+            <div class="security-notice">
+                <span>🔒</span>
+                <span>Authorized Personnel Only — All access is logged and monitored</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

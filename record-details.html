@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Details | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo"><span>MoHS</span></div>
+                <h2>Sample Archiving System</h2>
+                <p>Ministry of Health and Sanitation<br>Sierra Leone</p>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Main Menu</span>
+                    <a href="dashboard-super-admin.html" class="nav-item"><span class="nav-icon"></span>Overview
+                        Dashboard</a>
+                    <a href="directorates.html" class="nav-item"><span class="nav-icon"></span>All Directorates</a>
+                    <a href="archive-records.html" class="nav-item active"><span class="nav-icon"></span>Archive Records
+                        (All)</a>
+                </div>
+                <div class="nav-section">
+                    <span class="nav-section-title">Administration</span>
+                    <a href="#" class="nav-item"><span class="nav-icon"></span>Access &amp; Audit Logs</a>
+                    <a href="retention-policy.html" class="nav-item"><span class="nav-icon"></span>Retention
+                        Policies</a>
+                    <a href="disposal.html" class="nav-item"><span class="nav-icon"></span>Disposal &amp;
+                        Destruction</a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Version 1.0.0</p>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header header-super-admin">
+                <div class="header-left">
+                    <div class="header-title">
+                        <h1>Central MoHS Archive Unit</h1>
+                        <span>Super Admin Dashboard</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span class="header-date">Monday, 20 January 2026</span>
+                    <div class="user-info">
+                        <div class="user-avatar">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Administrator</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <nav class="breadcrumb">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span class="breadcrumb-separator">›</span>
+                    <a href="archive-records.html">Archive Records</a>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-current">HRH/2026/HR/015</span>
+                </nav>
+
+                <div class="page-header">
+                    <h1>Record Details</h1>
+                    <p>View complete record metadata, retention information, and access controls</p>
+                </div>
+
+                <!-- Record Details Grid -->
+                <div class="record-details-grid">
+                    <!-- Main Record Information -->
+                    <div>
+                        <!-- Record Metadata -->
+                        <section class="content-section">
+                            <div class="section-header">
+                                <h3>Record Metadata</h3>
+                                <span class="status-badge status-approved">Approved</span>
+                            </div>
+                            <div class="metadata-grid">
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Record ID</span>
+                                    <p class="metadata-value">HRH/2026/HR/015</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Directorate</span>
+                                    <p class="metadata-value">Human Resources for Health (HRH)</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Category</span>
+                                    <p class="metadata-value">Personnel File</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Year</span>
+                                    <p class="metadata-value">2026</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Title</span>
+                                    <p class="metadata-value">Staff Employment Contract - Dr. A. Kamara</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Created By</span>
+                                    <p class="metadata-value">A. Sesay (HRH User)</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Created Date</span>
+                                    <p class="metadata-value">15 January 2026</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Approved By</span>
+                                    <p class="metadata-value">M. Conteh (HRH Admin)</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Retention Information -->
+                        <section class="content-section">
+                            <div class="section-header">
+                                <h3>Retention Information</h3>
+                            </div>
+                            <div class="metadata-grid">
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Retention Period</span>
+                                    <p class="metadata-value">10 Years</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Retention Start</span>
+                                    <p class="metadata-value">15 January 2026</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Retention End</span>
+                                    <p class="metadata-value">15 January 2036</p>
+                                </div>
+                                <div class="metadata-item">
+                                    <span class="metadata-label">Disposal Action</span>
+                                    <p class="metadata-value">Secure Destruction</p>
+                                </div>
+                            </div>
+                            <div class="alert alert-info mt-lg">
+                                <strong>Retention Status:</strong> This record is within its retention period. No
+                                disposal action required until January 2036.
+                            </div>
+                        </section>
+
+                        <!-- Access History -->
+                        <section class="content-section">
+                            <div class="section-header">
+                                <h3>Access History</h3>
+                            </div>
+                            <div class="data-table-wrapper">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date/Time</th>
+                                            <th>User</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>20 Jan 2026, 14:32</td>
+                                            <td>System Administrator</td>
+                                            <td>Viewed record</td>
+                                        </tr>
+                                        <tr>
+                                            <td>18 Jan 2026, 09:15</td>
+                                            <td>M. Conteh</td>
+                                            <td>Approved record</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15 Jan 2026, 11:45</td>
+                                            <td>A. Sesay</td>
+                                            <td>Created record</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="record-sidebar">
+                        <!-- Access Level -->
+                        <section class="sidebar-card">
+                            <h4 class="sidebar-card-title">Access Level</h4>
+                            <span class="access-badge access-internal"
+                                style="font-size: 0.875rem; padding: 0.5rem 1rem;">Internal</span>
+                            <p class="text-small text-muted mt-md">This record is accessible to all MoHS internal staff
+                                with appropriate clearance.</p>
+                        </section>
+
+                        <!-- Actions (Static/View-Only) -->
+                        <section class="sidebar-card">
+                            <h4 class="sidebar-card-title">Actions</h4>
+                            <div class="action-buttons">
+                                <span class="btn btn-primary btn-block">Download Record</span>
+                                <span class="btn btn-secondary btn-block">Print Details</span>
+                                <span class="btn btn-secondary btn-block">View Audit Log</span>
+                            </div>
+                        </section>
+
+                        <!-- Admin Actions -->
+                        <section class="sidebar-card">
+                            <h4 class="sidebar-card-title">Admin Actions</h4>
+                            <div class="action-buttons">
+                                <span class="btn btn-secondary btn-block">Edit Metadata</span>
+                                <span class="btn btn-secondary btn-block">Change Access Level</span>
+                                <span class="btn btn-danger btn-block">Request Disposal</span>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retention Policies | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern active">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Retention Policies</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span>›</span>
+                    <span class="current">Retention Policies</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Retention Schedule</h2>
+                        <p>Define and manage document retention periods for all record types</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary">+ Add Policy</button>
+                    </div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="info-cards-row">
+                    <div class="info-card blue">
+                        <span class="info-card-icon">◎</span>
+                        <div class="info-card-content">
+                            <span class="info-card-value">10</span>
+                            <span class="info-card-label">Active Policies</span>
+                        </div>
+                    </div>
+                    <div class="info-card orange">
+                        <span class="info-card-icon">◎</span>
+                        <div class="info-card-content">
+                            <span class="info-card-value">234</span>
+                            <span class="info-card-label">Records Near Expiry</span>
+                        </div>
+                    </div>
+                    <div class="info-card green">
+                        <span class="info-card-icon">◎</span>
+                        <div class="info-card-content">
+                            <span class="info-card-value">2</span>
+                            <span class="info-card-label">Permanent Retention</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policies Table -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>All Retention Policies</h3>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Record Type</th>
+                                    <th>Category</th>
+                                    <th>Retention Period</th>
+                                    <th>Disposal Action</th>
+                                    <th>Legal Basis</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Personnel Files</strong></td>
+                                    <td>Human Resources</td>
+                                    <td>10 Years after separation</td>
+                                    <td>Secure Destruction</td>
+                                    <td>Labour Act 2023</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Training Records</strong></td>
+                                    <td>Human Resources</td>
+                                    <td>7 Years</td>
+                                    <td>Secure Destruction</td>
+                                    <td>HR Policy Manual</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Policy Documents</strong></td>
+                                    <td>Governance</td>
+                                    <td>Permanent</td>
+                                    <td>Transfer to National Archives</td>
+                                    <td>Archives Act 2018</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Financial Records</strong></td>
+                                    <td>Administration</td>
+                                    <td>10 Years</td>
+                                    <td>Secure Destruction</td>
+                                    <td>Public Finance Act 2016</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Procurement Records</strong></td>
+                                    <td>Administration</td>
+                                    <td>7 Years after contract end</td>
+                                    <td>Secure Destruction</td>
+                                    <td>Procurement Act 2016</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Disease Surveillance Data</strong></td>
+                                    <td>Health</td>
+                                    <td>25 Years</td>
+                                    <td>Transfer to Research Archives</td>
+                                    <td>Public Health Act 2021</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Patient Records</strong></td>
+                                    <td>Health</td>
+                                    <td>30 Years after last visit</td>
+                                    <td>Secure Destruction</td>
+                                    <td>Health Records Policy</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Drug Inventory Records</strong></td>
+                                    <td>Pharmaceuticals</td>
+                                    <td>5 Years</td>
+                                    <td>Secure Destruction</td>
+                                    <td>Pharmacy Act 2020</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Meeting Minutes</strong></td>
+                                    <td>Governance</td>
+                                    <td>Permanent</td>
+                                    <td>Transfer to National Archives</td>
+                                    <td>Archives Act 2018</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Correspondence</strong></td>
+                                    <td>General</td>
+                                    <td>5 Years</td>
+                                    <td>Review then Destroy</td>
+                                    <td>Records Policy</td>
+                                    <td><span class="status-badge-modern approved">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Guidelines -->
+                <div class="guidelines-row">
+                    <div class="guideline-card info">
+                        <div class="guideline-icon">i</div>
+                        <div class="guideline-content">
+                            <strong>Note:</strong> All retention periods are calculated from the date of record creation
+                            unless otherwise specified. Disposal actions require approval from the Central Archive Unit.
+                        </div>
+                    </div>
+                    <div class="guideline-card warning">
+                        <div class="guideline-icon">!</div>
+                        <div class="guideline-content">
+                            <strong>Legal Hold:</strong> Records subject to active litigation or investigation must be
+                            preserved regardless of retention schedule.
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

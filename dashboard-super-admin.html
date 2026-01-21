@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern active">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search records..." class="search-input">
+                    </div>
+                    <div class="notification-badge">
+                        <span class="notif-icon">●</span>
+                        <span class="notif-count">5</span>
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Stat Cards Row -->
+                <section class="modern-stats-row">
+                    <div class="modern-stat-card blue">
+                        <div class="stat-icon-box">
+                            <span>▣</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Total Records</span>
+                            <span class="stat-value-modern">12,847</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card green">
+                        <div class="stat-icon-box">
+                            <span>◫</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Approved</span>
+                            <span class="stat-value-modern">10,021</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card orange">
+                        <div class="stat-icon-box">
+                            <span>◎</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Pending Review</span>
+                            <span class="stat-value-modern">1,892</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card purple">
+                        <div class="stat-icon-box">
+                            <span>◯</span>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">System Users</span>
+                            <span class="stat-value-modern">42</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Grid -->
+                <section class="dashboard-main-grid">
+                    <!-- Left Column -->
+                    <div class="dashboard-left">
+                        <!-- User Profile Card -->
+                        <div class="profile-card">
+                            <div class="profile-avatar-large">
+                                <span>SA</span>
+                            </div>
+                            <h3 class="profile-name">System Administrator</h3>
+                            <p class="profile-role">Central MoHS Archive Unit</p>
+
+                            <div class="profile-stats">
+                                <div class="profile-stat">
+                                    <span class="ps-value">5</span>
+                                    <span class="ps-label">Directorates</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="ps-value">42</span>
+                                    <span class="ps-label">Users</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="ps-value">56</span>
+                                    <span class="ps-label">Pending</span>
+                                </div>
+                            </div>
+
+                            <a href="add-admin.html" class="btn btn-primary btn-block">+ Add Admin</a>
+                        </div>
+
+                        <!-- Recent Activities -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Recent Activities</h3>
+                            </div>
+                            <div class="activities-list">
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot blue"></span>
+                                    <div class="activity-details">
+                                        <p>New record registered in <strong>HRH</strong></p>
+                                        <span class="activity-time">Today, 10:32</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot green"></span>
+                                    <div class="activity-details">
+                                        <p>12 records approved by <strong>M. Conteh</strong></p>
+                                        <span class="activity-time">Today, 09:15</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot purple"></span>
+                                    <div class="activity-details">
+                                        <p>New user added: <strong>F. Kamara</strong></p>
+                                        <span class="activity-time">Yesterday, 16:45</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot orange"></span>
+                                    <div class="activity-details">
+                                        <p>Disposal completed for <strong>8 records</strong></p>
+                                        <span class="activity-time">Yesterday, 14:20</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot red"></span>
+                                    <div class="activity-details">
+                                        <p>Access level changed to <strong>Confidential</strong></p>
+                                        <span class="activity-time">19 Jan 2026</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="dashboard-right">
+                        <!-- Archive Statistics -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Archive Statistics</h3>
+                                <span class="card-badge">This Month</span>
+                            </div>
+
+                            <!-- Simple Bar Stats -->
+                            <div class="stat-bars">
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">HRH</span>
+                                        <span class="stat-bar-value">3,421</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill blue" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">DPPI</span>
+                                        <span class="stat-bar-value">2,856</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill purple" style="width: 71%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Disease Prevention</span>
+                                        <span class="stat-bar-value">2,489</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill green" style="width: 62%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Pharmaceuticals</span>
+                                        <span class="stat-bar-value">2,134</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill orange" style="width: 53%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Admin & Finance</span>
+                                        <span class="stat-bar-value">1,947</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill cyan" style="width: 48%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Actions -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Pending Actions</h3>
+                                <a href="#" class="view-all-link">View All</a>
+                            </div>
+                            <div class="pending-list">
+                                <div class="pending-item">
+                                    <div class="pending-icon orange">!</div>
+                                    <div class="pending-details">
+                                        <span class="pending-title">234 Records Near Expiry</span>
+                                        <span class="pending-sub">Review retention status</span>
+                                    </div>
+                                </div>
+                                <div class="pending-item">
+                                    <div class="pending-icon red">●</div>
+                                    <div class="pending-details">
+                                        <span class="pending-title">56 Disposal Requests</span>
+                                        <span class="pending-sub">Awaiting approval</span>
+                                    </div>
+                                </div>
+                                <div class="pending-item">
+                                    <div class="pending-icon blue">◎</div>
+                                    <div class="pending-details">
+                                        <span class="pending-title">18 New Registrations</span>
+                                        <span class="pending-sub">Pending review</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Directorates Row -->
+                <section class="directorates-section">
+                    <div class="section-title-row">
+                        <h3>Directorates Overview</h3>
+                        <a href="directorates.html" class="view-all-link">View All →</a>
+                    </div>
+                    <div class="directorates-grid">
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon blue">HRH</div>
+                            <div class="dir-details">
+                                <span class="dir-name">Human Resources for Health</span>
+                                <span class="dir-count">3,421 Records</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon purple">DPPI</div>
+                            <div class="dir-details">
+                                <span class="dir-name">Policy, Planning & Info</span>
+                                <span class="dir-count">2,856 Records</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon green">DPC</div>
+                            <div class="dir-details">
+                                <span class="dir-name">Disease Prevention</span>
+                                <span class="dir-count">2,489 Records</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon orange">PHRM</div>
+                            <div class="dir-details">
+                                <span class="dir-name">Pharmaceuticals</span>
+                                <span class="dir-count">2,134 Records</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon cyan">ADMN</div>
+                            <div class="dir-details">
+                                <span class="dir-name">Admin & Finance</span>
+                                <span class="dir-count">1,947 Records</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

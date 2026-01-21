@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposal Management | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern active">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Disposal Management</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span>›</span>
+                    <span class="current">Disposal Management</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Records Disposal</h2>
+                        <p>Manage secure disposal of records past their retention period</p>
+                    </div>
+                </div>
+
+                <!-- Workflow Steps -->
+                <div class="workflow-card">
+                    <div class="workflow-header">
+                        <h3>Disposal Workflow</h3>
+                    </div>
+                    <div class="workflow-steps-modern">
+                        <div class="workflow-step-modern completed">
+                            <div class="step-circle">1</div>
+                            <span class="step-text">Retention Expired</span>
+                        </div>
+                        <div class="workflow-connector completed"></div>
+                        <div class="workflow-step-modern completed">
+                            <div class="step-circle">2</div>
+                            <span class="step-text">Request Submitted</span>
+                        </div>
+                        <div class="workflow-connector active"></div>
+                        <div class="workflow-step-modern active">
+                            <div class="step-circle">3</div>
+                            <span class="step-text">Approval</span>
+                        </div>
+                        <div class="workflow-connector"></div>
+                        <div class="workflow-step-modern">
+                            <div class="step-circle">4</div>
+                            <span class="step-text">Secure Disposal</span>
+                        </div>
+                        <div class="workflow-connector"></div>
+                        <div class="workflow-step-modern">
+                            <div class="step-circle">5</div>
+                            <span class="step-text">Logged</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="disposal-stats-row">
+                    <div class="disposal-stat pending">
+                        <span class="disposal-stat-value">56</span>
+                        <span class="disposal-stat-label">Pending Approval</span>
+                    </div>
+                    <div class="disposal-stat approved">
+                        <span class="disposal-stat-value">23</span>
+                        <span class="disposal-stat-label">Ready for Disposal</span>
+                    </div>
+                    <div class="disposal-stat completed">
+                        <span class="disposal-stat-value">412</span>
+                        <span class="disposal-stat-label">Completed This Year</span>
+                    </div>
+                </div>
+
+                <!-- Pending Queue -->
+                <div class="modern-card mb-lg">
+                    <div class="modern-card-header">
+                        <h3>Pending Disposal Queue</h3>
+                        <span class="card-badge">56 records</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Record ID</th>
+                                    <th>Directorate</th>
+                                    <th>Category</th>
+                                    <th>Expired Date</th>
+                                    <th>Method</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="record-id-cell">PHRM/2019/INV/045</td>
+                                    <td><span class="dir-tag orange">PHRM</span></td>
+                                    <td>Inventory</td>
+                                    <td>15 Jan 2024</td>
+                                    <td>Secure Destruction</td>
+                                    <td><span class="status-badge-modern pending">Pending</span></td>
+                                    <td><button class="btn btn-sm btn-primary">Approve</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">ADMN/2018/COR/234</td>
+                                    <td><span class="dir-tag cyan">ADMN</span></td>
+                                    <td>Correspondence</td>
+                                    <td>10 Dec 2023</td>
+                                    <td>Secure Destruction</td>
+                                    <td><span class="status-badge-modern pending">Pending</span></td>
+                                    <td><button class="btn btn-sm btn-primary">Approve</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">HRH/2017/TR/089</td>
+                                    <td><span class="dir-tag blue">HRH</span></td>
+                                    <td>Training</td>
+                                    <td>05 Nov 2024</td>
+                                    <td>Secure Destruction</td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Process</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">PHRM/2018/PRO/156</td>
+                                    <td><span class="dir-tag orange">PHRM</span></td>
+                                    <td>Procurement</td>
+                                    <td>30 Sep 2025</td>
+                                    <td>Secure Destruction</td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Process</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">ADMN/2019/COR/078</td>
+                                    <td><span class="dir-tag cyan">ADMN</span></td>
+                                    <td>Correspondence</td>
+                                    <td>20 Aug 2024</td>
+                                    <td>Secure Destruction</td>
+                                    <td><span class="status-badge-modern pending">Pending</span></td>
+                                    <td><button class="btn btn-sm btn-primary">Approve</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Disposal History -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Disposal History</h3>
+                        <button class="btn btn-secondary btn-sm">Export Log</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Disposal ID</th>
+                                    <th>Records</th>
+                                    <th>Directorate</th>
+                                    <th>Date</th>
+                                    <th>Method</th>
+                                    <th>Approved By</th>
+                                    <th>Certificate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="record-id-cell">DSP/2026/001</td>
+                                    <td>12 records</td>
+                                    <td><span class="dir-tag orange">PHRM</span></td>
+                                    <td>18 Jan 2026</td>
+                                    <td>Secure Shredding</td>
+                                    <td>System Admin</td>
+                                    <td><button class="btn btn-sm btn-secondary">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">DSP/2025/047</td>
+                                    <td>8 records</td>
+                                    <td><span class="dir-tag cyan">ADMN</span></td>
+                                    <td>28 Dec 2025</td>
+                                    <td>Secure Shredding</td>
+                                    <td>System Admin</td>
+                                    <td><button class="btn btn-sm btn-secondary">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">DSP/2025/046</td>
+                                    <td>15 records</td>
+                                    <td><span class="dir-tag blue">HRH</span></td>
+                                    <td>15 Dec 2025</td>
+                                    <td>Secure Shredding</td>
+                                    <td>System Admin</td>
+                                    <td><button class="btn btn-sm btn-secondary">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Warning -->
+                <div class="guideline-card warning mt-lg">
+                    <div class="guideline-icon">!</div>
+                    <div class="guideline-content">
+                        <strong>Warning:</strong> Record disposal is permanent and irreversible. Ensure all legal holds
+                        have been verified and proper approvals obtained before processing disposal.
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

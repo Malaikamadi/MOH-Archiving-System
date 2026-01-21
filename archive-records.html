@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive Records | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern active">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="add-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Add Admin</span>
+                </a>
+                <a href="retention-policy.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Retention Policies</span>
+                </a>
+                <a href="disposal.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
+                    <span>Disposal</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <h1 class="page-title-main">Archive Records</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search records..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span>›</span>
+                    <span class="current">Archive Records</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>All Archive Records</h2>
+                        <p>Browse and manage archived records across all directorates</p>
+                    </div>
+                    <div class="header-actions">
+                        <span class="stat-pill green">12,847 Total Records</span>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="modern-card mb-lg">
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label>Directorate</label>
+                            <select class="form-select">
+                                <option>All Directorates</option>
+                                <option>HRH</option>
+                                <option>DPPI</option>
+                                <option>DPC</option>
+                                <option>Pharmaceuticals</option>
+                                <option>Admin & Finance</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select class="form-select">
+                                <option>All Status</option>
+                                <option>Approved</option>
+                                <option>Pending</option>
+                                <option>Archived</option>
+                                <option>Expired</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Access Level</label>
+                            <select class="form-select">
+                                <option>All Levels</option>
+                                <option>Public</option>
+                                <option>Internal</option>
+                                <option>Restricted</option>
+                                <option>Confidential</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Year</label>
+                            <select class="form-select">
+                                <option>All Years</option>
+                                <option>2026</option>
+                                <option>2025</option>
+                                <option>2024</option>
+                                <option>2023</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+
+                <!-- Records Table -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Records</h3>
+                        <span class="table-info">Showing 1-10 of 12,847</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Record ID</th>
+                                    <th>Title</th>
+                                    <th>Directorate</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Access</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="record-id-cell">HRH/2026/HR/016</td>
+                                    <td>Staff Training Report Q1</td>
+                                    <td><span class="dir-tag blue">HRH</span></td>
+                                    <td>Training</td>
+                                    <td>21 Jan 2026</td>
+                                    <td><span class="access-badge internal">Internal</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">DPPI/2026/POL/004</td>
+                                    <td>Health Sector Strategic Plan 2026</td>
+                                    <td><span class="dir-tag purple">DPPI</span></td>
+                                    <td>Policy</td>
+                                    <td>20 Jan 2026</td>
+                                    <td><span class="access-badge restricted">Restricted</span></td>
+                                    <td><span class="status-badge-modern pending">Pending</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">DPC/2026/SUR/012</td>
+                                    <td>Disease Surveillance Weekly Report</td>
+                                    <td><span class="dir-tag green">DPC</span></td>
+                                    <td>Report</td>
+                                    <td>19 Jan 2026</td>
+                                    <td><span class="access-badge confidential">Confidential</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">PHRM/2026/INV/008</td>
+                                    <td>Drug Inventory January 2026</td>
+                                    <td><span class="dir-tag orange">PHRM</span></td>
+                                    <td>Inventory</td>
+                                    <td>18 Jan 2026</td>
+                                    <td><span class="access-badge internal">Internal</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">ADMN/2026/FIN/003</td>
+                                    <td>Budget Allocation Q1 2026</td>
+                                    <td><span class="dir-tag cyan">ADMN</span></td>
+                                    <td>Finance</td>
+                                    <td>17 Jan 2026</td>
+                                    <td><span class="access-badge restricted">Restricted</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">HRH/2026/HR/015</td>
+                                    <td>New Staff Onboarding Records</td>
+                                    <td><span class="dir-tag blue">HRH</span></td>
+                                    <td>Personnel</td>
+                                    <td>16 Jan 2026</td>
+                                    <td><span class="access-badge confidential">Confidential</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">DPPI/2025/RPT/089</td>
+                                    <td>Annual Health Statistics 2025</td>
+                                    <td><span class="dir-tag purple">DPPI</span></td>
+                                    <td>Statistics</td>
+                                    <td>15 Jan 2026</td>
+                                    <td><span class="access-badge public">Public</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">DPC/2025/IMM/156</td>
+                                    <td>Immunization Coverage Report</td>
+                                    <td><span class="dir-tag green">DPC</span></td>
+                                    <td>Report</td>
+                                    <td>14 Jan 2026</td>
+                                    <td><span class="access-badge internal">Internal</span></td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="record-details.html" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="table-pagination">
+                        <span class="pagination-info">Page 1 of 1,285</span>
+                        <div class="pagination-controls">
+                            <button class="btn btn-sm btn-secondary" disabled>Previous</button>
+                            <button class="btn btn-sm btn-secondary">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
