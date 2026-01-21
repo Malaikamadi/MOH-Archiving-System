@@ -10,8 +10,11 @@
 
 <body>
     <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <!-- SIDEBAR -->
-        <aside class="sidebar modern">
+        <aside class="sidebar modern" id="sidebar">
             <div class="sidebar-header">
                 <div class="ministry-logo">
                     <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
@@ -57,6 +60,9 @@
             <!-- HEADER -->
             <header class="main-header modern-header">
                 <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
                     <h1 class="page-title-main">Dashboard</h1>
                 </div>
                 <div class="header-right">
@@ -336,6 +342,35 @@
             </main>
         </div>
     </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // Close sidebar on window resize (desktop)
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 991) {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>
