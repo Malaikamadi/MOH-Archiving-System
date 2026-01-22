@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports Generator | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="meeting-minutes.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Meeting Minutes</span>
+                </a>
+                <a href="correspondence.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◇</span>
+                    <span>Correspondence</span>
+                </a>
+                <a href="reports.html" class="nav-item-modern active">
+                    <span class="nav-icon-box pink">◎</span>
+                    <span>Reports</span>
+                </a>
+                <a href="audit-trail.html" class="nav-item-modern">
+                    <span class="nav-icon-box gray">◆</span>
+                    <span>Audit Trail</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Settings</span>
+                </a>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <h1 class="page-title-main">Reports</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span class="breadcrumb-sep">→</span>
+                    <span>Reports</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Reports Generator</h2>
+                        <p>Generate comprehensive reports for archiving activities, audits, and compliance</p>
+                    </div>
+                </div>
+
+                <!-- Report Categories -->
+                <section class="report-categories-grid">
+                    <!-- Archive Reports -->
+                    <div class="report-category-card">
+                        <div class="report-category-icon blue">
+                            <span>▤</span>
+                        </div>
+                        <h3>Archive Reports</h3>
+                        <p>Records statistics, storage utilization, and archival metrics</p>
+                        <div class="report-list">
+                            <a href="#" class="report-item" onclick="generateReport('archive-summary')">
+                                <span class="report-name">Archive Summary Report</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('records-by-dir')">
+                                <span class="report-name">Records by Directorate</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('storage-analysis')">
+                                <span class="report-name">Storage Analysis</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('monthly-intake')">
+                                <span class="report-name">Monthly Intake Report</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Compliance Reports -->
+                    <div class="report-category-card">
+                        <div class="report-category-icon green">
+                            <span>◎</span>
+                        </div>
+                        <h3>Compliance Reports</h3>
+                        <p>Retention compliance, disposal schedules, and regulatory adherence</p>
+                        <div class="report-list">
+                            <a href="#" class="report-item" onclick="generateReport('retention-compliance')">
+                                <span class="report-name">Retention Compliance Report</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('disposal-schedule')">
+                                <span class="report-name">Disposal Schedule</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('expiring-records')">
+                                <span class="report-name">Expiring Records</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('legal-hold')">
+                                <span class="report-name">Legal Hold Register</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Activity Reports -->
+                    <div class="report-category-card">
+                        <div class="report-category-icon purple">
+                            <span>◈</span>
+                        </div>
+                        <h3>Activity Reports</h3>
+                        <p>User activities, system usage, and access patterns</p>
+                        <div class="report-list">
+                            <a href="#" class="report-item" onclick="generateReport('user-activity')">
+                                <span class="report-name">User Activity Log</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('access-report')">
+                                <span class="report-name">Access Report</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('login-history')">
+                                <span class="report-name">Login History</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('document-downloads')">
+                                <span class="report-name">Document Downloads</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Meeting Reports -->
+                    <div class="report-category-card">
+                        <div class="report-category-icon cyan">
+                            <span>◇</span>
+                        </div>
+                        <h3>Meeting Reports</h3>
+                        <p>Meeting minutes summaries, action tracking, and attendance</p>
+                        <div class="report-list">
+                            <a href="#" class="report-item" onclick="generateReport('meeting-summary')">
+                                <span class="report-name">Meeting Summary</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('action-items')">
+                                <span class="report-name">Action Items Tracker</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('attendance-report')">
+                                <span class="report-name">Attendance Report</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Correspondence Reports -->
+                    <div class="report-category-card">
+                        <div class="report-category-icon orange">
+                            <span>◆</span>
+                        </div>
+                        <h3>Correspondence Reports</h3>
+                        <p>Mail tracking, response times, and communication analytics</p>
+                        <div class="report-list">
+                            <a href="#" class="report-item" onclick="generateReport('correspondence-summary')">
+                                <span class="report-name">Correspondence Summary</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('pending-responses')">
+                                <span class="report-name">Pending Responses</span>
+                                <span class="report-format">Excel</span>
+                            </a>
+                            <a href="#" class="report-item" onclick="generateReport('response-time')">
+                                <span class="report-name">Response Time Analysis</span>
+                                <span class="report-format">PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Custom Report -->
+                    <div class="report-category-card custom">
+                        <div class="report-category-icon pink">
+                            <span>+</span>
+                        </div>
+                        <h3>Custom Report</h3>
+                        <p>Build a custom report with specific parameters</p>
+                        <button class="btn btn-primary btn-block" onclick="openCustomReportModal()">Create Custom
+                            Report</button>
+                    </div>
+                </section>
+
+                <!-- Recent Reports -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Recently Generated Reports</h3>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Report Name</th>
+                                    <th class="hide-mobile">Type</th>
+                                    <th class="hide-mobile">Generated By</th>
+                                    <th class="hide-mobile">Date</th>
+                                    <th>Format</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Archive Summary Report - January 2026</strong></td>
+                                    <td class="hide-mobile">Archive</td>
+                                    <td class="hide-mobile">System Admin</td>
+                                    <td class="hide-mobile">21 Jan 2026, 14:30</td>
+                                    <td><span class="format-badge pdf">PDF</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Records by Directorate - Q4 2025</strong></td>
+                                    <td class="hide-mobile">Archive</td>
+                                    <td class="hide-mobile">System Admin</td>
+                                    <td class="hide-mobile">20 Jan 2026, 10:15</td>
+                                    <td><span class="format-badge excel">Excel</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>User Activity Log - December 2025</strong></td>
+                                    <td class="hide-mobile">Activity</td>
+                                    <td class="hide-mobile">System Admin</td>
+                                    <td class="hide-mobile">15 Jan 2026, 09:00</td>
+                                    <td><span class="format-badge excel">Excel</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Retention Compliance Report - 2025</strong></td>
+                                    <td class="hide-mobile">Compliance</td>
+                                    <td class="hide-mobile">System Admin</td>
+                                    <td class="hide-mobile">10 Jan 2026, 16:45</td>
+                                    <td><span class="format-badge pdf">PDF</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Download</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Scheduled Reports -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Scheduled Reports</h3>
+                        <button class="btn btn-sm btn-secondary">+ Add Schedule</button>
+                    </div>
+                    <div class="scheduled-reports-list">
+                        <div class="scheduled-report-item">
+                            <div class="schedule-icon blue">◎</div>
+                            <div class="schedule-info">
+                                <strong>Monthly Archive Summary</strong>
+                                <p>Auto-generated on 1st of every month</p>
+                            </div>
+                            <div class="schedule-next">
+                                <span>Next run:</span>
+                                <span>1 Feb 2026</span>
+                            </div>
+                            <div class="schedule-recipients">
+                                <span>Recipients: 3</span>
+                            </div>
+                            <button class="btn btn-sm btn-secondary">Edit</button>
+                        </div>
+                        <div class="scheduled-report-item">
+                            <div class="schedule-icon green">◎</div>
+                            <div class="schedule-info">
+                                <strong>Weekly Activity Log</strong>
+                                <p>Auto-generated every Monday</p>
+                            </div>
+                            <div class="schedule-next">
+                                <span>Next run:</span>
+                                <span>27 Jan 2026</span>
+                            </div>
+                            <div class="schedule-recipients">
+                                <span>Recipients: 5</span>
+                            </div>
+                            <button class="btn btn-sm btn-secondary">Edit</button>
+                        </div>
+                        <div class="scheduled-report-item">
+                            <div class="schedule-icon orange">◎</div>
+                            <div class="schedule-info">
+                                <strong>Quarterly Compliance Report</strong>
+                                <p>Auto-generated at end of each quarter</p>
+                            </div>
+                            <div class="schedule-next">
+                                <span>Next run:</span>
+                                <span>31 Mar 2026</span>
+                            </div>
+                            <div class="schedule-recipients">
+                                <span>Recipients: 8</span>
+                            </div>
+                            <button class="btn btn-sm btn-secondary">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        function generateReport(type) {
+            alert('Generating report: ' + type + '...\n\nThis would open a report configuration dialog in a production system.');
+        }
+
+        function openCustomReportModal() {
+            alert('Custom Report Builder would open here.\n\nAllows selection of date range, directorates, record types, and output format.');
+        }
+    </script>
+</body>
+
+</html>

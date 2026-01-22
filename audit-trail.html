@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Trail | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="meeting-minutes.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Meeting Minutes</span>
+                </a>
+                <a href="correspondence.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◇</span>
+                    <span>Correspondence</span>
+                </a>
+                <a href="reports.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◎</span>
+                    <span>Reports</span>
+                </a>
+                <a href="audit-trail.html" class="nav-item-modern active">
+                    <span class="nav-icon-box gray">◆</span>
+                    <span>Audit Trail</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Settings</span>
+                </a>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <h1 class="page-title-main">Audit Trail</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search activities..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span class="breadcrumb-sep">→</span>
+                    <span>Audit Trail</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>System Audit Trail</h2>
+                        <p>Complete log of all system activities for compliance and security monitoring</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary">Export Log</button>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <section class="modern-stats-row">
+                    <div class="modern-stat-card blue">
+                        <div class="stat-icon-box"><span>◎</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Total Activities</span>
+                            <span class="stat-value-modern">45,892</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card green">
+                        <div class="stat-icon-box"><span>◫</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Today</span>
+                            <span class="stat-value-modern">156</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card purple">
+                        <div class="stat-icon-box"><span>◯</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Active Users</span>
+                            <span class="stat-value-modern">23</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card orange">
+                        <div class="stat-icon-box"><span>!</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Security Alerts</span>
+                            <span class="stat-value-modern">2</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Filters -->
+                <div class="modern-card mb-lg">
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label>Action Type</label>
+                            <select class="form-select">
+                                <option>All Actions</option>
+                                <option>Login/Logout</option>
+                                <option>Record Created</option>
+                                <option>Record Updated</option>
+                                <option>Record Deleted</option>
+                                <option>Record Viewed</option>
+                                <option>Record Downloaded</option>
+                                <option>User Management</option>
+                                <option>System Settings</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>User</label>
+                            <select class="form-select">
+                                <option>All Users</option>
+                                <option>System Admin</option>
+                                <option>M. Conteh</option>
+                                <option>S. Koroma</option>
+                                <option>A. Sesay</option>
+                                <option>F. Kamara</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Date Range</label>
+                            <select class="form-select">
+                                <option>Today</option>
+                                <option>Yesterday</option>
+                                <option>Last 7 Days</option>
+                                <option>Last 30 Days</option>
+                                <option>This Month</option>
+                                <option>Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Severity</label>
+                            <select class="form-select">
+                                <option>All Levels</option>
+                                <option>Info</option>
+                                <option>Warning</option>
+                                <option>Critical</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+
+                <!-- Audit Log Table -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Activity Log</h3>
+                        <span class="table-info">Showing latest 50 of 45,892 activities</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table audit-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th class="hide-mobile">Details</th>
+                                    <th class="hide-mobile">IP Address</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">15:42:18</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">SA</span>
+                                            <span>System Admin</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge view">Record Viewed</span></td>
+                                    <td class="hide-mobile">Viewed record HRH/2026/HR/016</td>
+                                    <td class="hide-mobile">192.168.1.105</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">15:38:05</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">MC</span>
+                                            <span>M. Conteh</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge create">Record Created</span></td>
+                                    <td class="hide-mobile">Created record HRH/2026/HR/017</td>
+                                    <td class="hide-mobile">192.168.1.112</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">15:25:33</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">AS</span>
+                                            <span>A. Sesay</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge login">User Login</span></td>
+                                    <td class="hide-mobile">Successful login via OTP</td>
+                                    <td class="hide-mobile">192.168.1.118</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">15:12:47</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">SA</span>
+                                            <span>System Admin</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge approve">Record Approved</span></td>
+                                    <td class="hide-mobile">Approved record DPPI/2026/POL/003</td>
+                                    <td class="hide-mobile">192.168.1.105</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr class="warning-row">
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">14:58:22</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">??</span>
+                                            <span>Unknown</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge failed">Login Failed</span></td>
+                                    <td class="hide-mobile">Failed login attempt - wrong password (3rd attempt)</td>
+                                    <td class="hide-mobile">41.223.67.112</td>
+                                    <td><span class="severity-badge warning">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">14:45:11</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">SK</span>
+                                            <span>S. Koroma</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge download">Record Downloaded</span></td>
+                                    <td class="hide-mobile">Downloaded DPPI/2025/RPT/089.pdf</td>
+                                    <td class="hide-mobile">192.168.1.120</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">14:30:05</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">MC</span>
+                                            <span>M. Conteh</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge update">Record Updated</span></td>
+                                    <td class="hide-mobile">Updated metadata for HRH/2026/HR/015</td>
+                                    <td class="hide-mobile">192.168.1.112</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr class="critical-row">
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">14:15:28</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">SA</span>
+                                            <span>System Admin</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge delete">Record Deleted</span></td>
+                                    <td class="hide-mobile">Deleted record ADMN/2024/TMP/012 (expired)</td>
+                                    <td class="hide-mobile">192.168.1.105</td>
+                                    <td><span class="severity-badge critical">Critical</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">14:00:00</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">SY</span>
+                                            <span>System</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge system">Backup Completed</span></td>
+                                    <td class="hide-mobile">Daily automated backup completed successfully</td>
+                                    <td class="hide-mobile">localhost</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="timestamp-cell">
+                                        <span class="date">21 Jan 2026</span>
+                                        <span class="time">13:45:19</span>
+                                    </td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <span class="mini-avatar">JT</span>
+                                            <span>J. Turay</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="action-badge logout">User Logout</span></td>
+                                    <td class="hide-mobile">Session ended normally</td>
+                                    <td class="hide-mobile">192.168.1.125</td>
+                                    <td><span class="severity-badge info">Info</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-pagination">
+                        <span class="pagination-info">Page 1 of 918</span>
+                        <div class="pagination-controls">
+                            <button class="btn btn-sm btn-secondary" disabled>Previous</button>
+                            <button class="btn btn-sm btn-secondary">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Alerts -->
+                <div class="modern-card warning-card">
+                    <div class="modern-card-header">
+                        <h3>🔐 Security Alerts</h3>
+                        <span class="card-badge">2 Active</span>
+                    </div>
+                    <div class="security-alerts-list">
+                        <div class="security-alert-item warning">
+                            <div class="alert-icon">⚠️</div>
+                            <div class="alert-content">
+                                <strong>Multiple failed login attempts detected</strong>
+                                <p>3 failed login attempts from IP 41.223.67.112 in the last hour</p>
+                                <span class="alert-time">21 Jan 2026, 14:58</span>
+                            </div>
+                            <div class="alert-actions">
+                                <button class="btn btn-sm btn-secondary">Block IP</button>
+                                <button class="btn btn-sm btn-secondary">Dismiss</button>
+                            </div>
+                        </div>
+                        <div class="security-alert-item info">
+                            <div class="alert-icon">ℹ️</div>
+                            <div class="alert-content">
+                                <strong>New device login</strong>
+                                <p>User A. Sesay logged in from a new device</p>
+                                <span class="alert-time">21 Jan 2026, 15:25</span>
+                            </div>
+                            <div class="alert-actions">
+                                <button class="btn btn-sm btn-secondary">Review</button>
+                                <button class="btn btn-sm btn-secondary">Dismiss</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+    </script>
+</body>
+
+</html>
