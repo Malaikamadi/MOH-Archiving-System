@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Scanner | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-directorate-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="document-scanner.html" class="nav-item-modern active">
+                    <span class="nav-icon-box purple">◈</span>
+                    <span>Scan Document</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Manage Users</span>
+                </a>
+                <a href="#" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◎</span>
+                    <span>Pending Approvals</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">←</span>
+                    <span>Logout</span>
+                </a>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <h1 class="page-title-main">Document Scanner</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">MC</div>
+                        <div class="user-details">
+                            <span class="user-name">M. Conteh</span>
+                            <span class="user-role">Dir. Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-directorate-admin.html">Dashboard</a>
+                    <span class="breadcrumb-sep">→</span>
+                    <span>Document Scanner</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Scan & Archive Document</h2>
+                        <p>Upload or capture documents to add to the archive</p>
+                    </div>
+                </div>
+
+                <!-- Scanner Section -->
+                <section class="scanner-section">
+                    <div class="scanner-grid">
+                        <!-- Left: Upload/Capture Area -->
+                        <div class="scanner-upload-area">
+                            <div class="modern-card">
+                                <div class="modern-card-header">
+                                    <h3>Upload Document</h3>
+                                </div>
+
+                                <!-- Upload Zone -->
+                                <div class="upload-zone" id="uploadZone">
+                                    <div class="upload-zone-content">
+                                        <div class="upload-icon">
+                                            <span>▤</span>
+                                        </div>
+                                        <h4>Drag & Drop Files Here</h4>
+                                        <p>or click to browse</p>
+                                        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                                            multiple hidden>
+                                        <div class="upload-formats">
+                                            <span>Supported: PDF, JPG, PNG, DOC</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Or Divider -->
+                                <div class="upload-divider">
+                                    <span>OR</span>
+                                </div>
+
+                                <!-- Camera Capture -->
+                                <div class="camera-capture-section">
+                                    <button class="btn btn-secondary btn-block" id="cameraBtn">
+                                        <span class="btn-icon">◎</span>
+                                        Capture with Camera
+                                    </button>
+                                    <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
+                                </div>
+
+                                <!-- Upload Progress -->
+                                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                                    <div class="progress-header">
+                                        <span>Uploading...</span>
+                                        <span id="progressPercent">0%</span>
+                                    </div>
+                                    <div class="progress-bar-track">
+                                        <div class="progress-bar-fill" id="progressFill"></div>
+                                    </div>
+                                </div>
+
+                                <!-- File List -->
+                                <div class="file-list" id="fileList">
+                                    <!-- Files will be added here dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Document Preview -->
+                            <div class="modern-card" id="previewCard" style="display: none;">
+                                <div class="modern-card-header">
+                                    <h3>Document Preview</h3>
+                                    <button class="btn btn-sm btn-secondary" id="clearPreview">Clear</button>
+                                </div>
+                                <div class="document-preview" id="documentPreview">
+                                    <!-- Preview will be shown here -->
+                                </div>
+                                <div class="preview-actions">
+                                    <button class="btn btn-sm btn-secondary">
+                                        <span>↺</span> Rotate
+                                    </button>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <span>⊕</span> Zoom In
+                                    </button>
+                                    <button class="btn btn-sm btn-secondary">
+                                        <span>⊖</span> Zoom Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Document Metadata Form -->
+                        <div class="scanner-form-area">
+                            <div class="modern-card">
+                                <div class="modern-card-header">
+                                    <h3>Document Details</h3>
+                                </div>
+
+                                <form class="scanner-form" id="scannerForm">
+                                    <!-- Record ID (Auto-generated) -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Record ID</label>
+                                        <input type="text" class="form-input-modern" value="HRH/2026/HR/018" readonly>
+                                        <span class="form-hint">Auto-generated</span>
+                                    </div>
+
+                                    <!-- Document Title -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Document Title <span
+                                                class="required">*</span></label>
+                                        <input type="text" class="form-input-modern" placeholder="Enter document title"
+                                            required>
+                                    </div>
+
+                                    <!-- Category -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Category <span
+                                                class="required">*</span></label>
+                                        <select class="form-input-modern" required>
+                                            <option value="">Select category</option>
+                                            <option value="personnel">Personnel Records</option>
+                                            <option value="training">Training</option>
+                                            <option value="leave">Leave & Attendance</option>
+                                            <option value="performance">Performance</option>
+                                            <option value="recruitment">Recruitment</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Document Date -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Document Date <span
+                                                class="required">*</span></label>
+                                        <input type="date" class="form-input-modern" required>
+                                    </div>
+
+                                    <!-- Access Level -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Access Level <span
+                                                class="required">*</span></label>
+                                        <select class="form-input-modern" required>
+                                            <option value="internal">Internal</option>
+                                            <option value="public">Public</option>
+                                            <option value="restricted">Restricted</option>
+                                            <option value="confidential">Confidential</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Reference Number -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Reference Number</label>
+                                        <input type="text" class="form-input-modern" placeholder="Optional reference">
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Description</label>
+                                        <textarea class="form-input-modern" rows="3"
+                                            placeholder="Brief description of the document"></textarea>
+                                    </div>
+
+                                    <!-- Tags -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Tags</label>
+                                        <input type="text" class="form-input-modern"
+                                            placeholder="e.g., personnel, 2026, Q1">
+                                        <span class="form-hint">Separate tags with commas</span>
+                                    </div>
+
+                                    <!-- Retention Period -->
+                                    <div class="form-group-modern">
+                                        <label class="form-label-modern">Retention Period</label>
+                                        <select class="form-input-modern">
+                                            <option value="5">5 Years</option>
+                                            <option value="7" selected>7 Years</option>
+                                            <option value="10">10 Years</option>
+                                            <option value="permanent">Permanent</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Form Actions -->
+                                    <div class="form-actions-modern">
+                                        <button type="button" class="btn btn-secondary">Save as Draft</button>
+                                        <button type="submit" class="btn btn-primary">Submit for Review</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- OCR Preview -->
+                            <div class="modern-card">
+                                <div class="modern-card-header">
+                                    <h3>Text Extraction (OCR)</h3>
+                                    <span class="card-badge">Beta</span>
+                                </div>
+                                <div class="ocr-preview" id="ocrPreview">
+                                    <div class="ocr-placeholder">
+                                        <span class="ocr-icon">◫</span>
+                                        <p>Upload a document to extract text</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Scans -->
+                <section class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Recent Scans</h3>
+                        <span class="card-badge">Today</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Document</th>
+                                    <th class="hide-mobile">Category</th>
+                                    <th class="hide-mobile">Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="doc-cell">
+                                            <span class="doc-icon">◫</span>
+                                            <span>Staff_Report_Jan2026.pdf</span>
+                                        </div>
+                                    </td>
+                                    <td class="hide-mobile">Personnel Records</td>
+                                    <td class="hide-mobile">10:32 AM</td>
+                                    <td><span class="status-badge-modern approved">Submitted</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="doc-cell">
+                                            <span class="doc-icon">◫</span>
+                                            <span>Training_Certificate.jpg</span>
+                                        </div>
+                                    </td>
+                                    <td class="hide-mobile">Training</td>
+                                    <td class="hide-mobile">09:45 AM</td>
+                                    <td><span class="status-badge-modern pending">Draft</span></td>
+                                    <td><button class="btn btn-sm btn-secondary">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // File Upload Functionality
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+        const cameraBtn = document.getElementById('cameraBtn');
+        const cameraInput = document.getElementById('cameraInput');
+        const fileList = document.getElementById('fileList');
+        const previewCard = document.getElementById('previewCard');
+        const documentPreview = document.getElementById('documentPreview');
+        const ocrPreview = document.getElementById('ocrPreview');
+
+        // Click to browse
+        uploadZone.addEventListener('click', () => fileInput.click());
+
+        // Drag and drop
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // Camera button
+        cameraBtn.addEventListener('click', () => cameraInput.click());
+        cameraInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // Handle files
+        function handleFiles(files) {
+            for (let file of files) {
+                addFileToList(file);
+
+                // Show preview for images
+                if (file.type.startsWith('image/')) {
+                    showImagePreview(file);
+                } else if (file.type === 'application/pdf') {
+                    showPDFPreview(file);
+                }
+            }
+        }
+
+        // Add file to list
+        function addFileToList(file) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div class="file-item-icon">◫</div>
+                <div class="file-item-info">
+                    <span class="file-item-name">${file.name}</span>
+                    <span class="file-item-size">${formatFileSize(file.size)}</span>
+                </div>
+                <button class="file-item-remove" onclick="this.parentElement.remove()">×</button>
+            `;
+            fileList.appendChild(fileItem);
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Show image preview
+        function showImagePreview(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewCard.style.display = 'block';
+                documentPreview.innerHTML = `<img src="${e.target.result}" alt="Document Preview">`;
+
+                // Simulate OCR
+                ocrPreview.innerHTML = `
+                    <div class="ocr-content">
+                        <p><strong>Extracted Text:</strong></p>
+                        <p class="ocr-text">SAMPLE ARCHIVING SYSTEM<br>
+                        Ministry of Health and Sanitation (MoHS) – Sierra Leone<br><br>
+                        1. INTRODUCTION<br>
+                        This document presents a Sample Archiving System designed for the Ministry of Health and Sanitation (MoHS), Sierra Leone...</p>
+                        <button class="btn btn-sm btn-secondary">Copy Text</button>
+                    </div>
+                `;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Show PDF preview
+        function showPDFPreview(file) {
+            previewCard.style.display = 'block';
+            documentPreview.innerHTML = `
+                <div class="pdf-preview-placeholder">
+                    <span class="pdf-icon">◫</span>
+                    <p>${file.name}</p>
+                    <span class="pdf-pages">PDF Document</span>
+                </div>
+            `;
+        }
+
+        // Clear preview
+        document.getElementById('clearPreview').addEventListener('click', () => {
+            previewCard.style.display = 'none';
+            documentPreview.innerHTML = '';
+            fileList.innerHTML = '';
+            ocrPreview.innerHTML = `
+                <div class="ocr-placeholder">
+                    <span class="ocr-icon">◫</span>
+                    <p>Upload a document to extract text</p>
+                </div>
+            `;
+        });
+
+        // Form submission
+        document.getElementById('scannerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Document submitted for review!');
+        });
+    </script>
+</body>
+
+</html>
