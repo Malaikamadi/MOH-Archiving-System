@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correspondence Tracking | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="meeting-minutes.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Meeting Minutes</span>
+                </a>
+                <a href="correspondence.html" class="nav-item-modern active">
+                    <span class="nav-icon-box orange">◇</span>
+                    <span>Correspondence</span>
+                </a>
+                <a href="reports.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◎</span>
+                    <span>Reports</span>
+                </a>
+                <a href="audit-trail.html" class="nav-item-modern">
+                    <span class="nav-icon-box gray">◆</span>
+                    <span>Audit Trail</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Settings</span>
+                </a>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <h1 class="page-title-main">Correspondence</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search correspondence..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span class="breadcrumb-sep">→</span>
+                    <span>Correspondence</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Correspondence Tracking</h2>
+                        <p>Track incoming and outgoing letters, memos, and official communications</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary">+ Incoming</button>
+                        <button class="btn btn-primary">+ Outgoing</button>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <section class="modern-stats-row">
+                    <div class="modern-stat-card blue">
+                        <div class="stat-icon-box"><span>↓</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Incoming</span>
+                            <span class="stat-value-modern">1,234</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card green">
+                        <div class="stat-icon-box"><span>↑</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Outgoing</span>
+                            <span class="stat-value-modern">892</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card orange">
+                        <div class="stat-icon-box"><span>◎</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Pending Response</span>
+                            <span class="stat-value-modern">47</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card purple">
+                        <div class="stat-icon-box"><span>!</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Overdue</span>
+                            <span class="stat-value-modern">8</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tab Navigation -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="incoming">Incoming Mail</button>
+                    <button class="tab-btn" data-tab="outgoing">Outgoing Mail</button>
+                    <button class="tab-btn" data-tab="internal">Internal Memos</button>
+                </div>
+
+                <!-- Correspondence Table -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Incoming Correspondence</h3>
+                        <div class="header-actions">
+                            <select class="form-select-sm">
+                                <option>This Month</option>
+                                <option>This Week</option>
+                                <option>This Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Ref. Number</th>
+                                    <th>Subject</th>
+                                    <th class="hide-mobile">From</th>
+                                    <th class="hide-mobile">Date Received</th>
+                                    <th class="hide-mobile">Assigned To</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="record-id-cell">IN/2026/0147</td>
+                                    <td>
+                                        <strong>Request for Health Data Report</strong>
+                                        <span class="correspondence-type">Official Letter</span>
+                                    </td>
+                                    <td class="hide-mobile">World Health Organization</td>
+                                    <td class="hide-mobile">21 Jan 2026</td>
+                                    <td class="hide-mobile">
+                                        <span class="mini-avatar">SK</span>
+                                        S. Koroma
+                                    </td>
+                                    <td><span class="status-badge-modern pending">Pending</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">IN/2026/0146</td>
+                                    <td>
+                                        <strong>Budget Allocation Notification FY2026</strong>
+                                        <span class="correspondence-type">Official Letter</span>
+                                    </td>
+                                    <td class="hide-mobile">Ministry of Finance</td>
+                                    <td class="hide-mobile">20 Jan 2026</td>
+                                    <td class="hide-mobile">
+                                        <span class="mini-avatar">JT</span>
+                                        J. Turay
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Actioned</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">IN/2026/0145</td>
+                                    <td>
+                                        <strong>Invitation: Regional Health Summit</strong>
+                                        <span class="correspondence-type">Invitation</span>
+                                    </td>
+                                    <td class="hide-mobile">African Union</td>
+                                    <td class="hide-mobile">19 Jan 2026</td>
+                                    <td class="hide-mobile">
+                                        <span class="mini-avatar">SA</span>
+                                        System Admin
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Responded</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr class="urgent-row">
+                                    <td class="record-id-cell">IN/2026/0142</td>
+                                    <td>
+                                        <strong>Urgent: Disease Outbreak Alert - Tonkolili</strong>
+                                        <span class="correspondence-type urgent">Urgent</span>
+                                    </td>
+                                    <td class="hide-mobile">District Health Office</td>
+                                    <td class="hide-mobile">15 Jan 2026</td>
+                                    <td class="hide-mobile">
+                                        <span class="mini-avatar">FK</span>
+                                        F. Kamara
+                                    </td>
+                                    <td><span class="status-badge-modern"
+                                            style="background: rgba(197, 48, 48, 0.1); color: #c53030;">Overdue</span>
+                                    </td>
+                                    <td><a href="#" class="btn btn-sm btn-primary">Action</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">IN/2026/0140</td>
+                                    <td>
+                                        <strong>Training Partnership Proposal</strong>
+                                        <span class="correspondence-type">Proposal</span>
+                                    </td>
+                                    <td class="hide-mobile">UNICEF Sierra Leone</td>
+                                    <td class="hide-mobile">14 Jan 2026</td>
+                                    <td class="hide-mobile">
+                                        <span class="mini-avatar">MC</span>
+                                        M. Conteh
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Reviewed</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-pagination">
+                        <span class="pagination-info">Page 1 of 124</span>
+                        <div class="pagination-controls">
+                            <button class="btn btn-sm btn-secondary" disabled>Previous</button>
+                            <button class="btn btn-sm btn-secondary">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Response Reminder -->
+                <div class="modern-card warning-card">
+                    <div class="modern-card-header">
+                        <h3>⚠️ Pending Responses</h3>
+                        <span class="card-badge">Requires Attention</span>
+                    </div>
+                    <div class="pending-responses-list">
+                        <div class="pending-response-item">
+                            <div class="response-info">
+                                <strong>IN/2026/0147 - Request for Health Data Report</strong>
+                                <p>From: World Health Organization</p>
+                            </div>
+                            <div class="response-deadline">
+                                <span>Response due:</span>
+                                <span class="deadline-date">28 Jan 2026</span>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Prepare Response</button>
+                        </div>
+                        <div class="pending-response-item overdue">
+                            <div class="response-info">
+                                <strong>IN/2026/0142 - Disease Outbreak Alert</strong>
+                                <p>From: District Health Office - Tonkolili</p>
+                            </div>
+                            <div class="response-deadline">
+                                <span>Response due:</span>
+                                <span class="deadline-date overdue">18 Jan 2026 (OVERDUE)</span>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Urgent Action</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
