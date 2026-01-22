@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Minutes | MoHS Archiving System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar modern" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Archive</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-super-admin.html" class="nav-item-modern">
+                    <span class="nav-icon-box blue">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="directorates.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Directorates</span>
+                </a>
+                <a href="archive-records.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Archive Records</span>
+                </a>
+                <a href="meeting-minutes.html" class="nav-item-modern active">
+                    <span class="nav-icon-box cyan">◈</span>
+                    <span>Meeting Minutes</span>
+                </a>
+                <a href="correspondence.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◇</span>
+                    <span>Correspondence</span>
+                </a>
+                <a href="reports.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◎</span>
+                    <span>Reports</span>
+                </a>
+                <a href="audit-trail.html" class="nav-item-modern">
+                    <span class="nav-icon-box gray">◆</span>
+                    <span>Audit Trail</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="manage-users.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
+                    <span>Settings</span>
+                </a>
+                <span class="version-badge">v1.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header modern-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <h1 class="page-title-main">Meeting Minutes</h1>
+                </div>
+                <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search meetings..." class="search-input">
+                    </div>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">SA</div>
+                        <div class="user-details">
+                            <span class="user-name">System Admin</span>
+                            <span class="user-role">Super Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content modern">
+                <!-- Breadcrumb -->
+                <nav class="breadcrumb-modern">
+                    <a href="dashboard-super-admin.html">Dashboard</a>
+                    <span class="breadcrumb-sep">→</span>
+                    <span>Meeting Minutes</span>
+                </nav>
+
+                <!-- Page Header -->
+                <div class="page-header-modern">
+                    <div>
+                        <h2>Meeting Minutes Archive</h2>
+                        <p>Record, archive, and retrieve meeting minutes across all directorates</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" onclick="openNewMeetingModal()">+ New Meeting</button>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <section class="modern-stats-row">
+                    <div class="modern-stat-card blue">
+                        <div class="stat-icon-box"><span>◈</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Total Meetings</span>
+                            <span class="stat-value-modern">847</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card green">
+                        <div class="stat-icon-box"><span>◫</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">This Month</span>
+                            <span class="stat-value-modern">23</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card orange">
+                        <div class="stat-icon-box"><span>◎</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Pending Actions</span>
+                            <span class="stat-value-modern">12</span>
+                        </div>
+                    </div>
+                    <div class="modern-stat-card purple">
+                        <div class="stat-icon-box"><span>◯</span></div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Draft Minutes</span>
+                            <span class="stat-value-modern">5</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Filters -->
+                <div class="modern-card mb-lg">
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label>Meeting Type</label>
+                            <select class="form-select">
+                                <option>All Types</option>
+                                <option>Board Meeting</option>
+                                <option>Directorate Meeting</option>
+                                <option>Committee Meeting</option>
+                                <option>Staff Meeting</option>
+                                <option>Technical Working Group</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Directorate</label>
+                            <select class="form-select">
+                                <option>All Directorates</option>
+                                <option>HRH</option>
+                                <option>DPPI</option>
+                                <option>DPC</option>
+                                <option>Pharmaceuticals</option>
+                                <option>Admin & Finance</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Period</label>
+                            <select class="form-select">
+                                <option>All Time</option>
+                                <option>This Week</option>
+                                <option>This Month</option>
+                                <option>This Quarter</option>
+                                <option>This Year</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+
+                <!-- Meetings Table -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Recent Meetings</h3>
+                        <span class="table-info">Showing 1-10 of 847</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Meeting ID</th>
+                                    <th>Title</th>
+                                    <th class="hide-mobile">Type</th>
+                                    <th class="hide-mobile">Date</th>
+                                    <th class="hide-mobile">Attendees</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="record-id-cell">MTG/2026/001</td>
+                                    <td>
+                                        <strong>MoHS Senior Management Meeting</strong>
+                                        <span class="meeting-venue">Conference Room A</span>
+                                    </td>
+                                    <td class="hide-mobile"><span class="meeting-type-badge board">Board</span></td>
+                                    <td class="hide-mobile">21 Jan 2026, 10:00</td>
+                                    <td class="hide-mobile">
+                                        <div class="attendees-avatars">
+                                            <span class="mini-avatar">MC</span>
+                                            <span class="mini-avatar">SK</span>
+                                            <span class="mini-avatar">+8</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">MTG/2026/002</td>
+                                    <td>
+                                        <strong>HRH Weekly Staff Meeting</strong>
+                                        <span class="meeting-venue">HRH Boardroom</span>
+                                    </td>
+                                    <td class="hide-mobile"><span class="meeting-type-badge staff">Staff</span></td>
+                                    <td class="hide-mobile">20 Jan 2026, 09:00</td>
+                                    <td class="hide-mobile">
+                                        <div class="attendees-avatars">
+                                            <span class="mini-avatar">AS</span>
+                                            <span class="mini-avatar">FB</span>
+                                            <span class="mini-avatar">+5</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">MTG/2026/003</td>
+                                    <td>
+                                        <strong>Disease Surveillance Committee</strong>
+                                        <span class="meeting-venue">DPC Conference Room</span>
+                                    </td>
+                                    <td class="hide-mobile"><span class="meeting-type-badge committee">Committee</span>
+                                    </td>
+                                    <td class="hide-mobile">19 Jan 2026, 14:00</td>
+                                    <td class="hide-mobile">
+                                        <div class="attendees-avatars">
+                                            <span class="mini-avatar">FK</span>
+                                            <span class="mini-avatar">JT</span>
+                                            <span class="mini-avatar">+4</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-badge-modern pending">Draft</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-primary">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">MTG/2026/004</td>
+                                    <td>
+                                        <strong>Pharmaceutical Procurement Review</strong>
+                                        <span class="meeting-venue">Admin Block B</span>
+                                    </td>
+                                    <td class="hide-mobile"><span class="meeting-type-badge twg">TWG</span></td>
+                                    <td class="hide-mobile">18 Jan 2026, 11:00</td>
+                                    <td class="hide-mobile">
+                                        <div class="attendees-avatars">
+                                            <span class="mini-avatar">AB</span>
+                                            <span class="mini-avatar">MK</span>
+                                            <span class="mini-avatar">+6</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="record-id-cell">MTG/2026/005</td>
+                                    <td>
+                                        <strong>Budget Planning Meeting Q1</strong>
+                                        <span class="meeting-venue">Finance Office</span>
+                                    </td>
+                                    <td class="hide-mobile"><span
+                                            class="meeting-type-badge directorate">Directorate</span></td>
+                                    <td class="hide-mobile">17 Jan 2026, 10:00</td>
+                                    <td class="hide-mobile">
+                                        <div class="attendees-avatars">
+                                            <span class="mini-avatar">JT</span>
+                                            <span class="mini-avatar">SK</span>
+                                            <span class="mini-avatar">+3</span>
+                                        </div>
+                                    </td>
+                                    <td><span class="status-badge-modern approved">Approved</span></td>
+                                    <td><a href="#" class="btn btn-sm btn-secondary">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-pagination">
+                        <span class="pagination-info">Page 1 of 85</span>
+                        <div class="pagination-controls">
+                            <button class="btn btn-sm btn-secondary" disabled>Previous</button>
+                            <button class="btn btn-sm btn-secondary">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Items Section -->
+                <div class="modern-card">
+                    <div class="modern-card-header">
+                        <h3>Pending Action Items</h3>
+                        <a href="#" class="view-all-link">View All Actions</a>
+                    </div>
+                    <div class="action-items-list">
+                        <div class="action-item">
+                            <div class="action-item-priority high"></div>
+                            <div class="action-item-content">
+                                <strong>Submit quarterly health report to WHO</strong>
+                                <p>From: MoHS Senior Management Meeting (MTG/2026/001)</p>
+                            </div>
+                            <div class="action-item-assignee">
+                                <span class="mini-avatar">SK</span>
+                                <span>S. Koroma</span>
+                            </div>
+                            <div class="action-item-due">
+                                <span class="due-label">Due:</span>
+                                <span class="due-date overdue">20 Jan 2026</span>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <div class="action-item-priority medium"></div>
+                            <div class="action-item-content">
+                                <strong>Prepare training needs assessment</strong>
+                                <p>From: HRH Weekly Staff Meeting (MTG/2026/002)</p>
+                            </div>
+                            <div class="action-item-assignee">
+                                <span class="mini-avatar">MC</span>
+                                <span>M. Conteh</span>
+                            </div>
+                            <div class="action-item-due">
+                                <span class="due-label">Due:</span>
+                                <span class="due-date">25 Jan 2026</span>
+                            </div>
+                        </div>
+                        <div class="action-item">
+                            <div class="action-item-priority low"></div>
+                            <div class="action-item-content">
+                                <strong>Update procurement guidelines document</strong>
+                                <p>From: Pharmaceutical Procurement Review (MTG/2026/004)</p>
+                            </div>
+                            <div class="action-item-assignee">
+                                <span class="mini-avatar">AB</span>
+                                <span>A. Bangura</span>
+                            </div>
+                            <div class="action-item-due">
+                                <span class="due-label">Due:</span>
+                                <span class="due-date">31 Jan 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- New Meeting Modal -->
+    <div class="modal-overlay" id="newMeetingModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Record New Meeting</h3>
+                <button class="modal-close" onclick="closeNewMeetingModal()">×</button>
+            </div>
+            <form class="scanner-form">
+                <div class="form-row-modern">
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">Meeting Title <span class="required">*</span></label>
+                        <input type="text" class="form-input-modern" placeholder="Enter meeting title" required>
+                    </div>
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">Meeting Type <span class="required">*</span></label>
+                        <select class="form-input-modern" required>
+                            <option value="">Select type</option>
+                            <option>Board Meeting</option>
+                            <option>Directorate Meeting</option>
+                            <option>Committee Meeting</option>
+                            <option>Staff Meeting</option>
+                            <option>Technical Working Group</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row-modern">
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">Date & Time <span class="required">*</span></label>
+                        <input type="datetime-local" class="form-input-modern" required>
+                    </div>
+                    <div class="form-group-modern">
+                        <label class="form-label-modern">Venue <span class="required">*</span></label>
+                        <input type="text" class="form-input-modern" placeholder="Meeting location">
+                    </div>
+                </div>
+                <div class="form-group-modern">
+                    <label class="form-label-modern">Attendees</label>
+                    <input type="text" class="form-input-modern" placeholder="Add attendees (comma separated)">
+                </div>
+                <div class="form-group-modern">
+                    <label class="form-label-modern">Agenda</label>
+                    <textarea class="form-input-modern" rows="3" placeholder="Meeting agenda items"></textarea>
+                </div>
+                <div class="form-group-modern">
+                    <label class="form-label-modern">Minutes Summary</label>
+                    <textarea class="form-input-modern" rows="5" placeholder="Enter meeting minutes..."></textarea>
+                </div>
+                <div class="form-group-modern">
+                    <label class="form-label-modern">Action Items</label>
+                    <textarea class="form-input-modern" rows="3"
+                        placeholder="List action items with assignees and due dates"></textarea>
+                </div>
+                <div class="form-group-modern">
+                    <label class="form-label-modern">Attach Documents</label>
+                    <div class="upload-zone-mini">
+                        <span>Drop files here or click to upload</span>
+                        <input type="file" multiple>
+                    </div>
+                </div>
+                <div class="form-actions-modern">
+                    <button type="button" class="btn btn-secondary" onclick="closeNewMeetingModal()">Cancel</button>
+                    <button type="button" class="btn btn-secondary">Save as Draft</button>
+                    <button type="submit" class="btn btn-primary">Submit for Approval</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // Modal functions
+        function openNewMeetingModal() {
+            document.getElementById('newMeetingModal').style.display = 'flex';
+        }
+
+        function closeNewMeetingModal() {
+            document.getElementById('newMeetingModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
