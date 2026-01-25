@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create Document - MoHS Digital Document Management System">
+    <title>Create Document | MoHS Document Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Minister Portal Specific Styles */
+        :root {
+            --minister-primary: #1a365d;
+            --minister-secondary: #2d4a6f;
+            --minister-accent: #c9a227;
+            --minister-gold: #d4af37;
+            --minister-gold-light: #f4e4a6;
+            --minister-dark: #0f2744;
+            --minister-gradient: linear-gradient(135deg, #1a365d 0%, #2d4a6f 50%, #1a365d 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        /* Minister Sidebar */
+        .sidebar.minister {
+            background: var(--minister-gradient);
+            border-right: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .sidebar.minister .sidebar-header {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 1.5rem;
+        }
+
+        .sidebar.minister .ministry-logo {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--minister-gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .sidebar.minister .ministry-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .sidebar.minister h2 {
+            color: var(--minister-gold);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar.minister .minister-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* Minister Navigation */
+        .nav-item-minister {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-item-minister:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: #fff;
+            border-left-color: var(--minister-gold);
+            text-decoration: none;
+        }
+
+        .nav-item-minister.active {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--minister-gold);
+            border-left-color: var(--minister-gold);
+        }
+
+        .nav-icon-minister {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-minister:hover .nav-icon-minister,
+        .nav-item-minister.active .nav-icon-minister {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        /* Minister Header */
+        .main-header.minister-header {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid var(--minister-gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .minister-title-section h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .minister-title-section .greeting {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .minister-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+            border-radius: 50px;
+            color: #fff;
+        }
+
+        .minister-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .minister-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .minister-info span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content Area */
+        .main-content.minister-content {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 2rem;
+        }
+
+        /* Page Header */
+        .page-header-minister {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header-minister h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-header-minister p {
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .form-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+        }
+
+        .form-card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-card-header .step-indicator {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .form-card-body {
+            padding: 2rem;
+        }
+
+        /* Form Steps */
+        .form-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .form-step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+            transition: all 0.3s ease;
+        }
+
+        .form-step.active .step-number {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+        }
+
+        .form-step.active .step-label {
+            color: var(--minister-primary);
+            font-weight: 600;
+        }
+
+        .form-step.completed .step-number {
+            background: #10b981;
+            color: #fff;
+        }
+
+        .step-connector {
+            width: 60px;
+            height: 2px;
+            background: #e2e8f0;
+            margin: 0 -0.5rem;
+        }
+
+        .step-connector.active {
+            background: var(--minister-gold);
+        }
+
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-grid.full-width {
+            grid-template-columns: 1fr;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--minister-primary);
+            background: #f8fafc;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--minister-gold);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 0.35rem;
+        }
+
+        /* Document Type Selection */
+        .doc-type-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-type-option {
+            position: relative;
+        }
+
+        .doc-type-option input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .doc-type-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .doc-type-label:hover {
+            border-color: var(--minister-gold);
+            background: #fffbeb;
+        }
+
+        .doc-type-option input:checked+.doc-type-label {
+            border-color: var(--minister-gold);
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.2);
+        }
+
+        .doc-type-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .doc-type-label h5 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        /* File Upload Zone */
+        .file-upload-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-zone:hover,
+        .file-upload-zone.drag-over {
+            border-color: var(--minister-gold);
+            background: #fffbeb;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .file-upload-zone h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-upload-zone p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .browse-btn {
+            display: inline-block;
+            padding: 0.625rem 1.5rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .browse-btn:hover {
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
+        }
+
+        .file-types {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        /* Uploaded Files List */
+        .uploaded-files {
+            margin-top: 1.5rem;
+        }
+
+        .uploaded-file {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+        }
+
+        .file-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .file-details {
+            flex: 1;
+        }
+
+        .file-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+        }
+
+        .file-size {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .file-remove {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 8px;
+            background: #fee2e2;
+            color: #dc2626;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .file-remove:hover {
+            background: #dc2626;
+            color: #fff;
+        }
+
+        /* Form Actions */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .action-btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-form {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-form.secondary {
+            background: #f1f5f9;
+            color: var(--minister-primary);
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-form.secondary:hover {
+            background: #e2e8f0;
+            text-decoration: none;
+        }
+
+        .btn-form.primary {
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+        }
+
+        .btn-form.primary:hover {
+            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-form.gold {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+        }
+
+        .btn-form.gold:hover {
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Document Type Modal Trigger */
+        .add-custom-type {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.25rem;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .add-custom-type:hover {
+            border-color: var(--minister-gold);
+            background: #fffbeb;
+        }
+
+        .add-custom-type .plus-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #64748b;
+            transition: all 0.3s ease;
+        }
+
+        .add-custom-type:hover .plus-icon {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        .add-custom-type span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        /* Logout Button */
+        .logout-section {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Priority Selection */
+        .priority-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .priority-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .priority-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .priority-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .priority-option input:checked+.priority-label.high {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .priority-option input:checked+.priority-label.medium {
+            border-color: #f59e0b;
+            background: #fffbeb;
+            color: #b45309;
+        }
+
+        .priority-option input:checked+.priority-label.low {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .doc-type-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doc-type-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-steps {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .step-connector {
+                display: none;
+            }
+
+            .priority-options {
+                flex-direction: column;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .action-btn-group {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- MINISTER SIDEBAR -->
+        <aside class="sidebar minister" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Document Portal</h2>
+                <span class="minister-badge">Minister's Office</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="documents-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📄</span>
+                    <span>Documents</span>
+                </a>
+                <a href="document-create.html" class="nav-item-minister active">
+                    <span class="nav-icon-minister">➕</span>
+                    <span>Create Document</span>
+                </a>
+                <a href="archive-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">🗃️</span>
+                    <span>Archive</span>
+                </a>
+                <a href="document-types.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📁</span>
+                    <span>Document Types</span>
+                </a>
+                <a href="calendar-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📅</span>
+                    <span>Calendar</span>
+                </a>
+                <a href="scan-documents.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📷</span>
+                    <span>Scan Documents</span>
+                </a>
+                <a href="audit-trail-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">🔍</span>
+                    <span>Audit Trail</span>
+                </a>
+            </nav>
+
+            <div class="logout-section">
+                <a href="index.html" class="logout-btn">
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="version-badge">v2.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header minister-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <div class="minister-title-section">
+                        <h1>Create Document</h1>
+                        <span class="greeting">Register a new document</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notification-badge">
+                        <span class="notif-icon">🔔</span>
+                        <span class="notif-count">8</span>
+                    </div>
+                    <div class="minister-profile">
+                        <div class="minister-avatar">HM</div>
+                        <div class="minister-info">
+                            <h4>Hon. Minister</h4>
+                            <span>Ministry of Health</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content minister-content">
+                <!-- Page Header -->
+                <div class="page-header-minister">
+                    <div>
+                        <h1>➕ Create New Document</h1>
+                        <p>Register and upload a new document to the system</p>
+                    </div>
+                </div>
+
+                <!-- Form Card -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>📄 Document Registration Form</h2>
+                        <span class="step-indicator">Step 1 of 3</span>
+                    </div>
+
+                    <div class="form-card-body">
+                        <!-- Form Steps -->
+                        <div class="form-steps">
+                            <div class="form-step active">
+                                <span class="step-number">1</span>
+                                <span class="step-label">Document Type</span>
+                            </div>
+                            <div class="step-connector"></div>
+                            <div class="form-step">
+                                <span class="step-number">2</span>
+                                <span class="step-label">Details</span>
+                            </div>
+                            <div class="step-connector"></div>
+                            <div class="form-step">
+                                <span class="step-number">3</span>
+                                <span class="step-label">Upload</span>
+                            </div>
+                        </div>
+
+                        <form id="documentForm">
+                            <!-- Step 1: Document Type Selection -->
+                            <div class="form-section" id="step1">
+                                <h3
+                                    style="font-size: 1.1rem; font-weight: 600; color: var(--minister-primary); margin-bottom: 1.5rem;">
+                                    Select Document Type <span style="color: #ef4444;">*</span>
+                                </h3>
+
+                                <div class="doc-type-grid">
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typeMDA" value="mda">
+                                        <label for="typeMDA" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);">🏢</div>
+                                            <h5>MDAs</h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typeNGO" value="ngo">
+                                        <label for="typeNGO" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #d1fae5, #a7f3d0);">🤝</div>
+                                            <h5>NGOs</h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typeMinistry" value="ministry">
+                                        <label for="typeMinistry" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #fef3c7, #fde68a);">🏛️</div>
+                                            <h5>Ministries</h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typePresident" value="president">
+                                        <label for="typePresident" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #ede9fe, #ddd6fe);">🎖️</div>
+                                            <h5>Office of President</h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typeVP" value="vp">
+                                        <label for="typeVP" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #fce7f3, #fbcfe8);">🎗️</div>
+                                            <h5>Office of Vice President</h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typeCOMAHS" value="comahs">
+                                        <label for="typeCOMAHS" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #cffafe, #a5f3fc);">🎓</div>
+                                            <h5>COMAHS</h5>
+                                        </label>
+                                    </div>
+
+                                    <div class="doc-type-option">
+                                        <input type="radio" name="docType" id="typeHealth" value="health">
+                                        <label for="typeHealth" class="doc-type-label">
+                                            <div class="doc-type-icon"
+                                                style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff);">🏥</div>
+                                            <h5>Health Facilities</h5>
+                                        </label>
+                                    </div>
+
+                                    <a href="document-types.html" class="add-custom-type">
+                                        <div class="plus-icon">➕</div>
+                                        <span>Add New Type</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Document Details (Initially Hidden) -->
+                            <div class="form-section" id="step2" style="display: none;">
+                                <h3
+                                    style="font-size: 1.1rem; font-weight: 600; color: var(--minister-primary); margin-bottom: 1.5rem;">
+                                    Document Details
+                                </h3>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="docTitle">Document Title <span class="required">*</span></label>
+                                        <input type="text" id="docTitle" class="form-input"
+                                            placeholder="Enter document title" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="docRef">Reference Number</label>
+                                        <input type="text" id="docRef" class="form-input"
+                                            placeholder="e.g., MOH/2026/001">
+                                        <span class="form-hint">Leave blank for auto-generated reference</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="docCategory">Category <span class="required">*</span></label>
+                                        <select id="docCategory" class="form-select" required>
+                                            <option value="">Select category</option>
+                                            <option value="policy">Policy Document</option>
+                                            <option value="mou">Memorandum of Understanding</option>
+                                            <option value="agreement">Partnership Agreement</option>
+                                            <option value="memo">Official Memo</option>
+                                            <option value="report">Report</option>
+                                            <option value="directive">Executive Directive</option>
+                                            <option value="budget">Budget Document</option>
+                                            <option value="correspondence">Correspondence</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="docDate">Document Date <span class="required">*</span></label>
+                                        <input type="date" id="docDate" class="form-input" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="docSender">Sender/Origin</label>
+                                        <input type="text" id="docSender" class="form-input"
+                                            placeholder="Organization or person">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="docRecipient">Recipient</label>
+                                        <input type="text" id="docRecipient" class="form-input"
+                                            placeholder="Intended recipient">
+                                    </div>
+                                </div>
+
+                                <div class="form-grid full-width" style="margin-top: 1.5rem;">
+                                    <div class="form-group">
+                                        <label for="docDescription">Description</label>
+                                        <textarea id="docDescription" class="form-textarea"
+                                            placeholder="Brief description of the document content..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 1.5rem;">
+                                    <label
+                                        style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--minister-primary); margin-bottom: 0.75rem;">
+                                        Priority Level
+                                    </label>
+                                    <div class="priority-options">
+                                        <div class="priority-option">
+                                            <input type="radio" name="priority" id="priorityHigh" value="high">
+                                            <label for="priorityHigh" class="priority-label high">🔴 High
+                                                Priority</label>
+                                        </div>
+                                        <div class="priority-option">
+                                            <input type="radio" name="priority" id="priorityMedium" value="medium"
+                                                checked>
+                                            <label for="priorityMedium" class="priority-label medium">🟡 Medium
+                                                Priority</label>
+                                        </div>
+                                        <div class="priority-option">
+                                            <input type="radio" name="priority" id="priorityLow" value="low">
+                                            <label for="priorityLow" class="priority-label low">🟢 Low Priority</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid" style="margin-top: 1.5rem;">
+                                    <div class="form-group">
+                                        <label for="docTags">Tags</label>
+                                        <input type="text" id="docTags" class="form-input"
+                                            placeholder="Enter tags separated by commas">
+                                        <span class="form-hint">e.g., health policy, 2026, WHO</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="docAccess">Access Level</label>
+                                        <select id="docAccess" class="form-select">
+                                            <option value="public">Public</option>
+                                            <option value="internal" selected>Internal</option>
+                                            <option value="confidential">Confidential</option>
+                                            <option value="restricted">Restricted</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: File Upload (Initially Hidden) -->
+                            <div class="form-section" id="step3" style="display: none;">
+                                <h3
+                                    style="font-size: 1.1rem; font-weight: 600; color: var(--minister-primary); margin-bottom: 1.5rem;">
+                                    Upload Document Files
+                                </h3>
+
+                                <div class="file-upload-zone" id="dropZone">
+                                    <div class="upload-icon">📤</div>
+                                    <h4>Drag & Drop your files here</h4>
+                                    <p>or click to browse from your computer</p>
+                                    <span class="browse-btn">Browse Files</span>
+                                    <input type="file" id="fileInput" multiple hidden
+                                        accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
+                                    <div class="file-types">
+                                        Supported formats: PDF, DOC, DOCX, XLS, XLSX, JPG, PNG (Max 50MB per file)
+                                    </div>
+                                </div>
+
+                                <div class="uploaded-files" id="uploadedFiles">
+                                    <!-- Demo uploaded files -->
+                                    <div class="uploaded-file">
+                                        <div class="file-icon">📄</div>
+                                        <div class="file-details">
+                                            <div class="file-name">Health_Policy_2026_Draft.pdf</div>
+                                            <div class="file-size">2.4 MB</div>
+                                        </div>
+                                        <button type="button" class="file-remove">✕</button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="margin-top: 2rem; padding: 1.25rem; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+                                    <h4
+                                        style="font-size: 0.95rem; font-weight: 600; color: var(--minister-primary); margin-bottom: 0.75rem;">
+                                        📷 Scan Physical Document
+                                    </h4>
+                                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">
+                                        Have a physical document? Use our document scanner to digitize it.
+                                    </p>
+                                    <a href="scan-documents.html" class="btn-form primary"
+                                        style="display: inline-flex;">
+                                        <span>📷</span> Open Scanner
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="form-actions">
+                                <a href="documents-minister.html" class="btn-form secondary">
+                                    Cancel
+                                </a>
+                                <div class="action-btn-group">
+                                    <button type="button" class="btn-form secondary" id="prevBtn"
+                                        style="display: none;">
+                                        ← Previous
+                                    </button>
+                                    <button type="button" class="btn-form primary" id="nextBtn">
+                                        Next Step →
+                                    </button>
+                                    <button type="submit" class="btn-form gold" id="submitBtn" style="display: none;">
+                                        ✓ Create Document
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // Multi-step form logic
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const steps = document.querySelectorAll('.form-step');
+        const stepConnectors = document.querySelectorAll('.step-connector');
+        const stepSections = {
+            1: document.getElementById('step1'),
+            2: document.getElementById('step2'),
+            3: document.getElementById('step3')
+        };
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const stepIndicator = document.querySelector('.step-indicator');
+
+        function updateSteps() {
+            // Update step indicators
+            steps.forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                } else if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+
+            // Update connectors
+            stepConnectors.forEach((connector, index) => {
+                connector.classList.toggle('active', index < currentStep - 1);
+            });
+
+            // Show/hide sections
+            Object.keys(stepSections).forEach(key => {
+                stepSections[key].style.display = parseInt(key) === currentStep ? 'block' : 'none';
+            });
+
+            // Update buttons
+            prevBtn.style.display = currentStep > 1 ? 'inline-flex' : 'none';
+            nextBtn.style.display = currentStep < totalSteps ? 'inline-flex' : 'none';
+            submitBtn.style.display = currentStep === totalSteps ? 'inline-flex' : 'none';
+
+            // Update step indicator
+            stepIndicator.textContent = `Step ${currentStep} of ${totalSteps}`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateSteps();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateSteps();
+            }
+        });
+
+        // File upload functionality
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const uploadedFiles = document.getElementById('uploadedFiles');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                const fileElement = document.createElement('div');
+                fileElement.className = 'uploaded-file';
+                fileElement.innerHTML = `
+                    <div class="file-icon">📄</div>
+                    <div class="file-details">
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${formatFileSize(file.size)}</div>
+                    </div>
+                    <button type="button" class="file-remove">✕</button>
+                `;
+                uploadedFiles.appendChild(fileElement);
+
+                fileElement.querySelector('.file-remove').addEventListener('click', () => {
+                    fileElement.remove();
+                });
+            });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Remove demo file on click
+        document.querySelectorAll('.file-remove').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.closest('.uploaded-file').remove();
+            });
+        });
+
+        // Form submission
+        document.getElementById('documentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Document created successfully! Redirecting to documents list...');
+            window.location.href = 'documents-minister.html';
+        });
+
+        // Set today's date as default
+        document.getElementById('docDate').valueAsDate = new Date();
+    </script>
+</body>
+
+</html>
