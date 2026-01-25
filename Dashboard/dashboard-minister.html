@@ -4,778 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Minister Dashboard - MOH Digital Document Management System">
-    <title>Dashboard | MOH Document Management</title>
+    <title>Minister Dashboard | MoHS Archiving System</title>
     <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Minister Portal Specific Styles */
-        :root {
-            --minister-primary: #1a365d;
-            --minister-secondary: #2d4a6f;
-            --minister-accent: #c9a227;
-            --minister-gold: #d4af37;
-            --minister-gold-light: #f4e4a6;
-            --minister-dark: #0f2744;
-            --minister-gradient: linear-gradient(135deg, #1a365d 0%, #2d4a6f 50%, #1a365d 100%);
-        }
-
-        body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-        }
-
-        /* Minister Sidebar */
-        .sidebar.minister {
-            background: var(--minister-gradient);
-            border-right: 1px solid rgba(201, 162, 39, 0.2);
-        }
-
-        .sidebar.minister .sidebar-header {
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
-            padding: 1.5rem;
-        }
-
-        .sidebar.minister .ministry-logo {
-            width: 70px;
-            height: 70px;
-            border: 3px solid var(--minister-gold);
-            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
-        }
-
-        .sidebar.minister .ministry-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-        }
-
-        .sidebar.minister h2 {
-            color: var(--minister-gold);
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .sidebar.minister .minister-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
-            color: var(--minister-dark);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-        }
-
-        /* Navigation Icons */
-        .nav-icon-minister {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-icon-minister svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* Minister Navigation */
-        .nav-item-minister {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-left: 3px solid transparent;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .nav-item-minister:hover {
-            background: rgba(201, 162, 39, 0.15);
-            color: #fff;
-            border-left-color: var(--minister-gold);
-            text-decoration: none;
-        }
-
-        .nav-item-minister.active {
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--minister-gold);
-            border-left-color: var(--minister-gold);
-        }
-
-        .nav-item-minister:hover .nav-icon-minister,
-        .nav-item-minister.active .nav-icon-minister {
-            background: var(--minister-gold);
-            color: var(--minister-dark);
-        }
-
-        /* Dropdown Navigation */
-        .nav-dropdown {
-            margin-bottom: 0;
-        }
-
-        .nav-dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-left: 3px solid transparent;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-        }
-
-        .nav-dropdown-toggle:hover {
-            background: rgba(201, 162, 39, 0.15);
-            color: #fff;
-            border-left-color: var(--minister-gold);
-        }
-
-        .nav-dropdown-toggle.active {
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--minister-gold);
-            border-left-color: var(--minister-gold);
-        }
-
-        .nav-dropdown-toggle:hover .nav-icon-minister,
-        .nav-dropdown-toggle.active .nav-icon-minister {
-            background: var(--minister-gold);
-            color: var(--minister-dark);
-        }
-
-        .dropdown-arrow {
-            margin-left: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-dropdown.open .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .nav-dropdown-menu {
-            display: none;
-            padding-left: 0;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-dropdown.open .nav-dropdown-menu {
-            display: block;
-        }
-
-        .nav-dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1.5rem 0.625rem 4rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .nav-dropdown-item:hover {
-            color: var(--minister-gold);
-            background: rgba(201, 162, 39, 0.1);
-            text-decoration: none;
-        }
-
-        .nav-dropdown-item.active {
-            color: var(--minister-gold);
-        }
-
-        /* Minister Header */
-        .main-header.minister-header {
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-            border-bottom: 2px solid var(--minister-gold);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .minister-title-section h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--minister-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .minister-title-section .greeting {
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        .minister-profile {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
-            padding: 0.5rem 1rem 0.5rem 0.5rem;
-            border-radius: 50px;
-            color: #fff;
-        }
-
-        .minister-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--minister-gold);
-            color: var(--minister-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .minister-info h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0;
-        }
-
-        .minister-info span {
-            font-size: 0.75rem;
-            opacity: 0.8;
-        }
-
-        /* Main Content Area */
-        .main-content.minister-content {
-            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-            padding: 2rem;
-        }
-
-        /* Stats Cards */
-        .minister-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .minister-stat-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .minister-stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .minister-stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .minister-stat-card.primary::before {
-            background: linear-gradient(90deg, var(--minister-primary), var(--minister-secondary));
-        }
-
-        .minister-stat-card.success::before {
-            background: linear-gradient(90deg, #10b981, #34d399);
-        }
-
-        .minister-stat-card.warning::before {
-            background: linear-gradient(90deg, #f59e0b, #fbbf24);
-        }
-
-        .minister-stat-card.info::before {
-            background: linear-gradient(90deg, var(--minister-gold), #e8c547);
-        }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .stat-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .stat-icon.primary {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            color: var(--minister-primary);
-        }
-
-        .stat-icon.success {
-            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-            color: #059669;
-        }
-
-        .stat-icon.warning {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            color: #b45309;
-        }
-
-        .stat-icon.info {
-            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-            color: #7c3aed;
-        }
-
-        .stat-trend {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-        }
-
-        .stat-trend.up {
-            background: #d1fae5;
-            color: #059669;
-        }
-
-        .stat-trend.down {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--minister-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        /* Content Grid */
-        .minister-content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1.5rem;
-        }
-
-        /* Card Styles */
-        .minister-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            overflow: hidden;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .card-header h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--minister-primary);
-            margin-bottom: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-header h3 svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--minister-gold);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .view-all-link {
-            font-size: 0.85rem;
-            color: var(--minister-gold);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .view-all-link:hover {
-            color: var(--minister-primary);
-            text-decoration: none;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        /* Document List */
-        .document-list-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 0.75rem;
-            background: #f8fafc;
-            transition: all 0.2s ease;
-            border-left: 4px solid transparent;
-        }
-
-        .document-list-item:hover {
-            background: #f1f5f9;
-            transform: translateX(4px);
-        }
-
-        .document-list-item.mda {
-            border-left-color: #3b82f6;
-        }
-
-        .document-list-item.ngo {
-            border-left-color: #10b981;
-        }
-
-        .document-list-item.ministry {
-            border-left-color: #f59e0b;
-        }
-
-        .document-list-item.president {
-            border-left-color: #8b5cf6;
-        }
-
-        .doc-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .doc-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .doc-icon.mda {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            color: #2563eb;
-        }
-
-        .doc-icon.ngo {
-            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-            color: #059669;
-        }
-
-        .doc-icon.ministry {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            color: #b45309;
-        }
-
-        .doc-icon.president {
-            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-            color: #7c3aed;
-        }
-
-        .doc-details {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .doc-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--minister-primary);
-            margin-bottom: 0.25rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .doc-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.75rem;
-            color: #64748b;
-        }
-
-        .doc-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .doc-status.approved {
-            background: #d1fae5;
-            color: #059669;
-        }
-
-        .doc-status.pending {
-            background: #fef3c7;
-            color: #b45309;
-        }
-
-        .doc-status.review {
-            background: #dbeafe;
-            color: #2563eb;
-        }
-
-        /* Calendar Widget */
-        .calendar-widget {
-            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
-            border-radius: 16px;
-            padding: 1.5rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-        }
-
-        .calendar-date {
-            text-align: center;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 1rem;
-        }
-
-        .calendar-day {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1;
-            color: var(--minister-gold);
-        }
-
-        .calendar-month {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-top: 0.25rem;
-        }
-
-        .meeting-item {
-            display: flex;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-        }
-
-        .meeting-time {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--minister-gold);
-            white-space: nowrap;
-        }
-
-        .meeting-details h5 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .meeting-details span {
-            font-size: 0.75rem;
-            opacity: 0.8;
-        }
-
-        /* Quick Actions */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .quick-action-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            color: var(--minister-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .quick-action-btn:hover {
-            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
-            color: #fff;
-            border-color: var(--minister-primary);
-            transform: translateY(-2px);
-            text-decoration: none;
-        }
-
-        .quick-action-btn:hover .action-icon {
-            background: var(--minister-gold);
-            color: var(--minister-dark);
-        }
-
-        .action-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--minister-primary);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .action-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .quick-action-btn span {
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* Logout Button */
-        .logout-section {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: auto;
-        }
-
-        .logout-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            padding: 0.75rem;
-            background: rgba(239, 68, 68, 0.15);
-            color: #fca5a5;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: #ef4444;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .logout-btn svg {
-            width: 18px;
-            height: 18px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* Notification */
-        .notification-badge {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .notification-badge svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--minister-primary);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .notif-count {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 18px;
-            height: 18px;
-            background: #ef4444;
-            color: #fff;
-            font-size: 0.65rem;
-            font-weight: 600;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .minister-stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .minister-content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .minister-stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -783,15 +13,14 @@
         <!-- Sidebar Overlay for Mobile -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <!-- MINISTER SIDEBAR -->
+        <!-- SIDEBAR -->
         <aside class="sidebar modern" id="sidebar">
             <div class="sidebar-header">
                 <div class="ministry-logo">
-                    <img src="../Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
+                    <img src="../Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
                 </div>
                 <h2>MoHS Archive</h2>
             </div>
-
             <nav class="sidebar-nav">
                 <a href="dashboard-minister.html" class="nav-item-modern active">
                     <span class="nav-icon-box blue"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"
@@ -870,7 +99,6 @@
                     <span>Audit Trail</span>
                 </a>
             </nav>
-
             <div class="sidebar-footer">
                 <span class="version-badge">v1.0.0</span>
             </div>
@@ -878,265 +106,381 @@
 
         <div class="main-wrapper">
             <!-- HEADER -->
-            <header class="main-header minister-header">
+            <header class="main-header modern-header">
                 <div class="header-left">
                     <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
                         <span class="hamburger-icon"></span>
                     </button>
-                    <div class="minister-title-section">
-                        <h1>Executive Dashboard</h1>
-                        <span class="greeting">Welcome back, Honourable Minister</span>
-                    </div>
+                    <h1 class="page-title-main">Dashboard</h1>
                 </div>
                 <div class="header-right">
+                    <div class="header-search">
+                        <input type="text" placeholder="Search documents..." class="search-input">
+                    </div>
                     <div class="notification-badge">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                        </svg>
+                        <span class="notif-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                            </svg></span>
                         <span class="notif-count">8</span>
                     </div>
-                    <div class="minister-profile">
-                        <div class="minister-avatar">HM</div>
-                        <div class="minister-info">
-                            <h4>Hon. Minister</h4>
-                            <span>Ministry of Health</span>
+                    <div class="user-profile-header">
+                        <div class="user-avatar-sm">HM</div>
+                        <div class="user-details">
+                            <span class="user-name">Hon. Minister</span>
+                            <span class="user-role">Ministry of Health</span>
                         </div>
                     </div>
                 </div>
             </header>
 
             <!-- MAIN CONTENT -->
-            <main class="main-content minister-content">
-                <!-- Stats Grid -->
-                <section class="minister-stats-grid">
-                    <div class="minister-stat-card primary">
-                        <div class="stat-header">
-                            <div class="stat-icon primary">
-                                <svg viewBox="0 0 24 24">
+            <main class="main-content modern">
+                <!-- Demo Links Section -->
+                <section class="demo-links-section">
+                    <div class="modern-card-header">
+                        <h3>Quick Navigation</h3>
+                    </div>
+                    <div class="demo-links-grid">
+                        <a href="../document-create.html" class="demo-link-card">
+                            <div class="demo-link-icon blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                                     <polyline points="14 2 14 8 20 8" />
-                                </svg>
+                                    <line x1="12" y1="18" x2="12" y2="12" />
+                                    <line x1="9" y1="15" x2="15" y2="15" />
+                                </svg></div>
+                            <div class="demo-link-info">
+                                <h4>Add New Document</h4>
+                                <p>Register a new document</p>
                             </div>
-                            <span class="stat-trend up">+12%</span>
-                        </div>
-                        <div class="stat-value">2,847</div>
-                        <div class="stat-label">Total Documents</div>
-                    </div>
-
-                    <div class="minister-stat-card success">
-                        <div class="stat-header">
-                            <div class="stat-icon success">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                    <polyline points="22 4 12 14.01 9 11.01" />
-                                </svg>
+                        </a>
+                        <a href="../document-types.html" class="demo-link-card">
+                            <div class="demo-link-icon gold"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                                </svg></div>
+                            <div class="demo-link-info">
+                                <h4>Manage Document Types</h4>
+                                <p>View and edit document categories</p>
                             </div>
-                            <span class="stat-trend up">+8%</span>
-                        </div>
-                        <div class="stat-value">2,156</div>
-                        <div class="stat-label">Approved Documents</div>
-                    </div>
-
-                    <div class="minister-stat-card warning">
-                        <div class="stat-header">
-                            <div class="stat-icon warning">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <polyline points="12 6 12 12 16 14" />
-                                </svg>
-                            </div>
-                            <span class="stat-trend down">-5%</span>
-                        </div>
-                        <div class="stat-value">89</div>
-                        <div class="stat-label">Pending Approval</div>
-                    </div>
-
-                    <div class="minister-stat-card info">
-                        <div class="stat-header">
-                            <div class="stat-icon info">
-                                <svg viewBox="0 0 24 24">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                    <line x1="16" y1="2" x2="16" y2="6" />
-                                    <line x1="8" y1="2" x2="8" y2="6" />
-                                    <line x1="3" y1="10" x2="21" y2="10" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="stat-value">12</div>
-                        <div class="stat-label">Scheduled Meetings</div>
+                        </a>
                     </div>
                 </section>
 
-                <!-- Content Grid -->
-                <section class="minister-content-grid">
-                    <!-- Recent Documents -->
-                    <div class="minister-card">
-                        <div class="card-header">
-                            <h3>
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                    <polyline points="14 2 14 8 20 8" />
-                                </svg>
-                                Recent Documents
-                            </h3>
-                            <a href="documents-minister.html" class="view-all-link">View All →</a>
+                <!-- Stat Cards Row -->
+                <section class="modern-stats-row">
+                    <div class="modern-stat-card blue">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
                         </div>
-                        <div class="card-body">
-                            <div class="document-list-item mda">
-                                <div class="doc-icon mda">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                        <polyline points="9 22 9 12 15 12 15 22" />
-                                    </svg>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Total Documents</span>
+                            <span class="stat-value-modern">2,847</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card green">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Approved</span>
+                            <span class="stat-value-modern">2,156</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card orange">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Pending Review</span>
+                            <span class="stat-value-modern">89</span>
+                        </div>
+                    </div>
+
+                    <div class="modern-stat-card purple">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label-modern">Scheduled Meetings</span>
+                            <span class="stat-value-modern">12</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Grid -->
+                <section class="dashboard-main-grid">
+                    <!-- Left Column -->
+                    <div class="dashboard-left">
+                        <!-- User Profile Card -->
+                        <div class="profile-card">
+                            <div class="profile-avatar-large">
+                                <span>HM</span>
+                            </div>
+                            <h3 class="profile-name">Hon. Minister</h3>
+                            <p class="profile-role">Ministry of Health & Sanitation</p>
+
+                            <div class="profile-stats">
+                                <div class="profile-stat">
+                                    <span class="ps-value">7</span>
+                                    <span class="ps-label">Categories</span>
                                 </div>
-                                <div class="doc-details">
-                                    <div class="doc-title">National Health Policy 2026</div>
-                                    <div class="doc-meta">
-                                        <span>MDA Document</span>
-                                        <span>Today, 10:30 AM</span>
-                                    </div>
+                                <div class="profile-stat">
+                                    <span class="ps-value">2.8K</span>
+                                    <span class="ps-label">Documents</span>
                                 </div>
-                                <span class="doc-status approved">Approved</span>
+                                <div class="profile-stat">
+                                    <span class="ps-value">89</span>
+                                    <span class="ps-label">Pending</span>
+                                </div>
                             </div>
 
-                            <div class="document-list-item ngo">
-                                <div class="doc-icon ngo">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                        <circle cx="9" cy="7" r="4" />
-                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                    </svg>
-                                </div>
-                                <div class="doc-details">
-                                    <div class="doc-title">WHO Partnership Agreement</div>
-                                    <div class="doc-meta">
-                                        <span>NGO Document</span>
-                                        <span>Today, 09:15 AM</span>
-                                    </div>
-                                </div>
-                                <span class="doc-status pending">Pending</span>
-                            </div>
+                            <a href="../document-create.html" class="btn btn-primary btn-block">+ Add Document</a>
+                        </div>
 
-                            <div class="document-list-item president">
-                                <div class="doc-icon president">
-                                    <svg viewBox="0 0 24 24">
-                                        <circle cx="12" cy="8" r="7" />
-                                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                                    </svg>
-                                </div>
-                                <div class="doc-details">
-                                    <div class="doc-title">Presidential Health Initiative</div>
-                                    <div class="doc-meta">
-                                        <span>Office of President</span>
-                                        <span>Yesterday</span>
-                                    </div>
-                                </div>
-                                <span class="doc-status approved">Approved</span>
+                        <!-- Recent Activities -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Recent Activities</h3>
                             </div>
-
-                            <div class="document-list-item ministry">
-                                <div class="doc-icon ministry">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M3 21h18" />
-                                        <path d="M5 21V7l8-4v18" />
-                                        <path d="M19 21V11l-6-4" />
-                                        <path d="M9 9v.01" />
-                                        <path d="M9 12v.01" />
-                                        <path d="M9 15v.01" />
-                                        <path d="M9 18v.01" />
-                                    </svg>
-                                </div>
-                                <div class="doc-details">
-                                    <div class="doc-title">Inter-Ministry Collaboration</div>
-                                    <div class="doc-meta">
-                                        <span>Ministry Document</span>
-                                        <span>2 days ago</span>
+                            <div class="activities-list">
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot blue"></span>
+                                    <div class="activity-details">
+                                        <p>New document from <strong>WHO</strong> registered</p>
+                                        <span class="activity-time">Today, 10:32</span>
                                     </div>
                                 </div>
-                                <span class="doc-status review">In Review</span>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot green"></span>
+                                    <div class="activity-details">
+                                        <p>5 documents approved by <strong>Director</strong></p>
+                                        <span class="activity-time">Today, 09:15</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot purple"></span>
+                                    <div class="activity-details">
+                                        <p>Meeting minutes uploaded: <strong>Jan 24</strong></p>
+                                        <span class="activity-time">Yesterday, 16:45</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot orange"></span>
+                                    <div class="activity-details">
+                                        <p>Document archived: <strong>Policy 2023</strong></p>
+                                        <span class="activity-time">Yesterday, 14:20</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item-modern">
+                                    <span class="activity-dot red"></span>
+                                    <div class="activity-details">
+                                        <p>Urgent document pending: <strong>Budget Review</strong></p>
+                                        <span class="activity-time">19 Jan 2026</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right Column -->
-                    <div>
-                        <!-- Calendar Widget -->
-                        <div class="calendar-widget">
-                            <div class="calendar-date">
-                                <div class="calendar-day">25</div>
-                                <div class="calendar-month">January 2026</div>
+                    <div class="dashboard-right">
+                        <!-- Document Statistics -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Document Statistics</h3>
+                                <span class="card-badge">This Month</span>
                             </div>
-                            <div class="upcoming-meetings">
-                                <div class="meeting-item">
-                                    <div class="meeting-time">10:00 AM</div>
-                                    <div class="meeting-details">
-                                        <h5>Cabinet Health Committee</h5>
-                                        <span>State House</span>
+
+                            <!-- Simple Bar Stats -->
+                            <div class="stat-bars">
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">MDAs</span>
+                                        <span class="stat-bar-value">456</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill blue" style="width: 85%;"></div>
                                     </div>
                                 </div>
-                                <div class="meeting-item">
-                                    <div class="meeting-time">2:30 PM</div>
-                                    <div class="meeting-details">
-                                        <h5>NGO Partners Review</h5>
-                                        <span>Conference Room A</span>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">NGOs</span>
+                                        <span class="stat-bar-value">234</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill purple" style="width: 71%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Ministries</span>
+                                        <span class="stat-bar-value">189</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill green" style="width: 62%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Presidential</span>
+                                        <span class="stat-bar-value">87</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill orange" style="width: 35%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-bar-item">
+                                    <div class="stat-bar-header">
+                                        <span class="stat-bar-label">Health Facilities</span>
+                                        <span class="stat-bar-value">567</span>
+                                    </div>
+                                    <div class="stat-bar-track">
+                                        <div class="stat-bar-fill cyan" style="width: 92%;"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Quick Actions -->
-                        <div class="minister-card">
-                            <div class="card-header">
-                                <h3>
-                                    <svg viewBox="0 0 24 24">
-                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                                    </svg>
-                                    Quick Actions
-                                </h3>
+                        <!-- Pending Actions -->
+                        <div class="modern-card">
+                            <div class="modern-card-header">
+                                <h3>Pending Actions</h3>
+                                <a href="../documents-minister.html" class="view-all-link">View All</a>
                             </div>
-                            <div class="card-body">
-                                <div class="quick-actions">
-                                    <a href="document-create.html" class="quick-action-btn">
-                                        <div class="action-icon">
-                                            <svg viewBox="0 0 24 24">
-                                                <line x1="12" y1="5" x2="12" y2="19" />
-                                                <line x1="5" y1="12" x2="19" y2="12" />
-                                            </svg>
-                                        </div>
-                                        <span>Add Document</span>
-                                    </a>
-                                    <a href="scan-documents.html" class="quick-action-btn">
-                                        <div class="action-icon">
-                                            <svg viewBox="0 0 24 24">
-                                                <path
-                                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                                                <circle cx="12" cy="13" r="4" />
-                                            </svg>
-                                        </div>
-                                        <span>Scan Document</span>
-                                    </a>
-                                    <a href="calendar-minister.html" class="quick-action-btn">
-                                        <div class="action-icon">
-                                            <svg viewBox="0 0 24 24">
-                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                                <line x1="16" y1="2" x2="16" y2="6" />
-                                                <line x1="8" y1="2" x2="8" y2="6" />
-                                                <line x1="3" y1="10" x2="21" y2="10" />
-                                            </svg>
-                                        </div>
-                                        <span>Schedule Meeting</span>
-                                    </a>
-                                    <a href="audit-trail-minister.html" class="quick-action-btn">
-                                        <div class="action-icon">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                            </svg>
-                                        </div>
-                                        <span>View Audit Trail</span>
-                                    </a>
+                            <div class="pending-list">
+                                <div class="pending-item">
+                                    <div class="pending-icon orange"><svg viewBox="0 0 24 24" width="14" height="14"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <line x1="12" y1="8" x2="12" y2="12" />
+                                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                                        </svg></div>
+                                    <div class="pending-details">
+                                        <span class="pending-title">89 Documents Pending</span>
+                                        <span class="pending-sub">Awaiting review</span>
+                                    </div>
                                 </div>
+                                <div class="pending-item">
+                                    <div class="pending-icon red"><svg viewBox="0 0 24 24" width="14" height="14"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                            <line x1="16" y1="2" x2="16" y2="6" />
+                                            <line x1="8" y1="2" x2="8" y2="6" />
+                                            <line x1="3" y1="10" x2="21" y2="10" />
+                                        </svg></div>
+                                    <div class="pending-details">
+                                        <span class="pending-title">3 Meetings This Week</span>
+                                        <span class="pending-sub">View calendar</span>
+                                    </div>
+                                </div>
+                                <div class="pending-item">
+                                    <div class="pending-icon blue"><svg viewBox="0 0 24 24" width="14" height="14"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="21 8 21 21 3 21 3 8" />
+                                            <rect x="1" y="3" width="22" height="5" />
+                                        </svg></div>
+                                    <div class="pending-details">
+                                        <span class="pending-title">12 Ready for Archive</span>
+                                        <span class="pending-sub">Process archival</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Document Types Row -->
+                <section class="directorates-section">
+                    <div class="section-title-row">
+                        <h3>Document Types Overview</h3>
+                        <a href="../document-types.html" class="view-all-link">View All →</a>
+                    </div>
+                    <div class="directorates-grid">
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                                    <line x1="8" y1="6" x2="16" y2="6" />
+                                    <line x1="8" y1="10" x2="16" y2="10" />
+                                    <line x1="8" y1="14" x2="16" y2="14" />
+                                </svg></div>
+                            <div class="dir-details">
+                                <span class="dir-name">MDAs</span>
+                                <span class="dir-count">456 Documents</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon purple"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg></div>
+                            <div class="dir-details">
+                                <span class="dir-name">NGOs</span>
+                                <span class="dir-count">234 Documents</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon green"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M3 21h18" />
+                                    <path d="M5 21V7l7-4 7 4v14" />
+                                    <path d="M9 21v-5h6v5" />
+                                </svg></div>
+                            <div class="dir-details">
+                                <span class="dir-name">Ministries</span>
+                                <span class="dir-count">189 Documents</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon orange"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                    <path d="M2 17l10 5 10-5" />
+                                    <path d="M2 12l10 5 10-5" />
+                                </svg></div>
+                            <div class="dir-details">
+                                <span class="dir-name">Presidential</span>
+                                <span class="dir-count">87 Documents</span>
+                            </div>
+                        </div>
+                        <div class="directorate-card-modern">
+                            <div class="dir-icon cyan"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M3 21h18" />
+                                    <path d="M5 21V7l7-4 7 4v14" />
+                                    <line x1="12" y1="9" x2="12" y2="13" />
+                                    <line x1="10" y1="11" x2="14" y2="11" />
+                                </svg></div>
+                            <div class="dir-details">
+                                <span class="dir-name">Health Facilities</span>
+                                <span class="dir-count">567 Documents</span>
                             </div>
                         </div>
                     </div>
@@ -1165,12 +509,12 @@
             });
         }
 
-        // Dropdown Navigation Toggle
-        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function () {
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('open');
-            });
+        // Close sidebar on window resize (desktop)
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 991) {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            }
         });
     </script>
 </body>
