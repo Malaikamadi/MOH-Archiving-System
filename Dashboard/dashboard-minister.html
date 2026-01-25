@@ -784,108 +784,51 @@
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <!-- MINISTER SIDEBAR -->
-        <aside class="sidebar minister" id="sidebar">
+        <aside class="sidebar modern" id="sidebar">
             <div class="sidebar-header">
                 <div class="ministry-logo">
                     <img src="Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
                 </div>
-                <h2>MOH Document Portal</h2>
-                <span class="minister-badge">Minister's Office</span>
+                <h2>MoHS Archive</h2>
             </div>
 
             <nav class="sidebar-nav">
-                <a href="dashboard-minister.html" class="nav-item-minister active">
-                    <span class="nav-icon-minister">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="3" y="3" width="7" height="7" rx="1" />
-                            <rect x="14" y="3" width="7" height="7" rx="1" />
-                            <rect x="3" y="14" width="7" height="7" rx="1" />
-                            <rect x="14" y="14" width="7" height="7" rx="1" />
-                        </svg>
-                    </span>
+                <a href="dashboard-minister.html" class="nav-item-modern active">
+                    <span class="nav-icon-box blue">▣</span>
                     <span>Dashboard</span>
                 </a>
-
-                <div class="nav-dropdown open">
-                    <button class="nav-dropdown-toggle">
-                        <span class="nav-icon-minister">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
-                                <line x1="16" y1="13" x2="8" y2="13" />
-                                <line x1="16" y1="17" x2="8" y2="17" />
-                            </svg>
-                        </span>
-                        <span>Documents</span>
-                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown-menu">
-                        <a href="documents-minister.html" class="nav-dropdown-item">All Documents</a>
-                        <a href="document-create.html" class="nav-dropdown-item">Add Document</a>
-                        <a href="document-types.html" class="nav-dropdown-item">Document Types</a>
-                    </div>
-                </div>
-
-                <a href="archive-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="21 8 21 21 3 21 3 8" />
-                            <rect x="1" y="3" width="22" height="5" />
-                            <line x1="10" y1="12" x2="14" y2="12" />
-                        </svg>
-                    </span>
+                <a href="documents-minister.html" class="nav-item-modern">
+                    <span class="nav-icon-box purple">◫</span>
+                    <span>All Documents</span>
+                </a>
+                <a href="document-create.html" class="nav-item-modern">
+                    <span class="nav-icon-box green">▤</span>
+                    <span>Add Document</span>
+                </a>
+                <a href="archive-minister.html" class="nav-item-modern">
+                    <span class="nav-icon-box orange">◯</span>
                     <span>Archive</span>
                 </a>
-
-                <a href="calendar-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                            <line x1="3" y1="10" x2="21" y2="10" />
-                        </svg>
-                    </span>
+                <a href="calendar-minister.html" class="nav-item-modern">
+                    <span class="nav-icon-box cyan">◈</span>
                     <span>Calendar</span>
                 </a>
-
-                <a href="scan-documents.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">
-                        <svg viewBox="0 0 24 24">
-                            <path
-                                d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                            <circle cx="12" cy="13" r="4" />
-                        </svg>
-                    </span>
+                <a href="minutes-minister.html" class="nav-item-modern">
+                    <span class="nav-icon-box pink">◇</span>
+                    <span>Minutes</span>
+                </a>
+                <a href="scan-documents.html" class="nav-item-modern">
+                    <span class="nav-icon-box gold">◆</span>
                     <span>Scan Documents</span>
                 </a>
-
-                <a href="audit-trail-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                    </span>
+                <a href="audit-trail-minister.html" class="nav-item-modern">
+                    <span class="nav-icon-box red">◆</span>
                     <span>Audit Trail</span>
                 </a>
             </nav>
 
-            <div class="logout-section">
-                <a href="index.html" class="logout-btn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                        <polyline points="16 17 21 12 16 7" />
-                        <line x1="21" y1="12" x2="9" y2="12" />
-                    </svg>
-                    <span>Logout</span>
-                </a>
-            </div>
-
             <div class="sidebar-footer">
-                <span class="version-badge">v2.0.0</span>
+                <span class="version-badge">v1.0.0</span>
             </div>
         </aside>
 

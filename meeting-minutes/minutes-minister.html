@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Documents - MOH Digital Document Management System">
-    <title>Documents | MOH Document Management</title>
+    <meta name="description" content="Meeting Minutes - MOH Digital Document Management System">
+    <title>Meeting Minutes | MOH Document Management</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -115,7 +115,6 @@
             color: var(--minister-dark);
         }
 
-        /* Dropdown Navigation */
         .nav-dropdown {
             margin-bottom: 0;
         }
@@ -143,30 +142,13 @@
             border-left-color: var(--minister-gold);
         }
 
-        .nav-dropdown-toggle.active {
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--minister-gold);
-            border-left-color: var(--minister-gold);
-        }
-
-        .nav-dropdown-toggle:hover .nav-icon-minister,
-        .nav-dropdown-toggle.active .nav-icon-minister {
+        .nav-dropdown-toggle:hover .nav-icon-minister {
             background: var(--minister-gold);
             color: var(--minister-dark);
         }
 
-        .dropdown-arrow {
-            margin-left: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-dropdown.open .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
         .nav-dropdown-menu {
             display: none;
-            padding-left: 0;
             background: rgba(0, 0, 0, 0.1);
         }
 
@@ -175,9 +157,7 @@
         }
 
         .nav-dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: block;
             padding: 0.625rem 1.5rem 0.625rem 4rem;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
@@ -189,10 +169,6 @@
             color: var(--minister-gold);
             background: rgba(201, 162, 39, 0.1);
             text-decoration: none;
-        }
-
-        .nav-dropdown-item.active {
-            color: var(--minister-gold);
         }
 
         .main-header.minister-header {
@@ -315,129 +291,150 @@
             text-decoration: none;
         }
 
-        /* Filter Bar */
-        .filter-bar {
+        /* Minutes Specific Styles */
+        .minutes-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
             background: #fff;
             border-radius: 16px;
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             display: flex;
+            align-items: center;
             gap: 1rem;
-            flex-wrap: wrap;
-            align-items: flex-end;
         }
 
-        .filter-group {
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
+            align-items: center;
+            justify-content: center;
         }
 
-        .filter-group label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #64748b;
-            text-transform: uppercase;
-        }
-
-        .filter-select {
-            padding: 0.625rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            background: #f8fafc;
-            min-width: 150px;
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--minister-gold);
-            background: #fff;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.625rem 1rem 0.625rem 2.75rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            background: #f8fafc;
-        }
-
-        .search-box svg {
-            position: absolute;
-            left: 0.875rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            stroke: #94a3b8;
+        .stat-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
             stroke-width: 2;
             fill: none;
         }
 
-        /* Document Table */
-        .documents-table-card {
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #2563eb;
+        }
+
+        .stat-icon.green {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #059669;
+        }
+
+        .stat-icon.gold {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #b45309;
+        }
+
+        .stat-icon.purple {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            color: #7c3aed;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .minutes-card {
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             overflow: hidden;
         }
 
-        .documents-table {
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h3 svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--minister-gold);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .minutes-table {
             width: 100%;
             border-collapse: collapse;
         }
 
-        .documents-table thead {
+        .minutes-table thead {
             background: #f8fafc;
         }
 
-        .documents-table th {
+        .minutes-table th {
             padding: 1rem 1.25rem;
             text-align: left;
             font-size: 0.75rem;
             font-weight: 600;
             color: #64748b;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             border-bottom: 1px solid #e2e8f0;
         }
 
-        .documents-table td {
+        .minutes-table td {
             padding: 1rem 1.25rem;
             border-bottom: 1px solid #f1f5f9;
             font-size: 0.9rem;
         }
 
-        .documents-table tbody tr:hover {
+        .minutes-table tbody tr:hover {
             background: #f8fafc;
         }
 
-        .doc-info-cell {
+        .meeting-info {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
 
-        .doc-icon-sm {
+        .meeting-icon {
             width: 42px;
             height: 42px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
         }
 
-        .doc-icon-sm svg {
+        .meeting-icon svg {
             width: 20px;
             height: 20px;
             stroke: currentColor;
@@ -445,44 +442,34 @@
             fill: none;
         }
 
-        .doc-icon-sm.mda {
+        .meeting-icon.cabinet {
             background: linear-gradient(135deg, #dbeafe, #bfdbfe);
             color: #2563eb;
         }
 
-        .doc-icon-sm.ngo {
+        .meeting-icon.committee {
             background: linear-gradient(135deg, #d1fae5, #a7f3d0);
             color: #059669;
         }
 
-        .doc-icon-sm.ministry {
+        .meeting-icon.stakeholder {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
             color: #b45309;
         }
 
-        .doc-icon-sm.president {
+        .meeting-icon.internal {
             background: linear-gradient(135deg, #ede9fe, #ddd6fe);
             color: #7c3aed;
         }
 
-        .doc-icon-sm.vp {
-            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
-            color: #db2777;
-        }
-
-        .doc-icon-sm.comahs {
-            background: linear-gradient(135deg, #cffafe, #a5f3fc);
-            color: #0891b2;
-        }
-
-        .doc-details h4 {
+        .meeting-details h4 {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--minister-primary);
             margin-bottom: 0.15rem;
         }
 
-        .doc-details span {
+        .meeting-details span {
             font-size: 0.75rem;
             color: #64748b;
         }
@@ -490,7 +477,7 @@
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.25rem;
             padding: 0.35rem 0.75rem;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -507,14 +494,37 @@
             color: #b45309;
         }
 
-        .status-badge.review {
-            background: #dbeafe;
-            color: #2563eb;
+        .status-badge.draft {
+            background: #e2e8f0;
+            color: #64748b;
         }
 
-        .status-badge.rejected {
-            background: #fee2e2;
-            color: #dc2626;
+        .attendee-avatars {
+            display: flex;
+        }
+
+        .attendee-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--minister-primary);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -8px;
+            border: 2px solid #fff;
+        }
+
+        .attendee-avatar:first-child {
+            margin-left: 0;
+        }
+
+        .attendee-avatar.more {
+            background: #e2e8f0;
+            color: #64748b;
         }
 
         .row-actions {
@@ -551,14 +561,12 @@
             stroke: #fff;
         }
 
-        /* Pagination */
         .pagination {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.25rem 1.5rem;
             background: #f8fafc;
-            border-top: 1px solid #e2e8f0;
         }
 
         .pagination-info {
@@ -581,14 +589,8 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.2s;
             font-size: 0.9rem;
             color: var(--minister-primary);
-        }
-
-        .page-btn:hover {
-            border-color: var(--minister-gold);
-            background: #fffbeb;
         }
 
         .page-btn.active {
@@ -671,24 +673,21 @@
         }
 
         @media (max-width: 1200px) {
-            .filter-bar {
-                flex-direction: column;
-                align-items: stretch;
+            .minutes-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .page-header-minister {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
+            .minutes-stats {
+                grid-template-columns: 1fr;
             }
 
-            .documents-table-card {
+            .minutes-card {
                 overflow-x: auto;
             }
 
-            .documents-table {
+            .minutes-table {
                 min-width: 900px;
             }
         }
@@ -698,21 +697,17 @@
 <body>
     <div class="app-container">
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
         <aside class="sidebar modern" id="sidebar">
             <div class="sidebar-header">
-                <div class="ministry-logo">
-                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
-                </div>
+                <div class="ministry-logo"><img src="Assets/mohs_logo-removebg-preview.png" alt="MOH Logo"></div>
                 <h2>MoHS Archive</h2>
             </div>
-
             <nav class="sidebar-nav">
                 <a href="dashboard-minister.html" class="nav-item-modern">
                     <span class="nav-icon-box blue">▣</span>
                     <span>Dashboard</span>
                 </a>
-                <a href="documents-minister.html" class="nav-item-modern active">
+                <a href="documents-minister.html" class="nav-item-modern">
                     <span class="nav-icon-box purple">◫</span>
                     <span>All Documents</span>
                 </a>
@@ -728,7 +723,7 @@
                     <span class="nav-icon-box cyan">◈</span>
                     <span>Calendar</span>
                 </a>
-                <a href="minutes-minister.html" class="nav-item-modern">
+                <a href="minutes-minister.html" class="nav-item-modern active">
                     <span class="nav-icon-box pink">◇</span>
                     <span>Minutes</span>
                 </a>
@@ -741,19 +736,17 @@
                     <span>Audit Trail</span>
                 </a>
             </nav>
-
             <div class="sidebar-footer"><span class="version-badge">v1.0.0</span></div>
         </aside>
 
         <div class="main-wrapper">
             <header class="main-header minister-header">
                 <div class="header-left">
-                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                        <span class="hamburger-icon"></span>
-                    </button>
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu"><span
+                            class="hamburger-icon"></span></button>
                     <div class="minister-title-section">
-                        <h1>Documents</h1>
-                        <span class="greeting">Manage all ministry documents</span>
+                        <h1>Meeting Minutes</h1>
+                        <span class="greeting">Manage and record meeting minutes</span>
                     </div>
                 </div>
                 <div class="header-right">
@@ -762,7 +755,7 @@
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                         </svg>
-                        <span class="notif-count">5</span>
+                        <span class="notif-count">3</span>
                     </div>
                     <div class="minister-profile">
                         <div class="minister-avatar">HM</div>
@@ -781,72 +774,87 @@
                             <svg viewBox="0 0 24 24">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                                 <polyline points="14 2 14 8 20 8" />
-                                <line x1="16" y1="13" x2="8" y2="13" />
-                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <line x1="12" y1="18" x2="12" y2="12" />
+                                <line x1="9" y1="15" x2="15" y2="15" />
                             </svg>
-                            All Documents
+                            Meeting Minutes
                         </h1>
-                        <p>Browse, search, and manage all ministry documents</p>
+                        <p>Record, manage, and share meeting minutes across the ministry</p>
                     </div>
-                    <a href="document-create.html" class="action-btn gold">
+                    <a href="#" class="action-btn gold"
+                        onclick="document.getElementById('createMinutesModal').style.display='flex'">
                         <svg viewBox="0 0 24 24">
                             <line x1="12" y1="5" x2="12" y2="19" />
                             <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
-                        Add Document
+                        Create Minutes
                     </a>
                 </div>
 
-                <div class="filter-bar">
-                    <div class="filter-group">
-                        <label>Status</label>
-                        <select class="filter-select">
-                            <option value="">All Status</option>
-                            <option value="approved">Approved</option>
-                            <option value="pending">Pending</option>
-                            <option value="review">In Review</option>
-                            <option value="rejected">Rejected</option>
-                        </select>
+                <!-- Minutes Stats -->
+                <section class="minutes-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg></div>
+                        <div>
+                            <div class="stat-value">847</div>
+                            <div class="stat-label">Total Minutes</div>
+                        </div>
                     </div>
-                    <div class="filter-group">
-                        <label>Type</label>
-                        <select class="filter-select">
-                            <option value="">All Types</option>
-                            <option value="mda">MDAs</option>
-                            <option value="ngo">NGOs</option>
-                            <option value="ministry">Ministries</option>
-                            <option value="president">Office of President</option>
-                            <option value="vp">Office of Vice President</option>
-                            <option value="comahs">COMAHS</option>
-                        </select>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg></div>
+                        <div>
+                            <div class="stat-value">756</div>
+                            <div class="stat-label">Approved</div>
+                        </div>
                     </div>
-                    <div class="filter-group">
-                        <label>Date</label>
-                        <select class="filter-select">
-                            <option value="">All Time</option>
-                            <option value="today">Today</option>
-                            <option value="week">This Week</option>
-                            <option value="month">This Month</option>
-                            <option value="year">This Year</option>
-                        </select>
+                    <div class="stat-card">
+                        <div class="stat-icon gold"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg></div>
+                        <div>
+                            <div class="stat-value">45</div>
+                            <div class="stat-label">Pending Review</div>
+                        </div>
                     </div>
-                    <div class="search-box">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8" />
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        </svg>
-                        <input type="text" placeholder="Search by title, reference, or keyword...">
+                    <div class="stat-card">
+                        <div class="stat-icon purple"><svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg></div>
+                        <div>
+                            <div class="stat-value">128</div>
+                            <div class="stat-label">Meetings This Month</div>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                <section class="documents-table-card">
-                    <table class="documents-table">
+                <!-- Minutes Table -->
+                <section class="minutes-card">
+                    <div class="card-header">
+                        <h3>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            Recent Meeting Minutes
+                        </h3>
+                    </div>
+                    <table class="minutes-table">
                         <thead>
                             <tr>
-                                <th>Document</th>
-                                <th>Type</th>
+                                <th>Meeting</th>
                                 <th>Date</th>
-                                <th>Origin</th>
+                                <th>Attendees</th>
+                                <th>Duration</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -854,281 +862,226 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <div class="doc-info-cell">
-                                        <div class="doc-icon-sm mda">
-                                            <svg viewBox="0 0 24 24">
+                                    <div class="meeting-info">
+                                        <div class="meeting-icon cabinet"><svg viewBox="0 0 24 24">
                                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                            </svg>
-                                        </div>
-                                        <div class="doc-details">
-                                            <h4>National Health Policy 2026</h4>
-                                            <span>DOC-2026-0125</span>
+                                            </svg></div>
+                                        <div class="meeting-details">
+                                            <h4>Cabinet Health Committee Meeting</h4>
+                                            <span>State House - Conference Room A</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>MDA</td>
-                                <td>25 Jan 2026</td>
-                                <td>Health Directorate</td>
+                                <td>25 Jan 2026<br><small style="color:#64748b;">10:00 AM</small></td>
+                                <td>
+                                    <div class="attendee-avatars">
+                                        <div class="attendee-avatar">HM</div>
+                                        <div class="attendee-avatar">PS</div>
+                                        <div class="attendee-avatar">DG</div>
+                                        <div class="attendee-avatar more">+5</div>
+                                    </div>
+                                </td>
+                                <td>2h 30m</td>
                                 <td><span class="status-badge approved">Approved</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn" title="View">
-                                            <svg viewBox="0 0 24 24">
+                                        <button class="row-action-btn" title="View"><svg viewBox="0 0 24 24">
                                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                                 <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Download">
-                                            <svg viewBox="0 0 24 24">
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Download"><svg viewBox="0 0 24 24">
                                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                                 <polyline points="7 10 12 15 17 10" />
                                                 <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Edit">
-                                            <svg viewBox="0 0 24 24">
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Edit"><svg viewBox="0 0 24 24">
                                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                        </button>
+                                            </svg></button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="doc-info-cell">
-                                        <div class="doc-icon-sm ngo">
-                                            <svg viewBox="0 0 24 24">
+                                    <div class="meeting-info">
+                                        <div class="meeting-icon stakeholder"><svg viewBox="0 0 24 24">
                                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                                 <circle cx="9" cy="7" r="4" />
                                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                                                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                            </svg>
-                                        </div>
-                                        <div class="doc-details">
-                                            <h4>WHO Partnership Agreement</h4>
-                                            <span>DOC-2026-0124</span>
+                                            </svg></div>
+                                        <div class="meeting-details">
+                                            <h4>NGO Partners Review Meeting</h4>
+                                            <span>MOH Conference Room B</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>NGO</td>
-                                <td>24 Jan 2026</td>
-                                <td>World Health Organization</td>
+                                <td>24 Jan 2026<br><small style="color:#64748b;">2:30 PM</small></td>
+                                <td>
+                                    <div class="attendee-avatars">
+                                        <div class="attendee-avatar">PS</div>
+                                        <div class="attendee-avatar">WH</div>
+                                        <div class="attendee-avatar">UN</div>
+                                        <div class="attendee-avatar more">+8</div>
+                                    </div>
+                                </td>
+                                <td>1h 45m</td>
                                 <td><span class="status-badge pending">Pending</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn" title="View">
-                                            <svg viewBox="0 0 24 24">
+                                        <button class="row-action-btn" title="View"><svg viewBox="0 0 24 24">
                                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                                 <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Download">
-                                            <svg viewBox="0 0 24 24">
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Download"><svg viewBox="0 0 24 24">
                                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                                 <polyline points="7 10 12 15 17 10" />
                                                 <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Edit">
-                                            <svg viewBox="0 0 24 24">
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Edit"><svg viewBox="0 0 24 24">
                                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                        </button>
+                                            </svg></button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="doc-info-cell">
-                                        <div class="doc-icon-sm president">
-                                            <svg viewBox="0 0 24 24">
+                                    <div class="meeting-info">
+                                        <div class="meeting-icon committee"><svg viewBox="0 0 24 24">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                                <line x1="3" y1="9" x2="21" y2="9" />
+                                                <line x1="9" y1="21" x2="9" y2="9" />
+                                            </svg></div>
+                                        <div class="meeting-details">
+                                            <h4>Health Policy Review Committee</h4>
+                                            <span>MOH Boardroom</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>23 Jan 2026<br><small style="color:#64748b;">9:00 AM</small></td>
+                                <td>
+                                    <div class="attendee-avatars">
+                                        <div class="attendee-avatar">HM</div>
+                                        <div class="attendee-avatar">CM</div>
+                                        <div class="attendee-avatar more">+12</div>
+                                    </div>
+                                </td>
+                                <td>3h 15m</td>
+                                <td><span class="status-badge approved">Approved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-action-btn" title="View"><svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Download"><svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Edit"><svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="meeting-info">
+                                        <div class="meeting-icon internal"><svg viewBox="0 0 24 24">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                            </svg></div>
+                                        <div class="meeting-details">
+                                            <h4>Weekly Directorate Meeting</h4>
+                                            <span>MOH Conference Room A</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>22 Jan 2026<br><small style="color:#64748b;">11:00 AM</small></td>
+                                <td>
+                                    <div class="attendee-avatars">
+                                        <div class="attendee-avatar">DG</div>
+                                        <div class="attendee-avatar">DD</div>
+                                        <div class="attendee-avatar more">+6</div>
+                                    </div>
+                                </td>
+                                <td>1h 30m</td>
+                                <td><span class="status-badge draft">Draft</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-action-btn" title="View"><svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Download"><svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Edit"><svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="meeting-info">
+                                        <div class="meeting-icon cabinet"><svg viewBox="0 0 24 24">
                                                 <circle cx="12" cy="8" r="7" />
                                                 <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                                            </svg>
-                                        </div>
-                                        <div class="doc-details">
-                                            <h4>Presidential Health Initiative</h4>
-                                            <span>DOC-2026-0123</span>
+                                            </svg></div>
+                                        <div class="meeting-details">
+                                            <h4>Presidential Health Initiative Briefing</h4>
+                                            <span>State House</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>Office of President</td>
-                                <td>23 Jan 2026</td>
-                                <td>State House</td>
+                                <td>20 Jan 2026<br><small style="color:#64748b;">3:00 PM</small></td>
+                                <td>
+                                    <div class="attendee-avatars">
+                                        <div class="attendee-avatar">HM</div>
+                                        <div class="attendee-avatar">PS</div>
+                                        <div class="attendee-avatar more">+3</div>
+                                    </div>
+                                </td>
+                                <td>1h 00m</td>
                                 <td><span class="status-badge approved">Approved</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn" title="View">
-                                            <svg viewBox="0 0 24 24">
+                                        <button class="row-action-btn" title="View"><svg viewBox="0 0 24 24">
                                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                                 <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Download">
-                                            <svg viewBox="0 0 24 24">
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Download"><svg viewBox="0 0 24 24">
                                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                                                 <polyline points="7 10 12 15 17 10" />
                                                 <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Edit">
-                                            <svg viewBox="0 0 24 24">
+                                            </svg></button>
+                                        <button class="row-action-btn" title="Edit"><svg viewBox="0 0 24 24">
                                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="doc-info-cell">
-                                        <div class="doc-icon-sm ministry">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M3 21h18" />
-                                                <path d="M5 21V7l8-4v18" />
-                                                <path d="M19 21V11l-6-4" />
-                                            </svg>
-                                        </div>
-                                        <div class="doc-details">
-                                            <h4>Inter-Ministry Collaboration</h4>
-                                            <span>DOC-2026-0122</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Ministry</td>
-                                <td>22 Jan 2026</td>
-                                <td>Finance Ministry</td>
-                                <td><span class="status-badge review">In Review</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn" title="View">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Download">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Edit">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="doc-info-cell">
-                                        <div class="doc-icon-sm comahs">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                                            </svg>
-                                        </div>
-                                        <div class="doc-details">
-                                            <h4>COMAHS Training Program</h4>
-                                            <span>DOC-2026-0121</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>COMAHS</td>
-                                <td>21 Jan 2026</td>
-                                <td>COMAHS</td>
-                                <td><span class="status-badge approved">Approved</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn" title="View">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Download">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Edit">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="doc-info-cell">
-                                        <div class="doc-icon-sm vp">
-                                            <svg viewBox="0 0 24 24">
-                                                <circle cx="12" cy="8" r="7" />
-                                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                                            </svg>
-                                        </div>
-                                        <div class="doc-details">
-                                            <h4>Vice President Health Tour Report</h4>
-                                            <span>DOC-2026-0120</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Office of VP</td>
-                                <td>20 Jan 2026</td>
-                                <td>Office of Vice President</td>
-                                <td><span class="status-badge approved">Approved</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn" title="View">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                                <circle cx="12" cy="12" r="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Download">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="7 10 12 15 17 10" />
-                                                <line x1="12" y1="15" x2="12" y2="3" />
-                                            </svg>
-                                        </button>
-                                        <button class="row-action-btn" title="Edit">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                            </svg>
-                                        </button>
+                                            </svg></button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-
                     <div class="pagination">
-                        <div class="pagination-info">
-                            Showing <strong>1-6</strong> of <strong>2,847</strong> documents
-                        </div>
+                        <div class="pagination-info">Showing <strong>1-5</strong> of <strong>847</strong> minutes</div>
                         <div class="pagination-controls">
-                            <button class="page-btn" disabled>←</button>
+                            <button class="page-btn" disabled>&larr;</button>
                             <button class="page-btn active">1</button>
                             <button class="page-btn">2</button>
                             <button class="page-btn">3</button>
                             <button class="page-btn">4</button>
                             <button class="page-btn">5</button>
-                            <span style="color: #64748b;">...</span>
-                            <button class="page-btn">475</button>
-                            <button class="page-btn">→</button>
+                            <span style="color:#64748b;">...</span>
+                            <button class="page-btn">170</button>
+                            <button class="page-btn">&rarr;</button>
                         </div>
                     </div>
                 </section>
@@ -1140,36 +1093,8 @@
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('active');
-                sidebarOverlay.classList.toggle('active');
-            });
-        }
-
-        if (sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', () => {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-            });
-        }
-
-        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function () {
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('open');
-            });
-        });
-
-        document.querySelectorAll('.page-btn:not(:disabled)').forEach(btn => {
-            btn.addEventListener('click', function () {
-                if (this.textContent !== '←' && this.textContent !== '→') {
-                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
+        if (menuToggle) { menuToggle.addEventListener('click', () => { sidebar.classList.toggle('active'); sidebarOverlay.classList.toggle('active'); }); }
+        if (sidebarOverlay) { sidebarOverlay.addEventListener('click', () => { sidebar.classList.remove('active'); sidebarOverlay.classList.remove('active'); }); }
     </script>
 </body>
 
