@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Documents - MoHS Digital Document Management System">
-    <title>Documents | MoHS Document Management</title>
+    <meta name="description" content="Documents - MOH Digital Document Management System">
+    <title>Documents | MOH Document Management</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Minister Portal Specific Styles */
         :root {
             --minister-primary: #1a365d;
             --minister-secondary: #2d4a6f;
             --minister-accent: #c9a227;
             --minister-gold: #d4af37;
-            --minister-gold-light: #f4e4a6;
             --minister-dark: #0f2744;
             --minister-gradient: linear-gradient(135deg, #1a365d 0%, #2d4a6f 50%, #1a365d 100%);
         }
@@ -24,10 +22,8 @@
             font-family: 'Inter', 'Segoe UI', sans-serif;
         }
 
-        /* Minister Sidebar */
         .sidebar.minister {
             background: var(--minister-gradient);
-            border-right: 1px solid rgba(201, 162, 39, 0.2);
         }
 
         .sidebar.minister .sidebar-header {
@@ -54,7 +50,6 @@
             color: var(--minister-gold);
             font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
         }
 
         .sidebar.minister .minister-badge {
@@ -66,11 +61,28 @@
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
             margin-top: 0.5rem;
         }
 
-        /* Minister Navigation */
+        .nav-icon-minister {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon-minister svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
         .nav-item-minister {
             display: flex;
             align-items: center;
@@ -97,25 +109,92 @@
             border-left-color: var(--minister-gold);
         }
 
-        .nav-icon-minister {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
         .nav-item-minister:hover .nav-icon-minister,
         .nav-item-minister.active .nav-icon-minister {
             background: var(--minister-gold);
             color: var(--minister-dark);
         }
 
-        /* Minister Header */
+        /* Dropdown Navigation */
+        .nav-dropdown {
+            margin-bottom: 0;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+
+        .nav-dropdown-toggle:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: #fff;
+            border-left-color: var(--minister-gold);
+        }
+
+        .nav-dropdown-toggle.active {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--minister-gold);
+            border-left-color: var(--minister-gold);
+        }
+
+        .nav-dropdown-toggle:hover .nav-icon-minister,
+        .nav-dropdown-toggle.active .nav-icon-minister {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        .dropdown-arrow {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown.open .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            padding-left: 0;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-dropdown.open .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.5rem 0.625rem 4rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-dropdown-item:hover {
+            color: var(--minister-gold);
+            background: rgba(201, 162, 39, 0.1);
+            text-decoration: none;
+        }
+
+        .nav-dropdown-item.active {
+            color: var(--minister-gold);
+        }
+
         .main-header.minister-header {
             background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
             border-bottom: 2px solid var(--minister-gold);
@@ -155,7 +234,6 @@
             justify-content: center;
             font-weight: 700;
             font-size: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .minister-info h4 {
@@ -169,13 +247,11 @@
             opacity: 0.8;
         }
 
-        /* Main Content Area */
         .main-content.minister-content {
             background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
             padding: 2rem;
         }
 
-        /* Page Header */
         .page-header-minister {
             display: flex;
             justify-content: space-between;
@@ -188,6 +264,17 @@
             font-weight: 700;
             color: var(--minister-primary);
             margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .page-header-minister h1 svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--minister-gold);
+            stroke-width: 2;
+            fill: none;
         }
 
         .page-header-minister p {
@@ -195,23 +282,56 @@
             margin-bottom: 0;
         }
 
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .action-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .action-btn.gold {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+        }
+
+        .action-btn.gold:hover {
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
         /* Filter Bar */
         .filter-bar {
             background: #fff;
             border-radius: 16px;
             padding: 1.25rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-end;
         }
 
         .filter-group {
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.35rem;
         }
 
         .filter-group label {
@@ -219,27 +339,21 @@
             font-weight: 600;
             color: #64748b;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .filter-select,
-        .filter-input {
+        .filter-select {
             padding: 0.625rem 1rem;
             border: 1px solid #e2e8f0;
             border-radius: 10px;
             font-size: 0.9rem;
             background: #f8fafc;
-            color: var(--minister-primary);
-            min-width: 160px;
-            transition: all 0.2s;
+            min-width: 150px;
         }
 
-        .filter-select:focus,
-        .filter-input:focus {
+        .filter-select:focus {
             outline: none;
             border-color: var(--minister-gold);
             background: #fff;
-            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
         }
 
         .search-box {
@@ -250,61 +364,26 @@
 
         .search-box input {
             width: 100%;
-            padding: 0.625rem 1rem 0.625rem 2.5rem;
+            padding: 0.625rem 1rem 0.625rem 2.75rem;
             border: 1px solid #e2e8f0;
             border-radius: 10px;
             font-size: 0.9rem;
             background: #f8fafc;
-            transition: all 0.2s;
         }
 
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--minister-gold);
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
-        }
-
-        .search-box::before {
-            content: '🔍';
+        .search-box svg {
             position: absolute;
-            left: 0.75rem;
+            left: 0.875rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 0.9rem;
+            width: 18px;
+            height: 18px;
+            stroke: #94a3b8;
+            stroke-width: 2;
+            fill: none;
         }
 
-        .filter-btn {
-            padding: 0.625rem 1.25rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .filter-btn.primary {
-            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
-            color: #fff;
-        }
-
-        .filter-btn.primary:hover {
-            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .filter-btn.secondary {
-            background: #f1f5f9;
-            color: var(--minister-primary);
-            border: 1px solid #e2e8f0;
-        }
-
-        .filter-btn.secondary:hover {
-            background: #e2e8f0;
-        }
-
-        /* Documents Table */
+        /* Document Table */
         .documents-table-card {
             background: #fff;
             border-radius: 16px;
@@ -312,53 +391,6 @@
             overflow: hidden;
         }
 
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            background: #f8fafc;
-        }
-
-        .table-header h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--minister-primary);
-            margin-bottom: 0;
-        }
-
-        .table-actions {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .action-btn.gold {
-            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
-            color: var(--minister-dark);
-        }
-
-        .action-btn.gold:hover {
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
-            transform: translateY(-1px);
-            text-decoration: none;
-        }
-
-        /* Table Styles */
         .documents-table {
             width: 100%;
             border-collapse: collapse;
@@ -369,7 +401,7 @@
         }
 
         .documents-table th {
-            padding: 1rem 1.5rem;
+            padding: 1rem 1.25rem;
             text-align: left;
             font-size: 0.75rem;
             font-weight: 600;
@@ -380,124 +412,85 @@
         }
 
         .documents-table td {
-            padding: 1rem 1.5rem;
+            padding: 1rem 1.25rem;
             border-bottom: 1px solid #f1f5f9;
             font-size: 0.9rem;
-            color: var(--minister-primary);
-        }
-
-        .documents-table tbody tr {
-            transition: background 0.2s;
         }
 
         .documents-table tbody tr:hover {
             background: #f8fafc;
         }
 
-        /* Document ID Column */
-        .doc-id {
-            font-family: 'Monaco', 'Consolas', monospace;
-            font-size: 0.8rem;
-            color: var(--minister-accent);
-            font-weight: 600;
-        }
-
-        /* Document Title with Icon */
-        .doc-title-cell {
+        .doc-info-cell {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
 
-        .doc-icon {
-            width: 40px;
-            height: 40px;
+        .doc-icon-sm {
+            width: 42px;
+            height: 42px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
             flex-shrink: 0;
         }
 
-        .doc-icon.mda {
+        .doc-icon-sm svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .doc-icon-sm.mda {
             background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #2563eb;
         }
 
-        .doc-icon.ngo {
+        .doc-icon-sm.ngo {
             background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #059669;
         }
 
-        .doc-icon.ministry {
+        .doc-icon-sm.ministry {
             background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #b45309;
         }
 
-        .doc-icon.president {
+        .doc-icon-sm.president {
             background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            color: #7c3aed;
         }
 
-        .doc-icon.vp {
+        .doc-icon-sm.vp {
             background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            color: #db2777;
         }
 
-        .doc-icon.comahs {
+        .doc-icon-sm.comahs {
             background: linear-gradient(135deg, #cffafe, #a5f3fc);
+            color: #0891b2;
         }
 
-        .doc-title-info h4 {
+        .doc-details h4 {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--minister-primary);
             margin-bottom: 0.15rem;
         }
 
-        .doc-title-info span {
+        .doc-details span {
             font-size: 0.75rem;
             color: #64748b;
         }
 
-        /* Type Badge */
-        .type-badge {
-            display: inline-block;
-            padding: 0.35rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .type-badge.mda {
-            background: #dbeafe;
-            color: #2563eb;
-        }
-
-        .type-badge.ngo {
-            background: #d1fae5;
-            color: #059669;
-        }
-
-        .type-badge.ministry {
-            background: #fef3c7;
-            color: #b45309;
-        }
-
-        .type-badge.president {
-            background: #ede9fe;
-            color: #7c3aed;
-        }
-
-        .type-badge.vp {
-            background: #fce7f3;
-            color: #db2777;
-        }
-
-        .type-badge.comahs {
-            background: #cffafe;
-            color: #0891b2;
-        }
-
-        /* Status Badge */
         .status-badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
             padding: 0.35rem 0.75rem;
             border-radius: 20px;
             font-size: 0.75rem;
@@ -519,12 +512,11 @@
             color: #2563eb;
         }
 
-        .status-badge.archived {
-            background: #e5e7eb;
-            color: #4b5563;
+        .status-badge.rejected {
+            background: #fee2e2;
+            color: #dc2626;
         }
 
-        /* Row Actions */
         .row-actions {
             display: flex;
             gap: 0.5rem;
@@ -535,34 +527,32 @@
             height: 32px;
             border: none;
             border-radius: 8px;
+            background: #f1f5f9;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s;
-            background: #f1f5f9;
-            font-size: 0.9rem;
+        }
+
+        .row-action-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: #64748b;
+            stroke-width: 2;
+            fill: none;
         }
 
         .row-action-btn:hover {
             background: var(--minister-primary);
-            color: #fff;
         }
 
-        .row-action-btn.view:hover {
-            background: #2563eb;
-        }
-
-        .row-action-btn.edit:hover {
-            background: #059669;
-        }
-
-        .row-action-btn.delete:hover {
-            background: #dc2626;
+        .row-action-btn:hover svg {
+            stroke: #fff;
         }
 
         /* Pagination */
-        .pagination-container {
+        .pagination {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -578,7 +568,6 @@
 
         .pagination-controls {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
         }
 
@@ -591,9 +580,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
+            font-size: 0.9rem;
             color: var(--minister-primary);
         }
 
@@ -608,21 +597,42 @@
             border-color: var(--minister-primary);
         }
 
-        .page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .notification-badge {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
 
-        .per-page-select {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            background: #fff;
-            margin-left: 1rem;
+        .notification-badge svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--minister-primary);
+            stroke-width: 2;
+            fill: none;
         }
 
-        /* Logout Button */
+        .notif-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 18px;
+            height: 18px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 600;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .logout-section {
             padding: 1rem 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -652,20 +662,18 @@
             text-decoration: none;
         }
 
-        /* Responsive */
+        .logout-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
         @media (max-width: 1200px) {
             .filter-bar {
                 flex-direction: column;
                 align-items: stretch;
-            }
-
-            .filter-group {
-                width: 100%;
-            }
-
-            .filter-select,
-            .search-box {
-                width: 100%;
             }
         }
 
@@ -681,11 +689,7 @@
             }
 
             .documents-table {
-                min-width: 800px;
-            }
-
-            .minister-info {
-                display: none;
+                min-width: 900px;
             }
         }
     </style>
@@ -693,68 +697,111 @@
 
 <body>
     <div class="app-container">
-        <!-- Sidebar Overlay for Mobile -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <!-- MINISTER SIDEBAR -->
         <aside class="sidebar minister" id="sidebar">
             <div class="sidebar-header">
                 <div class="ministry-logo">
-                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
                 </div>
-                <h2>MoHS Document Portal</h2>
+                <h2>MOH Document Portal</h2>
                 <span class="minister-badge">Minister's Office</span>
             </div>
 
             <nav class="sidebar-nav">
                 <a href="dashboard-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">📊</span>
+                    <span class="nav-icon-minister">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1" />
+                            <rect x="14" y="3" width="7" height="7" rx="1" />
+                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                            <rect x="14" y="14" width="7" height="7" rx="1" />
+                        </svg>
+                    </span>
                     <span>Dashboard</span>
                 </a>
-                <a href="documents-minister.html" class="nav-item-minister active">
-                    <span class="nav-icon-minister">📄</span>
-                    <span>Documents</span>
-                </a>
-                <a href="document-create.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">➕</span>
-                    <span>Create Document</span>
-                </a>
+
+                <div class="nav-dropdown open">
+                    <button class="nav-dropdown-toggle active">
+                        <span class="nav-icon-minister">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                        </span>
+                        <span>Documents</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="documents-minister.html" class="nav-dropdown-item active">All Documents</a>
+                        <a href="document-create.html" class="nav-dropdown-item">Add Document</a>
+                        <a href="document-types.html" class="nav-dropdown-item">Document Types</a>
+                    </div>
+                </div>
+
                 <a href="archive-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">🗃️</span>
+                    <span class="nav-icon-minister">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="21 8 21 21 3 21 3 8" />
+                            <rect x="1" y="3" width="22" height="5" />
+                            <line x1="10" y1="12" x2="14" y2="12" />
+                        </svg>
+                    </span>
                     <span>Archive</span>
                 </a>
-                <a href="document-types.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">📁</span>
-                    <span>Document Types</span>
-                </a>
+
                 <a href="calendar-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">📅</span>
+                    <span class="nav-icon-minister">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                    </span>
                     <span>Calendar</span>
                 </a>
+
                 <a href="scan-documents.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">📷</span>
+                    <span class="nav-icon-minister">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                            <circle cx="12" cy="13" r="4" />
+                        </svg>
+                    </span>
                     <span>Scan Documents</span>
                 </a>
+
                 <a href="audit-trail-minister.html" class="nav-item-minister">
-                    <span class="nav-icon-minister">🔍</span>
+                    <span class="nav-icon-minister">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </span>
                     <span>Audit Trail</span>
                 </a>
             </nav>
 
             <div class="logout-section">
                 <a href="index.html" class="logout-btn">
-                    <span>🚪</span>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
                     <span>Logout</span>
                 </a>
             </div>
-
-            <div class="sidebar-footer">
-                <span class="version-badge">v2.0.0</span>
-            </div>
+            <div class="sidebar-footer"><span class="version-badge">v2.0.0</span></div>
         </aside>
 
         <div class="main-wrapper">
-            <!-- HEADER -->
             <header class="main-header minister-header">
                 <div class="header-left">
                     <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -766,12 +813,12 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <div class="header-search">
-                        <input type="text" placeholder="Search documents..." class="search-input">
-                    </div>
                     <div class="notification-badge">
-                        <span class="notif-icon">🔔</span>
-                        <span class="notif-count">8</span>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                        <span class="notif-count">5</span>
                     </div>
                     <div class="minister-profile">
                         <div class="minister-avatar">HM</div>
@@ -783,47 +830,55 @@
                 </div>
             </header>
 
-            <!-- MAIN CONTENT -->
             <main class="main-content minister-content">
-                <!-- Page Header -->
                 <div class="page-header-minister">
                     <div>
-                        <h1>📄 All Documents</h1>
+                        <h1>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                            All Documents
+                        </h1>
                         <p>Browse, search, and manage all ministry documents</p>
                     </div>
                     <a href="document-create.html" class="action-btn gold">
-                        <span>➕</span>
-                        Create New Document
+                        <svg viewBox="0 0 24 24">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Document
                     </a>
                 </div>
 
-                <!-- Filter Bar -->
                 <div class="filter-bar">
                     <div class="filter-group">
-                        <label>Document Type</label>
-                        <select class="filter-select" id="typeFilter">
+                        <label>Status</label>
+                        <select class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="approved">Approved</option>
+                            <option value="pending">Pending</option>
+                            <option value="review">In Review</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Type</label>
+                        <select class="filter-select">
                             <option value="">All Types</option>
                             <option value="mda">MDAs</option>
                             <option value="ngo">NGOs</option>
                             <option value="ministry">Ministries</option>
                             <option value="president">Office of President</option>
-                            <option value="vp">Office of VP</option>
+                            <option value="vp">Office of Vice President</option>
                             <option value="comahs">COMAHS</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label>Status</label>
-                        <select class="filter-select" id="statusFilter">
-                            <option value="">All Status</option>
-                            <option value="approved">Approved</option>
-                            <option value="pending">Pending</option>
-                            <option value="review">In Review</option>
-                            <option value="archived">Archived</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label>Date Range</label>
-                        <select class="filter-select" id="dateFilter">
+                        <label>Date</label>
+                        <select class="filter-select">
                             <option value="">All Time</option>
                             <option value="today">Today</option>
                             <option value="week">This Week</option>
@@ -832,276 +887,293 @@
                         </select>
                     </div>
                     <div class="search-box">
-                        <input type="text" placeholder="Search by title, ID, or keywords..." id="searchInput">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" placeholder="Search by title, reference, or keyword...">
                     </div>
-                    <button class="filter-btn primary">Apply Filters</button>
-                    <button class="filter-btn secondary">Clear</button>
                 </div>
 
-                <!-- Documents Table -->
-                <div class="documents-table-card">
-                    <div class="table-header">
-                        <h3>Document Registry</h3>
-                        <div class="table-actions">
-                            <button class="action-btn gold">
-                                <span>📥</span>
-                                Export
-                            </button>
-                        </div>
-                    </div>
-
+                <section class="documents-table-card">
                     <table class="documents-table">
                         <thead>
                             <tr>
-                                <th>
-                                    <input type="checkbox" id="selectAll">
-                                </th>
-                                <th>Document ID</th>
-                                <th>Title</th>
+                                <th>Document</th>
                                 <th>Type</th>
-                                <th>Date Created</th>
+                                <th>Date</th>
+                                <th>Origin</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0847</span></td>
                                 <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon mda">📋</div>
-                                        <div class="doc-title-info">
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm mda">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="doc-details">
                                             <h4>National Health Policy 2026</h4>
-                                            <span>Policy Document</span>
+                                            <span>DOC-2026-0125</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="type-badge mda">MDA</span></td>
+                                <td>MDA</td>
                                 <td>25 Jan 2026</td>
+                                <td>Health Directorate</td>
                                 <td><span class="status-badge approved">Approved</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
+                                        <button class="row-action-btn" title="View">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Download">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Edit">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0846</span></td>
                                 <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon ngo">🤝</div>
-                                        <div class="doc-title-info">
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm ngo">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                                <circle cx="9" cy="7" r="4" />
+                                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                            </svg>
+                                        </div>
+                                        <div class="doc-details">
                                             <h4>WHO Partnership Agreement</h4>
-                                            <span>Partnership MOU</span>
+                                            <span>DOC-2026-0124</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="type-badge ngo">NGO</span></td>
+                                <td>NGO</td>
                                 <td>24 Jan 2026</td>
+                                <td>World Health Organization</td>
                                 <td><span class="status-badge pending">Pending</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
+                                        <button class="row-action-btn" title="View">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Download">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Edit">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0845</span></td>
                                 <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon president">🏛️</div>
-                                        <div class="doc-title-info">
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm president">
+                                            <svg viewBox="0 0 24 24">
+                                                <circle cx="12" cy="8" r="7" />
+                                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                                            </svg>
+                                        </div>
+                                        <div class="doc-details">
                                             <h4>Presidential Health Initiative</h4>
-                                            <span>Executive Order</span>
+                                            <span>DOC-2026-0123</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="type-badge president">Office of President</span></td>
+                                <td>Office of President</td>
                                 <td>23 Jan 2026</td>
+                                <td>State House</td>
+                                <td><span class="status-badge approved">Approved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-action-btn" title="View">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Download">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Edit">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm ministry">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M3 21h18" />
+                                                <path d="M5 21V7l8-4v18" />
+                                                <path d="M19 21V11l-6-4" />
+                                            </svg>
+                                        </div>
+                                        <div class="doc-details">
+                                            <h4>Inter-Ministry Collaboration</h4>
+                                            <span>DOC-2026-0122</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Ministry</td>
+                                <td>22 Jan 2026</td>
+                                <td>Finance Ministry</td>
                                 <td><span class="status-badge review">In Review</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
+                                        <button class="row-action-btn" title="View">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Download">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Edit">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0844</span></td>
                                 <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon ministry">📜</div>
-                                        <div class="doc-title-info">
-                                            <h4>Inter-Ministry Collaboration Framework</h4>
-                                            <span>Collaboration Agreement</span>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm comahs">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                                            </svg>
+                                        </div>
+                                        <div class="doc-details">
+                                            <h4>COMAHS Training Program</h4>
+                                            <span>DOC-2026-0121</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="type-badge ministry">Ministries</span></td>
-                                <td>22 Jan 2026</td>
-                                <td><span class="status-badge approved">Approved</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0843</span></td>
-                                <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon comahs">🎓</div>
-                                        <div class="doc-title-info">
-                                            <h4>COMAHS Training Program 2026</h4>
-                                            <span>Training Curriculum</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="type-badge comahs">COMAHS</span></td>
+                                <td>COMAHS</td>
                                 <td>21 Jan 2026</td>
+                                <td>COMAHS</td>
                                 <td><span class="status-badge approved">Approved</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
+                                        <button class="row-action-btn" title="View">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Download">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Edit">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0842</span></td>
                                 <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon vp">🎗️</div>
-                                        <div class="doc-title-info">
-                                            <h4>VP Healthcare Accessibility Memo</h4>
-                                            <span>Official Memo</span>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm vp">
+                                            <svg viewBox="0 0 24 24">
+                                                <circle cx="12" cy="8" r="7" />
+                                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                                            </svg>
+                                        </div>
+                                        <div class="doc-details">
+                                            <h4>Vice President Health Tour Report</h4>
+                                            <span>DOC-2026-0120</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td><span class="type-badge vp">Office of VP</span></td>
+                                <td>Office of VP</td>
                                 <td>20 Jan 2026</td>
+                                <td>Office of Vice President</td>
                                 <td><span class="status-badge approved">Approved</span></td>
                                 <td>
                                     <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0841</span></td>
-                                <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon ngo">🤝</div>
-                                        <div class="doc-title-info">
-                                            <h4>UNICEF Child Health Agreement</h4>
-                                            <span>Partnership MOU</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="type-badge ngo">NGO</span></td>
-                                <td>19 Jan 2026</td>
-                                <td><span class="status-badge approved">Approved</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0840</span></td>
-                                <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon mda">📋</div>
-                                        <div class="doc-title-info">
-                                            <h4>Health Budget Allocation 2026</h4>
-                                            <span>Budget Document</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="type-badge mda">MDA</span></td>
-                                <td>18 Jan 2026</td>
-                                <td><span class="status-badge pending">Pending</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0839</span></td>
-                                <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon ministry">📜</div>
-                                        <div class="doc-title-info">
-                                            <h4>Ministry of Education Health Curriculum</h4>
-                                            <span>Curriculum Document</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="type-badge ministry">Ministries</span></td>
-                                <td>17 Jan 2026</td>
-                                <td><span class="status-badge archived">Archived</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td><span class="doc-id">DOC-2026-0838</span></td>
-                                <td>
-                                    <div class="doc-title-cell">
-                                        <div class="doc-icon president">🏛️</div>
-                                        <div class="doc-title-info">
-                                            <h4>Emergency Health Response Plan</h4>
-                                            <span>Emergency Protocol</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><span class="type-badge president">Office of President</span></td>
-                                <td>16 Jan 2026</td>
-                                <td><span class="status-badge approved">Approved</span></td>
-                                <td>
-                                    <div class="row-actions">
-                                        <button class="row-action-btn view" title="View">👁️</button>
-                                        <button class="row-action-btn edit" title="Edit">✏️</button>
-                                        <button class="row-action-btn delete" title="Delete">🗑️</button>
+                                        <button class="row-action-btn" title="View">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Download">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                                <polyline points="7 10 12 15 17 10" />
+                                                <line x1="12" y1="15" x2="12" y2="3" />
+                                            </svg>
+                                        </button>
+                                        <button class="row-action-btn" title="Edit">
+                                            <svg viewBox="0 0 24 24">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <!-- Pagination -->
-                    <div class="pagination-container">
+                    <div class="pagination">
                         <div class="pagination-info">
-                            Showing <strong>1-10</strong> of <strong>2,847</strong> documents
+                            Showing <strong>1-6</strong> of <strong>2,847</strong> documents
                         </div>
                         <div class="pagination-controls">
                             <button class="page-btn" disabled>←</button>
@@ -1111,55 +1183,42 @@
                             <button class="page-btn">4</button>
                             <button class="page-btn">5</button>
                             <span style="color: #64748b;">...</span>
-                            <button class="page-btn">285</button>
+                            <button class="page-btn">475</button>
                             <button class="page-btn">→</button>
-
-                            <select class="per-page-select">
-                                <option value="10">10 per page</option>
-                                <option value="25">25 per page</option>
-                                <option value="50">50 per page</option>
-                                <option value="100">100 per page</option>
-                            </select>
                         </div>
                     </div>
-                </div>
+                </section>
             </main>
         </div>
     </div>
 
     <script>
-        // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         if (menuToggle) {
-            menuToggle.addEventListener('click', function () {
+            menuToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('active');
                 sidebarOverlay.classList.toggle('active');
             });
         }
 
         if (sidebarOverlay) {
-            sidebarOverlay.addEventListener('click', function () {
+            sidebarOverlay.addEventListener('click', () => {
                 sidebar.classList.remove('active');
                 sidebarOverlay.classList.remove('active');
             });
         }
 
-        // Select All checkbox functionality
-        const selectAll = document.getElementById('selectAll');
-        const checkboxes = document.querySelectorAll('.documents-table tbody input[type="checkbox"]');
-
-        if (selectAll) {
-            selectAll.addEventListener('change', function () {
-                checkboxes.forEach(cb => cb.checked = this.checked);
+        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const dropdown = this.parentElement;
+                dropdown.classList.toggle('open');
             });
-        }
+        });
 
-        // Pagination demo
-        const pageBtns = document.querySelectorAll('.page-btn:not(:disabled)');
-        pageBtns.forEach(btn => {
+        document.querySelectorAll('.page-btn:not(:disabled)').forEach(btn => {
             btn.addEventListener('click', function () {
                 if (this.textContent !== '←' && this.textContent !== '→') {
                     document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
