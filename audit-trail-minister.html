@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Audit Trail - MoHS Digital Document Management System">
+    <title>Audit Trail | MoHS Document Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --minister-primary: #1a365d;
+            --minister-secondary: #2d4a6f;
+            --minister-accent: #c9a227;
+            --minister-gold: #d4af37;
+            --minister-dark: #0f2744;
+            --minister-gradient: linear-gradient(135deg, #1a365d 0%, #2d4a6f 50%, #1a365d 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        .sidebar.minister {
+            background: var(--minister-gradient);
+        }
+
+        .sidebar.minister .sidebar-header {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 1.5rem;
+        }
+
+        .sidebar.minister .ministry-logo {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--minister-gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .sidebar.minister .ministry-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .sidebar.minister h2 {
+            color: var(--minister-gold);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sidebar.minister .minister-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item-minister {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-item-minister:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: #fff;
+            border-left-color: var(--minister-gold);
+            text-decoration: none;
+        }
+
+        .nav-item-minister.active {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--minister-gold);
+            border-left-color: var(--minister-gold);
+        }
+
+        .nav-icon-minister {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-minister:hover .nav-icon-minister,
+        .nav-item-minister.active .nav-icon-minister {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        .main-header.minister-header {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid var(--minister-gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .minister-title-section h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .minister-title-section .greeting {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .minister-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+            border-radius: 50px;
+            color: #fff;
+        }
+
+        .minister-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .minister-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .minister-info span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .main-content.minister-content {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 2rem;
+        }
+
+        .page-header-minister {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header-minister h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-header-minister p {
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .action-btn.gold {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+        }
+
+        .action-btn.gold:hover {
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Stats Row */
+        .audit-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .audit-stat-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+
+        .stat-icon.green {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .stat-icon.gold {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+
+        .stat-icon.red {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+        }
+
+        .stat-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.15rem;
+        }
+
+        .stat-content p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .filter-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .filter-select,
+        .filter-input {
+            padding: 0.625rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: #f8fafc;
+            min-width: 160px;
+            transition: all 0.2s;
+        }
+
+        .filter-select:focus,
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--minister-gold);
+            background: #fff;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.625rem 1rem 0.625rem 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: #f8fafc;
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .filter-btn {
+            padding: 0.625rem 1.25rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.primary {
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+        }
+
+        .filter-btn.secondary {
+            background: #f1f5f9;
+            color: var(--minister-primary);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Audit Table Card */
+        .audit-table-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0;
+        }
+
+        /* Audit Table */
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .audit-table thead {
+            background: #f8fafc;
+        }
+
+        .audit-table th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .audit-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        .audit-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        /* User Cell */
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .user-avatar-sm {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--minister-secondary) 0%, var(--minister-primary) 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .user-details h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.1rem;
+        }
+
+        .user-details span {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Action Badge */
+        .action-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .action-badge.create {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .action-badge.edit {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .action-badge.delete {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .action-badge.view {
+            background: #e5e7eb;
+            color: #4b5563;
+        }
+
+        .action-badge.download {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        .action-badge.login {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .action-badge.approve {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        /* Document Cell */
+        .doc-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .doc-icon-tiny {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            background: #f1f5f9;
+        }
+
+        /* Timestamp */
+        .timestamp {
+            font-size: 0.85rem;
+            color: var(--minister-primary);
+        }
+
+        .timestamp span {
+            display: block;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* IP Address */
+        .ip-address {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.8rem;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* View Details Button */
+        .view-details-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 8px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .view-details-btn:hover {
+            background: var(--minister-primary);
+            color: #fff;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .pagination-info {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            color: var(--minister-primary);
+        }
+
+        .page-btn:hover {
+            border-color: var(--minister-gold);
+            background: #fffbeb;
+        }
+
+        .page-btn.active {
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+            border-color: var(--minister-primary);
+        }
+
+        /* Timeline View Toggle */
+        .view-toggle {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 0.25rem;
+        }
+
+        .view-toggle-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-toggle-btn.active {
+            background: #fff;
+            color: var(--minister-primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout-section {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1200px) {
+            .audit-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .audit-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header-minister {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .audit-table-card {
+                overflow-x: auto;
+            }
+
+            .audit-table {
+                min-width: 900px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <aside class="sidebar minister" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Document Portal</h2>
+                <span class="minister-badge">Minister's Office</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📊</span><span>Dashboard</span>
+                </a>
+                <a href="documents-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📄</span><span>Documents</span>
+                </a>
+                <a href="document-create.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">➕</span><span>Create Document</span>
+                </a>
+                <a href="archive-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">🗃️</span><span>Archive</span>
+                </a>
+                <a href="document-types.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📁</span><span>Document Types</span>
+                </a>
+                <a href="calendar-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📅</span><span>Calendar</span>
+                </a>
+                <a href="scan-documents.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📷</span><span>Scan Documents</span>
+                </a>
+                <a href="audit-trail-minister.html" class="nav-item-minister active">
+                    <span class="nav-icon-minister">🔍</span><span>Audit Trail</span>
+                </a>
+            </nav>
+
+            <div class="logout-section">
+                <a href="index.html" class="logout-btn"><span>🚪</span><span>Logout</span></a>
+            </div>
+            <div class="sidebar-footer"><span class="version-badge">v2.0.0</span></div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="main-header minister-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <div class="minister-title-section">
+                        <h1>Audit Trail</h1>
+                        <span class="greeting">Track all system activities</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notification-badge">
+                        <span class="notif-icon">🔔</span><span class="notif-count">2</span>
+                    </div>
+                    <div class="minister-profile">
+                        <div class="minister-avatar">HM</div>
+                        <div class="minister-info">
+                            <h4>Hon. Minister</h4>
+                            <span>Ministry of Health</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content minister-content">
+                <div class="page-header-minister">
+                    <div>
+                        <h1>🔍 Audit Trail</h1>
+                        <p>Monitor and track all document activities and user actions</p>
+                    </div>
+                    <button class="action-btn gold">
+                        <span>📥</span> Export Logs
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <section class="audit-stats">
+                    <div class="audit-stat-card">
+                        <div class="stat-icon blue">📋</div>
+                        <div class="stat-content">
+                            <h3>15,847</h3>
+                            <p>Total Activities</p>
+                        </div>
+                    </div>
+                    <div class="audit-stat-card">
+                        <div class="stat-icon green">✓</div>
+                        <div class="stat-content">
+                            <h3>1,234</h3>
+                            <p>Documents Created</p>
+                        </div>
+                    </div>
+                    <div class="audit-stat-card">
+                        <div class="stat-icon gold">✏️</div>
+                        <div class="stat-content">
+                            <h3>3,567</h3>
+                            <p>Documents Modified</p>
+                        </div>
+                    </div>
+                    <div class="audit-stat-card">
+                        <div class="stat-icon red">👥</div>
+                        <div class="stat-content">
+                            <h3>89</h3>
+                            <p>Active Users</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label>Action Type</label>
+                        <select class="filter-select">
+                            <option value="">All Actions</option>
+                            <option value="create">Create</option>
+                            <option value="edit">Edit</option>
+                            <option value="delete">Delete</option>
+                            <option value="view">View</option>
+                            <option value="download">Download</option>
+                            <option value="approve">Approve</option>
+                            <option value="login">Login</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>User</label>
+                        <select class="filter-select">
+                            <option value="">All Users</option>
+                            <option value="minister">Hon. Minister</option>
+                            <option value="ps">Permanent Secretary</option>
+                            <option value="director">Director</option>
+                            <option value="officer">Document Officer</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <select class="filter-select">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search by document, user, or action...">
+                    </div>
+                    <button class="filter-btn primary">Apply</button>
+                    <button class="filter-btn secondary">Clear</button>
+                </div>
+
+                <!-- Audit Table -->
+                <section class="audit-table-card">
+                    <div class="table-header">
+                        <h3>Activity Log</h3>
+                        <div class="view-toggle">
+                            <button class="view-toggle-btn active">Table</button>
+                            <button class="view-toggle-btn">Timeline</button>
+                        </div>
+                    </div>
+
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Document/Resource</th>
+                                <th>IP Address</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        25 Jan 2026
+                                        <span>09:45:23 AM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">HM</div>
+                                        <div class="user-details">
+                                            <h5>Hon. Minister</h5>
+                                            <span>Minister's Office</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge approve">✓ Approved</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">📋</div>
+                                        <span>National Health Policy 2026</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.45</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        25 Jan 2026
+                                        <span>09:32:15 AM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">PS</div>
+                                        <div class="user-details">
+                                            <h5>Permanent Secretary</h5>
+                                            <span>Administration</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge edit">✏️ Edited</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">🤝</div>
+                                        <span>WHO Partnership Agreement</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.52</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        25 Jan 2026
+                                        <span>09:15:08 AM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">DO</div>
+                                        <div class="user-details">
+                                            <h5>J. Kamara</h5>
+                                            <span>Document Officer</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge create">➕ Created</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">📄</div>
+                                        <span>COMAHS Training Program 2026</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.78</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        25 Jan 2026
+                                        <span>08:58:42 AM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">DR</div>
+                                        <div class="user-details">
+                                            <h5>Dr. S. Bangura</h5>
+                                            <span>Director</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge download">📥 Downloaded</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">🏛️</div>
+                                        <span>Presidential Health Initiative</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.33</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        25 Jan 2026
+                                        <span>08:45:00 AM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">HM</div>
+                                        <div class="user-details">
+                                            <h5>Hon. Minister</h5>
+                                            <span>Minister's Office</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge login">🔐 Logged In</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">🖥️</div>
+                                        <span>System Access</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.45</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        24 Jan 2026
+                                        <span>04:32:18 PM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">DO</div>
+                                        <div class="user-details">
+                                            <h5>M. Sesay</h5>
+                                            <span>Document Officer</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge view">👁️ Viewed</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">📜</div>
+                                        <span>Inter-Ministry Collaboration</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.92</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="timestamp">
+                                        24 Jan 2026
+                                        <span>03:15:55 PM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm">PS</div>
+                                        <div class="user-details">
+                                            <h5>Permanent Secretary</h5>
+                                            <span>Administration</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="action-badge delete">🗑️ Deleted</span></td>
+                                <td>
+                                    <div class="doc-cell">
+                                        <div class="doc-icon-tiny">📄</div>
+                                        <span>Draft Budget Proposal v1</span>
+                                    </div>
+                                </td>
+                                <td><span class="ip-address">192.168.1.52</span></td>
+                                <td><button class="view-details-btn" title="View Details">👁️</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+                        <div class="pagination-info">
+                            Showing <strong>1-7</strong> of <strong>15,847</strong> activities
+                        </div>
+                        <div class="pagination-controls">
+                            <button class="page-btn" disabled>←</button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn">4</button>
+                            <button class="page-btn">5</button>
+                            <span style="color: #64748b;">...</span>
+                            <button class="page-btn">2264</button>
+                            <button class="page-btn">→</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // View toggle
+        document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Pagination
+        document.querySelectorAll('.page-btn:not(:disabled)').forEach(btn => {
+            btn.addEventListener('click', function () {
+                if (this.textContent !== '←' && this.textContent !== '→') {
+                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
