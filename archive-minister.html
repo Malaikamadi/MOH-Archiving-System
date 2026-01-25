@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Archive - MoHS Digital Document Management System">
+    <title>Archive | MoHS Document Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Minister Portal Specific Styles */
+        :root {
+            --minister-primary: #1a365d;
+            --minister-secondary: #2d4a6f;
+            --minister-accent: #c9a227;
+            --minister-gold: #d4af37;
+            --minister-gold-light: #f4e4a6;
+            --minister-dark: #0f2744;
+            --minister-gradient: linear-gradient(135deg, #1a365d 0%, #2d4a6f 50%, #1a365d 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        /* Minister Sidebar */
+        .sidebar.minister {
+            background: var(--minister-gradient);
+        }
+
+        .sidebar.minister .sidebar-header {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 1.5rem;
+        }
+
+        .sidebar.minister .ministry-logo {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--minister-gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .sidebar.minister .ministry-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .sidebar.minister h2 {
+            color: var(--minister-gold);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sidebar.minister .minister-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item-minister {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-item-minister:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: #fff;
+            border-left-color: var(--minister-gold);
+            text-decoration: none;
+        }
+
+        .nav-item-minister.active {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--minister-gold);
+            border-left-color: var(--minister-gold);
+        }
+
+        .nav-icon-minister {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-minister:hover .nav-icon-minister,
+        .nav-item-minister.active .nav-icon-minister {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        /* Minister Header */
+        .main-header.minister-header {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid var(--minister-gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .minister-title-section h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .minister-title-section .greeting {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .minister-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+            border-radius: 50px;
+            color: #fff;
+        }
+
+        .minister-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .minister-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .minister-info span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content.minister-content {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 2rem;
+        }
+
+        /* Page Header */
+        .page-header-minister {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header-minister h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-header-minister p {
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        /* Archive Stats */
+        .archive-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .archive-stat-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .archive-stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+
+        .stat-icon.green {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .stat-icon.gold {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+
+        .stat-icon.purple {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+        }
+
+        .stat-content h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-content p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        /* Archive Periods */
+        .archive-periods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .period-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .period-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .period-header {
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            padding: 1.25rem 1.5rem;
+            color: #fff;
+        }
+
+        .period-header h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .period-header span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .period-body {
+            padding: 1.5rem;
+        }
+
+        .period-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .period-stat {
+            text-align: center;
+        }
+
+        .period-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+        }
+
+        .period-stat-label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .view-period-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .view-period-btn:hover {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            border-color: var(--minister-gold);
+            color: var(--minister-dark);
+            text-decoration: none;
+        }
+
+        /* Archive Table Card */
+        .archive-table-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--minister-gold);
+            color: var(--minister-primary);
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+            border-color: var(--minister-primary);
+        }
+
+        /* Archive Table */
+        .archive-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .archive-table thead {
+            background: #f8fafc;
+        }
+
+        .archive-table th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .archive-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .archive-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        /* Document Info Cell */
+        .doc-info-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .doc-icon-sm {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .doc-icon-sm.mda {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+
+        .doc-icon-sm.ngo {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .doc-icon-sm.ministry {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+
+        .doc-icon-sm.president {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+        }
+
+        .doc-details h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.15rem;
+        }
+
+        .doc-details span {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Archive Badge */
+        .archive-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #e5e7eb;
+            color: #4b5563;
+        }
+
+        .archive-badge.preserved {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        /* Row Actions */
+        .row-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .row-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 8px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .row-btn:hover {
+            background: var(--minister-primary);
+            color: #fff;
+        }
+
+        .row-btn.download:hover {
+            background: #10b981;
+        }
+
+        .row-btn.restore:hover {
+            background: #f59e0b;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .pagination-info {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            color: var(--minister-primary);
+        }
+
+        .page-btn:hover {
+            border-color: var(--minister-gold);
+            background: #fffbeb;
+        }
+
+        .page-btn.active {
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+            border-color: var(--minister-primary);
+        }
+
+        /* Logout */
+        .logout-section {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .archive-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .archive-periods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .archive-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header-minister {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .filter-tabs {
+                flex-wrap: wrap;
+            }
+
+            .archive-table-card {
+                overflow-x: auto;
+            }
+
+            .archive-table {
+                min-width: 800px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- MINISTER SIDEBAR -->
+        <aside class="sidebar minister" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Document Portal</h2>
+                <span class="minister-badge">Minister's Office</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="documents-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📄</span>
+                    <span>Documents</span>
+                </a>
+                <a href="document-create.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">➕</span>
+                    <span>Create Document</span>
+                </a>
+                <a href="archive-minister.html" class="nav-item-minister active">
+                    <span class="nav-icon-minister">🗃️</span>
+                    <span>Archive</span>
+                </a>
+                <a href="document-types.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📁</span>
+                    <span>Document Types</span>
+                </a>
+                <a href="calendar-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📅</span>
+                    <span>Calendar</span>
+                </a>
+                <a href="scan-documents.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📷</span>
+                    <span>Scan Documents</span>
+                </a>
+                <a href="audit-trail-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">🔍</span>
+                    <span>Audit Trail</span>
+                </a>
+            </nav>
+
+            <div class="logout-section">
+                <a href="index.html" class="logout-btn">
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="version-badge">v2.0.0</span>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header class="main-header minister-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <div class="minister-title-section">
+                        <h1>Archive</h1>
+                        <span class="greeting">Access historical documents</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notification-badge">
+                        <span class="notif-icon">🔔</span>
+                        <span class="notif-count">2</span>
+                    </div>
+                    <div class="minister-profile">
+                        <div class="minister-avatar">HM</div>
+                        <div class="minister-info">
+                            <h4>Hon. Minister</h4>
+                            <span>Ministry of Health</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content minister-content">
+                <div class="page-header-minister">
+                    <div>
+                        <h1>🗃️ Document Archive</h1>
+                        <p>Access and browse historical documents from previous administrations</p>
+                    </div>
+                </div>
+
+                <!-- Archive Stats -->
+                <section class="archive-stats">
+                    <div class="archive-stat-card">
+                        <div class="stat-icon blue">📚</div>
+                        <div class="stat-content">
+                            <h3>12,456</h3>
+                            <p>Total Archived Documents</p>
+                        </div>
+                    </div>
+                    <div class="archive-stat-card">
+                        <div class="stat-icon green">✅</div>
+                        <div class="stat-content">
+                            <h3>11,892</h3>
+                            <p>Preserved & Verified</p>
+                        </div>
+                    </div>
+                    <div class="archive-stat-card">
+                        <div class="stat-icon gold">📅</div>
+                        <div class="stat-content">
+                            <h3>15</h3>
+                            <p>Years of Records</p>
+                        </div>
+                    </div>
+                    <div class="archive-stat-card">
+                        <div class="stat-icon purple">👁️</div>
+                        <div class="stat-content">
+                            <h3>2,340</h3>
+                            <p>Views This Month</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Archive Periods -->
+                <section class="archive-periods">
+                    <div class="period-card">
+                        <div class="period-header">
+                            <h4>Current Administration</h4>
+                            <span>2023 - Present</span>
+                        </div>
+                        <div class="period-body">
+                            <div class="period-stats">
+                                <div class="period-stat">
+                                    <div class="period-stat-value">2,847</div>
+                                    <div class="period-stat-label">Documents</div>
+                                </div>
+                                <div class="period-stat">
+                                    <div class="period-stat-value">456</div>
+                                    <div class="period-stat-label">MDAs</div>
+                                </div>
+                                <div class="period-stat">
+                                    <div class="period-stat-value">234</div>
+                                    <div class="period-stat-label">NGOs</div>
+                                </div>
+                            </div>
+                            <a href="#" class="view-period-btn">Browse Documents →</a>
+                        </div>
+                    </div>
+
+                    <div class="period-card">
+                        <div class="period-header">
+                            <h4>Previous Administration</h4>
+                            <span>2018 - 2023</span>
+                        </div>
+                        <div class="period-body">
+                            <div class="period-stats">
+                                <div class="period-stat">
+                                    <div class="period-stat-value">5,234</div>
+                                    <div class="period-stat-label">Documents</div>
+                                </div>
+                                <div class="period-stat">
+                                    <div class="period-stat-value">892</div>
+                                    <div class="period-stat-label">MDAs</div>
+                                </div>
+                                <div class="period-stat">
+                                    <div class="period-stat-value">412</div>
+                                    <div class="period-stat-label">NGOs</div>
+                                </div>
+                            </div>
+                            <a href="#" class="view-period-btn">Browse Documents →</a>
+                        </div>
+                    </div>
+
+                    <div class="period-card">
+                        <div class="period-header">
+                            <h4>Historical Records</h4>
+                            <span>2010 - 2018</span>
+                        </div>
+                        <div class="period-body">
+                            <div class="period-stats">
+                                <div class="period-stat">
+                                    <div class="period-stat-value">4,375</div>
+                                    <div class="period-stat-label">Documents</div>
+                                </div>
+                                <div class="period-stat">
+                                    <div class="period-stat-value">756</div>
+                                    <div class="period-stat-label">MDAs</div>
+                                </div>
+                                <div class="period-stat">
+                                    <div class="period-stat-value">289</div>
+                                    <div class="period-stat-label">NGOs</div>
+                                </div>
+                            </div>
+                            <a href="#" class="view-period-btn">Browse Documents →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Archived Documents Table -->
+                <section class="archive-table-card">
+                    <div class="table-header">
+                        <h3>Recently Archived Documents</h3>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active">All</button>
+                            <button class="filter-tab">MDAs</button>
+                            <button class="filter-tab">NGOs</button>
+                            <button class="filter-tab">Ministries</button>
+                            <button class="filter-tab">Presidential</button>
+                        </div>
+                    </div>
+
+                    <table class="archive-table">
+                        <thead>
+                            <tr>
+                                <th>Document</th>
+                                <th>Type</th>
+                                <th>Original Date</th>
+                                <th>Archived Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm mda">📋</div>
+                                        <div class="doc-details">
+                                            <h4>National Health Policy 2022</h4>
+                                            <span>DOC-2022-4521</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>MDA</td>
+                                <td>15 Mar 2022</td>
+                                <td>20 Jan 2026</td>
+                                <td><span class="archive-badge preserved">✓ Preserved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-btn" title="View">👁️</button>
+                                        <button class="row-btn download" title="Download">📥</button>
+                                        <button class="row-btn restore" title="Restore">🔄</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm ngo">🤝</div>
+                                        <div class="doc-details">
+                                            <h4>UNICEF Child Health Partnership</h4>
+                                            <span>DOC-2021-3892</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>NGO</td>
+                                <td>08 Nov 2021</td>
+                                <td>18 Jan 2026</td>
+                                <td><span class="archive-badge preserved">✓ Preserved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-btn" title="View">👁️</button>
+                                        <button class="row-btn download" title="Download">📥</button>
+                                        <button class="row-btn restore" title="Restore">🔄</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm president">🏛️</div>
+                                        <div class="doc-details">
+                                            <h4>Presidential Directive: Health Emergency</h4>
+                                            <span>DOC-2020-2156</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Office of President</td>
+                                <td>22 Mar 2020</td>
+                                <td>15 Jan 2026</td>
+                                <td><span class="archive-badge preserved">✓ Preserved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-btn" title="View">👁️</button>
+                                        <button class="row-btn download" title="Download">📥</button>
+                                        <button class="row-btn restore" title="Restore">🔄</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm ministry">📜</div>
+                                        <div class="doc-details">
+                                            <h4>Inter-Ministry Health Budget 2020</h4>
+                                            <span>DOC-2020-1834</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Ministries</td>
+                                <td>05 Jan 2020</td>
+                                <td>12 Jan 2026</td>
+                                <td><span class="archive-badge preserved">✓ Preserved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-btn" title="View">👁️</button>
+                                        <button class="row-btn download" title="Download">📥</button>
+                                        <button class="row-btn restore" title="Restore">🔄</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="doc-info-cell">
+                                        <div class="doc-icon-sm mda">📋</div>
+                                        <div class="doc-details">
+                                            <h4>Healthcare Facility Standards 2019</h4>
+                                            <span>DOC-2019-1245</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>MDA</td>
+                                <td>18 Sep 2019</td>
+                                <td>10 Jan 2026</td>
+                                <td><span class="archive-badge preserved">✓ Preserved</span></td>
+                                <td>
+                                    <div class="row-actions">
+                                        <button class="row-btn" title="View">👁️</button>
+                                        <button class="row-btn download" title="Download">📥</button>
+                                        <button class="row-btn restore" title="Restore">🔄</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+                        <div class="pagination-info">
+                            Showing <strong>1-5</strong> of <strong>12,456</strong> archived documents
+                        </div>
+                        <div class="pagination-controls">
+                            <button class="page-btn" disabled>←</button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn">4</button>
+                            <button class="page-btn">5</button>
+                            <span style="color: #64748b;">...</span>
+                            <button class="page-btn">2492</button>
+                            <button class="page-btn">→</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function () {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        // Filter tabs functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function () {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Pagination demo
+        const pageBtns = document.querySelectorAll('.page-btn:not(:disabled)');
+        pageBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                if (this.textContent !== '←' && this.textContent !== '→') {
+                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

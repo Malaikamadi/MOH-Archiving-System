@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Document Types - MoHS Digital Document Management System">
+    <title>Document Types | MoHS Document Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --minister-primary: #1a365d;
+            --minister-secondary: #2d4a6f;
+            --minister-accent: #c9a227;
+            --minister-gold: #d4af37;
+            --minister-dark: #0f2744;
+            --minister-gradient: linear-gradient(135deg, #1a365d 0%, #2d4a6f 50%, #1a365d 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        .sidebar.minister {
+            background: var(--minister-gradient);
+        }
+
+        .sidebar.minister .sidebar-header {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 1.5rem;
+        }
+
+        .sidebar.minister .ministry-logo {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--minister-gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .sidebar.minister .ministry-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .sidebar.minister h2 {
+            color: var(--minister-gold);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sidebar.minister .minister-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item-minister {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-item-minister:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: #fff;
+            border-left-color: var(--minister-gold);
+            text-decoration: none;
+        }
+
+        .nav-item-minister.active {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--minister-gold);
+            border-left-color: var(--minister-gold);
+        }
+
+        .nav-icon-minister {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-minister:hover .nav-icon-minister,
+        .nav-item-minister.active .nav-icon-minister {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        .main-header.minister-header {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid var(--minister-gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .minister-title-section h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .minister-title-section .greeting {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .minister-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+            border-radius: 50px;
+            color: #fff;
+        }
+
+        .minister-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .minister-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .minister-info span {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .main-content.minister-content {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 2rem;
+        }
+
+        .page-header-minister {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header-minister h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-header-minister p {
+            color: #64748b;
+            margin-bottom: 0;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .action-btn.gold {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+        }
+
+        .action-btn.gold:hover {
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        /* Document Types Grid */
+        .doc-types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .doc-type-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-type-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border-color: var(--minister-gold);
+        }
+
+        .doc-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .doc-type-card.mda::before {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .doc-type-card.ngo::before {
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .doc-type-card.ministry::before {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .doc-type-card.president::before {
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+        }
+
+        .doc-type-card.vp::before {
+            background: linear-gradient(90deg, #ec4899, #f472b6);
+        }
+
+        .doc-type-card.comahs::before {
+            background: linear-gradient(90deg, #06b6d4, #22d3ee);
+        }
+
+        .doc-type-card.health::before {
+            background: linear-gradient(90deg, #a855f7, #c084fc);
+        }
+
+        .doc-type-card.other::before {
+            background: linear-gradient(90deg, #64748b, #94a3b8);
+        }
+
+        .type-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .type-icon.mda {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+
+        .type-icon.ngo {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        }
+
+        .type-icon.ministry {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+
+        .type-icon.president {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+        }
+
+        .type-icon.vp {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        }
+
+        .type-icon.comahs {
+            background: linear-gradient(135deg, #cffafe, #a5f3fc);
+        }
+
+        .type-icon.health {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+        }
+
+        .type-icon.other {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+        }
+
+        .doc-type-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-type-card p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            min-height: 40px;
+        }
+
+        .type-stats {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .type-stat {
+            text-align: center;
+        }
+
+        .type-stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--minister-primary);
+        }
+
+        .type-stat-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .type-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .type-action-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+            font-size: 0.8rem;
+            color: var(--minister-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .type-action-btn:hover {
+            background: var(--minister-primary);
+            border-color: var(--minister-primary);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Add New Type Card */
+        .add-type-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 280px;
+        }
+
+        .add-type-card:hover {
+            border-color: var(--minister-gold);
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        }
+
+        .add-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .add-type-card:hover .add-icon {
+            background: var(--minister-gold);
+            color: var(--minister-dark);
+        }
+
+        .add-type-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .add-type-card span {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(135deg, var(--minister-primary) 0%, var(--minister-secondary) 100%);
+            color: #fff;
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--minister-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--minister-gold);
+            box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.1);
+        }
+
+        /* Icon Selector */
+        .icon-selector {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+        }
+
+        .icon-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .icon-option:hover {
+            border-color: var(--minister-gold);
+            background: #fffbeb;
+        }
+
+        .icon-option.selected {
+            border-color: var(--minister-gold);
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+        }
+
+        .btn-modal {
+            padding: 0.625rem 1.25rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-modal.secondary {
+            background: #f1f5f9;
+            color: var(--minister-primary);
+        }
+
+        .btn-modal.primary {
+            background: linear-gradient(135deg, var(--minister-gold) 0%, #e8c547 100%);
+            color: var(--minister-dark);
+        }
+
+        .btn-modal.primary:hover {
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+        }
+
+        .logout-section {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1200px) {
+            .doc-types-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .doc-types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header-minister {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <aside class="sidebar minister" id="sidebar">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
+                </div>
+                <h2>MoHS Document Portal</h2>
+                <span class="minister-badge">Minister's Office</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📊</span><span>Dashboard</span>
+                </a>
+                <a href="documents-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📄</span><span>Documents</span>
+                </a>
+                <a href="document-create.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">➕</span><span>Create Document</span>
+                </a>
+                <a href="archive-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">🗃️</span><span>Archive</span>
+                </a>
+                <a href="document-types.html" class="nav-item-minister active">
+                    <span class="nav-icon-minister">📁</span><span>Document Types</span>
+                </a>
+                <a href="calendar-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📅</span><span>Calendar</span>
+                </a>
+                <a href="scan-documents.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">📷</span><span>Scan Documents</span>
+                </a>
+                <a href="audit-trail-minister.html" class="nav-item-minister">
+                    <span class="nav-icon-minister">🔍</span><span>Audit Trail</span>
+                </a>
+            </nav>
+
+            <div class="logout-section">
+                <a href="index.html" class="logout-btn"><span>🚪</span><span>Logout</span></a>
+            </div>
+            <div class="sidebar-footer"><span class="version-badge">v2.0.0</span></div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="main-header minister-header">
+                <div class="header-left">
+                    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <span class="hamburger-icon"></span>
+                    </button>
+                    <div class="minister-title-section">
+                        <h1>Document Types</h1>
+                        <span class="greeting">Manage document categories</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="notification-badge">
+                        <span class="notif-icon">🔔</span><span class="notif-count">2</span>
+                    </div>
+                    <div class="minister-profile">
+                        <div class="minister-avatar">HM</div>
+                        <div class="minister-info">
+                            <h4>Hon. Minister</h4>
+                            <span>Ministry of Health</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content minister-content">
+                <div class="page-header-minister">
+                    <div>
+                        <h1>📁 Document Types</h1>
+                        <p>Manage and organize document categories for the ministry</p>
+                    </div>
+                    <button class="action-btn gold" onclick="openModal()">
+                        <span>➕</span> Add New Type
+                    </button>
+                </div>
+
+                <section class="doc-types-grid">
+                    <div class="doc-type-card mda">
+                        <div class="type-icon mda">🏢</div>
+                        <h4>MDAs</h4>
+                        <p>Ministries, Departments and Agencies official documents</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">456</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">23</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=mda" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="doc-type-card ngo">
+                        <div class="type-icon ngo">🤝</div>
+                        <h4>NGOs</h4>
+                        <p>Non-Governmental Organizations partnerships and agreements</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">234</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">12</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=ngo" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="doc-type-card ministry">
+                        <div class="type-icon ministry">🏛️</div>
+                        <h4>Ministries</h4>
+                        <p>Inter-ministry communications and collaborative documents</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">189</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">8</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=ministry" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="doc-type-card president">
+                        <div class="type-icon president">🎖️</div>
+                        <h4>Office of President</h4>
+                        <p>Presidential directives, executive orders and official communications</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">78</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">5</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=president" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="doc-type-card vp">
+                        <div class="type-icon vp">🎗️</div>
+                        <h4>Office of Vice President</h4>
+                        <p>Vice Presidential communications and policy documents</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">45</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">3</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=vp" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="doc-type-card comahs">
+                        <div class="type-icon comahs">🎓</div>
+                        <h4>COMAHS</h4>
+                        <p>College of Medicine and Allied Health Sciences documents</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">123</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">6</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=comahs" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="doc-type-card health">
+                        <div class="type-icon health">🏥</div>
+                        <h4>Health Facilities</h4>
+                        <p>Hospital and clinic related documentation and reports</p>
+                        <div class="type-stats">
+                            <div class="type-stat">
+                                <div class="type-stat-value">567</div>
+                                <div class="type-stat-label">Documents</div>
+                            </div>
+                            <div class="type-stat">
+                                <div class="type-stat-value">34</div>
+                                <div class="type-stat-label">This Month</div>
+                            </div>
+                        </div>
+                        <div class="type-actions">
+                            <a href="documents-minister.html?type=health" class="type-action-btn">View</a>
+                            <button class="type-action-btn">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="add-type-card" onclick="openModal()">
+                        <div class="add-icon">➕</div>
+                        <h4>Add New Type</h4>
+                        <span>Create a custom document category</span>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Type Modal -->
+    <div class="modal-overlay" id="addTypeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>📁 Create New Document Type</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Type Name *</label>
+                    <input type="text" class="form-input" placeholder="e.g., Legal Documents">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-textarea" rows="3"
+                        placeholder="Brief description of this document type..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Select Icon</label>
+                    <div class="icon-selector">
+                        <div class="icon-option selected">📋</div>
+                        <div class="icon-option">📁</div>
+                        <div class="icon-option">📂</div>
+                        <div class="icon-option">📄</div>
+                        <div class="icon-option">📝</div>
+                        <div class="icon-option">📑</div>
+                        <div class="icon-option">📊</div>
+                        <div class="icon-option">📈</div>
+                        <div class="icon-option">📉</div>
+                        <div class="icon-option">🗂️</div>
+                        <div class="icon-option">🗃️</div>
+                        <div class="icon-option">💼</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Color Theme</label>
+                    <select class="form-select">
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="gold">Gold</option>
+                        <option value="purple">Purple</option>
+                        <option value="pink">Pink</option>
+                        <option value="cyan">Cyan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-modal primary">Create Type</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+            });
+        }
+
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            });
+        }
+
+        function openModal() {
+            document.getElementById('addTypeModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('addTypeModal').classList.remove('active');
+        }
+
+        document.getElementById('addTypeModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Icon selector
+        document.querySelectorAll('.icon-option').forEach(icon => {
+            icon.addEventListener('click', function () {
+                document.querySelectorAll('.icon-option').forEach(i => i.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+
+</html>
