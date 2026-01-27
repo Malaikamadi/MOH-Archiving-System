@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minister Dashboard | MoHS Archiving System</title>
+    <title>Minister Dashboard | MoH Archiving System</title>
+    <meta name="description" content="Minister Dashboard - MoH Digital Document Archiving System">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -19,7 +23,7 @@
                 <div class="ministry-logo">
                     <img src="../Assets/mohs_logo-removebg-preview.png" alt="MoHS Logo">
                 </div>
-                <h2>MoHS Archive</h2>
+                <h2>MoH Archive</h2>
             </div>
             <nav class="sidebar-nav">
                 <a href="dashboard-minister.html" class="nav-item-modern active">
@@ -115,15 +119,38 @@
                 </div>
                 <div class="header-right">
                     <div class="header-search">
-                        <input type="text" placeholder="Search documents..." class="search-input">
+                        <input type="text" placeholder="Search documents... (Ctrl+K)" class="search-input"
+                            id="globalSearch">
                     </div>
-                    <div class="notification-badge">
-                        <span class="notif-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                                stroke="currentColor" stroke-width="2">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                            </svg></span>
-                        <span class="notif-count">8</span>
+                    <button class="theme-toggle" title="Toggle Dark Mode (Ctrl+D)">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </button>
+                    <div class="notification-wrapper">
+                        <div class="notification-badge">
+                            <span class="notif-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                                </svg></span>
+                            <span class="notif-count">8</span>
+                        </div>
+                        <!-- Notification Dropdown -->
+                        <div class="notification-dropdown">
+                            <div class="notification-header">
+                                <h4>Notifications</h4>
+                                <button class="mark-all-read" onclick="NotificationManager.markAllAsRead()">Mark all
+                                    read</button>
+                            </div>
+                            <div class="notification-list">
+                                <!-- Notifications will be rendered by JavaScript -->
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#" class="view-all-link">View All Notifications</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="user-profile-header">
                         <div class="user-avatar-sm">HM</div>
@@ -137,10 +164,20 @@
 
             <!-- MAIN CONTENT -->
             <main class="main-content modern">
+                <!-- Breadcrumb Navigation -->
+                <nav class="breadcrumb">
+                    <a href="dashboard-minister.html" class="breadcrumb-link">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Dashboard</span>
+                </nav>
+
                 <!-- Demo Links Section -->
                 <section class="demo-links-section">
                     <div class="modern-card-header">
                         <h3>Quick Navigation</h3>
+                        <span class="keyboard-hint" style="font-size: 0.8rem; color: #94a3b8;">Press <kbd
+                                style="background:#f1f5f9;padding:2px 6px;border-radius:4px;border:1px solid #e2e8f0;">Ctrl
+                                + /</kbd> for shortcuts</span>
                     </div>
                     <div class="demo-links-grid">
                         <a href="../document-create.html" class="demo-link-card">
@@ -516,7 +553,15 @@
                 sidebarOverlay.classList.remove('active');
             }
         });
+
+        // Welcome toast on page load
+        setTimeout(() => {
+            Toast.success('Welcome back, Hon. Minister! You have 8 notifications.');
+        }, 1000);
     </script>
+
+    <!-- Advanced Components -->
+    <script src="../js/app-utilities.js"></script>
 </body>
 
 </html>

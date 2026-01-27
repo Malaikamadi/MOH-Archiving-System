@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pending Approvals - Secretary Portal">
-    <title>Pending Approvals | MoHS Archiving System</title>
+    <title>Pending Approvals | MoH Archiving System</title>
     <link rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -412,6 +412,45 @@
             font-size: 0.7rem;
         }
 
+        /* Header Search Bar */
+        .header-search {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .header-search input:focus {
+            outline: none;
+            border-color: var(--secretary-accent);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.15);
+        }
+
+        .header-search input::placeholder {
+            color: #94a3b8;
+        }
+
+        .header-search .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
         @media (max-width: 1024px) {
             .stats-row {
                 grid-template-columns: 1fr;
@@ -446,7 +485,7 @@
                 <div class="ministry-logo">
                     <img src="../Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
                 </div>
-                <h2>MoHS Archive</h2>
+                <h2>MoH Archive</h2>
                 <span class="role-badge">Secretary</span>
             </div>
 
@@ -515,6 +554,14 @@
                         <h1>Pending Approvals</h1>
                         <span class="greeting">Track documents awaiting Minister review</span>
                     </div>
+                </div>
+                <div class="header-search">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" placeholder="Search documents, appointments...">
                 </div>
                 <div class="header-right">
                     <div class="notification-badge">

@@ -7,6 +7,8 @@
     <meta name="description" content="Documents - MOH Digital Document Management System">
     <title>Documents | MOH Document Management</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -704,7 +706,7 @@
                 <div class="ministry-logo">
                     <img src="Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
                 </div>
-                <h2>MoHS Archive</h2>
+                <h2>MoH Archive</h2>
             </div>
 
             <nav class="sidebar-nav">
@@ -801,12 +803,35 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <div class="notification-badge">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    <div class="header-search">
+                        <input type="text" placeholder="Search documents... (Ctrl+K)" class="search-input"
+                            id="globalSearch">
+                    </div>
+                    <button class="theme-toggle" title="Toggle Dark Mode (Ctrl+D)">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
-                        <span class="notif-count">5</span>
+                    </button>
+                    <div class="notification-wrapper">
+                        <div class="notification-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                            </svg>
+                            <span class="notif-count">5</span>
+                        </div>
+                        <div class="notification-dropdown">
+                            <div class="notification-header">
+                                <h4>Notifications</h4>
+                                <button class="mark-all-read" onclick="NotificationManager.markAllAsRead()">Mark all
+                                    read</button>
+                            </div>
+                            <div class="notification-list"></div>
+                            <div class="notification-footer">
+                                <a href="#" class="view-all-link">View All Notifications</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="minister-profile">
                         <div class="minister-avatar">HM</div>
@@ -1215,6 +1240,7 @@
             });
         });
     </script>
+    <script src="js/app-utilities.js"></script>
 </body>
 
 </html>

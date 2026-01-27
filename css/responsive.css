@@ -1,0 +1,232 @@
+/* ============================================
+   TABLET LANDSCAPE & SMALLER LAPTOPS (Max Width: 1200px)
+   ============================================ */
+@media (max-width: 1200px) {
+    :root {
+        --sidebar-width: 240px;
+        --max-content-width: 100%;
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   TABLET PORTRAIT (Max Width: 992px)
+   ============================================ */
+@media (max-width: 992px) {
+    :root {
+        --sidebar-width: 0px;
+        /* Sidebar collapsed by default on tablet */
+    }
+
+    /* Layout Adjustments */
+    .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .main-header {
+        left: 0;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .main-content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Sidebar Mobile/Tablet Styles */
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px !important;
+        position: fixed;
+        z-index: 1001;
+        /* Higher than overlay */
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+        display: block !important;
+        background-color: #054180;
+        /* Ensure background is set */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    /* Sidebar Overlay */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Header Elements */
+    .mobile-menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--neutral-gray-600);
+        margin-right: var(--spacing-sm);
+        padding: 8px;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+    }
+
+    .mobile-menu-toggle:hover {
+        background-color: var(--neutral-gray-100);
+    }
+
+    .header-search .search-input {
+        width: 220px;
+    }
+
+    /* Grid Adjustments */
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-profile-header .user-details {
+        display: none;
+        /* Hide name/role on tablet to save space */
+    }
+
+    .user-profile-header {
+        padding-left: 0;
+        border-left: none;
+    }
+}
+
+/* ============================================
+   MOBILE LANDSCAPE (Max Width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* Header Adjustments */
+    .main-header {
+        padding: 0 var(--spacing-md);
+        height: 60px;
+    }
+
+    .main-content {
+        margin-top: 60px;
+        padding: var(--spacing-md);
+    }
+
+    .page-title-main {
+        font-size: 1.125rem;
+    }
+
+    /* Hide global search on small screens, show icon only (future enhancement) */
+    .header-search {
+        display: none;
+    }
+
+    /* Grid Adjustments */
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+        /* Stack all grids on mobile */
+    }
+
+    /* Stats Cards */
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    /* Tables - Horizontal Scroll */
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .modern-table {
+        min-width: 600px;
+        /* Ensure table doesn't get squashed */
+    }
+
+
+    /* Components Styles Overrides */
+    .notification-dropdown {
+        width: calc(100vw - 20px);
+        right: -50px;
+        /* Center relative to bell */
+        position: fixed;
+        top: 60px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .toast-container {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        top: auto;
+        /* Show toasts at bottom on mobile */
+    }
+
+    /* Breadcrumbs */
+    .breadcrumb {
+        font-size: 0.75rem;
+        white-space: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .demo-link-card {
+        padding: var(--spacing-md);
+    }
+}
+
+/* ============================================
+   MOBILE PORTRAIT (Max Width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+
+    /* Further simplifications */
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .header-right {
+        gap: var(--spacing-xs);
+    }
+
+    .notification-badge {
+        margin-right: 0;
+    }
+
+    .modal-content,
+    .preview-container,
+    .shortcuts-content {
+        width: 95%;
+        margin: 0 auto;
+    }
+}

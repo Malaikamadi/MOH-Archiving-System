@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create Document Type - Secretary Portal">
+    <title>Create Document Type | MoH Archiving System</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --secretary-primary: #2d5a47;
+            --secretary-secondary: #3d7a5f;
+            --secretary-accent: #4ade80;
+            --secretary-light: #86efac;
+            --secretary-dark: #1a3a2c;
+            --secretary-gradient: linear-gradient(135deg, #2d5a47 0%, #3d7a5f 50%, #2d5a47 100%);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        .sidebar.secretary {
+            background: var(--secretary-gradient);
+        }
+
+        .sidebar.secretary .sidebar-header {
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(74, 222, 128, 0.3);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar.secretary .ministry-logo {
+            width: 70px;
+            height: 70px;
+            border: 3px solid var(--secretary-accent);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar.secretary .ministry-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .sidebar.secretary h2 {
+            color: var(--secretary-accent);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sidebar.secretary .role-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secretary-accent) 0%, var(--secretary-light) 100%);
+            color: var(--secretary-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .nav-item-secretary {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-secretary:hover,
+        .nav-item-secretary.active {
+            background: rgba(74, 222, 128, 0.15);
+            color: #fff;
+            border-left-color: var(--secretary-accent);
+        }
+
+        .nav-icon-secretary {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item-secretary:hover .nav-icon-secretary,
+        .nav-item-secretary.active .nav-icon-secretary {
+            background: var(--secretary-accent);
+            color: var(--secretary-dark);
+        }
+
+        .main-header.secretary-header {
+            background: linear-gradient(135deg, #fff 0%, #f0fdf4 100%);
+            border-bottom: 2px solid var(--secretary-accent);
+        }
+
+        .secretary-title-section h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secretary-primary);
+        }
+
+        .secretary-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--secretary-primary) 0%, var(--secretary-secondary) 100%);
+            padding: 0.5rem 1rem 0.5rem 0.5rem;
+            border-radius: 50px;
+            color: #fff;
+        }
+
+        .secretary-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--secretary-accent);
+            color: var(--secretary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .main-content.secretary-content {
+            background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 2rem;
+        }
+
+        .form-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .form-card-header {
+            background: linear-gradient(135deg, var(--secretary-primary) 0%, var(--secretary-secondary) 100%);
+            color: #fff;
+            padding: 1.5rem 2rem;
+        }
+
+        .form-card-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secretary-primary);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--secretary-accent);
+            box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.15);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--secretary-primary);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: var(--secretary-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar secretary">
+            <div class="sidebar-header">
+                <div class="ministry-logo">
+                    <img src="../Assets/mohs_logo-removebg-preview.png" alt="MOH Logo">
+                </div>
+                <h2>MoH Archive</h2>
+                <span class="role-badge">Secretary</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard-secretary.html" class="nav-item-secretary">
+                    <span class="nav-icon-secretary">▣</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="documents-secretary.html" class="nav-item-secretary">
+                    <span class="nav-icon-secretary">📄</span>
+                    <span>Documents</span>
+                </a>
+                <a href="upload-document.html" class="nav-item-secretary">
+                    <span class="nav-icon-secretary">⬆</span>
+                    <span>Upload Document</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <header class="main-header secretary-header">
+                <div class="header-left">
+                    <div class="secretary-title-section">
+                        <h1>Create Document Type</h1>
+                        <span class="greeting">Define new document categories for the system</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="secretary-profile">
+                        <div class="secretary-avatar">SK</div>
+                        <div class="secretary-info">
+                            <h4>Sarah Kamara</h4>
+                            <span>Secretary</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content secretary-content">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h2>New Document Category</h2>
+                        <p>Create a new category to organize documents effectively</p>
+                    </div>
+                    <div class="form-card-body">
+                        <form id="createTypeForm">
+                            <div class="form-group">
+                                <label>Category Name <span style="color:red">*</span></label>
+                                <input type="text" class="form-input" placeholder="e.g., Policy Brief, Memo, Contract"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-textarea" rows="3"
+                                    placeholder="Brief description of when to use this category"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Access Level</label>
+                                <select class="form-select">
+                                    <option>Public</option>
+                                    <option>Internal Only</option>
+                                    <option>Confidential</option>
+                                    <option>Restricted</option>
+                                </select>
+                            </div>
+                            <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:2rem;">
+                                <a href="upload-document.html" class="btn btn-secondary"
+                                    style="text-decoration:none; display:flex; align-items:center;">Cancel</a>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="alert('Document type created successfully!'); window.location.href='upload-document.html';">Create
+                                    Category</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
