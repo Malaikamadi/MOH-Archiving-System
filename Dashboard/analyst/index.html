@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analyst Dashboard | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="nhih-app">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo">
+                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
+                </div>
+                <div class="sidebar-brand">
+                    <h2>NHIH</h2>
+                    <span>Ministry of Health</span>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Main Menu</div>
+                <a href="index.html" class="nav-link active">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="my-reports.html" class="nav-link">
+                    <span class="material-icons">description</span>
+                    <span>My Reports</span>
+                </a>
+                <a href="datasets.html" class="nav-link">
+                    <span class="material-icons">dataset</span>
+                    <span>Datasets</span>
+                </a>
+
+                <div class="sidebar-section">Analysis</div>
+                <a href="sql-query-editor.html" class="nav-link">
+                    <span class="material-icons">code</span>
+                    <span>SQL Query Editor</span>
+                </a>
+                <a href="visualizations.html" class="nav-link">
+                    <span class="material-icons">bar_chart</span>
+                    <span>Visualizations</span>
+                </a>
+                <a href="data-exports.html" class="nav-link">
+                    <span class="material-icons">file_download</span>
+                    <span>Data Exports</span>
+                    <span class="nav-badge">3</span>
+                </a>
+                <a href="saved-queries.html" class="nav-link">
+                    <span class="material-icons">bookmark</span>
+                    <span>Saved Queries</span>
+                </a>
+                <a href="report-templates.html" class="nav-link">
+                    <span class="material-icons">content_copy</span>
+                    <span>Report Templates</span>
+                </a>
+
+                <div class="sidebar-section">System</div>
+                <a href="data-requests.html" class="nav-link">
+                    <span class="material-icons">inbox</span>
+                    <span>Data Requests</span>
+                    <span class="nav-badge">2</span>
+                </a>
+                <a href="settings.html" class="nav-link">
+                    <span class="material-icons">settings</span>
+                    <span>Settings</span>
+                </a>
+            </div>
+
+            <div class="sidebar-foot">
+                <div class="session-card">
+                    <div class="session-status">
+                        <span class="dot-online"></span>
+                        Active Session
+                    </div>
+                    <div class="session-time">Last login: Today, 08:30 AM</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-wrap">
+            <!-- HEADER -->
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div>
+                        <h1 class="page-title">Data Analyst Dashboard</h1>
+                        <p class="welcome-sub">Welcome back, Analyst</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search reports, datasets, queries...">
+                        <kbd>Ctrl+K</kbd>
+                    </div>
+
+                    <button class="icon-btn" id="themeToggle">
+                        <span class="material-icons">dark_mode</span>
+                    </button>
+
+                    <div class="notif-wrap">
+                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
+                            <span class="material-icons">notifications</span>
+                            <span class="hdr-badge">3</span>
+                        </button>
+                        <div class="dropdown notif-dd" id="notifDropdown">
+                            <div class="dd-head">
+                                <h4>Notifications</h4>
+                                <button>Mark all read</button>
+                            </div>
+                            <div class="dd-body">
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--success-light);color:var(--success)">
+                                        <span class="material-icons">check_circle</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Report Ready</span>
+                                        <span class="ni-desc">Q2 Immunization Report generated</span>
+                                        <span class="ni-time">20 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--info-light);color:var(--info)">
+                                        <span class="material-icons">dataset</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">New Dataset Available</span>
+                                        <span class="ni-desc">Malaria surveillance data updated</span>
+                                        <span class="ni-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="dd-item">
+                                    <div class="ni-icon" style="background:var(--warning-light);color:var(--warning)">
+                                        <span class="material-icons">schedule</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Export Expiring</span>
+                                        <span class="ni-desc">Your export "district_comparison" expires in 2 days</span>
+                                        <span class="ni-time">3 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dd-foot">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar" style="background:var(--info)">MS</div>
+                            <div class="user-info">
+                                <div class="uname">Mariama Sesay</div>
+                                <div class="urole">Data Analyst</div>
+                            </div>
+                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                        </div>
+                        <div class="dropdown profile-dd" id="profileDropdown">
+                            <div class="dd-item pd-item">
+                                <span class="material-icons">person</span> My Profile
+                            </div>
+                            <a href="../../index.html" class="dd-item pd-item danger">
+                                <span class="material-icons">logout</span> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <div class="main-content">
+                <!-- KPI Row -->
+                <div class="kpi-grid">
+                    <div class="kpi">
+                        <div class="kpi-bar blue"></div>
+                        <div class="kpi-icon blue"><span class="material-icons">description</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Reports Generated</span>
+                            <span class="kpi-val">87</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 12 this month</span>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar green"></div>
+                        <div class="kpi-icon green"><span class="material-icons">dataset</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Datasets Available</span>
+                            <span class="kpi-val">156</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 8 new this week</span>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar purple"></div>
+                        <div class="kpi-icon purple"><span class="material-icons">query_stats</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Active Queries</span>
+                            <span class="kpi-val">12</span>
+                            <span class="kpi-trend up"><span class="material-icons">horizontal_rule</span> Steady</span>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar orange"></div>
+                        <div class="kpi-icon orange"><span class="material-icons">file_download</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Data Exports</span>
+                            <span class="kpi-val">340</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 45 this month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 1: Charts -->
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>Report Generation Trends</h3>
+                            <button class="btn-sm"><span class="material-icons">download</span> Export</button>
+                        </div>
+                        <div class="chart-wrap">
+                            <canvas id="reportTrendChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>Dataset Usage by Category</h3>
+                            <span class="view-all">View All</span>
+                        </div>
+                        <div class="chart-wrap">
+                            <canvas id="datasetChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Reports Table + Saved Queries -->
+                <div class="grid-2-1">
+                    <!-- Recent Reports -->
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>Recent Reports</h3>
+                            <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.add('show')">
+                                <span class="material-icons">add</span> New Report
+                            </button>
+                        </div>
+                        <div class="tbl-responsive">
+                            <table class="dt">
+                                <thead>
+                                    <tr>
+                                        <th>Report Name</th>
+                                        <th>Category</th>
+                                        <th>Created</th>
+                                        <th>Format</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Q2 Immunization Coverage</strong></td>
+                                        <td style="font-size:.72rem">Child Health</td>
+                                        <td style="font-size:.72rem;color:var(--text-muted)">Today, 1:30 PM</td>
+                                        <td><span class="badge-s info">PDF</span></td>
+                                        <td>
+                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Malaria Trend Analysis 2024-2026</strong></td>
+                                        <td style="font-size:.72rem">Disease Control</td>
+                                        <td style="font-size:.72rem;color:var(--text-muted)">Yesterday</td>
+                                        <td><span class="badge-s success">Excel</span></td>
+                                        <td>
+                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>District Performance Scorecard</strong></td>
+                                        <td style="font-size:.72rem">Administration</td>
+                                        <td style="font-size:.72rem;color:var(--text-muted)">Jul 14, 2026</td>
+                                        <td><span class="badge-s purple">Dashboard</span></td>
+                                        <td>
+                                            <button class="btn-sm" onclick="showToast('Opening dashboard...', 'info')"><span class="material-icons">open_in_new</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Facility Reporting Compliance</strong></td>
+                                        <td style="font-size:.72rem">Operations</td>
+                                        <td style="font-size:.72rem;color:var(--text-muted)">Jul 12, 2026</td>
+                                        <td><span class="badge-s info">PDF</span></td>
+                                        <td>
+                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Maternal Health Quarterly Summary</strong></td>
+                                        <td style="font-size:.72rem">Maternal Health</td>
+                                        <td style="font-size:.72rem;color:var(--text-muted)">Jul 10, 2026</td>
+                                        <td><span class="badge-s warning">CSV</span></td>
+                                        <td>
+                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Saved Queries -->
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>Saved Queries</h3>
+                            <span class="view-all">Manage</span>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-dot blue"></div>
+                                <div class="activity-text">
+                                    <strong>District Reporting Rate</strong>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT district, COUNT(*)...</span>
+                                    <span class="atime">Last run: 2 hours ago</span>
+                                    <div style="margin-top:4px">
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot green"></div>
+                                <div class="activity-text">
+                                    <strong>Immunization by Age Group</strong>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT age_group, vaccine_type...</span>
+                                    <span class="atime">Last run: Yesterday</span>
+                                    <div style="margin-top:4px">
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot purple"></div>
+                                <div class="activity-text">
+                                    <strong>Malaria Cases Trend</strong>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT month, SUM(cases)...</span>
+                                    <span class="atime">Last run: 3 days ago</span>
+                                    <div style="margin-top:4px">
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot orange"></div>
+                                <div class="activity-text">
+                                    <strong>Facility Coverage Gaps</strong>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT f.name, f.district...</span>
+                                    <span class="atime">Last run: 5 days ago</span>
+                                    <div style="margin-top:4px">
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: SQL Editor + Data Coverage -->
+                <div class="grid-2">
+                    <!-- SQL Query Editor -->
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>SQL Query Editor</h3>
+                            <div style="display:flex;gap:5px">
+                                <button class="btn-sm" onclick="showToast('Query saved!', 'success')"><span class="material-icons">bookmark</span> Save</button>
+                                <button class="btn-sm primary" onclick="showToast('Query executed! 1,245 rows returned.', 'success')"><span class="material-icons">play_arrow</span> Run</button>
+                            </div>
+                        </div>
+                        <textarea class="sql-area" placeholder="-- Write your SQL query here...
+SELECT 
+    d.district_name,
+    COUNT(f.facility_id) AS facility_count,
+    ROUND(AVG(f.reporting_rate), 2) AS avg_reporting_rate
+FROM districts d
+JOIN facilities f ON d.id = f.district_id
+GROUP BY d.district_name
+ORDER BY avg_reporting_rate DESC;">SELECT 
+    d.district_name,
+    COUNT(f.facility_id) AS facility_count,
+    ROUND(AVG(f.reporting_rate), 2) AS avg_reporting_rate
+FROM districts d
+JOIN facilities f ON d.id = f.district_id
+GROUP BY d.district_name
+ORDER BY avg_reporting_rate DESC;</textarea>
+                        <div style="margin-top:8px;font-size:.7rem;color:var(--text-muted);display:flex;justify-content:space-between">
+                            <span>Dataset: <strong>national_health_warehouse</strong></span>
+                            <span>Last result: 16 rows, 0.34s</span>
+                        </div>
+                    </div>
+
+                    <!-- District Data Coverage -->
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>District Data Coverage</h3>
+                            <button class="btn-sm"><span class="material-icons">download</span> Export</button>
+                        </div>
+                        <div class="tbl-responsive">
+                            <table class="dt">
+                                <thead>
+                                    <tr>
+                                        <th>District</th>
+                                        <th>Coverage</th>
+                                        <th>Records</th>
+                                        <th>Quality</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Western Area Urban</strong></td>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:6px">
+                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill green" style="width:98%"></div></div>
+                                                <span style="font-size:.65rem;font-weight:600">98%</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size:.72rem">284K</td>
+                                        <td><span class="badge-s success">High</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bo</strong></td>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:6px">
+                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill blue" style="width:91%"></div></div>
+                                                <span style="font-size:.65rem;font-weight:600">91%</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size:.72rem">198K</td>
+                                        <td><span class="badge-s success">High</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kenema</strong></td>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:6px">
+                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill blue" style="width:84%"></div></div>
+                                                <span style="font-size:.65rem;font-weight:600">84%</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size:.72rem">165K</td>
+                                        <td><span class="badge-s info">Good</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kailahun</strong></td>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:6px">
+                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill orange" style="width:67%"></div></div>
+                                                <span style="font-size:.65rem;font-weight:600">67%</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size:.72rem">102K</td>
+                                        <td><span class="badge-s warning">Fair</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pujehun</strong></td>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:6px">
+                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill red" style="width:48%"></div></div>
+                                                <span style="font-size:.65rem;font-weight:600">48%</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size:.72rem">58K</td>
+                                        <td><span class="badge-s danger">Low</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 4: Activity + Quick Actions -->
+                <div class="grid-2-1">
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>Recent Activity</h3>
+                            <span class="view-all">View All</span>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-dot green"></div>
+                                <div class="activity-text">
+                                    <span><strong>You</strong> generated <strong>Q2 Immunization Coverage</strong> report (PDF, 24 pages)</span>
+                                    <span class="atime">20 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot blue"></div>
+                                <div class="activity-text">
+                                    <span><strong>You</strong> ran query <strong>District Reporting Rate</strong> — 16 rows returned in 0.34s</span>
+                                    <span class="atime">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot purple"></div>
+                                <div class="activity-text">
+                                    <span><strong>New dataset</strong> available: <strong>Malaria Surveillance Q2 2026</strong> (145K records)</span>
+                                    <span class="atime">3 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot orange"></div>
+                                <div class="activity-text">
+                                    <span><strong>Dr. Mansaray</strong> requested a <strong>custom analysis</strong> of maternal health trends</span>
+                                    <span class="atime">Yesterday</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-dot green"></div>
+                                <div class="activity-text">
+                                    <span><strong>You</strong> exported <strong>district_comparison.csv</strong> — 1,245 rows, shared with team</span>
+                                    <span class="atime">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="qa-list">
+                            <button class="qa-btn" onclick="document.getElementById('reportModal').classList.add('show')">
+                                <span class="material-icons">note_add</span>
+                                Create New Report
+                            </button>
+                            <button class="qa-btn" onclick="showToast('Opening SQL editor...', 'info')">
+                                <span class="material-icons">code</span>
+                                New SQL Query
+                            </button>
+                            <button class="qa-btn" onclick="showToast('Opening dataset browser...', 'info')">
+                                <span class="material-icons">dataset</span>
+                                Browse Datasets
+                            </button>
+                            <button class="qa-btn" onclick="showToast('Opening export wizard...', 'info')">
+                                <span class="material-icons">file_download</span>
+                                Export Data
+                            </button>
+                            <button class="qa-btn" onclick="showToast('Opening visualization builder...', 'info')">
+                                <span class="material-icons">bar_chart</span>
+                                Create Visualization
+                            </button>
+                            <button class="qa-btn" onclick="showToast('Opening data requests...', 'info')">
+                                <span class="material-icons">inbox</span>
+                                Submit Data Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 5: System Status -->
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="si-info">
+                            <span class="si-name">Query Engine</span>
+                            <span class="si-desc">Avg response: 0.34s</span>
+                        </div>
+                        <span class="badge-s success">Fast</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="si-info">
+                            <span class="si-name">Data Warehouse</span>
+                            <span class="si-desc">2.4M records indexed</span>
+                        </div>
+                        <span class="badge-s success">Operational</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="si-info">
+                            <span class="si-name">Report Engine</span>
+                            <span class="si-desc">Queue: 1 report</span>
+                        </div>
+                        <span class="badge-s success">Ready</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="si-info">
+                            <span class="si-name">Export Service</span>
+                            <span class="si-desc">3 exports pending</span>
+                        </div>
+                        <span class="badge-s warning">Processing</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- New Report Modal -->
+    <div class="modal-bg" id="reportModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h4>Create New Report</h4>
+                <button class="icon-btn" onclick="document.getElementById('reportModal').classList.remove('show')">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg">
+                    <label>Report Title</label>
+                    <input type="text" placeholder="e.g., Q3 District Performance Summary">
+                </div>
+                <div class="fg">
+                    <label>Category</label>
+                    <select>
+                        <option value="">Select category...</option>
+                        <option>Child Health</option>
+                        <option>Maternal Health</option>
+                        <option>Disease Control</option>
+                        <option>Operations</option>
+                        <option>Administration</option>
+                        <option>Custom Analysis</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Data Source</label>
+                    <select>
+                        <option>National Health Warehouse</option>
+                        <option>DHIS2 — Live Data</option>
+                        <option>Malaria Surveillance DB</option>
+                        <option>Custom Query Result</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Output Format</label>
+                    <select>
+                        <option>PDF Report</option>
+                        <option>Excel Spreadsheet</option>
+                        <option>CSV Export</option>
+                        <option>Interactive Dashboard</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Date Range</label>
+                    <select>
+                        <option>Last 30 days</option>
+                        <option>Last Quarter</option>
+                        <option>Year to Date</option>
+                        <option>Custom Range</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
+                    <span class="material-icons">play_arrow</span> Generate Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+    <script>
+        function renderDashboardCharts() {
+            // Report Generation Trends
+            const ctx = document.getElementById('reportTrendChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Reports Generated',
+                            data: [12, 15, 11, 18, 14, 17],
+                            borderColor: '#0B5ED7',
+                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 2,
+                            pointRadius: 4,
+                        }, {
+                            label: 'Data Exports',
+                            data: [45, 52, 48, 60, 55, 68],
+                            borderColor: '#10b981',
+                            tension: 0.4,
+                            borderWidth: 2,
+                            pointRadius: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'top' } },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+
+            // Dataset Usage Doughnut
+            const ctx2 = document.getElementById('datasetChart');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Maternal Health', 'Immunization', 'Malaria', 'Facility Data', 'Census', 'Other'],
+                        datasets: [{
+                            data: [32, 24, 20, 12, 8, 4],
+                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
+                            borderWidth: 0,
+                            spacing: 3,
+                            borderRadius: 6,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '62%',
+                        plugins: {
+                            legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 } } }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

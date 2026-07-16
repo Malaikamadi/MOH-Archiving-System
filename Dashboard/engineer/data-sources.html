@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineer Dashboard | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="nhih-app">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo">
+                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
+                </div>
+                <div class="sidebar-brand">
+                    <h2>NHIH</h2>
+                    <span>Ministry of Health</span>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Main Menu</div>
+                <a href="index.html" class="nav-link">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="data-sources.html" class="nav-link active">
+                    <span class="material-icons">storage</span>
+                    <span>Data Sources</span>
+                </a>
+                <a href="data-warehouse.html" class="nav-link">
+                    <span class="material-icons">dns</span>
+                    <span>Data Warehouse</span>
+                </a>
+
+                <div class="sidebar-section">Engineering</div>
+                <a href="validation-rules.html" class="nav-link">
+                    <span class="material-icons">rule</span>
+                    <span>Validation Rules</span>
+                </a>
+                <a href="upload-dataset.html" class="nav-link">
+                    <span class="material-icons">upload_file</span>
+                    <span>Upload Dataset</span>
+                </a>
+                <a href="pipeline-monitor.html" class="nav-link">
+                    <span class="material-icons">monitoring</span>
+                    <span>Pipeline Monitor</span>
+                </a>
+                <a href="error-logs.html" class="nav-link">
+                    <span class="material-icons">error</span>
+                    <span>Error Logs</span>
+                    <span class="nav-badge">5</span>
+                </a>
+
+                <div class="sidebar-section">System</div>
+                <a href="system-logs.html" class="nav-link">
+                    <span class="material-icons">terminal</span>
+                    <span>System Logs</span>
+                </a>
+                <a href="configuration.html" class="nav-link">
+                    <span class="material-icons">settings</span>
+                    <span>Configuration</span>
+                </a>
+            </div>
+
+            <div class="sidebar-foot">
+                <div class="session-card">
+                    <div class="session-status">
+                        <span class="dot-online"></span>
+                        Active Session
+                    </div>
+                    <div class="session-time">Last login: Today, 09:15 AM</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-wrap">
+            <!-- HEADER -->
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div>
+                        <h1 class="page-title">Data Sources</h1>
+                        <p class="welcome-sub">Page under construction</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search datasets, rules, logs...">
+                        <kbd>Ctrl+K</kbd>
+                    </div>
+
+                    <button class="icon-btn" id="themeToggle">
+                        <span class="material-icons">dark_mode</span>
+                    </button>
+
+                    <div class="notif-wrap">
+                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
+                            <span class="material-icons">notifications</span>
+                            <span class="hdr-badge">5</span>
+                        </button>
+                        <div class="dropdown notif-dd" id="notifDropdown">
+                            <div class="dd-head">
+                                <h4>Notifications</h4>
+                                <button>Mark all read</button>
+                            </div>
+                            <div class="dd-body">
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--danger-light);color:var(--danger)">
+                                        <span class="material-icons">error</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Pipeline Failed: DHIS2 Sync</span>
+                                        <span class="ni-desc">Connection timeout after 30s retry</span>
+                                        <span class="ni-time">15 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--warning-light);color:var(--warning)">
+                                        <span class="material-icons">warning</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Validation Warning</span>
+                                        <span class="ni-desc">234 records failed quality check</span>
+                                        <span class="ni-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="dd-item">
+                                    <div class="ni-icon" style="background:var(--success-light);color:var(--success)">
+                                        <span class="material-icons">check_circle</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">ETL Job Completed</span>
+                                        <span class="ni-desc">Maternal health dataset loaded (12,450 rows)</span>
+                                        <span class="ni-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dd-foot">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar" style="background:var(--purple)">AK</div>
+                            <div class="user-info">
+                                <div class="uname">Alhaji Koroma</div>
+                                <div class="urole">Data Engineer</div>
+                            </div>
+                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                        </div>
+                        <div class="dropdown profile-dd" id="profileDropdown">
+                            <div class="dd-item pd-item">
+                                <span class="material-icons">person</span> My Profile
+                            </div>
+                            <a href="../../index.html" class="dd-item pd-item danger">
+                                <span class="material-icons">logout</span> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <div class="main-content">
+                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
+                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
+                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
+                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Data Sources</strong> module is currently being built. Please check back later.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Pipeline Modal -->
+    <div class="modal-bg" id="pipelineModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h4>Create New Pipeline</h4>
+                <button class="icon-btn" onclick="document.getElementById('pipelineModal').classList.remove('show')">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg">
+                    <label>Pipeline Name</label>
+                    <input type="text" placeholder="e.g., District_Reports_ETL">
+                </div>
+                <div class="fg">
+                    <label>Source Type</label>
+                    <select>
+                        <option value="">Select source...</option>
+                        <option>REST API</option>
+                        <option>PostgreSQL Database</option>
+                        <option>CSV / File Upload</option>
+                        <option>FTP Server</option>
+                        <option>DHIS2 Instance</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Destination</label>
+                    <select>
+                        <option>Data Warehouse (Primary)</option>
+                        <option>Staging Area</option>
+                        <option>Archive Storage</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Schedule</label>
+                    <select>
+                        <option>Every 15 minutes</option>
+                        <option>Every 30 minutes</option>
+                        <option>Hourly</option>
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>On Demand</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Enable Validation Rules</label>
+                    <select>
+                        <option>Yes — Standard Rules</option>
+                        <option>Yes — Strict Rules</option>
+                        <option>No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('pipelineModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary" onclick="document.getElementById('pipelineModal').classList.remove('show'); showToast('Pipeline created successfully!', 'success')">
+                    <span class="material-icons">play_arrow</span> Create & Run
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+    <script>
+        function renderDashboardCharts() {
+            // Pipeline Performance Line Chart
+            const ctx = document.getElementById('pipelineChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Successful Jobs',
+                            data: [142, 156, 148, 165, 170, 98, 85],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 2,
+                        }, {
+                            label: 'Failed Jobs',
+                            data: [3, 1, 5, 2, 1, 0, 1],
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 2,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'top' } },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+
+            // Data Ingestion Bar Chart
+            const ctx2 = document.getElementById('ingestionChart');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: ['DHIS2', 'MFL', 'NMCP', 'OpenLMIS', 'Stats SL', 'CSV Uploads'],
+                        datasets: [{
+                            label: 'Records (thousands)',
+                            data: [450, 48, 0, 125, 82, 35],
+                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
+                            borderRadius: 6,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

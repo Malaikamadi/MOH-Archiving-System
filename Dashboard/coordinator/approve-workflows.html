@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinator Dashboard | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="nhih-app">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo">
+                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
+                </div>
+                <div class="sidebar-brand">
+                    <h2>NHIH</h2>
+                    <span>Ministry of Health</span>
+                </div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Main Menu</div>
+                <a href="index.html" class="nav-link">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="team-management.html" class="nav-link">
+                    <span class="material-icons">groups</span>
+                    <span>Team Management</span>
+                </a>
+
+                <div class="sidebar-section">Coordination</div>
+                <a href="assign-tasks.html" class="nav-link">
+                    <span class="material-icons">assignment_ind</span>
+                    <span>Assign Tasks</span>
+                </a>
+                <a href="approve-workflows.html" class="nav-link active">
+                    <span class="material-icons">checklist_rtl</span>
+                    <span>Approve Workflows</span>
+                    <span class="nav-badge">12</span>
+                </a>
+                <a href="project-tracking.html" class="nav-link">
+                    <span class="material-icons">track_changes</span>
+                    <span>Project Tracking</span>
+                </a>
+                <a href="meeting-scheduler.html" class="nav-link">
+                    <span class="material-icons">event</span>
+                    <span>Meeting Scheduler</span>
+                </a>
+
+                <div class="sidebar-section">System</div>
+                <a href="requests.html" class="nav-link">
+                    <span class="material-icons">inbox</span>
+                    <span>Requests</span>
+                </a>
+                <a href="reports.html" class="nav-link">
+                    <span class="material-icons">description</span>
+                    <span>Reports</span>
+                </a>
+                <a href="user-management.html" class="nav-link">
+                    <span class="material-icons">manage_accounts</span>
+                    <span>User Management</span>
+                </a>
+            </div>
+
+            <div class="sidebar-foot">
+                <div class="session-card">
+                    <div class="session-status">
+                        <span class="dot-online"></span>
+                        Active Session
+                    </div>
+                    <div class="session-time">Last login: Today, 09:15 AM</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-wrap">
+            <!-- HEADER -->
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div>
+                        <h1 class="page-title">Approve Workflows</h1>
+                        <p class="welcome-sub">Page under construction</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search tasks, teams, projects...">
+                        <kbd>Ctrl+K</kbd>
+                    </div>
+
+                    <button class="icon-btn" id="themeToggle">
+                        <span class="material-icons">dark_mode</span>
+                    </button>
+
+                    <div class="notif-wrap">
+                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
+                            <span class="material-icons">notifications</span>
+                            <span class="hdr-badge">4</span>
+                        </button>
+                        <!-- Notif Dropdown -->
+                        <div class="dropdown notif-dd" id="notifDropdown">
+                            <div class="dd-head">
+                                <h4>Notifications</h4>
+                                <button>Mark all read</button>
+                            </div>
+                            <div class="dd-body">
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--warning-light);color:var(--warning)">
+                                        <span class="material-icons">schedule</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Task Overdue</span>
+                                        <span class="ni-desc">Q3 Reporting is past deadline.</span>
+                                        <span class="ni-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dd-foot">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar" style="background:var(--purple)">SM</div>
+                            <div class="user-info">
+                                <div class="uname">Dr. Mansaray</div>
+                                <div class="urole">Coordinator</div>
+                            </div>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                        </div>
+                        <div class="dropdown profile-dd" id="profileDropdown">
+                            <div class="dd-item pd-item">
+                                <span class="material-icons">person</span> My Profile
+                            </div>
+                            <a href="../../index.html" class="dd-item pd-item danger">
+                                <span class="material-icons">logout</span> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <div class="main-content">
+                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
+                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
+                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
+                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Approve Workflows</strong> module is currently being built. Please check back later.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Task Assignment Modal -->
+    <div class="modal-bg" id="assignModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h4>Assign New Task</h4>
+                <button class="icon-btn" onclick="document.getElementById('assignModal').classList.remove('show')">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg">
+                    <label>Task Title</label>
+                    <input type="text" placeholder="Enter task name...">
+                </div>
+                <div class="fg">
+                    <label>Assign To</label>
+                    <select>
+                        <option value="">Select team member...</option>
+                        <option>Aminata Kamara — Data Analyst</option>
+                        <option>Mohamed Jalloh — Data Engineer</option>
+                        <option>Fatmata Koroma — Program Officer</option>
+                        <option>Ibrahim Sesay — QA Lead</option>
+                        <option>Hawa Bangura — Field Coordinator</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Priority</label>
+                    <select>
+                        <option>Medium</option>
+                        <option>Low</option>
+                        <option>High</option>
+                        <option>Critical</option>
+                    </select>
+                </div>
+                <div class="fg">
+                    <label>Due Date</label>
+                    <input type="date">
+                </div>
+                <div class="fg">
+                    <label>Project</label>
+                    <select>
+                        <option value="">Select project...</option>
+                        <option>Malaria Data Integration</option>
+                        <option>National Census Prep</option>
+                        <option>Q2 KPI Reporting</option>
+                        <option>Maternal Health Dashboard</option>
+                        <option>District Data Cleanup</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('assignModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary" onclick="document.getElementById('assignModal').classList.remove('show'); showToast('Task assigned successfully!', 'success')">
+                    <span class="material-icons">send</span> Assign Task
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+    <script>
+        function renderDashboardCharts() {
+            // Workflow Status Chart (Stacked Bar)
+            const ctx = document.getElementById('workflowChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Data Eng', 'Analytics', 'Operations', 'Programs', 'Quality'],
+                        datasets: [{
+                            label: 'Completed',
+                            data: [45, 62, 38, 75, 50],
+                            backgroundColor: '#0B5ED7',
+                            borderRadius: 4,
+                        }, {
+                            label: 'In Progress',
+                            data: [8, 5, 12, 6, 8],
+                            backgroundColor: '#8b5cf6',
+                            borderRadius: 4,
+                        }, {
+                            label: 'Pending',
+                            data: [4, 3, 13, 4, 7],
+                            backgroundColor: '#f59e0b',
+                            borderRadius: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'top' } },
+                        scales: {
+                            x: { stacked: true },
+                            y: { stacked: true, beginAtZero: true }
+                        }
+                    }
+                });
+            }
+
+            // Task Completion Doughnut
+            const ctx2 = document.getElementById('taskDoughnutChart');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Completed', 'In Progress', 'Pending', 'Overdue'],
+                        datasets: [{
+                            data: [128, 42, 18, 7],
+                            backgroundColor: ['#10b981', '#0B5ED7', '#f59e0b', '#ef4444'],
+                            borderWidth: 0,
+                            spacing: 3,
+                            borderRadius: 6,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                            legend: { position: 'bottom', labels: { padding: 16 } }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
