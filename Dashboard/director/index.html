@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Director Dashboard | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="nhih-app">
+        <!-- Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo">
+                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
+                </div>
+                <div class="sidebar-brand">
+                    <h2>NHIH</h2>
+                    <span>Ministry of Health</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Strategy & Governance</div>
+                <a href="#" class="nav-link active">
+                    <span class="material-icons">dashboard</span>
+                    <span>Executive Dashboard</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">query_stats</span>
+                    <span>National KPIs</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">fact_check</span>
+                    <span>Approve Projects</span>
+                    <span class="nav-badge">3</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">rule_folder</span>
+                    <span>Approve Data Requests</span>
+                    <span class="nav-badge">5</span>
+                </a>
+                
+                <div class="sidebar-section">Insights</div>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">analytics</span>
+                    <span>Strategic Analytics</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">monitor_heart</span>
+                    <span>Health Indicators</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">map</span>
+                    <span>View National Map</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">warning</span>
+                    <span>Risk Dashboard</span>
+                </a>
+
+                <div class="sidebar-section">Administration</div>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">summarize</span>
+                    <span>Review Reports</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">admin_panel_settings</span>
+                    <span>Audit Logs</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <span class="material-icons">group</span>
+                    <span>User Overview</span>
+                </a>
+            </div>
+
+            <div class="sidebar-foot">
+                <div class="session-card">
+                    <div class="session-status">
+                        <span class="dot-online"></span>
+                        Active Session
+                    </div>
+                    <div class="session-time">Last login: Today, 08:45 AM</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-wrap">
+            <!-- HEADER -->
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div>
+                        <h1 class="page-title">Executive Dashboard</h1>
+                        <p class="welcome-sub">Welcome back, Hon. Minister</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search datasets, dashboards, reports...">
+                        <kbd>Ctrl+K</kbd>
+                    </div>
+
+                    <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                        <span class="material-icons">dark_mode</span>
+                    </button>
+
+                    <div class="notif-wrap">
+                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
+                            <span class="material-icons">notifications</span>
+                            <span class="hdr-badge">7</span>
+                        </button>
+                        <!-- Notif Dropdown -->
+                        <div class="dropdown notif-dd" id="notifDropdown">
+                            <div class="dd-head">
+                                <h4>Notifications</h4>
+                                <button>Mark all read</button>
+                            </div>
+                            <div class="dd-body">
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--danger-light);color:var(--danger)">
+                                        <span class="material-icons">priority_high</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Critical Alert: Server Load</span>
+                                        <span class="ni-desc">Data warehouse experiencing high load</span>
+                                        <span class="ni-time">10 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--success-light);color:var(--success)">
+                                        <span class="material-icons">task_alt</span>
+                                    </div>
+                                    <div class="ni-text">
+                                        <span class="ni-title">Project Approved</span>
+                                        <span class="ni-desc">Maternal Health Expansion approved</span>
+                                        <span class="ni-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dd-foot">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar">HM</div>
+                            <div class="user-info">
+                                <div class="uname">Hon. Minister</div>
+                                <div class="urole">Director</div>
+                            </div>
+                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                        </div>
+                        <!-- Profile Dropdown -->
+                        <div class="dropdown profile-dd" id="profileDropdown">
+                            <div class="dd-item pd-item">
+                                <span class="material-icons">person</span> My Profile
+                            </div>
+                            <div class="dd-item pd-item">
+                                <span class="material-icons">settings</span> Settings
+                            </div>
+                            <a href="../../index.html" class="dd-item pd-item danger">
+                                <span class="material-icons">logout</span> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <div class="main-content">
+                <!-- KPI Row -->
+                <div class="kpi-grid">
+                    <div class="kpi">
+                        <div class="kpi-bar blue"></div>
+                        <div class="kpi-icon blue"><span class="material-icons">dataset</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Active Programs</span>
+                            <span class="kpi-val">156</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 18% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar green"></div>
+                        <div class="kpi-icon green"><span class="material-icons">local_hospital</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Total Facilities</span>
+                            <span class="kpi-val">1,248</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 12% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar purple"></div>
+                        <div class="kpi-icon purple"><span class="material-icons">verified_user</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Data Quality Score</span>
+                            <span class="kpi-val">92%</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 7% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar orange"></div>
+                        <div class="kpi-icon orange"><span class="material-icons">groups</span></div>
+                        <div class="kpi-data">
+                            <span class="kpi-label">Total Users</span>
+                            <span class="kpi-val">8,450</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 15% vs last month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Layout -->
+                <div class="grid-2-1">
+                    <!-- Left Col -->
+                    <div style="display:flex; flex-direction:column; gap:1.25rem;">
+                        <div class="card">
+                            <div class="card-head">
+                                <h3>National Health KPIs</h3>
+                                <button class="btn-sm"><span class="material-icons">download</span> Export</button>
+                            </div>
+                            <div class="chart-wrap">
+                                <canvas id="kpiChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-head">
+                                <h3>Maternal & Child Health Indicators</h3>
+                                <span class="view-all">View Full Report</span>
+                            </div>
+                            <div class="tbl-responsive">
+                                <table class="dt">
+                                    <thead>
+                                        <tr>
+                                            <th>Indicator</th>
+                                            <th>Target (2026)</th>
+                                            <th>Current</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Skilled Birth Attendance</td>
+                                            <td>90%</td>
+                                            <td>85%</td>
+                                            <td><span class="badge-s warning">On Track</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Infant Immunization Rate</td>
+                                            <td>95%</td>
+                                            <td>96%</td>
+                                            <td><span class="badge-s success">Achieved</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Malaria Incidence Rate (under 5)</td>
+                                            <td>< 10%</td>
+                                            <td>14%</td>
+                                            <td><span class="badge-s danger">Needs Attention</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Col -->
+                    <div style="display:flex; flex-direction:column; gap:1.25rem;">
+                        <div class="card">
+                            <div class="card-head">
+                                <h3>Pending Approvals</h3>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-dot orange"></div>
+                                    <div class="activity-text">
+                                        <strong>Data Request: WHO Census</strong>
+                                        <span>Requested by: Data Analysis Team</span>
+                                        <div style="margin-top:8px; display:flex; gap:5px">
+                                            <button class="btn-sm primary" onclick="showToast('Approved', 'success')">Approve</button>
+                                            <button class="btn-sm" onclick="showToast('Rejected', 'error')">Reject</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot orange"></div>
+                                    <div class="activity-text">
+                                        <strong>Project: Rural Clinic Digitization</strong>
+                                        <span>Budget: $2.5M | Timeline: 18 months</span>
+                                        <div style="margin-top:8px; display:flex; gap:5px">
+                                            <button class="btn-sm primary" onclick="showToast('Approved', 'success')">Approve</button>
+                                            <button class="btn-sm">Review</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-head">
+                                <h3>System Performance</h3>
+                            </div>
+                            <div class="qa-list">
+                                <div style="margin-bottom:10px">
+                                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:4px; font-weight:600">
+                                        <span>Server Uptime</span>
+                                        <span class="ok">99.98%</span>
+                                    </div>
+                                    <div class="prog-wrap"><div class="prog-fill green" style="width: 99%"></div></div>
+                                </div>
+                                <div style="margin-bottom:10px">
+                                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:4px; font-weight:600">
+                                        <span>API Latency</span>
+                                        <span class="warn">240ms</span>
+                                    </div>
+                                    <div class="prog-wrap"><div class="prog-fill orange" style="width: 60%"></div></div>
+                                </div>
+                                <div>
+                                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; margin-bottom:4px; font-weight:600">
+                                        <span>Database Load</span>
+                                        <span class="ok">42%</span>
+                                    </div>
+                                    <div class="prog-wrap"><div class="prog-fill blue" style="width: 42%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+    <script>
+        function renderDashboardCharts() {
+            const ctx = document.getElementById('kpiChart');
+            if(!ctx) return;
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Facility Reporting Rate (%)',
+                        data: [78, 82, 80, 85, 88, 91],
+                        borderColor: '#0B5ED7',
+                        backgroundColor: 'rgba(11, 94, 215, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }, {
+                        label: 'Data Quality Index',
+                        data: [85, 86, 88, 87, 90, 92],
+                        borderColor: '#10b981',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'top' } },
+                    scales: { y: { beginAtZero: false, min: 60 } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
