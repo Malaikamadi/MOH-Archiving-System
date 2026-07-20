@@ -94,7 +94,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Approve Workflows</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Review and approve pending workflow requests</p>
                     </div>
                 </div>
 
@@ -162,10 +162,65 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Approve Workflows</strong> module is currently being built. Please check back later.</p>
+                <div class="card">
+                    <div class="card-head">
+                        <h3 class="card-title">Pending Approvals</h3>
+                        <div class="card-actions">
+                            <select style="padding:0.5rem;border:1px solid var(--border);border-radius:4px;background:var(--bg-card);color:var(--text-main);">
+                                <option>All Types</option>
+                                <option>Data Requests</option>
+                                <option>Budget</option>
+                                <option>Leave</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Request</th>
+                                        <th>Submitted By</th>
+                                        <th>Type</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Budget Increase — Malaria Program</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Additional SLL 45M for ITN distribution</span></td>
+                                        <td>Hawa B.</td>
+                                        <td><span class="badge badge-warning">Budget</span></td>
+                                        <td style="color:var(--text-muted)">Today</td>
+                                        <td>
+                                            <button class="btn-sm primary"><span class="material-icons">check</span></button>
+                                            <button class="btn-sm" style="color:var(--danger)"><span class="material-icons">close</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Data Access — WHO Liaison</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Read access to immunization dataset</span></td>
+                                        <td>Dr. Smith</td>
+                                        <td><span class="badge badge-info">Data Request</span></td>
+                                        <td style="color:var(--text-muted)">Yesterday</td>
+                                        <td>
+                                            <button class="btn-sm primary"><span class="material-icons">check</span></button>
+                                            <button class="btn-sm" style="color:var(--danger)"><span class="material-icons">close</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Leave Request — Fatmata Koroma</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Annual leave Aug 1–15</span></td>
+                                        <td>Fatmata K.</td>
+                                        <td><span class="badge badge-success">Leave</span></td>
+                                        <td style="color:var(--text-muted)">2 days ago</td>
+                                        <td>
+                                            <button class="btn-sm primary"><span class="material-icons">check</span></button>
+                                            <button class="btn-sm" style="color:var(--danger)"><span class="material-icons">close</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

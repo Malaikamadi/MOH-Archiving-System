@@ -94,7 +94,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Project Tracking</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Monitor milestones and deliverables across all active projects</p>
                     </div>
                 </div>
 
@@ -162,10 +162,58 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Project Tracking</strong> module is currently being built. Please check back later.</p>
+                <div class="card">
+                    <div class="card-head">
+                        <h3 class="card-title">Active Projects</h3>
+                        <div class="card-actions">
+                            <button class="btn-sm primary"><span class="material-icons">add</span> New Project</button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Project Name</th>
+                                        <th>Lead</th>
+                                        <th>Progress</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>DHIS2 Data Migration</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Phase 2 — District-level historical data</span></td>
+                                        <td>Mohamed J.</td>
+                                        <td><div style="background:var(--bg-input);border-radius:4px;height:8px;width:120px;"><div style="background:var(--success);border-radius:4px;height:100%;width:85%;"></div></div><span style="font-size:0.8rem;color:var(--text-muted)">85%</span></td>
+                                        <td style="color:var(--text-muted)">Aug 15, 2026</td>
+                                        <td><span class="badge badge-success">On Track</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>National Facility Registry</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Verification of 1,432 facilities</span></td>
+                                        <td>Fatmata K.</td>
+                                        <td><div style="background:var(--bg-input);border-radius:4px;height:8px;width:120px;"><div style="background:var(--warning);border-radius:4px;height:100%;width:52%;"></div></div><span style="font-size:0.8rem;color:var(--text-muted)">52%</span></td>
+                                        <td style="color:var(--text-muted)">Sep 30, 2026</td>
+                                        <td><span class="badge badge-warning">At Risk</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Malaria Surveillance Dashboard</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Real-time district-level RDT tracking</span></td>
+                                        <td>Aminata K.</td>
+                                        <td><div style="background:var(--bg-input);border-radius:4px;height:8px;width:120px;"><div style="background:var(--primary);border-radius:4px;height:100%;width:30%;"></div></div><span style="font-size:0.8rem;color:var(--text-muted)">30%</span></td>
+                                        <td style="color:var(--text-muted)">Dec 01, 2026</td>
+                                        <td><span class="badge badge-info">In Progress</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Staff Capacity Assessment</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Skills gap analysis for data teams</span></td>
+                                        <td>Ibrahim S.</td>
+                                        <td><div style="background:var(--bg-input);border-radius:4px;height:8px;width:120px;"><div style="background:var(--danger);border-radius:4px;height:100%;width:10%;"></div></div><span style="font-size:0.8rem;color:var(--text-muted)">10%</span></td>
+                                        <td style="color:var(--text-muted)">Jul 31, 2026</td>
+                                        <td><span class="badge badge-danger">Overdue</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -233,67 +281,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Workflow Status Chart (Stacked Bar)
-            const ctx = document.getElementById('workflowChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Data Eng', 'Analytics', 'Operations', 'Programs', 'Quality'],
-                        datasets: [{
-                            label: 'Completed',
-                            data: [45, 62, 38, 75, 50],
-                            backgroundColor: '#0B5ED7',
-                            borderRadius: 4,
-                        }, {
-                            label: 'In Progress',
-                            data: [8, 5, 12, 6, 8],
-                            backgroundColor: '#8b5cf6',
-                            borderRadius: 4,
-                        }, {
-                            label: 'Pending',
-                            data: [4, 3, 13, 4, 7],
-                            backgroundColor: '#f59e0b',
-                            borderRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: {
-                            x: { stacked: true },
-                            y: { stacked: true, beginAtZero: true }
-                        }
-                    }
-                });
-            }
-
-            // Task Completion Doughnut
-            const ctx2 = document.getElementById('taskDoughnutChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Completed', 'In Progress', 'Pending', 'Overdue'],
-                        datasets: [{
-                            data: [128, 42, 18, 7],
-                            backgroundColor: ['#10b981', '#0B5ED7', '#f59e0b', '#ef4444'],
-                            borderWidth: 0,
-                            spacing: 3,
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '65%',
-                        plugins: {
-                            legend: { position: 'bottom', labels: { padding: 16 } }
-                        }
-                    }
-                });
-            }
+            // No charts on this page
         }
     </script>
 </body>
