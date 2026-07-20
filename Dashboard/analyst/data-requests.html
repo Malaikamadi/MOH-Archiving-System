@@ -97,7 +97,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Data Requests</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Manage inbound data requests from partners and departments</p>
                     </div>
                 </div>
 
@@ -183,10 +183,67 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Data Requests</strong> module is currently being built. Please check back later.</p>
+                <div class="card">
+                    <div class="card-head">
+                        <div style="display: flex; gap: 1rem; flex: 1; align-items: center;">
+                            <input type="text" placeholder="Search requests..." style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                            <select style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                                <option value="">Status: All</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="fulfilled">Fulfilled</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>Requester</th>
+                                        <th>Description</th>
+                                        <th>Date Submitted</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>REQ-2023-104</strong></td>
+                                        <td>WHO Country Office<br><span style="font-size:0.8rem;color:var(--text-muted)">Dr. Smith</span></td>
+                                        <td>Weekly cholera surveillance data for Northern Province.</td>
+                                        <td style="color:var(--text-muted);">Today, 08:00 AM</td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                        <td>
+                                            <button class="btn-sm primary">Review</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>REQ-2023-103</strong></td>
+                                        <td>Dept of Planning<br><span style="font-size:0.8rem;color:var(--text-muted)">A. Kamara</span></td>
+                                        <td>Quarterly facility utilization rates by district.</td>
+                                        <td style="color:var(--text-muted);">Yesterday</td>
+                                        <td><span class="badge badge-info">Approved</span></td>
+                                        <td>
+                                            <button class="btn-sm">Fulfill</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>REQ-2023-102</strong></td>
+                                        <td>UNICEF<br><span style="font-size:0.8rem;color:var(--text-muted)">M. Diallo</span></td>
+                                        <td>Child immunization coverage (BCG, Penta3).</td>
+                                        <td style="color:var(--text-muted);">Oct 20, 2023</td>
+                                        <td><span class="badge badge-success">Fulfilled</span></td>
+                                        <td>
+                                            <button class="btn-sm" disabled>Done</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -258,65 +315,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Report Generation Trends
-            const ctx = document.getElementById('reportTrendChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [{
-                            label: 'Reports Generated',
-                            data: [12, 15, 11, 18, 14, 17],
-                            borderColor: '#0B5ED7',
-                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Data Exports',
-                            data: [45, 52, 48, 60, 55, 68],
-                            borderColor: '#10b981',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Dataset Usage Doughnut
-            const ctx2 = document.getElementById('datasetChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Maternal Health', 'Immunization', 'Malaria', 'Facility Data', 'Census', 'Other'],
-                        datasets: [{
-                            data: [32, 24, 20, 12, 8, 4],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderWidth: 0,
-                            spacing: 3,
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '62%',
-                        plugins: {
-                            legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 } } }
-                        }
-                    }
-                });
-            }
+            // No charts needed on this page
         }
     </script>
 </body>

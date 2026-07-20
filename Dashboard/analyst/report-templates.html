@@ -97,7 +97,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Report Templates</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Standardized templates for common analytical reports</p>
                     </div>
                 </div>
 
@@ -183,10 +183,62 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Report Templates</strong> module is currently being built. Please check back later.</p>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 class="card-title">Monthly District Performance</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Comprehensive summary of health facility performance metrics aggregated by district.</p>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                                <span class="badge badge-info">Operations</span>
+                                <span class="badge badge-warning">Monthly</span>
+                            </div>
+                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 class="card-title">Maternal Health Overview</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Key maternal health indicators including ANC visits, institutional deliveries, and MMR.</p>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                                <span class="badge badge-success">Maternal Health</span>
+                                <span class="badge badge-warning">Quarterly</span>
+                            </div>
+                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 class="card-title">Disease Outbreak Alert</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Rapid reporting template for suspected outbreaks of cholera, measles, or polio.</p>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                                <span class="badge badge-danger">Disease Control</span>
+                                <span class="badge badge-danger">Ad-hoc</span>
+                            </div>
+                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 class="card-title">Immunization Campaign</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Coverage statistics for national immunization days targeting children under 5.</p>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                                <span class="badge badge-info">Child Health</span>
+                                <span class="badge badge-warning">Campaign</span>
+                            </div>
+                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -258,65 +310,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Report Generation Trends
-            const ctx = document.getElementById('reportTrendChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [{
-                            label: 'Reports Generated',
-                            data: [12, 15, 11, 18, 14, 17],
-                            borderColor: '#0B5ED7',
-                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Data Exports',
-                            data: [45, 52, 48, 60, 55, 68],
-                            borderColor: '#10b981',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Dataset Usage Doughnut
-            const ctx2 = document.getElementById('datasetChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Maternal Health', 'Immunization', 'Malaria', 'Facility Data', 'Census', 'Other'],
-                        datasets: [{
-                            data: [32, 24, 20, 12, 8, 4],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderWidth: 0,
-                            spacing: 3,
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '62%',
-                        plugins: {
-                            legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 } } }
-                        }
-                    }
-                });
-            }
+            // No charts needed on this page
         }
     </script>
 </body>

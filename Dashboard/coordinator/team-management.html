@@ -94,7 +94,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Team Management</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Manage roles and responsibilities for your unit</p>
                     </div>
                 </div>
 
@@ -162,10 +162,83 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Team Management</strong> module is currently being built. Please check back later.</p>
+                <div class="card">
+                    <div class="card-head">
+                        <div style="display: flex; gap: 1rem; flex: 1; align-items: center;">
+                            <input type="text" placeholder="Search team members..." style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-sm primary"><span class="material-icons">person_add</span> Add Member</button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <div class="avatar" style="background: var(--info);">AK</div>
+                                                <div>
+                                                    <strong>Aminata Kamara</strong><br>
+                                                    <span style="font-size: 0.8rem; color: var(--text-muted);">akamara@nhih.gov.sl</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Data Analyst</td>
+                                        <td>Analytics Unit</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <div class="avatar" style="background: var(--purple);">MJ</div>
+                                                <div>
+                                                    <strong>Mohamed Jalloh</strong><br>
+                                                    <span style="font-size: 0.8rem; color: var(--text-muted);">mjalloh@nhih.gov.sl</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Data Engineer</td>
+                                        <td>Engineering Unit</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                <div class="avatar" style="background: var(--warning);">FK</div>
+                                                <div>
+                                                    <strong>Fatmata Koroma</strong><br>
+                                                    <span style="font-size: 0.8rem; color: var(--text-muted);">fkoroma@nhih.gov.sl</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Program Officer</td>
+                                        <td>Operations</td>
+                                        <td><span class="badge badge-warning">On Leave</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -233,67 +306,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Workflow Status Chart (Stacked Bar)
-            const ctx = document.getElementById('workflowChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Data Eng', 'Analytics', 'Operations', 'Programs', 'Quality'],
-                        datasets: [{
-                            label: 'Completed',
-                            data: [45, 62, 38, 75, 50],
-                            backgroundColor: '#0B5ED7',
-                            borderRadius: 4,
-                        }, {
-                            label: 'In Progress',
-                            data: [8, 5, 12, 6, 8],
-                            backgroundColor: '#8b5cf6',
-                            borderRadius: 4,
-                        }, {
-                            label: 'Pending',
-                            data: [4, 3, 13, 4, 7],
-                            backgroundColor: '#f59e0b',
-                            borderRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: {
-                            x: { stacked: true },
-                            y: { stacked: true, beginAtZero: true }
-                        }
-                    }
-                });
-            }
-
-            // Task Completion Doughnut
-            const ctx2 = document.getElementById('taskDoughnutChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Completed', 'In Progress', 'Pending', 'Overdue'],
-                        datasets: [{
-                            data: [128, 42, 18, 7],
-                            backgroundColor: ['#10b981', '#0B5ED7', '#f59e0b', '#ef4444'],
-                            borderWidth: 0,
-                            spacing: 3,
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '65%',
-                        plugins: {
-                            legend: { position: 'bottom', labels: { padding: 16 } }
-                        }
-                    }
-                });
-            }
+            // No charts on this page
         }
     </script>
 </body>
