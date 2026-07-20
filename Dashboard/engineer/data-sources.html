@@ -92,7 +92,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Data Sources</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Manage connections to external systems and APIs</p>
                     </div>
                 </div>
 
@@ -178,10 +178,86 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Data Sources</strong> module is currently being built. Please check back later.</p>
+                <div class="dashboard-grid">
+                    <div class="card col-span-2" style="background: transparent; box-shadow: none; border: none; padding: 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: center;">
+                            <h3 style="color: var(--text-main); margin: 0;">Active Connections (6)</h3>
+                            <button class="btn-sm primary"><span class="material-icons">add_link</span> New Data Source</button>
+                        </div>
+                        <div class="stats-grid">
+                            <!-- Source 1 -->
+                            <div class="card" style="padding: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <div class="avatar" style="background: #0B5ED7; font-size: 1.2rem;">D2</div>
+                                    <span class="badge badge-success">Connected</span>
+                                </div>
+                                <h3 style="margin: 0 0 0.5rem; color: var(--text-main);">DHIS2 HMIS</h3>
+                                <p style="margin: 0 0 1rem; color: var(--text-muted); font-size: 0.9rem;">REST API Integration</p>
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                                    <div><strong>Last Sync:</strong> 10 mins ago</div>
+                                    <div><strong>Volume:</strong> ~15K records/day</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn-sm" style="flex:1;">Sync Now</button>
+                                    <button class="icon-btn"><span class="material-icons">settings</span></button>
+                                </div>
+                            </div>
+                            
+                            <!-- Source 2 -->
+                            <div class="card" style="padding: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <div class="avatar" style="background: #10b981; font-size: 1.2rem;">MFL</div>
+                                    <span class="badge badge-success">Connected</span>
+                                </div>
+                                <h3 style="margin: 0 0 0.5rem; color: var(--text-main);">National MFL</h3>
+                                <p style="margin: 0 0 1rem; color: var(--text-muted); font-size: 0.9rem;">PostgreSQL Direct</p>
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                                    <div><strong>Last Sync:</strong> 1 hour ago</div>
+                                    <div><strong>Volume:</strong> ~200 records/day</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn-sm" style="flex:1;">Sync Now</button>
+                                    <button class="icon-btn"><span class="material-icons">settings</span></button>
+                                </div>
+                            </div>
+                            
+                            <!-- Source 3 -->
+                            <div class="card" style="padding: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <div class="avatar" style="background: #f59e0b; font-size: 1.2rem;">LM</div>
+                                    <span class="badge badge-danger">Offline</span>
+                                </div>
+                                <h3 style="margin: 0 0 0.5rem; color: var(--text-main);">OpenLMIS</h3>
+                                <p style="margin: 0 0 1rem; color: var(--text-muted); font-size: 0.9rem;">SOAP API</p>
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                                    <div><strong>Last Sync:</strong> 2 days ago</div>
+                                    <div><strong>Volume:</strong> ~5K records/day</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn-sm" style="flex:1;" disabled>Sync Now</button>
+                                    <button class="icon-btn"><span class="material-icons">settings</span></button>
+                                </div>
+                            </div>
+                            
+                            <!-- Source 4 -->
+                            <div class="card" style="padding: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                    <div class="avatar" style="background: #8b5cf6; font-size: 1.2rem;">HR</div>
+                                    <span class="badge badge-success">Connected</span>
+                                </div>
+                                <h3 style="margin: 0 0 0.5rem; color: var(--text-main);">HRH System</h3>
+                                <p style="margin: 0 0 1rem; color: var(--text-muted); font-size: 0.9rem;">REST API Integration</p>
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                                    <div><strong>Last Sync:</strong> 4 hours ago</div>
+                                    <div><strong>Volume:</strong> ~50 records/day</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn-sm" style="flex:1;">Sync Now</button>
+                                    <button class="icon-btn"><span class="material-icons">settings</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -252,62 +328,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Pipeline Performance Line Chart
-            const ctx = document.getElementById('pipelineChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                        datasets: [{
-                            label: 'Successful Jobs',
-                            data: [142, 156, 148, 165, 170, 98, 85],
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }, {
-                            label: 'Failed Jobs',
-                            data: [3, 1, 5, 2, 1, 0, 1],
-                            borderColor: '#ef4444',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Data Ingestion Bar Chart
-            const ctx2 = document.getElementById('ingestionChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        labels: ['DHIS2', 'MFL', 'NMCP', 'OpenLMIS', 'Stats SL', 'CSV Uploads'],
-                        datasets: [{
-                            label: 'Records (thousands)',
-                            data: [450, 48, 0, 125, 82, 35],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
+            // No charts needed on the data sources page
         }
     </script>
 </body>

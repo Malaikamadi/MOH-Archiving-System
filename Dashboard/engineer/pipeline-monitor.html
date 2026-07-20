@@ -92,7 +92,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Pipeline Monitor</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Monitor data ingestion pipelines and ETL jobs</p>
                     </div>
                 </div>
 
@@ -178,10 +178,168 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Pipeline Monitor</strong> module is currently being built. Please check back later.</p>
+                <!-- STAT CARDS -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--primary-light); color: var(--primary);">
+                            <span class="material-icons">sync</span>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Active Pipelines</h3>
+                            <div class="stat-val">12</div>
+                            <div class="stat-change success">
+                                <span class="material-icons">arrow_upward</span> 2 new this week
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--success-light); color: var(--success);">
+                            <span class="material-icons">check_circle</span>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Successful Jobs</h3>
+                            <div class="stat-val">842</div>
+                            <div class="stat-change success">
+                                <span class="material-icons">arrow_upward</span> 98% Success Rate
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--danger-light); color: var(--danger);">
+                            <span class="material-icons">error</span>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Failed Jobs</h3>
+                            <div class="stat-val">5</div>
+                            <div class="stat-change danger">
+                                <span class="material-icons">warning</span> Requires attention
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--warning-light); color: var(--warning);">
+                            <span class="material-icons">data_usage</span>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Data Ingested (24h)</h3>
+                            <div class="stat-val">42.5 GB</div>
+                            <div class="stat-change success">
+                                <span class="material-icons">arrow_upward</span> 15% vs yesterday
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHARTS -->
+                <div class="dashboard-grid">
+                    <div class="card col-span-2">
+                        <div class="card-head">
+                            <h3 class="card-title">Pipeline Performance (Last 7 Days)</h3>
+                            <div class="card-actions">
+                                <button class="icon-btn"><span class="material-icons">more_vert</span></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container" style="position: relative; height:300px;">
+                                <canvas id="pipelineChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 class="card-title">Ingestion by Source</h3>
+                            <div class="card-actions">
+                                <button class="icon-btn"><span class="material-icons">more_vert</span></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container" style="position: relative; height:300px;">
+                                <canvas id="ingestionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECENT PIPELINES TABLE -->
+                <div class="card">
+                    <div class="card-head">
+                        <h3 class="card-title">Recent Pipeline Executions</h3>
+                        <div class="card-actions">
+                            <button class="btn-sm" onclick="document.getElementById('pipelineModal').classList.add('show')">
+                                <span class="material-icons">add</span> New Pipeline
+                            </button>
+                            <button class="icon-btn"><span class="material-icons">filter_list</span></button>
+                            <button class="icon-btn"><span class="material-icons">more_vert</span></button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Pipeline Name</th>
+                                        <th>Source</th>
+                                        <th>Last Run</th>
+                                        <th>Duration</th>
+                                        <th>Records</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>DHIS2_Daily_Sync</strong></td>
+                                        <td>REST API</td>
+                                        <td>10 mins ago</td>
+                                        <td>4m 12s</td>
+                                        <td>15,234</td>
+                                        <td><span class="badge badge-success">Success</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">play_arrow</span></button>
+                                            <button class="icon-btn"><span class="material-icons">article</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>MFL_Update_Job</strong></td>
+                                        <td>PostgreSQL</td>
+                                        <td>1 hour ago</td>
+                                        <td>1m 05s</td>
+                                        <td>230</td>
+                                        <td><span class="badge badge-success">Success</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">play_arrow</span></button>
+                                            <button class="icon-btn"><span class="material-icons">article</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>OpenLMIS_Inventory</strong></td>
+                                        <td>REST API</td>
+                                        <td>2 hours ago</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><span class="badge badge-danger">Failed</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">refresh</span></button>
+                                            <button class="icon-btn"><span class="material-icons">error_outline</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Stats_SL_Census_Data</strong></td>
+                                        <td>CSV Upload</td>
+                                        <td>Yesterday, 14:30</td>
+                                        <td>12m 45s</td>
+                                        <td>1,245,000</td>
+                                        <td><span class="badge badge-success">Success</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">play_arrow</span></button>
+                                            <button class="icon-btn"><span class="material-icons">article</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

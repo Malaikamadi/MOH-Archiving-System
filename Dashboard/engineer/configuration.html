@@ -92,7 +92,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Configuration</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Manage system variables, integrations, and global settings</p>
                     </div>
                 </div>
 
@@ -178,10 +178,134 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Configuration</strong> module is currently being built. Please check back later.</p>
+                <div class="dashboard-grid">
+                    <!-- SYSTEM ENVIRONMENT SETTINGS -->
+                    <div class="card col-span-2">
+                        <div class="card-head">
+                            <h3 class="card-title">System Environment</h3>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-grid">
+                                    <div class="fg">
+                                        <label>Environment Mode</label>
+                                        <select>
+                                            <option>Production</option>
+                                            <option>Staging</option>
+                                            <option>Development</option>
+                                        </select>
+                                    </div>
+                                    <div class="fg">
+                                        <label>Base Data Warehouse URL</label>
+                                        <input type="text" value="jdbc:postgresql://dw-main.nhih.gov.sl:5432/nhih_db">
+                                    </div>
+                                    <div class="fg">
+                                        <label>Log Retention Period</label>
+                                        <select>
+                                            <option>30 Days</option>
+                                            <option selected>90 Days</option>
+                                            <option>1 Year</option>
+                                            <option>Forever</option>
+                                        </select>
+                                    </div>
+                                    <div class="fg">
+                                        <label>Default Admin Email</label>
+                                        <input type="email" value="sysadmin@mohs.gov.sl">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 1rem; text-align: right;">
+                                    <button class="btn-sm primary" type="button" onclick="showToast('Environment settings saved!', 'success')">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- MAINTENANCE MODE -->
+                    <div class="card">
+                        <div class="card-head">
+                            <h3 class="card-title">Maintenance</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert warning" style="margin-bottom: 1rem;">
+                                <span class="material-icons">warning</span>
+                                Enabling maintenance mode will disconnect all non-admin users.
+                            </div>
+                            <div class="fg" style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h4 style="margin: 0; color: var(--text-main);">Maintenance Mode</h4>
+                                    <p style="margin: 0.25rem 0 0; color: var(--text-muted); font-size: 0.85rem;">Block public access</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border);">
+                            <div class="fg" style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h4 style="margin: 0; color: var(--text-main);">Read-Only Mode</h4>
+                                    <p style="margin: 0.25rem 0 0; color: var(--text-muted); font-size: 0.85rem;">Prevent database writes</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- API Integrations -->
+                    <div class="card col-span-2">
+                        <div class="card-head">
+                            <h3 class="card-title">API Keys & Integrations</h3>
+                            <button class="btn-sm"><span class="material-icons">add</span> Generate Key</button>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Service Name</th>
+                                        <th>API Key</th>
+                                        <th>Last Used</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>DHIS2 Central Tracker</strong></td>
+                                        <td><code style="background:var(--bg-card); padding:2px 6px; border-radius:4px;">dhis2_prod_8f9...2x4</code></td>
+                                        <td>2 mins ago</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">refresh</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>National MFL API</strong></td>
+                                        <td><code style="background:var(--bg-card); padding:2px 6px; border-radius:4px;">mfl_api_sec_4b2...9p1</code></td>
+                                        <td>12 hours ago</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">refresh</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Legacy Analytics Sync</strong></td>
+                                        <td><code style="background:var(--bg-card); padding:2px 6px; border-radius:4px;">leg_sync_old_xx...</code></td>
+                                        <td>3 months ago</td>
+                                        <td><span class="badge badge-warning">Deprecated</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">refresh</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -252,62 +376,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Pipeline Performance Line Chart
-            const ctx = document.getElementById('pipelineChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                        datasets: [{
-                            label: 'Successful Jobs',
-                            data: [142, 156, 148, 165, 170, 98, 85],
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }, {
-                            label: 'Failed Jobs',
-                            data: [3, 1, 5, 2, 1, 0, 1],
-                            borderColor: '#ef4444',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Data Ingestion Bar Chart
-            const ctx2 = document.getElementById('ingestionChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        labels: ['DHIS2', 'MFL', 'NMCP', 'OpenLMIS', 'Stats SL', 'CSV Uploads'],
-                        datasets: [{
-                            label: 'Records (thousands)',
-                            data: [450, 48, 0, 125, 82, 35],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
+            // No charts needed on the configuration page
         }
     </script>
 </body>

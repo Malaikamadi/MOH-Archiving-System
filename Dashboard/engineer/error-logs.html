@@ -92,7 +92,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Error Logs</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Investigate data ingestion failures and system exceptions</p>
                     </div>
                 </div>
 
@@ -178,10 +178,83 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Error Logs</strong> module is currently being built. Please check back later.</p>
+                <div class="card">
+                    <div class="card-head">
+                        <div style="display: flex; gap: 1rem; flex: 1; align-items: center;">
+                            <input type="text" placeholder="Search error trace or message..." style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                            <select style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                                <option value="">All Statuses</option>
+                                <option value="unresolved">Unresolved</option>
+                                <option value="investigating">Investigating</option>
+                                <option value="resolved">Resolved</option>
+                            </select>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-sm"><span class="material-icons">bug_report</span> Report Issue</button>
+                            <button class="btn-sm primary"><span class="material-icons">refresh</span> Refresh</button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Module</th>
+                                        <th>Error Message</th>
+                                        <th>Stack Trace snippet</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color:var(--text-muted); font-size: 0.85rem;">Today, 10:15 AM</td>
+                                        <td><strong>ETL_Sync</strong></td>
+                                        <td>Connection refused to source DHIS2</td>
+                                        <td><code style="background:var(--bg-card); padding:2px; font-size:0.8rem;">java.net.ConnectException...</code></td>
+                                        <td><span class="badge badge-danger">Unresolved</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">visibility</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--text-muted); font-size: 0.85rem;">Today, 09:42 AM</td>
+                                        <td><strong>Data_Quality</strong></td>
+                                        <td>NullPointerException at ValidateRule#34</td>
+                                        <td><code style="background:var(--bg-card); padding:2px; font-size:0.8rem;">at org.mohs.nhih.validation...</code></td>
+                                        <td><span class="badge badge-warning">Investigating</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">visibility</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--text-muted); font-size: 0.85rem;">Yesterday, 14:20</td>
+                                        <td><strong>Auth_API</strong></td>
+                                        <td>Invalid JWT token format</td>
+                                        <td><code style="background:var(--bg-card); padding:2px; font-size:0.8rem;">JWTDecodeException...</code></td>
+                                        <td><span class="badge badge-success">Resolved</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">visibility</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:var(--text-muted); font-size: 0.85rem;">Yesterday, 11:05</td>
+                                        <td><strong>CSV_Upload</strong></td>
+                                        <td>Data truncation error: Column 'age'</td>
+                                        <td><code style="background:var(--bg-card); padding:2px; font-size:0.8rem;">SQLState 22001: Data too long...</code></td>
+                                        <td><span class="badge badge-success">Resolved</span></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">visibility</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="padding: 1rem; text-align: center; border-top: 1px solid var(--border);">
+                        <button class="btn-sm" style="background:transparent; border:1px solid var(--border); color:var(--text-main);">Load More</button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -252,62 +325,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Pipeline Performance Line Chart
-            const ctx = document.getElementById('pipelineChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                        datasets: [{
-                            label: 'Successful Jobs',
-                            data: [142, 156, 148, 165, 170, 98, 85],
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }, {
-                            label: 'Failed Jobs',
-                            data: [3, 1, 5, 2, 1, 0, 1],
-                            borderColor: '#ef4444',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Data Ingestion Bar Chart
-            const ctx2 = document.getElementById('ingestionChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        labels: ['DHIS2', 'MFL', 'NMCP', 'OpenLMIS', 'Stats SL', 'CSV Uploads'],
-                        datasets: [{
-                            label: 'Records (thousands)',
-                            data: [450, 48, 0, 125, 82, 35],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
+            // No charts needed on the error logs page
         }
     </script>
 </body>

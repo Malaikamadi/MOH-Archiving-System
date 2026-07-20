@@ -92,7 +92,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">Validation Rules</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Configure data quality and integrity checks</p>
                     </div>
                 </div>
 
@@ -178,10 +178,86 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Validation Rules</strong> module is currently being built. Please check back later.</p>
+                <div class="card">
+                    <div class="card-head">
+                        <h3 class="card-title">Active Validation Rules</h3>
+                        <div class="card-actions">
+                            <button class="btn-sm primary"><span class="material-icons">add</span> New Rule</button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rule Name</th>
+                                        <th>Target Dataset</th>
+                                        <th>Condition Type</th>
+                                        <th>Severity</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Age Validation</strong></td>
+                                        <td>Patient Demographics</td>
+                                        <td>Range (0 - 120)</td>
+                                        <td><span style="color:var(--danger);font-weight:600;">Critical</span></td>
+                                        <td><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Facility Code Match</strong></td>
+                                        <td>All DHIS2 Syncs</td>
+                                        <td>Reference (MFL)</td>
+                                        <td><span style="color:var(--danger);font-weight:600;">Critical</span></td>
+                                        <td><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Missing Vitals Check</strong></td>
+                                        <td>Maternal Health</td>
+                                        <td>Null Check</td>
+                                        <td><span style="color:var(--warning);font-weight:600;">Warning</span></td>
+                                        <td><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Future Date Prevention</strong></td>
+                                        <td>All Datasets</td>
+                                        <td>Date < Today</td>
+                                        <td><span style="color:var(--danger);font-weight:600;">Critical</span></td>
+                                        <td><label class="switch"><input type="checkbox" checked><span class="slider round"></span></label></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Duplicate Patient ID</strong></td>
+                                        <td>Patient Registry</td>
+                                        <td>Uniqueness</td>
+                                        <td><span style="color:var(--danger);font-weight:600;">Critical</span></td>
+                                        <td><label class="switch"><input type="checkbox"><span class="slider round"></span></label></td>
+                                        <td>
+                                            <button class="icon-btn"><span class="material-icons">edit</span></button>
+                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -252,62 +328,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Pipeline Performance Line Chart
-            const ctx = document.getElementById('pipelineChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                        datasets: [{
-                            label: 'Successful Jobs',
-                            data: [142, 156, 148, 165, 170, 98, 85],
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }, {
-                            label: 'Failed Jobs',
-                            data: [3, 1, 5, 2, 1, 0, 1],
-                            borderColor: '#ef4444',
-                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Data Ingestion Bar Chart
-            const ctx2 = document.getElementById('ingestionChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        labels: ['DHIS2', 'MFL', 'NMCP', 'OpenLMIS', 'Stats SL', 'CSV Uploads'],
-                        datasets: [{
-                            label: 'Records (thousands)',
-                            data: [450, 48, 0, 125, 82, 35],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
+            // No charts needed on the validation rules page
         }
     </script>
 </body>
