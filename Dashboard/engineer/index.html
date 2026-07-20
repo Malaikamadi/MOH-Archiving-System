@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="nhih-app">
         <!-- Sidebar Overlay -->
@@ -143,8 +145,8 @@
                                         <span class="material-icons">check_circle</span>
                                     </div>
                                     <div class="ni-text">
-                                        <span class="ni-title">ETL Job Completed</span>
-                                        <span class="ni-desc">Maternal health dataset loaded (12,450 rows)</span>
+                                        <span class="ni-title">Task Overdue</span>
+                                        <span class="ni-desc">Q3 Reporting is past deadline.</span>
                                         <span class="ni-time">2 hours ago</span>
                                     </div>
                                 </div>
@@ -162,7 +164,8 @@
                                 <div class="uname">Alhaji Koroma</div>
                                 <div class="urole">Data Engineer</div>
                             </div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                         <div class="dropdown profile-dd" id="profileDropdown">
                             <div class="dd-item pd-item">
@@ -186,7 +189,8 @@
                         <div class="kpi-data">
                             <span class="kpi-label">Active Pipelines</span>
                             <span class="kpi-val">24</span>
-                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 3 new this week</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 3 new this
+                                week</span>
                         </div>
                     </div>
                     <div class="kpi">
@@ -195,7 +199,8 @@
                         <div class="kpi-data">
                             <span class="kpi-label">Records Processed</span>
                             <span class="kpi-val">2.4M</span>
-                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 340K today</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 340K
+                                today</span>
                         </div>
                     </div>
                     <div class="kpi">
@@ -204,7 +209,8 @@
                         <div class="kpi-data">
                             <span class="kpi-label">Data Quality</span>
                             <span class="kpi-val">96.8%</span>
-                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 1.2% this month</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 1.2% this
+                                month</span>
                         </div>
                     </div>
                     <div class="kpi">
@@ -246,7 +252,8 @@
                     <div class="card">
                         <div class="card-head">
                             <h3>Active ETL Pipelines</h3>
-                            <button class="btn-sm primary" onclick="document.getElementById('pipelineModal').classList.add('show')">
+                            <button class="btn-sm primary"
+                                onclick="document.getElementById('pipelineModal').classList.add('show')">
                                 <span class="material-icons">add</span> New Pipeline
                             </button>
                         </div>
@@ -320,10 +327,12 @@
                                 <div class="activity-dot red"></div>
                                 <div class="activity-text">
                                     <strong>ConnectionTimeout</strong>
-                                    <span style="font-size:.7rem;font-family:monospace;color:var(--danger)">NMCP_DB: Connection refused after 30s</span>
+                                    <span style="font-size:.7rem;font-family:monospace;color:var(--danger)">NMCP_DB:
+                                        Connection refused after 30s</span>
                                     <span class="atime">35 minutes ago</span>
                                     <div style="margin-top:6px">
-                                        <button class="btn-sm" onclick="showToast('Retrying pipeline...', 'info')"><span class="material-icons">refresh</span> Retry</button>
+                                        <button class="btn-sm" onclick="showToast('Retrying pipeline...', 'info')"><span
+                                                class="material-icons">refresh</span> Retry</button>
                                     </div>
                                 </div>
                             </div>
@@ -331,7 +340,8 @@
                                 <div class="activity-dot orange"></div>
                                 <div class="activity-text">
                                     <strong>ValidationError</strong>
-                                    <span style="font-size:.7rem;font-family:monospace;color:var(--warning)">234 records: date_of_birth out of range</span>
+                                    <span style="font-size:.7rem;font-family:monospace;color:var(--warning)">234
+                                        records: date_of_birth out of range</span>
                                     <span class="atime">1 hour ago</span>
                                 </div>
                             </div>
@@ -339,7 +349,8 @@
                                 <div class="activity-dot orange"></div>
                                 <div class="activity-text">
                                     <strong>SchemaWarning</strong>
-                                    <span style="font-size:.7rem;font-family:monospace;color:var(--warning)">New column detected: "vaccine_batch_id"</span>
+                                    <span style="font-size:.7rem;font-family:monospace;color:var(--warning)">New column
+                                        detected: "vaccine_batch_id"</span>
                                     <span class="atime">3 hours ago</span>
                                 </div>
                             </div>
@@ -347,7 +358,8 @@
                                 <div class="activity-dot red"></div>
                                 <div class="activity-text">
                                     <strong>DuplicateKeyError</strong>
-                                    <span style="font-size:.7rem;font-family:monospace;color:var(--danger)">12 duplicate facility_id in batch #4821</span>
+                                    <span style="font-size:.7rem;font-family:monospace;color:var(--danger)">12 duplicate
+                                        facility_id in batch #4821</span>
                                     <span class="atime">5 hours ago</span>
                                 </div>
                             </div>
@@ -378,35 +390,45 @@
                                     <tr>
                                         <td><strong>DHIS2 National</strong></td>
                                         <td style="font-size:.72rem">REST API</td>
-                                        <td><span style="font-size:.72rem;font-weight:600;color:var(--success)">45ms</span></td>
+                                        <td><span
+                                                style="font-size:.72rem;font-weight:600;color:var(--success)">45ms</span>
+                                        </td>
                                         <td style="font-size:.72rem">1.2M</td>
                                         <td><span class="badge-s success">Healthy</span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Master Facility List</strong></td>
                                         <td style="font-size:.72rem">REST API</td>
-                                        <td><span style="font-size:.72rem;font-weight:600;color:var(--success)">62ms</span></td>
+                                        <td><span
+                                                style="font-size:.72rem;font-weight:600;color:var(--success)">62ms</span>
+                                        </td>
                                         <td style="font-size:.72rem">1,248</td>
                                         <td><span class="badge-s success">Healthy</span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>NMCP Database</strong></td>
                                         <td style="font-size:.72rem">PostgreSQL</td>
-                                        <td><span style="font-size:.72rem;font-weight:600;color:var(--danger)">Timeout</span></td>
+                                        <td><span
+                                                style="font-size:.72rem;font-weight:600;color:var(--danger)">Timeout</span>
+                                        </td>
                                         <td style="font-size:.72rem">580K</td>
                                         <td><span class="badge-s danger">Down</span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>OpenLMIS</strong></td>
                                         <td style="font-size:.72rem">REST API</td>
-                                        <td><span style="font-size:.72rem;font-weight:600;color:var(--warning)">380ms</span></td>
+                                        <td><span
+                                                style="font-size:.72rem;font-weight:600;color:var(--warning)">380ms</span>
+                                        </td>
                                         <td style="font-size:.72rem">245K</td>
                                         <td><span class="badge-s warning">Slow</span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Statistics SL</strong></td>
                                         <td style="font-size:.72rem">CSV/FTP</td>
-                                        <td><span style="font-size:.72rem;font-weight:600;color:var(--success)">N/A</span></td>
+                                        <td><span
+                                                style="font-size:.72rem;font-weight:600;color:var(--success)">N/A</span>
+                                        </td>
                                         <td style="font-size:.72rem">320K</td>
                                         <td><span class="badge-s success">Healthy</span></td>
                                     </tr>
@@ -451,35 +473,40 @@
                             <div class="activity-item">
                                 <div class="activity-dot green"></div>
                                 <div class="activity-text">
-                                    <span><strong>You</strong> deployed <strong>ETL Pipeline v2.1</strong> for maternal health data</span>
+                                    <span><strong>You</strong> deployed <strong>ETL Pipeline v2.1</strong> for maternal
+                                        health data</span>
                                     <span class="atime">30 minutes ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot blue"></div>
                                 <div class="activity-text">
-                                    <span><strong>System</strong> auto-scaled database connections from <strong>50 → 75</strong> (high load)</span>
+                                    <span><strong>System</strong> auto-scaled database connections from <strong>50 →
+                                            75</strong> (high load)</span>
                                     <span class="atime">1 hour ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot orange"></div>
                                 <div class="activity-text">
-                                    <span><strong>Mohamed Jalloh</strong> updated <strong>validation rules</strong> for district reporting (v3.2)</span>
+                                    <span><strong>Mohamed Jalloh</strong> updated <strong>validation rules</strong> for
+                                        district reporting (v3.2)</span>
                                     <span class="atime">2 hours ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot green"></div>
                                 <div class="activity-text">
-                                    <span><strong>Aminata Kamara</strong> uploaded <strong>field survey CSV</strong> — 324 records staged</span>
+                                    <span><strong>Aminata Kamara</strong> uploaded <strong>field survey CSV</strong> —
+                                        324 records staged</span>
                                     <span class="atime">3 hours ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot red"></div>
                                 <div class="activity-text">
-                                    <span><strong>Alert:</strong> NMCP database connection lost — <strong>auto-retry scheduled</strong></span>
+                                    <span><strong>Alert:</strong> NMCP database connection lost — <strong>auto-retry
+                                            scheduled</strong></span>
                                     <span class="atime">4 hours ago</span>
                                 </div>
                             </div>
@@ -491,7 +518,8 @@
                             <h3>Quick Actions</h3>
                         </div>
                         <div class="qa-list">
-                            <button class="qa-btn" onclick="document.getElementById('pipelineModal').classList.add('show')">
+                            <button class="qa-btn"
+                                onclick="document.getElementById('pipelineModal').classList.add('show')">
                                 <span class="material-icons">add_circle</span>
                                 Create New Pipeline
                             </button>
@@ -609,8 +637,10 @@
                 </div>
             </div>
             <div class="modal-bot">
-                <button class="btn-sm" onclick="document.getElementById('pipelineModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('pipelineModal').classList.remove('show'); showToast('Pipeline created successfully!', 'success')">
+                <button class="btn-sm"
+                    onclick="document.getElementById('pipelineModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary"
+                    onclick="document.getElementById('pipelineModal').classList.remove('show'); showToast('Pipeline created successfully!', 'success')">
                     <span class="material-icons">play_arrow</span> Create & Run
                 </button>
             </div>
@@ -679,4 +709,5 @@
         }
     </script>
 </body>
+
 </html>
