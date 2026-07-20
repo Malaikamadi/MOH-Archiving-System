@@ -97,7 +97,7 @@
                     </div>
                     <div>
                         <h1 class="page-title">SQL Query Editor</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Write and execute ad-hoc SQL queries</p>
                     </div>
                 </div>
 
@@ -183,10 +183,69 @@
 
             <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>SQL Query Editor</strong> module is currently being built. Please check back later.</p>
+                <div class="dashboard-grid">
+                    <div class="card col-span-2">
+                        <div class="card-head">
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <select style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                                    <option>dhis2_analytics</option>
+                                    <option>patient_registry</option>
+                                    <option>mfl_facilities</option>
+                                </select>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-sm"><span class="material-icons">bookmark</span> Save Query</button>
+                                <button class="btn-sm primary"><span class="material-icons">play_arrow</span> Run Query</button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <!-- Editor Area -->
+                            <div style="background: var(--bg-body); padding: 1rem; border-bottom: 1px solid var(--border); font-family: monospace; color: var(--text-main); line-height: 1.5; min-height: 200px;">
+                                <div style="display: flex;">
+                                    <div style="padding-right: 1rem; color: var(--text-muted); user-select: none; text-align: right;">
+                                        1<br>2<br>3<br>4
+                                    </div>
+                                    <div style="flex: 1; outline: none;" contenteditable="true">
+                                        <span style="color: #c678dd;">SELECT</span><br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;district, <span style="color: #61afef;">SUM</span>(cases) <span style="color: #c678dd;">AS</span> total_cases<br>
+                                        <span style="color: #c678dd;">FROM</span> malaria_reports_2023<br>
+                                        <span style="color: #c678dd;">GROUP BY</span> district;
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Results Area -->
+                            <div style="padding: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <span style="color: var(--text-muted); font-size: 0.9rem;">Results: 3 rows returned in 142ms</span>
+                                    <button class="btn-sm" style="padding: 0.2rem 0.5rem;"><span class="material-icons" style="font-size: 1.2rem;">download</span></button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>district</th>
+                                                <th>total_cases</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Western Area Urban</td>
+                                                <td>12,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bo</td>
+                                                <td>8,210</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kenema</td>
+                                                <td>6,930</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -258,65 +317,7 @@
     <script src="../../js/nhih-dashboard.js"></script>
     <script>
         function renderDashboardCharts() {
-            // Report Generation Trends
-            const ctx = document.getElementById('reportTrendChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [{
-                            label: 'Reports Generated',
-                            data: [12, 15, 11, 18, 14, 17],
-                            borderColor: '#0B5ED7',
-                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Data Exports',
-                            data: [45, 52, 48, 60, 55, 68],
-                            borderColor: '#10b981',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Dataset Usage Doughnut
-            const ctx2 = document.getElementById('datasetChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Maternal Health', 'Immunization', 'Malaria', 'Facility Data', 'Census', 'Other'],
-                        datasets: [{
-                            data: [32, 24, 20, 12, 8, 4],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderWidth: 0,
-                            spacing: 3,
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '62%',
-                        plugins: {
-                            legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 } } }
-                        }
-                    }
-                });
-            }
+            // No charts needed on this page
         }
     </script>
 </body>
