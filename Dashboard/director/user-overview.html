@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Director Dashboard | NHIH</title>
+    <title>User Overview | NHIH</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
@@ -11,45 +11,24 @@
 </head>
 <body>
     <div class="nhih-app">
-        <!-- Sidebar Overlay -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-        <!-- LEFT SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-head">
-                <div class="sidebar-logo">
-                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
-                </div>
-                <div class="sidebar-brand">
-                    <h2>NHIH</h2>
-                    <span>Ministry of Health</span>
-                </div>
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
             </div>
-            
             <div class="sidebar-nav">
-                <div class="sidebar-section">Strategy &amp; Governance</div>
+                <div class="sidebar-section">Governance</div>
                 <a href="index.html" class="nav-link">
                     <span class="material-icons">dashboard</span>
                     <span>Executive Dashboard</span>
                 </a>
                 <a href="national-kpis.html" class="nav-link">
-                    <span class="material-icons">query_stats</span>
+                    <span class="material-icons">leaderboard</span>
                     <span>National KPIs</span>
                 </a>
-                <a href="approve-projects.html" class="nav-link">
-                    <span class="material-icons">fact_check</span>
-                    <span>Approve Projects</span>
-                    <span class="nav-badge">3</span>
-                </a>
-                <a href="approve-data-requests.html" class="nav-link">
-                    <span class="material-icons">rule_folder</span>
-                    <span>Approve Data Requests</span>
-                    <span class="nav-badge">5</span>
-                </a>
-                
-                <div class="sidebar-section">Insights</div>
                 <a href="strategic-analytics.html" class="nav-link">
-                    <span class="material-icons">analytics</span>
+                    <span class="material-icons">insights</span>
                     <span>Strategic Analytics</span>
                 </a>
                 <a href="health-indicators.html" class="nav-link">
@@ -60,260 +39,82 @@
                     <span class="material-icons">map</span>
                     <span>View National Map</span>
                 </a>
-                <a href="index.html" class="nav-link">
-                    <span class="material-icons">warning</span>
-                    <span>Risk Dashboard</span>
+                <div class="sidebar-section">Approvals & Reports</div>
+                <a href="approve-projects.html" class="nav-link">
+                    <span class="material-icons">fact_check</span>
+                    <span>Approve Projects</span>
+                    <span class="nav-badge">4</span>
                 </a>
-
-                <div class="sidebar-section">Administration</div>
+                <a href="approve-data-requests.html" class="nav-link">
+                    <span class="material-icons">security</span>
+                    <span>Approve Data Requests</span>
+                    <span class="nav-badge">7</span>
+                </a>
                 <a href="review-reports.html" class="nav-link">
-                    <span class="material-icons">summarize</span>
+                    <span class="material-icons">assignment_turned_in</span>
                     <span>Review Reports</span>
                 </a>
+                <div class="sidebar-section">Administration</div>
+                <a href="budget.html" class="nav-link">
+                    <span class="material-icons">account_balance</span>
+                    <span>Budget Overview</span>
+                </a>
+                <a href="staff-overview.html" class="nav-link">
+                    <span class="material-icons">groups</span>
+                    <span>Staff Overview</span>
+                </a>
+                <a href="compliance.html" class="nav-link">
+                    <span class="material-icons">policy</span>
+                    <span>Compliance</span>
+                </a>
                 <a href="audit-logs.html" class="nav-link">
-                    <span class="material-icons">admin_panel_settings</span>
+                    <span class="material-icons">history</span>
                     <span>Audit Logs</span>
                 </a>
-                <a href="user-overview.html" class="nav-link active">
-                    <span class="material-icons">group</span>
-                    <span>User Overview</span>
-                </a>
             </div>
-
             <div class="sidebar-foot">
                 <div class="session-card">
-                    <div class="session-status">
-                        <span class="dot-online"></span>
-                        Active Session
-                    </div>
-                    <div class="session-time">Last login: Today, 08:45 AM</div>
+                    <div class="session-status"><span class="dot-online"></span> Active Session</div>
+                    <div class="session-time">Last login: Today, 08:30 AM</div>
                 </div>
             </div>
         </aside>
 
-        <!-- MAIN CONTENT -->
         <main class="main-wrap">
-            <!-- HEADER -->
             <header class="top-header">
                 <div class="header-left">
-                    <div class="menu-toggle" id="menuToggle">
-                        <span></span><span></span><span></span>
-                    </div>
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
                     <div>
                         <h1 class="page-title">User Overview</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">System user metrics</p>
                     </div>
                 </div>
-
                 <div class="header-right">
                     <div class="search-box">
                         <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search datasets, dashboards, reports...">
-                        <kbd>Ctrl+K</kbd>
+                        <input type="text" placeholder="Search...">
                     </div>
-
-                    <button class="icon-btn" id="themeToggle" title="Toggle Theme">
-                        <span class="material-icons">dark_mode</span>
-                    </button>
-
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
                     <div class="notif-wrap">
                         <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
-                            <span class="material-icons">notifications</span>
-                            <span class="hdr-badge">7</span>
+                            <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
                         </button>
-                        <div class="dropdown notif-dd" id="notifDropdown">
-                            <div class="dd-head">
-                                <h4>Notifications</h4>
-                                <button>Mark all read</button>
-                            </div>
-                            <div class="dd-body">
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--danger-light);color:var(--danger)">
-                                        <span class="material-icons">priority_high</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Critical: Malaria Outbreak — Bo District</span>
-                                        <span class="ni-desc">Incident rate exceeded threshold by 40%</span>
-                                        <span class="ni-time">10 mins ago</span>
-                                    </div>
-                                </div>
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--success-light);color:var(--success)">
-                                        <span class="material-icons">task_alt</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Project Approved</span>
-                                        <span class="ni-desc">Maternal Health Expansion approved</span>
-                                        <span class="ni-time">1 hour ago</span>
-                                    </div>
-                                </div>
-                                <div class="dd-item">
-                                    <div class="ni-icon" style="background:var(--warning-light);color:var(--warning)">
-                                        <span class="material-icons">schedule</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Budget Review Due</span>
-                                        <span class="ni-desc">Q3 budget allocation needs sign-off</span>
-                                        <span class="ni-time">3 hours ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dd-foot">
-                                <a href="#">View All Notifications</a>
-                            </div>
-                        </div>
                     </div>
-
                     <div class="profile-wrap">
                         <div class="user-pill dropdown-toggle" data-target="profileDropdown">
-                            <div class="avatar">HM</div>
-                            <div class="user-info">
-                                <div class="uname">Hon. Minister</div>
-                                <div class="urole">Director</div>
-                            </div>
+                            <div class="avatar" style="background:var(--primary)">DR</div>
+                            <div class="user-info"><div class="uname">Director</div><div class="urole">Director</div></div>
                             <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
-                        </div>
-                        <div class="dropdown profile-dd" id="profileDropdown">
-                            <div class="dd-item pd-item">
-                                <span class="material-icons">person</span> My Profile
-                            </div>
-                            <div class="dd-item pd-item">
-                                <span class="material-icons">settings</span> Settings
-                            </div>
-                            <a href="../../index.html" class="dd-item pd-item danger">
-                                <span class="material-icons">logout</span> Logout
-                            </a>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>User Overview</strong> module is currently being built. Please check back later.</p>
-                </div>
+<div class="card"><h3>Active Users</h3><p>2,450 active users this week.</p></div>
             </div>
         </main>
     </div>
-
-    <!-- Project Approval Modal -->
-    <div class="modal-bg" id="approveModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h4>Project Review &amp; Approval</h4>
-                <button class="icon-btn" onclick="document.getElementById('approveModal').classList.remove('show')">
-                    <span class="material-icons">close</span>
-                </button>
-            </div>
-            <div class="modal-mid">
-                <div class="fg">
-                    <label>Project Name</label>
-                    <input type="text" value="Rural Clinic Digitization" readonly>
-                </div>
-                <div class="fg">
-                    <label>Requested Budget</label>
-                    <input type="text" value="$2,500,000" readonly>
-                </div>
-                <div class="fg">
-                    <label>Timeline</label>
-                    <input type="text" value="18 months (Jan 2027 — Jun 2028)" readonly>
-                </div>
-                <div class="fg">
-                    <label>Decision</label>
-                    <select>
-                        <option>Approve</option>
-                        <option>Approve with Conditions</option>
-                        <option>Request Revision</option>
-                        <option>Reject</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Comments</label>
-                    <input type="text" placeholder="Add your comments...">
-                </div>
-            </div>
-            <div class="modal-bot">
-                <button class="btn-sm" onclick="document.getElementById('approveModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('approveModal').classList.remove('show'); showToast('Project decision submitted!', 'success')">
-                    <span class="material-icons">gavel</span> Submit Decision
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script src="../../js/nhih-dashboard.js"></script>
-    <script>
-        function renderDashboardCharts() {
-            // National Health KPIs Line Chart
-            const ctx = document.getElementById('kpiChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [{
-                            label: 'Facility Reporting Rate (%)',
-                            data: [78, 82, 80, 85, 88, 91],
-                            borderColor: '#0B5ED7',
-                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Data Quality Index',
-                            data: [85, 86, 88, 87, 90, 92],
-                            borderColor: '#10b981',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Immunization Coverage',
-                            data: [90, 91, 89, 93, 94, 96],
-                            borderColor: '#8b5cf6',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: false, min: 60 } }
-                    }
-                });
-            }
-
-            // Budget Allocation Doughnut
-            const ctx2 = document.getElementById('budgetChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Primary Care', 'Maternal Health', 'Disease Control', 'Infrastructure', 'Digital Health', 'Training'],
-                        datasets: [{
-                            data: [28, 22, 18, 15, 10, 7],
-                            backgroundColor: ['#0B5ED7', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6', '#06b6d4'],
-                            borderWidth: 0,
-                            spacing: 3,
-                            borderRadius: 6,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '60%',
-                        plugins: {
-                            legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 } } }
-                        }
-                    }
-                });
-            }
-        }
-    </script>
 </body>
 </html>

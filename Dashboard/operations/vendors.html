@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operations Manager Dashboard | NHIH</title>
+    <title>Vendor Contracts | NHIH</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
     <div class="nhih-app">
-        <!-- Sidebar Overlay -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-        <!-- LEFT SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-head">
-                <div class="sidebar-logo">
-                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
-                </div>
-                <div class="sidebar-brand">
-                    <h2>NHIH</h2>
-                    <span>Ministry of Health</span>
-                </div>
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
             </div>
-
             <div class="sidebar-nav">
                 <div class="sidebar-section">Hub Operations</div>
                 <a href="index.html" class="nav-link">
@@ -42,17 +31,7 @@
                     <span class="material-icons">lan</span>
                     <span>Network & Security</span>
                 </a>
-
                 <div class="sidebar-section">IT Support & Staffing</div>
-                <a href="support-tickets.html" class="nav-link">
-                    <span class="material-icons">support_agent</span>
-                    <span>Support Tickets</span>
-                    <span class="nav-badge">7</span>
-                </a>
-                <a href="staff.html" class="nav-link">
-                    <span class="material-icons">badge</span>
-                    <span>Hub Personnel</span>
-                </a>
                 <a href="hardware-assets.html" class="nav-link">
                     <span class="material-icons">memory</span>
                     <span>Hardware Assets</span>
@@ -61,12 +40,14 @@
                     <span class="material-icons">handshake</span>
                     <span>Vendor Contracts</span>
                 </a>
-
+                <a href="meetings.html" class="nav-link">
+                    <span class="material-icons">event</span>
+                    <span>Meetings</span>
+                </a>
                 <div class="sidebar-section">System Administration</div>
-                <a href="maintenance.html" class="nav-link">
+                <a href="NHIH_operation_maintaiannace.html" class="nav-link">
                     <span class="material-icons">build</span>
-                    <span>Maintenance Schedule</span>
-                    <span class="nav-badge">2</span>
+                    <span>Maintenance</span>
                 </a>
                 <a href="compliance.html" class="nav-link">
                     <span class="material-icons">verified_user</span>
@@ -77,252 +58,60 @@
                     <span>Settings</span>
                 </a>
             </div>
-
             <div class="sidebar-foot">
                 <div class="session-card">
-                    <div class="session-status">
-                        <span class="dot-online"></span>
-                        Active Session
-                    </div>
-                    <div class="session-time">Last login: Today, 07:30 AM</div>
+                    <div class="session-status"><span class="dot-online"></span> Active Session</div>
+                    <div class="session-time">Last login: Today, 08:30 AM</div>
                 </div>
             </div>
         </aside>
 
-        <!-- MAIN CONTENT -->
         <main class="main-wrap">
-            <!-- HEADER -->
             <header class="top-header">
                 <div class="header-left">
-                    <div class="menu-toggle" id="menuToggle">
-                        <span></span><span></span><span></span>
-                    </div>
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
                     <div>
                         <h1 class="page-title">Vendor Contracts</h1>
-                        <p class="welcome-sub">Page under construction</p>
+                        <p class="welcome-sub">Manage technology and service vendors</p>
                     </div>
                 </div>
-
                 <div class="header-right">
                     <div class="search-box">
                         <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search servers, staff, tickets...">
-                        <kbd>Ctrl+K</kbd>
+                        <input type="text" placeholder="Search...">
                     </div>
-
-                    <button class="icon-btn" id="themeToggle">
-                        <span class="material-icons">dark_mode</span>
-                    </button>
-
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
                     <div class="notif-wrap">
                         <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
-                            <span class="material-icons">notifications</span>
-                            <span class="hdr-badge">6</span>
+                            <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
                         </button>
-                        <div class="dropdown notif-dd" id="notifDropdown">
-                            <div class="dd-head">
-                                <h4>Notifications</h4>
-                                <button>Mark all read</button>
-                            </div>
-                            <div class="dd-body">
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--danger-light);color:var(--danger)">
-                                        <span class="material-icons">thermostat</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Critical: Temperature Alert</span>
-                                        <span class="ni-desc">Server Rack A3 exceeded 30°C</span>
-                                        <span class="ni-time">30 mins ago</span>
-                                    </div>
-                                </div>
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--warning-light);color:var(--warning)">
-                                        <span class="material-icons">build</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Maintenance Due</span>
-                                        <span class="ni-desc">Primary firewall requires firmware update</span>
-                                        <span class="ni-time">2 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="dd-item">
-                                    <div class="ni-icon" style="background:var(--success-light);color:var(--success)">
-                                        <span class="material-icons">verified</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Security Scan Completed</span>
-                                        <span class="ni-desc">No vulnerabilities detected in latest scan</span>
-                                        <span class="ni-time">4 hours ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dd-foot">
-                                <a href="#">View All Notifications</a>
-                            </div>
-                        </div>
                     </div>
-
                     <div class="profile-wrap">
                         <div class="user-pill dropdown-toggle" data-target="profileDropdown">
-                            <div class="avatar" style="background:var(--success)">AT</div>
-                            <div class="user-info">
-                                <div class="uname">Prince Mafinda</div>
-                                <div class="urole">Operations Manager</div>
-                            </div>
-                            <span class="material-icons"
-                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
-                        </div>
-                        <div class="dropdown profile-dd" id="profileDropdown">
-                            <div class="dd-item pd-item">
-                                <span class="material-icons">person</span> My Profile
-                            </div>
-                            <a href="../../index.html" class="dd-item pd-item danger">
-                                <span class="material-icons">logout</span> Logout
-                            </a>
+                            <div class="avatar" style="background:var(--warning)">PM</div>
+                            <div class="user-info"><div class="uname">Prince Mafinda</div><div class="urole">Operations Manager</div></div>
+                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <!-- PAGE CONTENT -->
             <div class="main-content">
-                <div class="card" style="text-align: center; padding: 4rem 2rem; margin-top: 2rem;">
-                    <span class="material-icons" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;">construction</span>
-                    <h2 style="margin-bottom: 0.5rem; color: var(--text-main);">Module Under Construction</h2>
-                    <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">The <strong>Vendor Contracts</strong> module is currently being built. Please check back later.</p>
-                </div>
+
+    <div class="card">
+        <div class="card-head"><h3>Active Vendors</h3><button class="btn-sm primary"><span class="material-icons">add</span> Add Vendor</button></div>
+        <div class="tbl-responsive"><table class="dt">
+            <thead><tr><th>Vendor Name</th><th>Service Provided</th><th>Contract End</th><th>Status</th></tr></thead>
+            <tbody>
+                <tr><td><strong>SAND Technology</strong></td><td>Solutions Management</td><td>Dec 31, 2026</td><td><span class="badge-s success">Active</span></td></tr>
+                <tr><td><strong>Orange SL</strong></td><td>ISP & Connectivity</td><td>Jun 30, 2027</td><td><span class="badge-s success">Active</span></td></tr>
+                <tr><td><strong>Dell Enterprise</strong></td><td>Hardware Support</td><td>Nov 15, 2026</td><td><span class="badge-s warning">Renewing</span></td></tr>
+            </tbody>
+        </table></div>
+    </div>
             </div>
         </main>
     </div>
-
-    <!-- Report Incident Modal -->
-    <div class="modal-bg" id="incidentModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h4>Log IT/Infrastructure Incident</h4>
-                <button class="icon-btn" onclick="document.getElementById('incidentModal').classList.remove('show')">
-                    <span class="material-icons">close</span>
-                </button>
-            </div>
-            <div class="modal-mid">
-                <div class="fg">
-                    <label>Incident Category</label>
-                    <select>
-                        <option value="">Select category...</option>
-                        <option>Network & Connectivity</option>
-                        <option>Hardware Failure</option>
-                        <option>Software/Application Issue</option>
-                        <option>Environmental (Power/Cooling)</option>
-                        <option>Security Breach</option>
-                        <option>Access & Permissions</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Affected Component</label>
-                    <select>
-                        <option value="">Select component...</option>
-                        <option>Core Network Switch</option>
-                        <option>Database Cluster</option>
-                        <option>API Gateway</option>
-                        <option>Storage SAN</option>
-                        <option>Data Center HVAC</option>
-                        <option>Backup Generator</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Priority</label>
-                    <select>
-                        <option>P4 - Low</option>
-                        <option>P3 - Medium</option>
-                        <option>P2 - High</option>
-                        <option>P1 - Critical (Sev 1)</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Description</label>
-                    <input type="text" placeholder="Provide details of the incident...">
-                </div>
-            </div>
-            <div class="modal-bot">
-                <button class="btn-sm"
-                    onclick="document.getElementById('incidentModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary"
-                    onclick="document.getElementById('incidentModal').classList.remove('show'); showToast('Incident logged and assigned!', 'success')">
-                    <span class="material-icons">send</span> Submit Ticket
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script src="../../js/nhih-dashboard.js"></script>
-    <script>
-        function renderDashboardCharts() {
-            // Network Traffic Rate
-            const ctx = document.getElementById('trafficChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
-                        datasets: [{
-                            label: 'Ingress (Mbps)',
-                            data: [150, 220, 310, 280, 350, 190],
-                            borderColor: '#0B5ED7',
-                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Egress (Mbps)',
-                            data: [80, 110, 140, 120, 160, 95],
-                            borderColor: '#10b981',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                });
-            }
-
-            // Resource Usage by Component
-            const ctx2 = document.getElementById('resourceChart');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Web Tier', 'App Tier', 'DB Cluster', 'Analytics', 'Auth'],
-                        datasets: [{
-                            label: 'CPU Usage (%)',
-                            data: [45, 68, 85, 30, 25],
-                            backgroundColor: '#0B5ED7',
-                            borderRadius: 4,
-                        }, {
-                            label: 'Memory Usage (%)',
-                            data: [55, 72, 92, 45, 35],
-                            backgroundColor: '#f59e0b',
-                            borderRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: {
-                            y: { beginAtZero: true, max: 100 }
-                        }
-                    }
-                });
-            }
-        }
-    </script>
 </body>
-
 </html>
