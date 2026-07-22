@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Security & Compliance | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="nhih-app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Programme Management</div>
+                <a href="index.html" class="nav-link">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="meetings.html" class="nav-link">
+                    <span class="material-icons">event</span>
+                    <span>Meetings & Standups</span>
+                </a>
+                <a href="facility_report.html" class="nav-link">
+                    <span class="material-icons">local_hospital</span>
+                    <span>Facility Reporting</span>
+                </a>
+                <div class="sidebar-section">Data Oversight</div>
+                <a href="../analyst/data_validation.html" class="nav-link">
+                    <span class="material-icons">fact_check</span>
+                    <span>Data Validation</span>
+                </a>
+                <a href="information_product_review.html" class="nav-link">
+                    <span class="material-icons">auto_stories</span>
+                    <span>Information Products</span>
+                </a>
+                <a href="../engineer/Data_Visualization.html" class="nav-link">
+                    <span class="material-icons">bar_chart</span>
+                    <span>Dashboard & Data Viz</span>
+                </a>
+                <div class="sidebar-section">Infrastructure</div>
+                <a href="infrastructure_management.html" class="nav-link">
+                    <span class="material-icons">dns</span>
+                    <span>Infrastructure (HOS)</span>
+                </a>
+                <a href="NHIH_operations.html" class="nav-link">
+                    <span class="material-icons">build</span>
+                    <span>NHIH Operations</span>
+                </a>
+                <a href="Data_Security.html" class="nav-link active">
+                    <span class="material-icons">security</span>
+                    <span>Data Security</span>
+                </a>
+            </div>
+            <div class="sidebar-foot">
+                <div class="session-card">
+                    <div class="session-status"><span class="dot-online"></span> Active Session</div>
+                    <div class="session-time">Last login: Today, 08:30 AM</div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-wrap">
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                    <div>
+                        <h1 class="page-title">Data Security & Compliance</h1>
+                        <p class="welcome-sub">Review security posture and compliance audit results</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
+                    <div class="notif-wrap">
+                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
+                            <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
+                        </button>
+                        <div class="dropdown notif-dd" id="notifDropdown">
+                            <div class="dd-head"><h4>Notifications</h4><button>Mark all read</button></div>
+                            <div class="dd-body">
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--primary-light);color:var(--primary)"><span class="material-icons">info</span></div>
+                                    <div class="ni-text"><span class="ni-title">System Update</span><span class="ni-desc">Dashboard refreshed with latest data</span><span class="ni-time">1 hour ago</span></div>
+                                </div>
+                            </div>
+                            <div class="dd-foot"><a href="#">View All</a></div>
+                        </div>
+                    </div>
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar" style="background:var(--success)">IT</div>
+                            <div class="user-info"><div class="uname">Ibrahim Sorie Turay</div><div class="urole">Programme Lead</div></div>
+                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                        </div>
+                        <div class="dropdown profile-dd" id="profileDropdown">
+                            <div class="dd-item pd-item"><span class="material-icons">person</span> My Profile</div>
+                            <a href="../../index.html" class="dd-item pd-item danger"><span class="material-icons">logout</span> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+
+                <div class="kpi-grid">
+                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">shield</span></div><div class="kpi-data"><span class="kpi-label">Security Score</span><span class="kpi-val">94%</span><span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 3% improved</span></div></div>
+                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">gpp_maybe</span></div><div class="kpi-data"><span class="kpi-label">Open Findings</span><span class="kpi-val">5</span></div></div>
+                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">policy</span></div><div class="kpi-data"><span class="kpi-label">Policies Active</span><span class="kpi-val">12</span></div></div>
+                    <div class="kpi"><div class="kpi-bar purple"></div><div class="kpi-icon purple"><span class="material-icons">history</span></div><div class="kpi-data"><span class="kpi-label">Last Audit</span><span class="kpi-val">Jun 15</span></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-head"><h3>Compliance Checklist — Q3 2026</h3><button class="btn-sm primary"><span class="material-icons">download</span> Export Report</button></div>
+                    <div class="tbl-responsive">
+                        <table class="dt">
+                            <thead><tr><th>Control Area</th><th>Requirement</th><th>Status</th><th>Owner</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Access Control</strong></td><td>Role-based access enforced on all systems</td><td><span class="badge-s success">Compliant</span></td><td>Eng Team</td></tr>
+                                <tr><td><strong>Data Encryption</strong></td><td>AES-256 at rest, TLS 1.3 in transit</td><td><span class="badge-s success">Compliant</span></td><td>Eng Team</td></tr>
+                                <tr><td><strong>Backup & Recovery</strong></td><td>Daily backups with 30-day retention</td><td><span class="badge-s success">Compliant</span></td><td>Ops Team</td></tr>
+                                <tr><td><strong>User Activity Logging</strong></td><td>All user actions logged and auditable</td><td><span class="badge-s warning">Partial</span></td><td>Eng Team</td></tr>
+                                <tr><td><strong>Vulnerability Scanning</strong></td><td>Monthly scans on all public endpoints</td><td><span class="badge-s danger">Overdue</span></td><td>Ops Team</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+    
+</body>
+</html>

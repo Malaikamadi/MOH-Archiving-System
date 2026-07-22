@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings & Schedule | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="nhih-app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Hub Operations</div>
+                <a href="index.html" class="nav-link">
+                    <span class="material-icons">dashboard</span>
+                    <span>Hub Overview</span>
+                </a>
+                <a href="datacenter.html" class="nav-link">
+                    <span class="material-icons">router</span>
+                    <span>Data Center Status</span>
+                </a>
+                <a href="network.html" class="nav-link">
+                    <span class="material-icons">lan</span>
+                    <span>Network & Security</span>
+                </a>
+                <div class="sidebar-section">IT Support & Staffing</div>
+                <a href="hardware-assets.html" class="nav-link">
+                    <span class="material-icons">memory</span>
+                    <span>Hardware Assets</span>
+                </a>
+                <a href="vendors.html" class="nav-link">
+                    <span class="material-icons">handshake</span>
+                    <span>Vendor Contracts</span>
+                </a>
+                <a href="meetings.html" class="nav-link active">
+                    <span class="material-icons">event</span>
+                    <span>Meetings</span>
+                </a>
+                <div class="sidebar-section">System Administration</div>
+                <a href="NHIH_operation_maintaiannace.html" class="nav-link">
+                    <span class="material-icons">build</span>
+                    <span>Maintenance</span>
+                </a>
+                <a href="compliance.html" class="nav-link">
+                    <span class="material-icons">verified_user</span>
+                    <span>Security & Compliance</span>
+                </a>
+                <a href="settings.html" class="nav-link">
+                    <span class="material-icons">settings</span>
+                    <span>Settings</span>
+                </a>
+            </div>
+            <div class="sidebar-foot">
+                <div class="session-card">
+                    <div class="session-status"><span class="dot-online"></span> Active Session</div>
+                    <div class="session-time">Last login: Today, 08:30 AM</div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-wrap">
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                    <div>
+                        <h1 class="page-title">Meetings & Schedule</h1>
+                        <p class="welcome-sub">Manage team meetings and standup schedules</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
+                    <div class="notif-wrap">
+                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
+                            <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
+                        </button>
+                        <div class="dropdown notif-dd" id="notifDropdown">
+                            <div class="dd-head"><h4>Notifications</h4><button>Mark all read</button></div>
+                            <div class="dd-body">
+                                <div class="dd-item unread">
+                                    <div class="ni-icon" style="background:var(--primary-light);color:var(--primary)"><span class="material-icons">info</span></div>
+                                    <div class="ni-text"><span class="ni-title">System Update</span><span class="ni-desc">Dashboard refreshed with latest data</span><span class="ni-time">1 hour ago</span></div>
+                                </div>
+                            </div>
+                            <div class="dd-foot"><a href="#">View All</a></div>
+                        </div>
+                    </div>
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar" style="background:var(--warning)">PM</div>
+                            <div class="user-info"><div class="uname">Prince Mafinda</div><div class="urole">Operations Manager</div></div>
+                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                        </div>
+                        <div class="dropdown profile-dd" id="profileDropdown">
+                            <div class="dd-item pd-item"><span class="material-icons">person</span> My Profile</div>
+                            <a href="../../index.html" class="dd-item pd-item danger"><span class="material-icons">logout</span> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+
+                <div class="kpi-grid">
+                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">event</span></div><div class="kpi-data"><span class="kpi-label">This Week</span><span class="kpi-val">5</span></div></div>
+                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">check_circle</span></div><div class="kpi-data"><span class="kpi-label">Attended</span><span class="kpi-val">38</span></div></div>
+                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">schedule</span></div><div class="kpi-data"><span class="kpi-label">Next Meeting</span><span class="kpi-val">Today 2PM</span></div></div>
+                </div>
+                <div class="card">
+                    <div class="card-head"><h3>Meeting Schedule</h3><button class="btn-sm primary"><span class="material-icons">add</span> Schedule Meeting</button></div>
+                    <div class="tbl-responsive"><table class="dt">
+                        <thead><tr><th>Meeting</th><th>Day/Date</th><th>Time</th><th>Lead</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Daily Ops Standup</strong></td><td>Mon–Fri</td><td>09:00 AM</td><td>Prince Mafinda</td><td><span class="badge-s info">Recurring</span></td></tr>
+                            <tr><td><strong>Infrastructure Review</strong></td><td>Every Thursday</td><td>02:00 PM</td><td>Les Kimball Kamara</td><td><span class="badge-s info">Recurring</span></td></tr>
+                            <tr><td><strong>Vendor Sync — SAND Tech</strong></td><td>Jul 25, 2026</td><td>11:00 AM</td><td>Prince Mafinda</td><td><span class="badge-s warning">Upcoming</span></td></tr>
+                            <tr><td><strong>Security Audit Prep</strong></td><td>Aug 1, 2026</td><td>10:00 AM</td><td>Dr. J. Koroma</td><td><span class="badge-s purple">Scheduled</span></td></tr>
+                        </tbody>
+                    </table></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+    
+</body>
+</html>
