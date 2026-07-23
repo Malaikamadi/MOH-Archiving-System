@@ -250,3 +250,128 @@ async function submitMinutes() {
         showToast('Connection error. Is the backend server running?', 'error');
     }
 }
+
+// Project/Task Management Logic
+async function submitTask() {
+    const id = document.getElementById('taskId')?.value || null;
+    const title = document.getElementById('taskTitle')?.value || '';
+    const description = document.getElementById('taskDesc')?.value || '';
+    const assigneeRole = document.getElementById('taskRole')?.value || '';
+    const status = document.getElementById('taskStatus')?.value || 'Not Started';
+    const progress = parseInt(document.getElementById('taskProgress')?.value || '0', 10);
+
+    if (!title) {
+        showToast('Task Title is required.', 'warning');
+        return;
+    }
+
+    const payload = {
+        id: id,
+        title: title,
+        description: description,
+        assigneeRole: assigneeRole,
+        status: status,
+        progress: progress,
+        updatedAt: new Date().toISOString()
+    };
+
+    try {
+        const response = await fetch('/api/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        if (response.ok) {
+            showToast('Task saved successfully!', 'success');
+            document.getElementById('addProjectModal').classList.remove('show');
+            // Reset form
+            if(document.getElementById('taskId')) document.getElementById('taskId').value = '';
+            if(document.getElementById('taskTitle')) document.getElementById('taskTitle').value = '';
+            if(document.getElementById('taskDesc')) document.getElementById('taskDesc').value = '';
+            if(document.getElementById('taskProgress')) document.getElementById('taskProgress').value = '0';
+        } else {
+            showToast('Failed to save task. Server error.', 'error');
+        }
+    } catch (err) {
+        console.error('Error submitting task:', err);
+        showToast('Connection error. Is the backend server running?', 'error');
+    }
+}
+
+async function loadTasks() {
+    try {
+        const response = await fetch('/api/tasks');
+        if (!response.ok) return;
+        const tasks = await response.json();
+
+        // 1. Populate Coordinator/Table view if present
+        const tbody = document.getElementById('projectsTableBody');
+        if (tbody) {
+            tbody.innerHTML = '';
+            tasks.forEach(task => {
+                const tr = document.createElement('tr');
+                let progColor = 'blue';
+                if (task.progress >= 100) progColor = 'green';
+                else if (task.progress < 40) progColor = 'orange';
+
+                let badgeClass = 'info';
+                if (task.status === 'Completed') badgeClass = 'success';
+                else if (task.status === 'On Hold') badgeClass = 'warning';
+                else if (task.status === 'Not Started') badgeClass = 'danger';
+
+                tr.innerHTML = `
+                    <td><strong>${task.title}</strong></td>
+                    <td>${task.assigneeRole}</td>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:8px">
+                            <div class="prog-wrap" style="width:100px">
+                                <div class="prog-fill ${progColor}" style="width: ${task.progress}%"></div>
+                            </div>
+                            <span style="font-size:0.7rem; font-weight:600">${task.progress}%</span>
+                        </div>
+                    </td>
+                    <td style="font-size:.72rem; color:var(--text-muted)">${new Date(task.updatedAt).toLocaleDateString()}</td>
+                    <td><span class="badge-s ${badgeClass}">${task.status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 2. Populate Director/List view if present
+        const dirList = document.getElementById('directorProjectsList');
+        if (dirList) {
+            dirList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                let progColor = 'blue';
+                if (task.progress >= 100) progColor = 'green';
+                else if (task.progress < 40) progColor = 'orange';
+                
+                const div = document.createElement('div');
+                div.style.marginBottom = '1.5rem';
+                div.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div class="avatar" style="width:28px; height:28px; font-size:0.7rem; background:var(--primary);">P${index + 1}</div>
+                            <strong>${task.title}</strong>
+                        </div>
+                        <span style="font-size:0.8rem; font-weight:600; color:var(--text-main);">${task.progress}%</span>
+                    </div>
+                    <div class="prog-wrap" style="height:8px;">
+                        <div class="prog-fill ${progColor}" style="width:${task.progress}%"></div>
+                    </div>
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Lead: ${task.assigneeRole} | Status: ${task.status}</p>
+                `;
+                dirList.appendChild(div);
+            });
+        }
+
+    } catch (err) {
+        console.error('Error loading tasks:', err);
+    }
+}
+
+// Ensure loadTasks runs on relevant pages
+document.addEventListener('DOMContentLoaded', () => {
+    loadTasks();
+});

@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 const DATA_FILE = path.join(__dirname, 'data', 'minutes.json');
+const TASKS_FILE = path.join(__dirname, 'data', 'tasks.json');
 
 // Middleware
 app.use(cors());
@@ -13,39 +14,41 @@ app.use(express.json());
 // Serve static files from the root directory so the HTML/CSS/JS works
 app.use(express.static(__dirname));
 
-// Ensure data file exists
-if (!fs.existsSync(DATA_FILE)) {
+// Ensure data files exist
+const ensureFiles = () => {
     if (!fs.existsSync(path.join(__dirname, 'data'))) {
         fs.mkdirSync(path.join(__dirname, 'data'));
     }
-    fs.writeFileSync(DATA_FILE, '[]');
-}
+    if (!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE, '[]');
+    if (!fs.existsSync(TASKS_FILE)) fs.writeFileSync(TASKS_FILE, '[]');
+};
+ensureFiles();
 
 // Helper to read data
-const readData = () => {
+const readData = (file) => {
     try {
-        const data = fs.readFileSync(DATA_FILE, 'utf8');
+        const data = fs.readFileSync(file, 'utf8');
         return JSON.parse(data);
     } catch (error) {
-        console.error('Error reading data:', error);
+        console.error(`Error reading ${file}:`, error);
         return [];
     }
 };
 
 // Helper to write data
-const writeData = (data) => {
+const writeData = (file, data) => {
     try {
-        fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
+        fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
         return true;
     } catch (error) {
-        console.error('Error writing data:', error);
+        console.error(`Error writing ${file}:`, error);
         return false;
     }
 };
 
 // API: Get all minutes
 app.get('/api/minutes', (req, res) => {
-    const minutes = readData();
+    const minutes = readData(DATA_FILE);
     res.json(minutes);
 });
 
@@ -57,13 +60,49 @@ app.post('/api/minutes', (req, res) => {
         ...req.body
     };
 
-    const minutes = readData();
+    const minutes = readData(DATA_FILE);
     minutes.push(newMinute);
     
-    if (writeData(minutes)) {
+    if (writeData(DATA_FILE, minutes)) {
         res.status(201).json({ message: 'Minutes saved successfully', data: newMinute });
     } else {
         res.status(500).json({ message: 'Failed to save minutes' });
+    }
+});
+
+// API: Get all tasks
+app.get('/api/tasks', (req, res) => {
+    const tasks = readData(TASKS_FILE);
+    res.json(tasks);
+});
+
+// API: Save new task or update existing
+app.post('/api/tasks', (req, res) => {
+    const tasks = readData(TASKS_FILE);
+    
+    if (req.body.id) {
+        // Update existing
+        const idx = tasks.findIndex(t => t.id === req.body.id);
+        if (idx !== -1) {
+            tasks[idx] = { ...tasks[idx], ...req.body, updatedAt: new Date().toISOString() };
+        } else {
+            return res.status(404).json({ message: 'Task not found' });
+        }
+    } else {
+        // Create new
+        const newTask = {
+            id: Date.now().toString(),
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            ...req.body
+        };
+        tasks.push(newTask);
+    }
+    
+    if (writeData(TASKS_FILE, tasks)) {
+        res.status(201).json({ message: 'Task saved successfully' });
+    } else {
+        res.status(500).json({ message: 'Failed to save task' });
     }
 });
 

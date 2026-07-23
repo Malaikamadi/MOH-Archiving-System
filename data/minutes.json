@@ -1,16 +1,16 @@
 [
-  {
-    "id": "1784811945927",
-    "createdAt": "2026-07-23T13:05:45.927Z",
-    "venue": "Main Hall",
-    "chairedBy": "Dr. Smith",
-    "items": [
-      {
-        "category": "Solution Manager",
-        "issue": "Database slow",
-        "discussion": "Need indexing",
-        "action": "Add index by Friday"
-      }
-    ]
-  }
+    {
+        "id": "1784811945927",
+        "createdAt": "2026-07-23T13:05:45.927Z",
+        "venue": "Main Hall",
+        "chairedBy": "Dr. Smith",
+        "items": [
+            {
+                "category": "Solution Manager",
+                "issue": "Database slow",
+                "discussion": "Need indexing",
+                "action": "Add index by Friday"
+            }
+        ]
+    }
 ]
