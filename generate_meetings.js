@@ -1,145 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meetings & Standups | NHIH</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <div class="nhih-app">
-        <div class="sidebar-overlay" id="sidebarOverlay"></div>
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-head">
-                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
-                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
-            </div>
-            <div class="sidebar-nav">
-                <div class="sidebar-section">Programme Management</div>
-                <a href="index.html" class="nav-link">
-                    <span class="material-icons">dashboard</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="meetings.html" class="nav-link active">
-                    <span class="material-icons">event</span>
-                    <span>Meetings & Standups</span>
-                </a>
-                <a href="facility_report.html" class="nav-link">
-                    <span class="material-icons">local_hospital</span>
-                    <span>Facility Reporting</span>
-                </a>
-                <div class="sidebar-section">Data Oversight</div>
-                <a href="data_validation.html" class="nav-link">
-                    <span class="material-icons">fact_check</span>
-                    <span>Data Validation</span>
-                </a>
-                <a href="information_product_review.html" class="nav-link">
-                    <span class="material-icons">auto_stories</span>
-                    <span>Information Products</span>
-                </a>
-                <a href="Data_Visualization.html" class="nav-link">
-                    <span class="material-icons">bar_chart</span>
-                    <span>Dashboard & Data Viz</span>
-                </a>
-                <div class="sidebar-section">Infrastructure</div>
-                <a href="infrastructure_management.html" class="nav-link">
-                    <span class="material-icons">dns</span>
-                    <span>Infrastructure (HOS)</span>
-                </a>
-                <a href="NHIH_operations.html" class="nav-link">
-                    <span class="material-icons">build</span>
-                    <span>NHIH Operations</span>
-                </a>
-                <a href="Data_Security.html" class="nav-link">
-                    <span class="material-icons">security</span>
-                    <span>Data Security</span>
-                </a>
-            </div>
-            <div class="sidebar-foot">
-                <div class="session-card">
-                    <div class="session-status"><span class="dot-online"></span> Active Session</div>
-                    <div class="session-time">Last login: Today, 08:30 AM</div>
-                </div>
-            </div>
-        </aside>
+const fs = require('fs');
+const path = require('path');
 
-        <main class="main-wrap">
-            <header class="top-header">
-                <div class="header-left">
-                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
-                    <div>
-                        <h1 class="page-title">Meetings & Standups</h1>
-                        <p class="welcome-sub">Schedule team meetings and review executive summaries</p>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="search-box">
-                        <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search...">
-                    </div>
-                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
-                    <div class="notif-wrap">
-                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
-                            <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
-                        </button>
-                        <div class="dropdown notif-dd" id="notifDropdown">
-                            <div class="dd-head"><h4>Notifications</h4><button>Mark all read</button></div>
-                            <div class="dd-body">
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--primary-light);color:var(--primary)"><span class="material-icons">info</span></div>
-                                    <div class="ni-text"><span class="ni-title">System Update</span><span class="ni-desc">Dashboard refreshed with latest data</span><span class="ni-time">1 hour ago</span></div>
-                                </div>
-                            </div>
-                            <div class="dd-foot"><a href="#">View All</a></div>
-                        </div>
-                    </div>
-                    <div class="profile-wrap">
-                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
-                            <div class="avatar" style="background:var(--success)">IT</div>
-                            <div class="user-info"><div class="uname">Ibrahim Sorie Turay</div><div class="urole">Programme Lead</div></div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
-                        </div>
-                        <div class="dropdown profile-dd" id="profileDropdown">
-                            <div class="dd-item pd-item"><span class="material-icons">person</span> My Profile</div>
-                            <a href="../../index.html" class="dd-item pd-item danger"><span class="material-icons">logout</span> Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+const roles = ['analyst', 'engineer', 'director'];
+const dashboardDir = path.join(__dirname, 'Dashboard');
 
+// Meeting UI snippet to inject
+const meetingsUI = `
             <div class="main-content">
-
-                <div class="kpi-grid">
-                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">event</span></div><div class="kpi-data"><span class="kpi-label">This Week</span><span class="kpi-val">8</span><span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 2 more</span></div></div>
-                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">check_circle</span></div><div class="kpi-data"><span class="kpi-label">Completed</span><span class="kpi-val">45</span></div></div>
-                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">schedule</span></div><div class="kpi-data"><span class="kpi-label">Upcoming</span><span class="kpi-val">3</span></div></div>
-                    <div class="kpi"><div class="kpi-bar purple"></div><div class="kpi-icon purple"><span class="material-icons">groups</span></div><div class="kpi-data"><span class="kpi-label">Team Members</span><span class="kpi-val">7</span></div></div>
-                </div>
-                <div class="grid-2">
-                    <div class="card">
-                        <div class="card-head">
-                            <h3>Upcoming Meetings</h3>
+                <div class="card">
+                    <div class="card-head">
+                        <h3>Meeting Calendar</h3>
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn-sm" onclick="document.getElementById('minutesModal').classList.add('show')">Add Minutes</button>
                             <button class="btn-sm primary" onclick="document.getElementById('scheduleMeetingModal').classList.add('show')"><span class="material-icons">event</span> Schedule Meeting</button>
                         </div>
-                        <div style="padding: 20px;">
-                            <!-- Upcoming Meetings Container -->
-                            <div id="upcomingMeetingsContainer" style="display: grid; grid-template-columns: 1fr; gap: 15px;">
-                                <p style="color:var(--text-muted);">Loading upcoming meetings...</p>
-                            </div>
-                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-head">
-                            <h3>Recent Meeting Minutes</h3>
-                            <span class="view-all">View All</span>
-                        </div>
-                        <div class="activity-list">
-                            <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Weekly Data Review — Jul 18</strong><span>Data validation issues resolved for Bo District. Pipeline fix deployed by Eng team.</span><span class="atime">3 days ago</span></div></div>
-                            <div class="activity-item"><div class="activity-dot blue"></div><div class="activity-text"><strong>Executive Summary — Jul 14</strong><span>Presented Q2 KPI dashboard to Director. Approved expanded facility coverage.</span><span class="atime">1 week ago</span></div></div>
-                            <div class="activity-item"><div class="activity-dot orange"></div><div class="activity-text"><strong>Infrastructure Standup — Jul 12</strong><span>HOS server migration on track. UPS replacement scheduled for Aug.</span><span class="atime">9 days ago</span></div></div>
+                    
+                    <div style="padding: 20px;">
+                        <!-- Upcoming Meetings Container -->
+                        <div id="upcomingMeetingsContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                            <p style="color:var(--text-muted);">Loading upcoming meetings...</p>
                         </div>
                     </div>
                 </div>
@@ -274,6 +154,37 @@
     </div>
 
     <script src="../../js/nhih-dashboard.js"></script>
-    
 </body>
 </html>
+`;
+
+roles.forEach(role => {
+    const indexPath = path.join(dashboardDir, role, 'index.html');
+    const destPath = path.join(dashboardDir, role, 'meetings.html');
+
+    if (!fs.existsSync(indexPath)) {
+        console.error('File not found:', indexPath);
+        return;
+    }
+
+    let html = fs.readFileSync(indexPath, 'utf-8');
+    
+    // Replace <div class="main-content"> ... </body> ... </html> with the meetingsUI
+    const mainContentStart = html.indexOf('<div class="main-content">');
+    if (mainContentStart === -1) {
+        console.error('Could not find main-content in', role);
+        return;
+    }
+
+    // Split html up to main-content
+    let newHtml = html.substring(0, mainContentStart) + meetingsUI;
+
+    // Fix active link in sidebar (remove active from Dashboard, add to Meeting Scheduler if exists)
+    newHtml = newHtml.replace('<a href="index.html" class="nav-link active">', '<a href="index.html" class="nav-link">');
+    
+    // Change <h1 class="page-title">...</h1> to Meetings & Schedule
+    newHtml = newHtml.replace(/<h1 class="page-title">.*?<\/h1>/, '<h1 class="page-title">Meetings & Schedule</h1>');
+
+    fs.writeFileSync(destPath, newHtml, 'utf-8');
+    console.log('Created:', destPath);
+});

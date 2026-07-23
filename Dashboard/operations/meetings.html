@@ -71,16 +71,11 @@
                             <button class="btn-sm primary" onclick="document.getElementById('scheduleMeetingModal').classList.add('show')"><span class="material-icons">add</span> Schedule Meeting</button>
                         </div>
                     </div>
-                    <div class="tbl-responsive">
-                        <table class="dt">
-                            <thead><tr><th>Meeting</th><th>Day / Date</th><th>Time</th><th>Lead</th><th>Status</th><th>Minutes</th></tr></thead>
-                            <tbody>
-                                <tr><td><strong>Daily Ops Standup</strong></td><td>Mon–Fri</td><td>09:00 AM</td><td>Prince Mafinda</td><td><span class="badge-s info">Recurring</span></td><td><button class="btn-sm" onclick="document.getElementById('minutesModal').classList.add('show')"><span class="material-icons">edit_note</span> Minutes</button></td></tr>
-                                <tr><td><strong>Infrastructure Review</strong></td><td>Every Thursday</td><td>02:00 PM</td><td>Les Kimball Kamara</td><td><span class="badge-s info">Recurring</span></td><td><button class="btn-sm" onclick="document.getElementById('minutesModal').classList.add('show')"><span class="material-icons">edit_note</span> Minutes</button></td></tr>
-                                <tr><td><strong>Vendor Sync — SAND Tech</strong></td><td>Jul 25, 2026</td><td>11:00 AM</td><td>Prince Mafinda</td><td><span class="badge-s warning">Upcoming</span></td><td>—</td></tr>
-                                <tr><td><strong>Security Audit Prep</strong></td><td>Aug 1, 2026</td><td>10:00 AM</td><td>Dr. J. Koroma</td><td><span class="badge-s purple">Scheduled</span></td><td>—</td></tr>
-                            </tbody>
-                        </table>
+                    <div style="padding: 20px;">
+                        <!-- Upcoming Meetings Container -->
+                        <div id="upcomingMeetingsContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                            <p style="color:var(--text-muted);">Loading upcoming meetings...</p>
+                        </div>
                     </div>
                 </div>
 
@@ -113,23 +108,47 @@
     <div class="modal-bg" id="scheduleMeetingModal">
         <div class="modal-box">
             <div class="modal-top">
-                <h4>Schedule New Meeting</h4>
+                <h4>Schedule a Meeting</h4>
                 <button class="icon-btn" onclick="document.getElementById('scheduleMeetingModal').classList.remove('show')"><span class="material-icons">close</span></button>
             </div>
             <div class="modal-mid">
-                <div class="fg"><label>Meeting Title</label><input type="text" placeholder="e.g., Weekly Infrastructure Review"></div>
-                <div class="fg"><label>Date</label><input type="date"></div>
-                <div class="fg"><label>Time</label><input type="time"></div>
-                <div class="fg"><label>Meeting Lead</label><select><option>Prince Mafinda</option><option>Dr. J. Koroma</option><option>Ibrahim S. Turay</option><option>Les Kimball Kamara</option></select></div>
-                <div class="fg"><label>Recurrence</label><select><option>One-time</option><option>Daily</option><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option></select></div>
-                <div style="background:var(--info-bg);border:1px solid rgba(8,145,178,0.15);border-radius:8px;padding:10px;display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--info)">
-                    <span class="material-icons" style="font-size:1.1rem">notifications_active</span>
-                    <span>A notification will be sent to <strong>all platform users</strong> when this meeting is scheduled.</span>
+                <div class="fg">
+                    <label>Meeting Title</label>
+                    <input type="text" id="schedTitle" placeholder="e.g. Weekly Standup">
+                </div>
+                <div class="grid-2" style="gap: 10px;">
+                    <div class="fg">
+                        <label>Date</label>
+                        <input type="date" id="schedDate">
+                    </div>
+                    <div class="fg">
+                        <label>Time</label>
+                        <input type="time" id="schedTime">
+                    </div>
+                </div>
+                <div class="fg">
+                    <label>Attendees (Roles)</label>
+                    <select id="schedAttendees" multiple style="height:80px;">
+                        <option value="Director">Director</option>
+                        <option value="Coordinator">Coordinator</option>
+                        <option value="Team Lead">Program Lead</option>
+                        <option value="Operations Manager">Operations Manager</option>
+                        <option value="Data Engineer">Data Engineer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                    </select>
+                    <small style="color:var(--text-muted); font-size:0.75rem;">Hold Ctrl/Cmd to select multiple</small>
+                </div>
+                <div class="fg">
+                    <label>Zoom Meeting Link</label>
+                    <div style="display:flex; gap:8px;">
+                        <input type="url" id="schedZoomLink" placeholder="https://zoom.us/j/..." style="flex:1;">
+                        <button class="btn-sm" onclick="generateZoomLink()" type="button">Generate Zoom Link</button>
+                    </div>
                 </div>
             </div>
             <div class="modal-bot">
                 <button class="btn-sm" onclick="document.getElementById('scheduleMeetingModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('scheduleMeetingModal').classList.remove('show'); showToast('Meeting scheduled! Notification sent to all users.', 'success')"><span class="material-icons">send</span> Schedule & Notify</button>
+                <button class="btn-sm primary" onclick="scheduleMeeting()"><span class="material-icons">send</span> Schedule</button>
             </div>
         </div>
     </div>
