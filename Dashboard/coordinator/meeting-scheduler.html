@@ -98,13 +98,73 @@
             </header>
 
             <div class="main-content">
-
-    <div class="card">
-        <div class="card-head"><h3>Calendar</h3><button class="btn-sm primary" onclick="document.getElementById('minutesModal').classList.add('show')">Schedule Meeting / Add Minutes</button></div>
-        <div style="height:400px;background:#f8fafc;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#64748b">Calendar Component</div>
-    </div>
+                <div class="card">
+                    <div class="card-head">
+                        <h3>Meeting Calendar</h3>
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn-sm" onclick="document.getElementById('minutesModal').classList.add('show')">Add Minutes</button>
+                            <button class="btn-sm primary" onclick="document.getElementById('scheduleMeetingModal').classList.add('show')"><span class="material-icons">event</span> Schedule Meeting</button>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 20px;">
+                        <!-- Upcoming Meetings Container -->
+                        <div id="upcomingMeetingsContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                            <p style="color:var(--text-muted);">Loading upcoming meetings...</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
+    </div>
+
+    <!-- Schedule Meeting Modal -->
+    <div class="modal-bg" id="scheduleMeetingModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h4>Schedule a Meeting</h4>
+                <button class="icon-btn" onclick="document.getElementById('scheduleMeetingModal').classList.remove('show')"><span class="material-icons">close</span></button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg">
+                    <label>Meeting Title</label>
+                    <input type="text" id="schedTitle" placeholder="e.g. Weekly Standup">
+                </div>
+                <div class="grid-2" style="gap: 10px;">
+                    <div class="fg">
+                        <label>Date</label>
+                        <input type="date" id="schedDate">
+                    </div>
+                    <div class="fg">
+                        <label>Time</label>
+                        <input type="time" id="schedTime">
+                    </div>
+                </div>
+                <div class="fg">
+                    <label>Attendees (Roles)</label>
+                    <select id="schedAttendees" multiple style="height:80px;">
+                        <option value="Director">Director</option>
+                        <option value="Coordinator">Coordinator</option>
+                        <option value="Team Lead">Program Lead</option>
+                        <option value="Operations Manager">Operations Manager</option>
+                        <option value="Data Engineer">Data Engineer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                    </select>
+                    <small style="color:var(--text-muted); font-size:0.75rem;">Hold Ctrl/Cmd to select multiple</small>
+                </div>
+                <div class="fg">
+                    <label>Zoom Meeting Link</label>
+                    <div style="display:flex; gap:8px;">
+                        <input type="url" id="schedZoomLink" placeholder="https://zoom.us/j/..." style="flex:1;">
+                        <button class="btn-sm" onclick="generateZoomLink()" type="button">Generate Zoom Link</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('scheduleMeetingModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary" onclick="scheduleMeeting()"><span class="material-icons">send</span> Schedule</button>
+            </div>
+        </div>
     </div>
 
     <!-- Stand-Up Meeting Minutes Template Modal -->

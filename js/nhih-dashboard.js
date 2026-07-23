@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
     const themeBtn = document.getElementById('themeToggle');
     if (!themeBtn) return;
-    
+
     // Check local storage or system preference
-    const isDark = localStorage.getItem('nhih_theme') === 'dark' || 
-                   (!localStorage.getItem('nhih_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    
+    const isDark = localStorage.getItem('nhih_theme') === 'dark' ||
+        (!localStorage.getItem('nhih_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
     if (isDark) {
         document.body.classList.add('dark-theme');
         themeBtn.querySelector('.material-icons').textContent = 'light_mode';
@@ -31,7 +31,7 @@ function initTheme() {
         const isNowDark = document.body.classList.contains('dark-theme');
         localStorage.setItem('nhih_theme', isNowDark ? 'dark' : 'light');
         themeBtn.querySelector('.material-icons').textContent = isNowDark ? 'light_mode' : 'dark_mode';
-        
+
         // Update charts if they exist
         updateChartThemes(isNowDark);
     });
@@ -57,13 +57,13 @@ function initSidebar() {
 // Dropdowns (Notifications & Profile)
 function initDropdowns() {
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    
+
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.stopPropagation();
             const targetId = toggle.getAttribute('data-target');
             const dropdown = document.getElementById(targetId);
-            
+
             // Close others
             document.querySelectorAll('.dropdown.show').forEach(dd => {
                 if (dd.id !== targetId) dd.classList.remove('show');
@@ -92,16 +92,16 @@ function updateDateTime() {
     if (!dtElements.length) return;
 
     const now = new Date();
-    const options = { 
-        weekday: 'short', 
-        year: 'numeric', 
-        month: 'short', 
+    const options = {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
         day: 'numeric',
-        hour: '2-digit', 
+        hour: '2-digit',
         minute: '2-digit'
     };
     const formatted = now.toLocaleDateString('en-US', options);
-    
+
     dtElements.forEach(el => el.textContent = formatted);
 }
 
@@ -132,7 +132,7 @@ function initCharts() {
 
 function updateChartThemes(isDark) {
     if (typeof Chart === 'undefined') return;
-    
+
     const textColor = isDark ? '#94a3b8' : '#64748b';
     const gridColor = isDark ? '#1e293b' : '#e2e8f0';
 
@@ -164,7 +164,7 @@ function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.style.borderLeft = `4px solid ${colors[type]}`;
-    
+
     toast.innerHTML = `
         <span class="material-icons" style="color: ${colors[type]}">${icons[type]}</span>
         <span>${message}</span>
@@ -182,7 +182,7 @@ function showToast(message, type = 'info') {
 function addMinuteRow() {
     const tbody = document.getElementById('minTableBody');
     if (!tbody) return;
-    
+
     const tr = document.createElement('tr');
     tr.innerHTML = `
         <td style="border:1px solid var(--border-color); padding:4px;"><input type="text" class="min-input issue" style="width:100%; border:none; outline:none; background:transparent; color:var(--text-main);" placeholder="New issue..."></td>
@@ -205,7 +205,7 @@ async function submitMinutes() {
 
     const rows = document.querySelectorAll('#minTableBody tr');
     let currentCategory = '';
-    
+
     rows.forEach(row => {
         if (row.cells.length === 1) {
             // It's a category header row
@@ -215,12 +215,12 @@ async function submitMinutes() {
             const issueInput = row.querySelector('.issue');
             const discInput = row.querySelector('.disc');
             const actionInput = row.querySelector('.action');
-            
+
             // Only add if there is some data in the row
-            if ((issueInput && issueInput.value.trim()) || 
-                (discInput && discInput.value.trim()) || 
+            if ((issueInput && issueInput.value.trim()) ||
+                (discInput && discInput.value.trim()) ||
                 (actionInput && actionInput.value.trim()) || currentCategory) {
-                
+
                 payload.items.push({
                     category: currentCategory,
                     issue: issueInput ? issueInput.value.trim() : '',
@@ -237,7 +237,7 @@ async function submitMinutes() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-        
+
         if (response.ok) {
             showToast('Minutes saved successfully!', 'success');
             document.getElementById('minutesModal').classList.remove('show');
@@ -281,15 +281,15 @@ async function submitTask() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-        
+
         if (response.ok) {
             showToast('Task saved successfully!', 'success');
             document.getElementById('addProjectModal').classList.remove('show');
             // Reset form
-            if(document.getElementById('taskId')) document.getElementById('taskId').value = '';
-            if(document.getElementById('taskTitle')) document.getElementById('taskTitle').value = '';
-            if(document.getElementById('taskDesc')) document.getElementById('taskDesc').value = '';
-            if(document.getElementById('taskProgress')) document.getElementById('taskProgress').value = '0';
+            if (document.getElementById('taskId')) document.getElementById('taskId').value = '';
+            if (document.getElementById('taskTitle')) document.getElementById('taskTitle').value = '';
+            if (document.getElementById('taskDesc')) document.getElementById('taskDesc').value = '';
+            if (document.getElementById('taskProgress')) document.getElementById('taskProgress').value = '0';
         } else {
             showToast('Failed to save task. Server error.', 'error');
         }
@@ -346,7 +346,7 @@ async function loadTasks() {
                 let progColor = 'blue';
                 if (task.progress >= 100) progColor = 'green';
                 else if (task.progress < 40) progColor = 'orange';
-                
+
                 const div = document.createElement('div');
                 div.style.marginBottom = '1.5rem';
                 div.innerHTML = `

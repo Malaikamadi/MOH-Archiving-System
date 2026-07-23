@@ -106,6 +106,34 @@ app.post('/api/tasks', (req, res) => {
     }
 });
 
+const MEETINGS_FILE = path.join(__dirname, 'data', 'meetings.json');
+
+// Ensure meetings.json exists
+if (!fs.existsSync(MEETINGS_FILE)) fs.writeFileSync(MEETINGS_FILE, '[]');
+
+// API: Get all scheduled meetings
+app.get('/api/meetings', (req, res) => {
+    const meetings = readData(MEETINGS_FILE);
+    res.json(meetings);
+});
+
+// API: Save new scheduled meeting
+app.post('/api/meetings', (req, res) => {
+    const meetings = readData(MEETINGS_FILE);
+    const newMeeting = {
+        id: Date.now().toString(),
+        createdAt: new Date().toISOString(),
+        ...req.body
+    };
+    meetings.push(newMeeting);
+    
+    if (writeData(MEETINGS_FILE, meetings)) {
+        res.status(201).json({ message: 'Meeting scheduled successfully', data: newMeeting });
+    } else {
+        res.status(500).json({ message: 'Failed to schedule meeting' });
+    }
+});
+
 // Fallback to index.html for root
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
