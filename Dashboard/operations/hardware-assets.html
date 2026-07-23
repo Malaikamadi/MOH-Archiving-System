@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hardware Assets | NHIH</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="nhih-app">
@@ -19,51 +18,20 @@
             </div>
             <div class="sidebar-nav">
                 <div class="sidebar-section">Hub Operations</div>
-                <a href="index.html" class="nav-link">
-                    <span class="material-icons">dashboard</span>
-                    <span>Hub Overview</span>
-                </a>
-                <a href="datacenter.html" class="nav-link">
-                    <span class="material-icons">router</span>
-                    <span>Data Center Status</span>
-                </a>
-                <a href="network.html" class="nav-link">
-                    <span class="material-icons">lan</span>
-                    <span>Network & Security</span>
-                </a>
+                <a href="index.html" class="nav-link"><span class="material-icons">dashboard</span><span>Hub Overview</span></a>
+                <a href="datacenter.html" class="nav-link"><span class="material-icons">router</span><span>Data Center Status</span></a>
+                <a href="network.html" class="nav-link"><span class="material-icons">lan</span><span>Network & Security</span></a>
                 <div class="sidebar-section">IT Support & Staffing</div>
-                <a href="hardware-assets.html" class="nav-link active">
-                    <span class="material-icons">memory</span>
-                    <span>Hardware Assets</span>
-                </a>
-                <a href="vendors.html" class="nav-link">
-                    <span class="material-icons">handshake</span>
-                    <span>Vendor Contracts</span>
-                </a>
-                <a href="meetings.html" class="nav-link">
-                    <span class="material-icons">event</span>
-                    <span>Meetings</span>
-                </a>
+                <a href="hardware-assets.html" class="nav-link active"><span class="material-icons">memory</span><span>Hardware Assets</span></a>
+                <a href="vendors.html" class="nav-link"><span class="material-icons">handshake</span><span>Vendor Contracts</span></a>
+                <a href="meetings.html" class="nav-link"><span class="material-icons">event</span><span>Meetings</span></a>
+                <a href="manage-users.html" class="nav-link"><span class="material-icons">manage_accounts</span><span>Manage Users</span></a>
                 <div class="sidebar-section">System Administration</div>
-                <a href="NHIH_operation_maintaiannace.html" class="nav-link">
-                    <span class="material-icons">build</span>
-                    <span>Maintenance</span>
-                </a>
-                <a href="compliance.html" class="nav-link">
-                    <span class="material-icons">verified_user</span>
-                    <span>Security & Compliance</span>
-                </a>
-                <a href="settings.html" class="nav-link">
-                    <span class="material-icons">settings</span>
-                    <span>Settings</span>
-                </a>
+                <a href="NHIH_operation_maintaiannace.html" class="nav-link"><span class="material-icons">build</span><span>Maintenance</span></a>
+                <a href="compliance.html" class="nav-link"><span class="material-icons">verified_user</span><span>Security & Compliance</span></a>
+                <a href="settings.html" class="nav-link"><span class="material-icons">settings</span><span>Settings</span></a>
             </div>
-            <div class="sidebar-foot">
-                <div class="session-card">
-                    <div class="session-status"><span class="dot-online"></span> Active Session</div>
-                    <div class="session-time">Last login: Today, 08:30 AM</div>
-                </div>
-            </div>
+            <div class="sidebar-foot"><div class="session-card"><div class="session-status"><span class="dot-online"></span> Active Session</div><div class="session-time">Last login: Today, 07:45 AM</div></div></div>
         </aside>
 
         <main class="main-wrap">
@@ -72,44 +40,79 @@
                     <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
                     <div>
                         <h1 class="page-title">Hardware Assets</h1>
-                        <p class="welcome-sub">Manage physical IT infrastructure</p>
+                        <p class="welcome-sub">Track and manage all IT hardware inventory</p>
                     </div>
                 </div>
                 <div class="header-right">
-                    <div class="search-box">
-                        <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search...">
-                    </div>
+                    <div class="search-box"><span class="material-icons">search</span><input type="text" placeholder="Search assets..."></div>
                     <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
-                    <div class="notif-wrap">
-                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
-                            <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
-                        </button>
-                    </div>
                     <div class="profile-wrap">
-                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                        <div class="user-pill">
                             <div class="avatar" style="background:var(--warning)">PM</div>
                             <div class="user-info"><div class="uname">Prince Mafinda</div><div class="urole">Operations Manager</div></div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                     </div>
                 </div>
             </header>
 
             <div class="main-content">
+                <div class="kpi-grid">
+                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">dns</span></div><div class="kpi-data"><span class="kpi-label">Servers</span><span class="kpi-val">12</span></div></div>
+                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">laptop_mac</span></div><div class="kpi-data"><span class="kpi-label">Workstations</span><span class="kpi-val">84</span></div></div>
+                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">router</span></div><div class="kpi-data"><span class="kpi-label">Network Gear</span><span class="kpi-val">32</span></div></div>
+                    <div class="kpi"><div class="kpi-bar purple"></div><div class="kpi-icon purple"><span class="material-icons">print</span></div><div class="kpi-data"><span class="kpi-label">Printers/Scanners</span><span class="kpi-val">18</span></div></div>
+                </div>
 
-    <div class="kpi-grid">
-        <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">dns</span></div><div class="kpi-data"><span class="kpi-label">Servers</span><span class="kpi-val">12</span></div></div>
-        <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">laptop_mac</span></div><div class="kpi-data"><span class="kpi-label">Workstations</span><span class="kpi-val">84</span></div></div>
-        <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">router</span></div><div class="kpi-data"><span class="kpi-label">Network Gear</span><span class="kpi-val">32</span></div></div>
-    </div>
-    <div class="card">
-        <div class="card-head"><h3>Inventory Management</h3></div>
-        <p>Full hardware inventory tracking system loaded.</p>
-    </div>
+                <div class="card">
+                    <div class="card-head">
+                        <h3>Inventory Register</h3>
+                        <div style="display:flex;gap:6px">
+                            <button class="btn-sm"><span class="material-icons">download</span> Export</button>
+                            <button class="btn-sm primary" onclick="document.getElementById('addInventoryModal').classList.add('show')"><span class="material-icons">add</span> Add Inventory</button>
+                        </div>
+                    </div>
+                    <div class="tbl-responsive">
+                        <table class="dt">
+                            <thead><tr><th>Asset ID</th><th>Device</th><th>Brand/Model</th><th>Location</th><th>Assigned To</th><th>Condition</th><th>Actions</th></tr></thead>
+                            <tbody>
+                                <tr><td style="font-family:monospace;font-size:.72rem">HW-001</td><td><strong>Dell PowerEdge R740</strong></td><td>Dell Enterprise</td><td>Data Center Rack A</td><td>System</td><td><span class="badge-s success">Good</span></td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                                <tr><td style="font-family:monospace;font-size:.72rem">HW-002</td><td><strong>Dell PowerEdge R740</strong></td><td>Dell Enterprise</td><td>Data Center Rack B</td><td>System</td><td><span class="badge-s success">Good</span></td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                                <tr><td style="font-family:monospace;font-size:.72rem">HW-015</td><td><strong>HP ProBook 450 G8</strong></td><td>HP Inc.</td><td>NHIH Office</td><td>Dr. J. Koroma</td><td><span class="badge-s success">Good</span></td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                                <tr><td style="font-family:monospace;font-size:.72rem">HW-032</td><td><strong>Cisco SG350 Switch</strong></td><td>Cisco</td><td>Floor 2</td><td>Network</td><td><span class="badge-s warning">Fair</span></td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                                <tr><td style="font-family:monospace;font-size:.72rem">HW-045</td><td><strong>APC Smart-UPS 3000</strong></td><td>APC/Schneider</td><td>Data Center</td><td>System</td><td><span class="badge-s danger">Replace</span></td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                                <tr><td style="font-family:monospace;font-size:.72rem">HW-068</td><td><strong>HP LaserJet Pro M428</strong></td><td>HP Inc.</td><td>Admin Office</td><td>Shared</td><td><span class="badge-s success">Good</span></td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
+
+    <!-- Add Inventory Modal -->
+    <div class="modal-bg" id="addInventoryModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h4>Add New Inventory Item</h4>
+                <button class="icon-btn" onclick="document.getElementById('addInventoryModal').classList.remove('show')"><span class="material-icons">close</span></button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg"><label>Device Name</label><input type="text" placeholder="e.g., Dell PowerEdge R740"></div>
+                <div class="fg"><label>Category</label><select><option>Server</option><option>Workstation</option><option>Network Equipment</option><option>UPS / Power</option><option>Printer / Scanner</option><option>Other</option></select></div>
+                <div class="fg"><label>Brand / Model</label><input type="text" placeholder="e.g., Dell Enterprise"></div>
+                <div class="fg"><label>Serial Number</label><input type="text" placeholder="e.g., SN-2026-XXXXXX"></div>
+                <div class="fg"><label>Location</label><select><option>Data Center</option><option>NHIH Office</option><option>Admin Office</option><option>Floor 1</option><option>Floor 2</option></select></div>
+                <div class="fg"><label>Assigned To</label><input type="text" placeholder="e.g., Dr. J. Koroma or System"></div>
+                <div class="fg"><label>Condition</label><select><option>Good</option><option>Fair</option><option>Needs Repair</option><option>Replace</option></select></div>
+                <div class="fg"><label>Purchase Date</label><input type="date"></div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('addInventoryModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary" onclick="document.getElementById('addInventoryModal').classList.remove('show'); showToast('Inventory item added successfully!', 'success')"><span class="material-icons">save</span> Save Item</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../../js/nhih-dashboard.js"></script>
 </body>
 </html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Logs | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+</head>
+<body>
+    <div class="nhih-app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Main Menu</div>
+                <a href="index.html" class="nav-link"><span class="material-icons">dashboard</span><span>Dashboard</span></a>
+                <a href="team-management.html" class="nav-link"><span class="material-icons">groups</span><span>Team Management</span></a>
+                <div class="sidebar-section">Coordination</div>
+                <a href="assign-tasks.html" class="nav-link"><span class="material-icons">assignment_ind</span><span>Assign Tasks</span></a>
+                <a href="approve-workflows.html" class="nav-link"><span class="material-icons">checklist_rtl</span><span>Approve Workflows</span><span class="nav-badge">12</span></a>
+                <a href="project-tracking.html" class="nav-link"><span class="material-icons">track_changes</span><span>Project Tracking</span></a>
+                <a href="meeting-scheduler.html" class="nav-link"><span class="material-icons">event</span><span>Meeting Scheduler</span></a>
+                <div class="sidebar-section">System</div>
+                <a href="requests.html" class="nav-link"><span class="material-icons">inbox</span><span>Requests</span></a>
+                <a href="reports.html" class="nav-link"><span class="material-icons">description</span><span>Reports</span></a>
+                <a href="user-management.html" class="nav-link"><span class="material-icons">manage_accounts</span><span>User Management</span></a>
+                <a href="audit-logs.html" class="nav-link active"><span class="material-icons">history</span><span>Audit Logs</span></a>
+            </div>
+            <div class="sidebar-foot"><div class="session-card"><div class="session-status"><span class="dot-online"></span> Active Session</div><div class="session-time">Last login: Today, 09:15 AM</div></div></div>
+        </aside>
+
+        <main class="main-wrap">
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                    <div>
+                        <h1 class="page-title">Audit Logs</h1>
+                        <p class="welcome-sub">Track all system activities and user actions</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box"><span class="material-icons">search</span><input type="text" placeholder="Search logs..."></div>
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
+                    <div class="profile-wrap">
+                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
+                            <div class="avatar" style="background:var(--success)">CO</div>
+                            <div class="user-info"><div class="uname">Coordinator</div><div class="urole">Coordinator</div></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <div class="kpi-grid">
+                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">event_note</span></div><div class="kpi-data"><span class="kpi-label">Total Events (24h)</span><span class="kpi-val">342</span></div></div>
+                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">person</span></div><div class="kpi-data"><span class="kpi-label">Active Users</span><span class="kpi-val">12</span></div></div>
+                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">warning</span></div><div class="kpi-data"><span class="kpi-label">Warnings</span><span class="kpi-val">4</span></div></div>
+                    <div class="kpi"><div class="kpi-bar red"></div><div class="kpi-icon red"><span class="material-icons">error</span></div><div class="kpi-data"><span class="kpi-label">Failed Actions</span><span class="kpi-val">2</span></div></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3>System Activity Log</h3>
+                        <div style="display:flex;gap:6px">
+                            <select style="padding:4px 8px;border:1px solid var(--border-color);border-radius:6px;font-size:.72rem;background:var(--bg-input)">
+                                <option>All Actions</option><option>Login/Logout</option><option>Data Changes</option><option>Approvals</option><option>Exports</option>
+                            </select>
+                            <button class="btn-sm"><span class="material-icons">download</span> Export CSV</button>
+                        </div>
+                    </div>
+                    <div class="tbl-responsive">
+                        <table class="dt">
+                            <thead><tr><th>Timestamp</th><th>User</th><th>Role</th><th>Action</th><th>Details</th><th>Status</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td style="white-space:nowrap;font-size:.72rem;color:var(--text-muted)">Jul 23, 11:30 AM</td>
+                                    <td><strong>Dr. J. Koroma</strong></td>
+                                    <td>Data Engineer</td>
+                                    <td>Pipeline Execute</td>
+                                    <td style="font-size:.72rem">Ran DHIS2 → Warehouse ETL pipeline</td>
+                                    <td><span class="badge-s success">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space:nowrap;font-size:.72rem;color:var(--text-muted)">Jul 23, 11:15 AM</td>
+                                    <td><strong>Daniel G. Kay Jah</strong></td>
+                                    <td>Data Analyst</td>
+                                    <td>Data Export</td>
+                                    <td style="font-size:.72rem">Exported Q2 Maternal Health dataset (45,200 rows)</td>
+                                    <td><span class="badge-s success">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space:nowrap;font-size:.72rem;color:var(--text-muted)">Jul 23, 10:45 AM</td>
+                                    <td><strong>Prince Mafinda</strong></td>
+                                    <td>Operations Mgr</td>
+                                    <td>System Config</td>
+                                    <td style="font-size:.72rem">Updated backup schedule — daily at 2:00 AM</td>
+                                    <td><span class="badge-s success">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space:nowrap;font-size:.72rem;color:var(--text-muted)">Jul 23, 10:30 AM</td>
+                                    <td><strong>Ibrahim S. Turay</strong></td>
+                                    <td>Programme Lead</td>
+                                    <td>Report Approved</td>
+                                    <td style="font-size:.72rem">Approved Monthly HMIS Bulletin for publication</td>
+                                    <td><span class="badge-s success">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space:nowrap;font-size:.72rem;color:var(--text-muted)">Jul 23, 09:15 AM</td>
+                                    <td><strong>Unknown IP</strong></td>
+                                    <td>—</td>
+                                    <td>Login Attempt</td>
+                                    <td style="font-size:.72rem">Failed login from IP 196.45.xx.xx — 3 attempts</td>
+                                    <td><span class="badge-s danger">Failed</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space:nowrap;font-size:.72rem;color:var(--text-muted)">Jul 23, 08:30 AM</td>
+                                    <td><strong>Sorie I. Kamara</strong></td>
+                                    <td>Data Analyst</td>
+                                    <td>Login</td>
+                                    <td style="font-size:.72rem">Logged in from 192.168.1.xx (Chrome, macOS)</td>
+                                    <td><span class="badge-s success">Success</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../js/nhih-dashboard.js"></script>
+</body>
+</html>

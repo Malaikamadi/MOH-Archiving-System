@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarterly Bulletin | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="nhih-app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Main Menu</div>
+                <a href="index.html" class="nav-link"><span class="material-icons">dashboard</span><span>Dashboard</span></a>
+                <a href="quarterly-bulletin.html" class="nav-link active"><span class="material-icons">menu_book</span><span>Quarterly Bulletin</span></a>
+                <a href="my-reports.html" class="nav-link"><span class="material-icons">description</span><span>My Reports</span></a>
+                <a href="datasets.html" class="nav-link"><span class="material-icons">dataset</span><span>Datasets</span></a>
+                <div class="sidebar-section">Analysis</div>
+                <a href="data_validation.html" class="nav-link"><span class="material-icons">fact_check</span><span>Data Validation</span></a>
+                <a href="facility.html" class="nav-link"><span class="material-icons">local_hospital</span><span>Facility Performance</span></a>
+                <a href="report-templates.html" class="nav-link"><span class="material-icons">content_copy</span><span>Report Templates</span></a>
+                <div class="sidebar-section">System</div>
+                <a href="data-requests.html" class="nav-link"><span class="material-icons">inbox</span><span>Data Requests</span><span class="nav-badge">2</span></a>
+                <a href="settings.html" class="nav-link"><span class="material-icons">settings</span><span>Settings</span></a>
+            </div>
+            <div class="sidebar-foot"><div class="session-card"><div class="session-status"><span class="dot-online"></span> Active Session</div><div class="session-time">Last login: Today, 09:00 AM</div></div></div>
+        </aside>
+
+        <main class="main-wrap">
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                    <div>
+                        <h1 class="page-title">Quarterly Bulletin</h1>
+                        <p class="welcome-sub">Health data bulletins for stakeholder dissemination</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box"><span class="material-icons">search</span><input type="text" placeholder="Search bulletins..."></div>
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
+                    <div class="profile-wrap">
+                        <div class="user-pill">
+                            <div class="avatar" style="background:var(--info)">DA</div>
+                            <div class="user-info"><div class="uname">Daniel G. Kay Jah</div><div class="urole">Data Analyst</div></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <div class="kpi-grid">
+                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">menu_book</span></div><div class="kpi-data"><span class="kpi-label">Published Bulletins</span><span class="kpi-val">8</span></div></div>
+                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">edit_note</span></div><div class="kpi-data"><span class="kpi-label">In Draft</span><span class="kpi-val">1</span></div></div>
+                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">visibility</span></div><div class="kpi-data"><span class="kpi-label">Total Downloads</span><span class="kpi-val">1,240</span></div></div>
+                </div>
+
+                <!-- Current Draft -->
+                <div class="card" style="border-left:4px solid var(--warning)">
+                    <div class="card-head">
+                        <h3>📝 Current Draft — Q2 2026 Bulletin</h3>
+                        <div style="display:flex;gap:6px">
+                            <button class="btn-sm"><span class="material-icons">preview</span> Preview</button>
+                            <button class="btn-sm primary" onclick="document.getElementById('bulletinModal').classList.add('show')"><span class="material-icons">edit</span> Edit Draft</button>
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:4px">
+                        <div style="background:var(--bg-input);padding:12px;border-radius:8px"><div style="font-size:.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:600">Status</div><div style="font-weight:700;color:var(--warning);margin-top:2px">In Draft</div></div>
+                        <div style="background:var(--bg-input);padding:12px;border-radius:8px"><div style="font-size:.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:600">Quarter</div><div style="font-weight:700;margin-top:2px">Apr – Jun 2026</div></div>
+                        <div style="background:var(--bg-input);padding:12px;border-radius:8px"><div style="font-size:.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:600">Sections</div><div style="font-weight:700;margin-top:2px">6 / 8 completed</div></div>
+                        <div style="background:var(--bg-input);padding:12px;border-radius:8px"><div style="font-size:.65rem;color:var(--text-muted);text-transform:uppercase;font-weight:600">Deadline</div><div style="font-weight:700;color:var(--danger);margin-top:2px">Jul 31, 2026</div></div>
+                    </div>
+                </div>
+
+                <!-- Published Bulletins -->
+                <div class="card">
+                    <div class="card-head">
+                        <h3>Published Bulletins</h3>
+                        <button class="btn-sm primary"><span class="material-icons">add</span> New Bulletin</button>
+                    </div>
+                    <div class="tbl-responsive">
+                        <table class="dt">
+                            <thead><tr><th>Bulletin</th><th>Quarter</th><th>Published</th><th>Pages</th><th>Downloads</th><th>Actions</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>NHIH Health Data Bulletin</strong></td><td>Q1 2026 (Jan–Mar)</td><td>Apr 15, 2026</td><td>24</td><td>320</td><td><button class="btn-sm"><span class="material-icons">download</span> PDF</button> <button class="btn-sm"><span class="material-icons">visibility</span></button></td></tr>
+                                <tr><td><strong>NHIH Health Data Bulletin</strong></td><td>Q4 2025 (Oct–Dec)</td><td>Jan 12, 2026</td><td>22</td><td>285</td><td><button class="btn-sm"><span class="material-icons">download</span> PDF</button> <button class="btn-sm"><span class="material-icons">visibility</span></button></td></tr>
+                                <tr><td><strong>NHIH Health Data Bulletin</strong></td><td>Q3 2025 (Jul–Sep)</td><td>Oct 10, 2025</td><td>20</td><td>240</td><td><button class="btn-sm"><span class="material-icons">download</span> PDF</button> <button class="btn-sm"><span class="material-icons">visibility</span></button></td></tr>
+                                <tr><td><strong>NHIH Health Data Bulletin</strong></td><td>Q2 2025 (Apr–Jun)</td><td>Jul 8, 2025</td><td>18</td><td>198</td><td><button class="btn-sm"><span class="material-icons">download</span> PDF</button> <button class="btn-sm"><span class="material-icons">visibility</span></button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Bulletin Sections Checklist -->
+                <div class="card">
+                    <div class="card-head"><h3>Q2 2026 Bulletin Sections</h3></div>
+                    <div class="activity-list">
+                        <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Executive Summary</strong><span>Overview of Q2 health data highlights</span></div><span class="badge-s success">Complete</span></div>
+                        <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Disease Surveillance</strong><span>Malaria, TB, and outbreak monitoring</span></div><span class="badge-s success">Complete</span></div>
+                        <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Immunization Coverage</strong><span>Routine and campaign data analysis</span></div><span class="badge-s success">Complete</span></div>
+                        <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Maternal & Child Health</strong><span>ANC, delivery, and under-5 indicators</span></div><span class="badge-s success">Complete</span></div>
+                        <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Facility Reporting Rates</strong><span>DHIS2 completeness by district</span></div><span class="badge-s success">Complete</span></div>
+                        <div class="activity-item"><div class="activity-dot green"></div><div class="activity-text"><strong>Data Quality Assessment</strong><span>Consistency and accuracy metrics</span></div><span class="badge-s success">Complete</span></div>
+                        <div class="activity-item"><div class="activity-dot orange"></div><div class="activity-text"><strong>District Spotlight</strong><span>Deep-dive on Bo & Kenema districts</span></div><span class="badge-s warning">In Progress</span></div>
+                        <div class="activity-item"><div class="activity-dot red"></div><div class="activity-text"><strong>Recommendations</strong><span>Policy recommendations based on findings</span></div><span class="badge-s danger">Pending</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Bulletin Modal -->
+    <div class="modal-bg" id="bulletinModal">
+        <div class="modal-box" style="max-width:600px">
+            <div class="modal-top">
+                <h4>Edit Q2 2026 Bulletin</h4>
+                <button class="icon-btn" onclick="document.getElementById('bulletinModal').classList.remove('show')"><span class="material-icons">close</span></button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg"><label>Bulletin Title</label><input type="text" value="NHIH Health Data Bulletin — Q2 2026"></div>
+                <div class="fg"><label>Reporting Period</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input type="date" value="2026-04-01"><input type="date" value="2026-06-30"></div></div>
+                <div class="fg"><label>Executive Summary</label><textarea style="width:100%;min-height:80px;background:var(--bg-input);border:1px solid var(--border-color);border-radius:8px;padding:8px;font-family:inherit;font-size:.8rem;resize:vertical" placeholder="Write executive summary...">This bulletin presents the key health indicators and data quality metrics for Q2 2026 (April–June) collected through the DHIS2 platform across all 16 districts of Sierra Leone.</textarea></div>
+                <div class="fg"><label>Key Findings</label><textarea style="width:100%;min-height:60px;background:var(--bg-input);border:1px solid var(--border-color);border-radius:8px;padding:8px;font-family:inherit;font-size:.8rem;resize:vertical" placeholder="List key findings..."></textarea></div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('bulletinModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm"><span class="material-icons">download</span> Export PDF</button>
+                <button class="btn-sm primary" onclick="document.getElementById('bulletinModal').classList.remove('show'); showToast('Draft saved!', 'success')"><span class="material-icons">save</span> Save Draft</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+</body>
+</html>

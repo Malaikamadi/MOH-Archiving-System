@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users | NHIH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
+</head>
+<body>
+    <div class="nhih-app">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
+                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
+            </div>
+            <div class="sidebar-nav">
+                <div class="sidebar-section">Hub Operations</div>
+                <a href="index.html" class="nav-link"><span class="material-icons">dashboard</span><span>Hub Overview</span></a>
+                <a href="datacenter.html" class="nav-link"><span class="material-icons">router</span><span>Data Center Status</span></a>
+                <a href="network.html" class="nav-link"><span class="material-icons">lan</span><span>Network & Security</span></a>
+                <div class="sidebar-section">IT Support & Staffing</div>
+                <a href="hardware-assets.html" class="nav-link"><span class="material-icons">memory</span><span>Hardware Assets</span></a>
+                <a href="vendors.html" class="nav-link"><span class="material-icons">handshake</span><span>Vendor Contracts</span></a>
+                <a href="meetings.html" class="nav-link"><span class="material-icons">event</span><span>Meetings</span></a>
+                <a href="manage-users.html" class="nav-link active"><span class="material-icons">manage_accounts</span><span>Manage Users</span></a>
+                <div class="sidebar-section">System Administration</div>
+                <a href="NHIH_operation_maintaiannace.html" class="nav-link"><span class="material-icons">build</span><span>Maintenance</span></a>
+                <a href="compliance.html" class="nav-link"><span class="material-icons">verified_user</span><span>Security & Compliance</span></a>
+                <a href="settings.html" class="nav-link"><span class="material-icons">settings</span><span>Settings</span></a>
+            </div>
+            <div class="sidebar-foot"><div class="session-card"><div class="session-status"><span class="dot-online"></span> Active Session</div><div class="session-time">Last login: Today, 07:45 AM</div></div></div>
+        </aside>
+
+        <main class="main-wrap">
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+                    <div>
+                        <h1 class="page-title">Manage Users</h1>
+                        <p class="welcome-sub">System user management and access control</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="search-box"><span class="material-icons">search</span><input type="text" placeholder="Search users..."></div>
+                    <button class="icon-btn" id="themeToggle"><span class="material-icons">dark_mode</span></button>
+                    <div class="profile-wrap">
+                        <div class="user-pill">
+                            <div class="avatar" style="background:var(--warning)">PM</div>
+                            <div class="user-info"><div class="uname">Prince Mafinda</div><div class="urole">Operations Manager</div></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <div class="kpi-grid">
+                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">groups</span></div><div class="kpi-data"><span class="kpi-label">Total Users</span><span class="kpi-val">6</span></div></div>
+                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">check_circle</span></div><div class="kpi-data"><span class="kpi-label">Active Now</span><span class="kpi-val">4</span></div></div>
+                    <div class="kpi"><div class="kpi-bar purple"></div><div class="kpi-icon purple"><span class="material-icons">admin_panel_settings</span></div><div class="kpi-data"><span class="kpi-label">Roles</span><span class="kpi-val">6</span></div></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3>Platform Users</h3>
+                        <button class="btn-sm primary" onclick="document.getElementById('addUserModal').classList.add('show')"><span class="material-icons">person_add</span> Add User</button>
+                    </div>
+                    <div class="tbl-responsive">
+                        <table class="dt">
+                            <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Last Login</th><th>Actions</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Mohamed Lamarana Bah</strong></td><td style="font-size:.72rem">mbah@moh.gov.sl</td><td>Director</td><td><span class="badge-s success">Active</span></td><td style="font-size:.72rem">Today, 08:00 AM</td><td><button class="btn-sm"><span class="material-icons">edit</span></button> <button class="btn-sm danger"><span class="material-icons">block</span></button></td></tr>
+                                <tr><td><strong>Les Kimball Kamara</strong></td><td style="font-size:.72rem">lkamara@moh.gov.sl</td><td>Coordinator</td><td><span class="badge-s success">Active</span></td><td style="font-size:.72rem">Today, 09:15 AM</td><td><button class="btn-sm"><span class="material-icons">edit</span></button> <button class="btn-sm danger"><span class="material-icons">block</span></button></td></tr>
+                                <tr><td><strong>Prince Mafinda</strong></td><td style="font-size:.72rem">pmafinda@moh.gov.sl</td><td>Operations Manager</td><td><span class="badge-s success">Active</span></td><td style="font-size:.72rem">Today, 07:45 AM</td><td><button class="btn-sm"><span class="material-icons">edit</span></button></td></tr>
+                                <tr><td><strong>Ibrahim Sorie Turay</strong></td><td style="font-size:.72rem">isturay@moh.gov.sl</td><td>Programme Lead</td><td><span class="badge-s success">Active</span></td><td style="font-size:.72rem">Today, 08:30 AM</td><td><button class="btn-sm"><span class="material-icons">edit</span></button> <button class="btn-sm danger"><span class="material-icons">block</span></button></td></tr>
+                                <tr><td><strong>Dr. Joseph Koroma</strong></td><td style="font-size:.72rem">jkoroma@moh.gov.sl</td><td>Data Engineer</td><td><span class="badge-s success">Active</span></td><td style="font-size:.72rem">Today, 09:00 AM</td><td><button class="btn-sm"><span class="material-icons">edit</span></button> <button class="btn-sm danger"><span class="material-icons">block</span></button></td></tr>
+                                <tr><td><strong>Daniel G. Kay Jah</strong></td><td style="font-size:.72rem">dgkayjah@moh.gov.sl</td><td>Data Analyst</td><td><span class="badge-s warning">Idle</span></td><td style="font-size:.72rem">Yesterday, 05:30 PM</td><td><button class="btn-sm"><span class="material-icons">edit</span></button> <button class="btn-sm danger"><span class="material-icons">block</span></button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal-bg" id="addUserModal">
+        <div class="modal-box">
+            <div class="modal-top">
+                <h4>Add New User</h4>
+                <button class="icon-btn" onclick="document.getElementById('addUserModal').classList.remove('show')"><span class="material-icons">close</span></button>
+            </div>
+            <div class="modal-mid">
+                <div class="fg"><label>Full Name</label><input type="text" placeholder="e.g., John Smith"></div>
+                <div class="fg"><label>Email</label><input type="email" placeholder="e.g., jsmith@moh.gov.sl"></div>
+                <div class="fg"><label>Role</label><select><option>Director</option><option>Coordinator</option><option>Operations Manager</option><option>Programme Lead</option><option>Data Engineer</option><option>Data Analyst</option></select></div>
+                <div class="fg"><label>Temporary Password</label><input type="text" value="" placeholder="Auto-generated on save"></div>
+            </div>
+            <div class="modal-bot">
+                <button class="btn-sm" onclick="document.getElementById('addUserModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary" onclick="document.getElementById('addUserModal').classList.remove('show'); showToast('User created successfully!', 'success')"><span class="material-icons">person_add</span> Create User</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/nhih-dashboard.js"></script>
+</body>
+</html>
