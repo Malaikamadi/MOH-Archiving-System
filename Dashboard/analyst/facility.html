@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +10,27 @@
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="nhih-app">
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-head">
                 <div class="sidebar-logo"><img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS"></div>
-                <div class="sidebar-brand"><h2>NHIH</h2><span>Ministry of Health</span></div>
+                <div class="sidebar-brand">
+                    <h2>NHIH</h2><span>Ministry of Health</span>
+                </div>
             </div>
             <div class="sidebar-nav">
                 <div class="sidebar-section">Main Menu</div>
                 <a href="index.html" class="nav-link">
                     <span class="material-icons">dashboard</span>
                     <span>Dashboard</span>
+                </a>
+                <a href="bulletins.html" class="nav-link active">
+                    <span class="material-icons">description</span>
+                    <span>Bulletins</span>
+
                 </a>
                 <a href="datasets.html" class="nav-link">
                     <span class="material-icons">table_chart</span>
@@ -47,6 +56,7 @@
                 <a href="data-requests.html" class="nav-link">
                     <span class="material-icons">send</span>
                     <span>Data Requests</span>
+
                 </a>
                 <div class="sidebar-section">System</div>
                 <a href="settings.html" class="nav-link">
@@ -82,11 +92,16 @@
                             <span class="material-icons">notifications</span><span class="hdr-badge">3</span>
                         </button>
                         <div class="dropdown notif-dd" id="notifDropdown">
-                            <div class="dd-head"><h4>Notifications</h4><button>Mark all read</button></div>
+                            <div class="dd-head">
+                                <h4>Notifications</h4><button>Mark all read</button>
+                            </div>
                             <div class="dd-body">
                                 <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--primary-light);color:var(--primary)"><span class="material-icons">info</span></div>
-                                    <div class="ni-text"><span class="ni-title">System Update</span><span class="ni-desc">Dashboard refreshed with latest data</span><span class="ni-time">1 hour ago</span></div>
+                                    <div class="ni-icon" style="background:var(--primary-light);color:var(--primary)">
+                                        <span class="material-icons">info</span></div>
+                                    <div class="ni-text"><span class="ni-title">System Update</span><span
+                                            class="ni-desc">Dashboard refreshed with latest data</span><span
+                                            class="ni-time">1 hour ago</span></div>
                                 </div>
                             </div>
                             <div class="dd-foot"><a href="#">View All</a></div>
@@ -95,12 +110,17 @@
                     <div class="profile-wrap">
                         <div class="user-pill dropdown-toggle" data-target="profileDropdown">
                             <div class="avatar" style="background:var(--info)">DK</div>
-                            <div class="user-info"><div class="uname">Daniel Gassim Kay Jah</div><div class="urole">Data Analyst</div></div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                            <div class="user-info">
+                                <div class="uname">Daniel Gassim Kay Jah</div>
+                                <div class="urole">Data Analyst</div>
+                            </div>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                         <div class="dropdown profile-dd" id="profileDropdown">
                             <div class="dd-item pd-item"><span class="material-icons">person</span> My Profile</div>
-                            <a href="../../index.html" class="dd-item pd-item danger"><span class="material-icons">logout</span> Logout</a>
+                            <a href="../../index.html" class="dd-item pd-item danger"><span
+                                    class="material-icons">logout</span> Logout</a>
                         </div>
                     </div>
                 </div>
@@ -109,31 +129,116 @@
             <div class="main-content">
 
                 <div class="kpi-grid">
-                    <div class="kpi"><div class="kpi-bar blue"></div><div class="kpi-icon blue"><span class="material-icons">local_hospital</span></div><div class="kpi-data"><span class="kpi-label">Total Facilities</span><span class="kpi-val">1,248</span></div></div>
-                    <div class="kpi"><div class="kpi-bar green"></div><div class="kpi-icon green"><span class="material-icons">trending_up</span></div><div class="kpi-data"><span class="kpi-label">Avg Performance</span><span class="kpi-val">87%</span><span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 5% vs last quarter</span></div></div>
-                    <div class="kpi"><div class="kpi-bar orange"></div><div class="kpi-icon orange"><span class="material-icons">warning</span></div><div class="kpi-data"><span class="kpi-label">Below Threshold</span><span class="kpi-val">48</span></div></div>
-                    <div class="kpi"><div class="kpi-bar purple"></div><div class="kpi-icon purple"><span class="material-icons">stars</span></div><div class="kpi-data"><span class="kpi-label">Top Performers</span><span class="kpi-val">156</span></div></div>
+                    <div class="kpi">
+                        <div class="kpi-bar blue"></div>
+                        <div class="kpi-icon blue"><span class="material-icons">local_hospital</span></div>
+                        <div class="kpi-data"><span class="kpi-label">Total Facilities</span><span
+                                class="kpi-val">1,248</span></div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar green"></div>
+                        <div class="kpi-icon green"><span class="material-icons">trending_up</span></div>
+                        <div class="kpi-data"><span class="kpi-label">Avg Performance</span><span
+                                class="kpi-val">87%</span><span class="kpi-trend up"><span
+                                    class="material-icons">arrow_upward</span> 5% vs last quarter</span></div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar orange"></div>
+                        <div class="kpi-icon orange"><span class="material-icons">warning</span></div>
+                        <div class="kpi-data"><span class="kpi-label">Below Threshold</span><span
+                                class="kpi-val">48</span></div>
+                    </div>
+                    <div class="kpi">
+                        <div class="kpi-bar purple"></div>
+                        <div class="kpi-icon purple"><span class="material-icons">stars</span></div>
+                        <div class="kpi-data"><span class="kpi-label">Top Performers</span><span
+                                class="kpi-val">156</span></div>
+                    </div>
                 </div>
                 <div class="card">
-                    <div class="card-head"><h3>Facility Performance Ranking</h3><div style="display:flex;gap:6px"><button class="btn-sm"><span class="material-icons">filter_list</span> Filter</button><button class="btn-sm"><span class="material-icons">download</span> Export</button></div></div>
-                    <div class="tbl-responsive"><table class="dt">
-                        <thead><tr><th>Facility Name</th><th>District</th><th>Type</th><th>Reporting Rate</th><th>Data Quality</th><th>Overall Score</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>Connaught Hospital</strong></td><td>Western Urban</td><td>Tertiary</td><td>100%</td><td>96%</td><td><span class="badge-s success">98%</span></td></tr>
-                            <tr><td><strong>PCMH</strong></td><td>Western Urban</td><td>Tertiary</td><td>100%</td><td>94%</td><td><span class="badge-s success">97%</span></td></tr>
-                            <tr><td><strong>Bo Government Hospital</strong></td><td>Bo</td><td>Secondary</td><td>95%</td><td>91%</td><td><span class="badge-s success">93%</span></td></tr>
-                            <tr><td><strong>Kenema Gov. Hospital</strong></td><td>Kenema</td><td>Secondary</td><td>88%</td><td>85%</td><td><span class="badge-s warning">87%</span></td></tr>
-                            <tr><td><strong>Makeni Regional</strong></td><td>Bombali</td><td>Secondary</td><td>82%</td><td>79%</td><td><span class="badge-s warning">81%</span></td></tr>
-                            <tr><td><strong>Kabala CHC</strong></td><td>Koinadugu</td><td>Primary</td><td>65%</td><td>58%</td><td><span class="badge-s danger">62%</span></td></tr>
-                        </tbody>
-                    </table></div>
+                    <div class="card-head">
+                        <h3>Facility Performance Ranking</h3>
+                        <div style="display:flex;gap:6px"><button class="btn-sm"><span
+                                    class="material-icons">filter_list</span> Filter</button><button
+                                class="btn-sm"><span class="material-icons">download</span> Export</button></div>
+                    </div>
+                    <div class="tbl-responsive">
+                        <table class="dt">
+                            <thead>
+                                <tr>
+                                    <th>Facility Name</th>
+                                    <th>District</th>
+                                    <th>Type</th>
+                                    <th>Reporting Rate</th>
+                                    <th>Data Quality</th>
+                                    <th>Overall Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Connaught Hospital</strong></td>
+                                    <td>Western Urban</td>
+                                    <td>Tertiary</td>
+                                    <td>100%</td>
+                                    <td>96%</td>
+                                    <td><span class="badge-s success">98%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PCMH</strong></td>
+                                    <td>Western Urban</td>
+                                    <td>Tertiary</td>
+                                    <td>100%</td>
+                                    <td>94%</td>
+                                    <td><span class="badge-s success">97%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bo Government Hospital</strong></td>
+                                    <td>Bo</td>
+                                    <td>Secondary</td>
+                                    <td>95%</td>
+                                    <td>91%</td>
+                                    <td><span class="badge-s success">93%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kenema Gov. Hospital</strong></td>
+                                    <td>Kenema</td>
+                                    <td>Secondary</td>
+                                    <td>88%</td>
+                                    <td>85%</td>
+                                    <td><span class="badge-s warning">87%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Makeni Regional</strong></td>
+                                    <td>Bombali</td>
+                                    <td>Secondary</td>
+                                    <td>82%</td>
+                                    <td>79%</td>
+                                    <td><span class="badge-s warning">81%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kabala CHC</strong></td>
+                                    <td>Koinadugu</td>
+                                    <td>Primary</td>
+                                    <td>65%</td>
+                                    <td>58%</td>
+                                    <td><span class="badge-s danger">62%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="card"><div class="card-head"><h3>Performance Trend by District</h3></div><div class="chart-wrap"><canvas id="facilityTrendChart"></canvas></div></div>
+                <div class="card">
+                    <div class="card-head">
+                        <h3>Performance Trend by District</h3>
+                    </div>
+                    <div class="chart-wrap"><canvas id="facilityTrendChart"></canvas></div>
+                </div>
             </div>
         </main>
     </div>
 
     <script src="../../js/nhih-dashboard.js"></script>
-    <script>function renderDashboardCharts(){const ctx=document.getElementById('facilityTrendChart');if(ctx){new Chart(ctx,{type:'bar',data:{labels:['Western Urban','Bo','Kenema','Bombali','Port Loko','Kailahun'],datasets:[{label:'Reporting Rate',data:[98,94,88,90,86,72],backgroundColor:'#0B5ED7'},{label:'Data Quality',data:[96,91,85,82,80,65],backgroundColor:'#10b981'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:100}}}});}}</script>
+    <script>function renderDashboardCharts() { const ctx = document.getElementById('facilityTrendChart'); if (ctx) { new Chart(ctx, { type: 'bar', data: { labels: ['Western Urban', 'Bo', 'Kenema', 'Bombali', 'Port Loko', 'Kailahun'], datasets: [{ label: 'Reporting Rate', data: [98, 94, 88, 90, 86, 72], backgroundColor: '#0B5ED7' }, { label: 'Data Quality', data: [96, 91, 85, 82, 80, 65], backgroundColor: '#10b981' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: true, max: 100 } } } }); } }</script>
 </body>
+
 </html>

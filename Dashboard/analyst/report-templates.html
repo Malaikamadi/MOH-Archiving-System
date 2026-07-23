@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="nhih-app">
         <!-- Sidebar Overlay -->
@@ -31,6 +33,10 @@
                 <a href="index.html" class="nav-link">
                     <span class="material-icons">dashboard</span>
                     <span>Dashboard</span>
+                </a>
+                <a href="bulletins.html" class="nav-link active">
+                    <span class="material-icons">description</span>
+                    <span>Bulletins</span>
                 </a>
                 <a href="my-reports.html" class="nav-link">
                     <span class="material-icons">description</span>
@@ -167,7 +173,8 @@
                                 <div class="uname">Mariama Sesay</div>
                                 <div class="urole">Data Analyst</div>
                             </div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                         <div class="dropdown profile-dd" id="profileDropdown">
                             <div class="dd-item pd-item">
@@ -189,54 +196,66 @@
                             <h3 class="card-title">Monthly District Performance</h3>
                         </div>
                         <div class="card-body">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Comprehensive summary of health facility performance metrics aggregated by district.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Comprehensive
+                                summary of health facility performance metrics aggregated by district.</p>
                             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                                 <span class="badge badge-info">Operations</span>
                                 <span class="badge badge-warning">Monthly</span>
                             </div>
-                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                            <button class="btn-sm primary" style="width: 100%;"
+                                onclick="document.getElementById('reportModal').classList.add('show')">Use
+                                Template</button>
                         </div>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-head">
                             <h3 class="card-title">Maternal Health Overview</h3>
                         </div>
                         <div class="card-body">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Key maternal health indicators including ANC visits, institutional deliveries, and MMR.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Key maternal
+                                health indicators including ANC visits, institutional deliveries, and MMR.</p>
                             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                                 <span class="badge badge-success">Maternal Health</span>
                                 <span class="badge badge-warning">Quarterly</span>
                             </div>
-                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                            <button class="btn-sm primary" style="width: 100%;"
+                                onclick="document.getElementById('reportModal').classList.add('show')">Use
+                                Template</button>
                         </div>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-head">
                             <h3 class="card-title">Disease Outbreak Alert</h3>
                         </div>
                         <div class="card-body">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Rapid reporting template for suspected outbreaks of cholera, measles, or polio.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Rapid reporting
+                                template for suspected outbreaks of cholera, measles, or polio.</p>
                             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                                 <span class="badge badge-danger">Disease Control</span>
                                 <span class="badge badge-danger">Ad-hoc</span>
                             </div>
-                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                            <button class="btn-sm primary" style="width: 100%;"
+                                onclick="document.getElementById('reportModal').classList.add('show')">Use
+                                Template</button>
                         </div>
                     </div>
-                    
+
                     <div class="card">
                         <div class="card-head">
                             <h3 class="card-title">Immunization Campaign</h3>
                         </div>
                         <div class="card-body">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Coverage statistics for national immunization days targeting children under 5.</p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Coverage
+                                statistics for national immunization days targeting children under 5.</p>
                             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
                                 <span class="badge badge-info">Child Health</span>
                                 <span class="badge badge-warning">Campaign</span>
                             </div>
-                            <button class="btn-sm primary" style="width: 100%;" onclick="document.getElementById('reportModal').classList.add('show')">Use Template</button>
+                            <button class="btn-sm primary" style="width: 100%;"
+                                onclick="document.getElementById('reportModal').classList.add('show')">Use
+                                Template</button>
                         </div>
                     </div>
                 </div>
@@ -299,8 +318,10 @@
                 </div>
             </div>
             <div class="modal-bot">
-                <button class="btn-sm" onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
+                <button class="btn-sm"
+                    onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary"
+                    onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
                     <span class="material-icons">play_arrow</span> Generate Report
                 </button>
             </div>
@@ -314,4 +335,5 @@
         }
     </script>
 </body>
+
 </html>

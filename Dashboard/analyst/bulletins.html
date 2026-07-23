@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Dashboard | NHIH</title>
+    <title>Data Analyst Bulletins | NHIH</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
@@ -37,12 +37,13 @@
                 <a href="bulletins.html" class="nav-link active">
                     <span class="material-icons">description</span>
                     <span>Bulletins</span>
+
                 </a>
                 <a href="my-reports.html" class="nav-link">
                     <span class="material-icons">description</span>
                     <span>My Reports</span>
                 </a>
-                <a href="datasets.html" class="nav-link">
+                <a href="datasets.html" class="nav-link active">
                     <span class="material-icons">dataset</span>
                     <span>Datasets</span>
                 </a>
@@ -76,7 +77,7 @@
                     <span>Data Requests</span>
                     <span class="nav-badge">2</span>
                 </a>
-                <a href="settings.html" class="nav-link active">
+                <a href="settings.html" class="nav-link">
                     <span class="material-icons">settings</span>
                     <span>Settings</span>
                 </a>
@@ -102,8 +103,8 @@
                         <span></span><span></span><span></span>
                     </div>
                     <div>
-                        <h1 class="page-title">Settings</h1>
-                        <p class="welcome-sub">Manage your account and preferences</p>
+                        <h1 class="page-title">Datasets Catalog</h1>
+                        <p class="welcome-sub">Explore and query available warehouse data</p>
                     </div>
                 </div>
 
@@ -187,144 +188,3 @@
                     </div>
                 </div>
             </header>
-
-            <!-- PAGE CONTENT -->
-            <div class="main-content">
-                <div class="dashboard-grid">
-                    <div class="card">
-                        <div class="card-head">
-                            <h3 class="card-title">Profile Settings</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-grid" style="grid-template-columns: 1fr;">
-                                <div class="fg">
-                                    <label>Full Name</label>
-                                    <input type="text" value="Mariama Sesay">
-                                </div>
-                                <div class="fg">
-                                    <label>Email Address</label>
-                                    <input type="email" value="msesay@nhih.gov.sl">
-                                </div>
-                                <div class="fg">
-                                    <label>Department</label>
-                                    <input type="text" value="Data Analytics Unit" readonly
-                                        style="background: var(--bg-body); color: var(--text-muted);">
-                                </div>
-                                <div class="fg" style="margin-top: 1rem;">
-                                    <button class="btn-sm primary">Save Changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h3 class="card-title">Notification Preferences</h3>
-                        </div>
-                        <div class="card-body">
-                            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main);">
-                                    <input type="checkbox" checked>
-                                    Email me when a scheduled report is ready
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main);">
-                                    <input type="checkbox" checked>
-                                    Email me when a data export finishes
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main);">
-                                    <input type="checkbox" checked>
-                                    Notify me about new inbound data requests
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main);">
-                                    <input type="checkbox">
-                                    Weekly summary of dashboard usage
-                                </label>
-                                <div class="fg" style="margin-top: 1rem;">
-                                    <button class="btn-sm primary">Update Preferences</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- New Report Modal -->
-    <div class="modal-bg" id="reportModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h4>Create New Report</h4>
-                <button class="icon-btn" onclick="document.getElementById('reportModal').classList.remove('show')">
-                    <span class="material-icons">close</span>
-                </button>
-            </div>
-            <div class="modal-mid">
-                <div class="fg">
-                    <label>Report Title</label>
-                    <input type="text" placeholder="e.g., Q3 District Performance Summary">
-                </div>
-                <div class="fg">
-                    <label>Category</label>
-                    <select>
-                        <option value="">Select category...</option>
-                        <option>Child Health</option>
-                        <option>Maternal Health</option>
-                        <option>Disease Control</option>
-                        <option>Operations</option>
-                        <option>Administration</option>
-                        <option>Custom Analysis</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Data Source</label>
-                    <select>
-                        <option>National Health Warehouse</option>
-                        <option>DHIS2 — Live Data</option>
-                        <option>Malaria Surveillance DB</option>
-                        <option>Custom Query Result</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Output Format</label>
-                    <select>
-                        <option>PDF Report</option>
-                        <option>Excel Spreadsheet</option>
-                        <option>CSV Export</option>
-                        <option>Interactive Dashboard</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Date Range</label>
-                    <select>
-                        <option>Last 30 days</option>
-                        <option>Last Quarter</option>
-                        <option>Year to Date</option>
-                        <option>Custom Range</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-bot">
-                <button class="btn-sm"
-                    onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary"
-                    onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
-                    <span class="material-icons">play_arrow</span> Generate Report
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script src="../../js/nhih-dashboard.js"></script>
-    <script>
-        function renderDashboardCharts() {
-            // No charts needed on this page
-        }
-    </script>
-</body>
-
-</html>

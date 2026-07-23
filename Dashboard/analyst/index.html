@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="nhih-app">
         <!-- Sidebar Overlay -->
@@ -31,6 +33,11 @@
                 <a href="index.html" class="nav-link active">
                     <span class="material-icons">dashboard</span>
                     <span>Dashboard</span>
+                </a>
+
+                <a href="bulletins.html" class="nav-link active">
+                    <span class="material-icons">description</span>
+                    <span>Bulletins</span>
                 </a>
                 <a href="my-reports.html" class="nav-link">
                     <span class="material-icons">description</span>
@@ -167,7 +174,8 @@
                                 <div class="uname">Mariama Sesay</div>
                                 <div class="urole">Data Analyst</div>
                             </div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                         <div class="dropdown profile-dd" id="profileDropdown">
                             <div class="dd-item pd-item">
@@ -191,7 +199,8 @@
                         <div class="kpi-data">
                             <span class="kpi-label">Reports Generated</span>
                             <span class="kpi-val">87</span>
-                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 12 this month</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 12 this
+                                month</span>
                         </div>
                     </div>
                     <div class="kpi">
@@ -200,7 +209,8 @@
                         <div class="kpi-data">
                             <span class="kpi-label">Datasets Available</span>
                             <span class="kpi-val">156</span>
-                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 8 new this week</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 8 new this
+                                week</span>
                         </div>
                     </div>
                     <div class="kpi">
@@ -218,7 +228,8 @@
                         <div class="kpi-data">
                             <span class="kpi-label">Data Exports</span>
                             <span class="kpi-val">340</span>
-                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 45 this month</span>
+                            <span class="kpi-trend up"><span class="material-icons">arrow_upward</span> 45 this
+                                month</span>
                         </div>
                     </div>
                 </div>
@@ -251,7 +262,8 @@
                     <div class="card">
                         <div class="card-head">
                             <h3>Recent Reports</h3>
-                            <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.add('show')">
+                            <button class="btn-sm primary"
+                                onclick="document.getElementById('reportModal').classList.add('show')">
                                 <span class="material-icons">add</span> New Report
                             </button>
                         </div>
@@ -273,7 +285,9 @@
                                         <td style="font-size:.72rem;color:var(--text-muted)">Today, 1:30 PM</td>
                                         <td><span class="badge-s info">PDF</span></td>
                                         <td>
-                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                            <button class="btn-sm"
+                                                onclick="showToast('Downloading report...', 'success')"><span
+                                                    class="material-icons">download</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -282,7 +296,9 @@
                                         <td style="font-size:.72rem;color:var(--text-muted)">Yesterday</td>
                                         <td><span class="badge-s success">Excel</span></td>
                                         <td>
-                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                            <button class="btn-sm"
+                                                onclick="showToast('Downloading report...', 'success')"><span
+                                                    class="material-icons">download</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -291,7 +307,9 @@
                                         <td style="font-size:.72rem;color:var(--text-muted)">Jul 14, 2026</td>
                                         <td><span class="badge-s purple">Dashboard</span></td>
                                         <td>
-                                            <button class="btn-sm" onclick="showToast('Opening dashboard...', 'info')"><span class="material-icons">open_in_new</span></button>
+                                            <button class="btn-sm"
+                                                onclick="showToast('Opening dashboard...', 'info')"><span
+                                                    class="material-icons">open_in_new</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -300,7 +318,9 @@
                                         <td style="font-size:.72rem;color:var(--text-muted)">Jul 12, 2026</td>
                                         <td><span class="badge-s info">PDF</span></td>
                                         <td>
-                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                            <button class="btn-sm"
+                                                onclick="showToast('Downloading report...', 'success')"><span
+                                                    class="material-icons">download</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -309,7 +329,9 @@
                                         <td style="font-size:.72rem;color:var(--text-muted)">Jul 10, 2026</td>
                                         <td><span class="badge-s warning">CSV</span></td>
                                         <td>
-                                            <button class="btn-sm" onclick="showToast('Downloading report...', 'success')"><span class="material-icons">download</span></button>
+                                            <button class="btn-sm"
+                                                onclick="showToast('Downloading report...', 'success')"><span
+                                                    class="material-icons">download</span></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -328,10 +350,12 @@
                                 <div class="activity-dot blue"></div>
                                 <div class="activity-text">
                                     <strong>District Reporting Rate</strong>
-                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT district, COUNT(*)...</span>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT
+                                        district, COUNT(*)...</span>
                                     <span class="atime">Last run: 2 hours ago</span>
                                     <div style="margin-top:4px">
-                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span
+                                                class="material-icons">play_arrow</span> Run</button>
                                     </div>
                                 </div>
                             </div>
@@ -339,10 +363,12 @@
                                 <div class="activity-dot green"></div>
                                 <div class="activity-text">
                                     <strong>Immunization by Age Group</strong>
-                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT age_group, vaccine_type...</span>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT
+                                        age_group, vaccine_type...</span>
                                     <span class="atime">Last run: Yesterday</span>
                                     <div style="margin-top:4px">
-                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span
+                                                class="material-icons">play_arrow</span> Run</button>
                                     </div>
                                 </div>
                             </div>
@@ -350,10 +376,12 @@
                                 <div class="activity-dot purple"></div>
                                 <div class="activity-text">
                                     <strong>Malaria Cases Trend</strong>
-                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT month, SUM(cases)...</span>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT
+                                        month, SUM(cases)...</span>
                                     <span class="atime">Last run: 3 days ago</span>
                                     <div style="margin-top:4px">
-                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span
+                                                class="material-icons">play_arrow</span> Run</button>
                                     </div>
                                 </div>
                             </div>
@@ -361,10 +389,12 @@
                                 <div class="activity-dot orange"></div>
                                 <div class="activity-text">
                                     <strong>Facility Coverage Gaps</strong>
-                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT f.name, f.district...</span>
+                                    <span style="font-size:.65rem;font-family:monospace;color:var(--text-muted)">SELECT
+                                        f.name, f.district...</span>
                                     <span class="atime">Last run: 5 days ago</span>
                                     <div style="margin-top:4px">
-                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span class="material-icons">play_arrow</span> Run</button>
+                                        <button class="btn-sm" onclick="showToast('Executing query...', 'info')"><span
+                                                class="material-icons">play_arrow</span> Run</button>
                                     </div>
                                 </div>
                             </div>
@@ -379,8 +409,11 @@
                         <div class="card-head">
                             <h3>SQL Query Editor</h3>
                             <div style="display:flex;gap:5px">
-                                <button class="btn-sm" onclick="showToast('Query saved!', 'success')"><span class="material-icons">bookmark</span> Save</button>
-                                <button class="btn-sm primary" onclick="showToast('Query executed! 1,245 rows returned.', 'success')"><span class="material-icons">play_arrow</span> Run</button>
+                                <button class="btn-sm" onclick="showToast('Query saved!', 'success')"><span
+                                        class="material-icons">bookmark</span> Save</button>
+                                <button class="btn-sm primary"
+                                    onclick="showToast('Query executed! 1,245 rows returned.', 'success')"><span
+                                        class="material-icons">play_arrow</span> Run</button>
                             </div>
                         </div>
                         <textarea class="sql-area" placeholder="-- Write your SQL query here...
@@ -399,7 +432,8 @@ FROM districts d
 JOIN facilities f ON d.id = f.district_id
 GROUP BY d.district_name
 ORDER BY avg_reporting_rate DESC;</textarea>
-                        <div style="margin-top:8px;font-size:.7rem;color:var(--text-muted);display:flex;justify-content:space-between">
+                        <div
+                            style="margin-top:8px;font-size:.7rem;color:var(--text-muted);display:flex;justify-content:space-between">
                             <span>Dataset: <strong>national_health_warehouse</strong></span>
                             <span>Last result: 16 rows, 0.34s</span>
                         </div>
@@ -426,7 +460,9 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                                         <td><strong>Western Area Urban</strong></td>
                                         <td>
                                             <div style="display:flex;align-items:center;gap:6px">
-                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill green" style="width:98%"></div></div>
+                                                <div class="prog-wrap" style="width:70px">
+                                                    <div class="prog-fill green" style="width:98%"></div>
+                                                </div>
                                                 <span style="font-size:.65rem;font-weight:600">98%</span>
                                             </div>
                                         </td>
@@ -437,7 +473,9 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                                         <td><strong>Bo</strong></td>
                                         <td>
                                             <div style="display:flex;align-items:center;gap:6px">
-                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill blue" style="width:91%"></div></div>
+                                                <div class="prog-wrap" style="width:70px">
+                                                    <div class="prog-fill blue" style="width:91%"></div>
+                                                </div>
                                                 <span style="font-size:.65rem;font-weight:600">91%</span>
                                             </div>
                                         </td>
@@ -448,7 +486,9 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                                         <td><strong>Kenema</strong></td>
                                         <td>
                                             <div style="display:flex;align-items:center;gap:6px">
-                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill blue" style="width:84%"></div></div>
+                                                <div class="prog-wrap" style="width:70px">
+                                                    <div class="prog-fill blue" style="width:84%"></div>
+                                                </div>
                                                 <span style="font-size:.65rem;font-weight:600">84%</span>
                                             </div>
                                         </td>
@@ -459,7 +499,9 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                                         <td><strong>Kailahun</strong></td>
                                         <td>
                                             <div style="display:flex;align-items:center;gap:6px">
-                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill orange" style="width:67%"></div></div>
+                                                <div class="prog-wrap" style="width:70px">
+                                                    <div class="prog-fill orange" style="width:67%"></div>
+                                                </div>
                                                 <span style="font-size:.65rem;font-weight:600">67%</span>
                                             </div>
                                         </td>
@@ -470,7 +512,9 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                                         <td><strong>Pujehun</strong></td>
                                         <td>
                                             <div style="display:flex;align-items:center;gap:6px">
-                                                <div class="prog-wrap" style="width:70px"><div class="prog-fill red" style="width:48%"></div></div>
+                                                <div class="prog-wrap" style="width:70px">
+                                                    <div class="prog-fill red" style="width:48%"></div>
+                                                </div>
                                                 <span style="font-size:.65rem;font-weight:600">48%</span>
                                             </div>
                                         </td>
@@ -494,35 +538,40 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                             <div class="activity-item">
                                 <div class="activity-dot green"></div>
                                 <div class="activity-text">
-                                    <span><strong>You</strong> generated <strong>Q2 Immunization Coverage</strong> report (PDF, 24 pages)</span>
+                                    <span><strong>You</strong> generated <strong>Q2 Immunization Coverage</strong>
+                                        report (PDF, 24 pages)</span>
                                     <span class="atime">20 minutes ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot blue"></div>
                                 <div class="activity-text">
-                                    <span><strong>You</strong> ran query <strong>District Reporting Rate</strong> — 16 rows returned in 0.34s</span>
+                                    <span><strong>You</strong> ran query <strong>District Reporting Rate</strong> — 16
+                                        rows returned in 0.34s</span>
                                     <span class="atime">2 hours ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot purple"></div>
                                 <div class="activity-text">
-                                    <span><strong>New dataset</strong> available: <strong>Malaria Surveillance Q2 2026</strong> (145K records)</span>
+                                    <span><strong>New dataset</strong> available: <strong>Malaria Surveillance Q2
+                                            2026</strong> (145K records)</span>
                                     <span class="atime">3 hours ago</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot orange"></div>
                                 <div class="activity-text">
-                                    <span><strong>Dr. Mansaray</strong> requested a <strong>custom analysis</strong> of maternal health trends</span>
+                                    <span><strong>Dr. Mansaray</strong> requested a <strong>custom analysis</strong> of
+                                        maternal health trends</span>
                                     <span class="atime">Yesterday</span>
                                 </div>
                             </div>
                             <div class="activity-item">
                                 <div class="activity-dot green"></div>
                                 <div class="activity-text">
-                                    <span><strong>You</strong> exported <strong>district_comparison.csv</strong> — 1,245 rows, shared with team</span>
+                                    <span><strong>You</strong> exported <strong>district_comparison.csv</strong> — 1,245
+                                        rows, shared with team</span>
                                     <span class="atime">Yesterday</span>
                                 </div>
                             </div>
@@ -534,7 +583,8 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                             <h3>Quick Actions</h3>
                         </div>
                         <div class="qa-list">
-                            <button class="qa-btn" onclick="document.getElementById('reportModal').classList.add('show')">
+                            <button class="qa-btn"
+                                onclick="document.getElementById('reportModal').classList.add('show')">
                                 <span class="material-icons">note_add</span>
                                 Create New Report
                             </button>
@@ -653,8 +703,10 @@ ORDER BY avg_reporting_rate DESC;</textarea>
                 </div>
             </div>
             <div class="modal-bot">
-                <button class="btn-sm" onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
+                <button class="btn-sm"
+                    onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary"
+                    onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
                     <span class="material-icons">play_arrow</span> Generate Report
                 </button>
             </div>
@@ -726,4 +778,5 @@ ORDER BY avg_reporting_rate DESC;</textarea>
         }
     </script>
 </body>
+
 </html>

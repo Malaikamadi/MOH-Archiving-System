@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="nhih-app">
         <!-- Sidebar Overlay -->
@@ -31,6 +33,10 @@
                 <a href="index.html" class="nav-link">
                     <span class="material-icons">dashboard</span>
                     <span>Dashboard</span>
+                </a>
+                <a href="bulletins.html" class="nav-link">
+                    <span class="material-icons">description</span>
+                    <span>Bulletins</span>
                 </a>
                 <a href="my-reports.html" class="nav-link">
                     <span class="material-icons">description</span>
@@ -167,7 +173,8 @@
                                 <div class="uname">Mariama Sesay</div>
                                 <div class="urole">Data Analyst</div>
                             </div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                         <div class="dropdown profile-dd" id="profileDropdown">
                             <div class="dd-item pd-item">
@@ -186,8 +193,10 @@
                 <div class="card">
                     <div class="card-head">
                         <div style="display: flex; gap: 1rem; flex: 1; align-items: center;">
-                            <input type="text" placeholder="Search datasets..." style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
-                            <select style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                            <input type="text" placeholder="Search datasets..."
+                                style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                            <select
+                                style="padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
                                 <option value="">All Categories</option>
                                 <option value="maternal">Maternal Health</option>
                                 <option value="immunization">Immunization</option>
@@ -196,7 +205,8 @@
                             </select>
                         </div>
                         <div class="card-actions">
-                            <button class="btn-sm primary"><span class="material-icons">filter_list</span> Advanced Filters</button>
+                            <button class="btn-sm primary"><span class="material-icons">filter_list</span> Advanced
+                                Filters</button>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -214,43 +224,55 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><strong>Maternal Mortality 2023</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Detailed facility-level maternal mortality reports.</span></td>
+                                        <td><strong>Maternal Mortality 2023</strong><br><span
+                                                style="font-size:0.8rem;color:var(--text-muted)">Detailed facility-level
+                                                maternal mortality reports.</span></td>
                                         <td><span class="badge badge-info">Maternal Health</span></td>
                                         <td>12,450</td>
                                         <td style="color:var(--text-muted);">Today, 10:00 AM</td>
                                         <td>Data Eng Team</td>
                                         <td>
-                                            <button class="btn-sm"><span class="material-icons">query_stats</span> Query</button>
+                                            <button class="btn-sm"><span class="material-icons">query_stats</span>
+                                                Query</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>National Immunization Campaign</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Childhood vaccination records by district.</span></td>
+                                        <td><strong>National Immunization Campaign</strong><br><span
+                                                style="font-size:0.8rem;color:var(--text-muted)">Childhood vaccination
+                                                records by district.</span></td>
                                         <td><span class="badge badge-success">Immunization</span></td>
                                         <td>845,210</td>
                                         <td style="color:var(--text-muted);">Yesterday</td>
                                         <td>EPI Program</td>
                                         <td>
-                                            <button class="btn-sm"><span class="material-icons">query_stats</span> Query</button>
+                                            <button class="btn-sm"><span class="material-icons">query_stats</span>
+                                                Query</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Malaria Rapid Tests (RDT)</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Monthly RDT positivity rates.</span></td>
+                                        <td><strong>Malaria Rapid Tests (RDT)</strong><br><span
+                                                style="font-size:0.8rem;color:var(--text-muted)">Monthly RDT positivity
+                                                rates.</span></td>
                                         <td><span class="badge badge-warning">Malaria</span></td>
                                         <td>45,900</td>
                                         <td style="color:var(--text-muted);">2 Days Ago</td>
                                         <td>NMCP</td>
                                         <td>
-                                            <button class="btn-sm"><span class="material-icons">query_stats</span> Query</button>
+                                            <button class="btn-sm"><span class="material-icons">query_stats</span>
+                                                Query</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Master Facility List (MFL)</strong><br><span style="font-size:0.8rem;color:var(--text-muted)">Official registry of all health facilities.</span></td>
+                                        <td><strong>Master Facility List (MFL)</strong><br><span
+                                                style="font-size:0.8rem;color:var(--text-muted)">Official registry of
+                                                all health facilities.</span></td>
                                         <td><span class="badge badge-info">Facility Data</span></td>
                                         <td>1,432</td>
                                         <td style="color:var(--text-muted);">1 Week Ago</td>
                                         <td>DPPI</td>
                                         <td>
-                                            <button class="btn-sm"><span class="material-icons">query_stats</span> Query</button>
+                                            <button class="btn-sm"><span class="material-icons">query_stats</span>
+                                                Query</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -317,8 +339,10 @@
                 </div>
             </div>
             <div class="modal-bot">
-                <button class="btn-sm" onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
+                <button class="btn-sm"
+                    onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary"
+                    onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
                     <span class="material-icons">play_arrow</span> Generate Report
                 </button>
             </div>
@@ -332,4 +356,5 @@
         }
     </script>
 </body>
+
 </html>

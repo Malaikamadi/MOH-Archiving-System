@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../../css/nhih-dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <div class="nhih-app">
         <!-- Sidebar Overlay -->
@@ -31,6 +33,11 @@
                 <a href="index.html" class="nav-link">
                     <span class="material-icons">dashboard</span>
                     <span>Dashboard</span>
+                </a>
+
+                <a href="bulletins.html" class="nav-link active">
+                    <span class="material-icons">description</span>
+                    <span>Bulletins</span>
                 </a>
                 <a href="my-reports.html" class="nav-link active">
                     <span class="material-icons">description</span>
@@ -167,7 +174,8 @@
                                 <div class="uname">Mariama Sesay</div>
                                 <div class="urole">Data Analyst</div>
                             </div>
-                            <span class="material-icons" style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
+                            <span class="material-icons"
+                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
                         </div>
                         <div class="dropdown profile-dd" id="profileDropdown">
                             <div class="dd-item pd-item">
@@ -186,10 +194,13 @@
                 <div class="card">
                     <div class="card-head">
                         <div style="display: flex; gap: 1rem; flex: 1; align-items: center;">
-                            <input type="text" placeholder="Search reports..." style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
+                            <input type="text" placeholder="Search reports..."
+                                style="max-width: 300px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main);">
                         </div>
                         <div class="card-actions">
-                            <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.add('show')"><span class="material-icons">add</span> New Report</button>
+                            <button class="btn-sm primary"
+                                onclick="document.getElementById('reportModal').classList.add('show')"><span
+                                    class="material-icons">add</span> New Report</button>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -211,8 +222,10 @@
                                         <td style="color:var(--text-muted);">Today, 09:15 AM</td>
                                         <td><span class="badge badge-danger">PDF</span></td>
                                         <td>
-                                            <button class="icon-btn"><span class="material-icons">download</span></button>
-                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                            <button class="icon-btn"><span
+                                                    class="material-icons">download</span></button>
+                                            <button class="icon-btn danger"><span
+                                                    class="material-icons">delete</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -221,8 +234,10 @@
                                         <td style="color:var(--text-muted);">Yesterday, 14:30</td>
                                         <td><span class="badge badge-success">Excel</span></td>
                                         <td>
-                                            <button class="icon-btn"><span class="material-icons">download</span></button>
-                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                            <button class="icon-btn"><span
+                                                    class="material-icons">download</span></button>
+                                            <button class="icon-btn danger"><span
+                                                    class="material-icons">delete</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -231,8 +246,10 @@
                                         <td style="color:var(--text-muted);">Oct 22, 2023</td>
                                         <td><span class="badge badge-danger">PDF</span></td>
                                         <td>
-                                            <button class="icon-btn"><span class="material-icons">download</span></button>
-                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                            <button class="icon-btn"><span
+                                                    class="material-icons">download</span></button>
+                                            <button class="icon-btn danger"><span
+                                                    class="material-icons">delete</span></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -241,8 +258,10 @@
                                         <td style="color:var(--text-muted);">Oct 15, 2023</td>
                                         <td><span class="badge badge-warning">CSV</span></td>
                                         <td>
-                                            <button class="icon-btn"><span class="material-icons">download</span></button>
-                                            <button class="icon-btn danger"><span class="material-icons">delete</span></button>
+                                            <button class="icon-btn"><span
+                                                    class="material-icons">download</span></button>
+                                            <button class="icon-btn danger"><span
+                                                    class="material-icons">delete</span></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -309,8 +328,10 @@
                 </div>
             </div>
             <div class="modal-bot">
-                <button class="btn-sm" onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary" onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
+                <button class="btn-sm"
+                    onclick="document.getElementById('reportModal').classList.remove('show')">Cancel</button>
+                <button class="btn-sm primary"
+                    onclick="document.getElementById('reportModal').classList.remove('show'); showToast('Report generation started!', 'success')">
                     <span class="material-icons">play_arrow</span> Generate Report
                 </button>
             </div>
@@ -324,4 +345,5 @@
         }
     </script>
 </body>
+
 </html>
