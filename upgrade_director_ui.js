@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+const fs = require('fs');
+const path = require('path');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Director Dashboard | NHIH</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/nhih-dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+const directorIndex = path.join(__dirname, 'Dashboard', 'director', 'index.html');
+let html = fs.readFileSync(directorIndex, 'utf-8');
 
+// The new premium CSS styles specific to the Director Dashboard
+const premiumStyles = `
     <style>
         /* Premium Director Dashboard Styles */
         .director-hero {
@@ -79,181 +75,9 @@
         .modern-table td { font-size: 0.9rem; padding: 16px !important; }
         .modern-table tr:hover { background: var(--bg-input); }
     </style>
+`;
 
-</head>
-
-<body>
-    <div class="nhih-app">
-        <!-- Sidebar Overlay -->
-        <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-        <!-- LEFT SIDEBAR -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-head">
-                <div class="sidebar-logo">
-                    <img src="../../Assets/mohs_logo-removebg-preview.png" alt="MoHS">
-                </div>
-                <div class="sidebar-brand">
-                    <h2>NHIH</h2>
-                    <span>Ministry of Health</span>
-                </div>
-            </div>
-
-            <div class="sidebar-nav">
-
-                <div class="sidebar-section">Governance</div>
-                <a href="index.html" class="nav-link active">
-                    <span class="material-icons">dashboard</span>
-                    <span>Executive Dashboard</span>
-                </a>
-                <a href="meetings.html" class="nav-link">
-                    <span class="material-icons">event</span>
-                    <span>Meetings</span>
-                </a>
-                <a href="national-kpis.html" class="nav-link">
-                    <span class="material-icons">leaderboard</span>
-                    <span>National KPIs</span>
-                </a>
-                <a href="strategic-analytics.html" class="nav-link">
-                    <span class="material-icons">insights</span>
-                    <span>Strategic Analytics</span>
-                </a>
-                <a href="health-indicators.html" class="nav-link">
-                    <span class="material-icons">monitor_heart</span>
-                    <span>Health Indicators</span>
-                </a>
-                <a href="view-national-map.html" class="nav-link">
-                    <span class="material-icons">map</span>
-                    <span>View National Map</span>
-                </a>
-                <div class="sidebar-section">Approvals & Reports</div>
-                <a href="approve-projects.html" class="nav-link">
-                    <span class="material-icons">fact_check</span>
-                    <span>Approve Projects</span>
-                    <span class="nav-badge">4</span>
-                </a>
-                <a href="approve-data-requests.html" class="nav-link">
-                    <span class="material-icons">security</span>
-                    <span>Approve Data Requests</span>
-                    <span class="nav-badge">7</span>
-                </a>
-                <a href="review-reports.html" class="nav-link">
-                    <span class="material-icons">assignment_turned_in</span>
-                    <span>Review Reports</span>
-                </a>
-                <div class="sidebar-section">Administration</div>
-                
-                <a href="staff-overview.html" class="nav-link">
-                    <span class="material-icons">groups</span>
-                    <span>Staff Overview</span>
-                </a>
-                <a href="compliance.html" class="nav-link">
-                    <span class="material-icons">policy</span>
-                    <span>Compliance</span>
-                </a>
-                <a href="audit-logs.html" class="nav-link">
-                    <span class="material-icons">history</span>
-                    <span>Audit Logs</span>
-                </a>
-            </div>
-            <div class="sidebar-foot">
-                <div class="session-card">
-                    <div class="session-status">
-                        <span class="dot-online"></span>
-                        Secure Session
-                    </div>
-                    <div class="session-time">Last login: Today, 08:15 AM</div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- MAIN CONTENT -->
-        <main class="main-wrap">
-            <!-- HEADER -->
-            <header class="top-header">
-                <div class="header-left">
-                    <div class="menu-toggle" id="menuToggle">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <div>
-                        <h1 class="page-title">Director Dashboard</h1>
-                        <p class="welcome-sub">National Health Information Hub (NHIH) Operations</p>
-                    </div>
-                </div>
-
-                <div class="header-right">
-                    <div class="search-box">
-                        <span class="material-icons">search</span>
-                        <input type="text" placeholder="Search documents, projects...">
-                        <kbd>Ctrl+K</kbd>
-                    </div>
-
-                    <button class="icon-btn" id="themeToggle">
-                        <span class="material-icons">dark_mode</span>
-                    </button>
-
-                    <div class="notif-wrap">
-                        <button class="icon-btn dropdown-toggle" data-target="notifDropdown">
-                            <span class="material-icons">notifications</span>
-                            <span class="hdr-badge">2</span>
-                        </button>
-                        <div class="dropdown notif-dd" id="notifDropdown">
-                            <div class="dd-head">
-                                <h4>Alerts</h4>
-                                <button>Mark all read</button>
-                            </div>
-                            <div class="dd-body">
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--primary-light);color:var(--primary)">
-                                        <span class="material-icons">folder</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">New Document Uploaded</span>
-                                        <span class="ni-desc">Q3 Hub Performance Report is available.</span>
-                                        <span class="ni-time">1 hr ago</span>
-                                    </div>
-                                </div>
-                                <div class="dd-item unread">
-                                    <div class="ni-icon" style="background:var(--success-light);color:var(--success)">
-                                        <span class="material-icons">check_circle</span>
-                                    </div>
-                                    <div class="ni-text">
-                                        <span class="ni-title">Project Milestone Met</span>
-                                        <span class="ni-desc">Data Integration Phase 2 completed.</span>
-                                        <span class="ni-time">3 hrs ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dd-foot">
-                                <a href="#">View All</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-wrap">
-                        <div class="user-pill dropdown-toggle" data-target="profileDropdown">
-                            <div class="avatar" style="background:var(--primary)">DR</div>
-                            <div class="user-info">
-                                <div class="uname">Dr. Tom Sesay</div>
-                                <div class="urole">NHIH Director</div>
-                            </div>
-                            <span class="material-icons"
-                                style="font-size:1.2rem;color:var(--text-muted)">expand_more</span>
-                        </div>
-                        <div class="dropdown profile-dd" id="profileDropdown">
-                            <div class="dd-item pd-item">
-                                <span class="material-icons">person</span> My Profile
-                            </div>
-                            <a href="../../index.html" class="dd-item pd-item danger">
-                                <span class="material-icons">logout</span> Logout
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <!-- PAGE CONTENT -->
-            
+const premiumMainContent = `
             <div class="main-content">
                 <!-- Premium Hero Section -->
                 <div class="director-hero">
@@ -477,104 +301,31 @@
                     </div>
                 </div>
 
-            </div>
-        </main>
-    </div>
+            </div>`;
 
-    <!-- Project Approval Modal -->
-    <div class="modal-bg" id="approveModal">
-        <div class="modal-box">
-            <div class="modal-top">
-                <h4>Project Review &amp; Approval</h4>
-                <button class="icon-btn" onclick="document.getElementById('approveModal').classList.remove('show')">
-                    <span class="material-icons">close</span>
-                </button>
-            </div>
-            <div class="modal-mid">
-                <div class="fg">
-                    <label>Project Name</label>
-                    <input type="text" value="Rural Clinic Digitization" readonly>
-                </div>
-                <div class="fg">
-                    <label>Requested Budget</label>
-                    <input type="text" value="$2,500,000" readonly>
-                </div>
-                <div class="fg">
-                    <label>Timeline</label>
-                    <input type="text" value="18 months (Jan 2027 — Jun 2028)" readonly>
-                </div>
-                <div class="fg">
-                    <label>Decision</label>
-                    <select>
-                        <option>Approve</option>
-                        <option>Approve with Conditions</option>
-                        <option>Request Revision</option>
-                        <option>Reject</option>
-                    </select>
-                </div>
-                <div class="fg">
-                    <label>Comments</label>
-                    <input type="text" placeholder="Add your comments...">
-                </div>
-            </div>
-            <div class="modal-bot">
-                <button class="btn-sm"
-                    onclick="document.getElementById('approveModal').classList.remove('show')">Cancel</button>
-                <button class="btn-sm primary"
-                    onclick="document.getElementById('approveModal').classList.remove('show'); showToast('Project decision submitted!', 'success')">
-                    <span class="material-icons">gavel</span> Submit Decision
-                </button>
-            </div>
-        </div>
-    </div>
+// Insert the premium styles before </head>
+if (!html.includes('<!-- Premium Director Dashboard Styles -->')) {
+    html = html.replace('</head>', premiumStyles + '\n</head>');
+}
 
-    <script src="../../js/nhih-dashboard.js"></script>
-    <script>
-        function renderDashboardCharts() {
-            // National Health KPIs Line Chart
-            const ctx = document.getElementById('kpiChart');
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                        datasets: [{
-                            label: 'Facility Reporting Rate (%)',
-                            data: [78, 82, 80, 85, 88, 91],
-                            borderColor: '#0B5ED7',
-                            backgroundColor: 'rgba(11, 94, 215, 0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Data Quality Index',
-                            data: [85, 86, 88, 87, 90, 92],
-                            borderColor: '#10b981',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }, {
-                            label: 'Immunization Coverage',
-                            data: [90, 91, 89, 93, 94, 96],
-                            borderColor: '#8b5cf6',
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' } },
-                        scales: { y: { beginAtZero: false, min: 60 } }
-                    }
-                });
-            }
+// Replace everything inside <div class="main-content"> ... </div> with the new premiumMainContent
+const startContent = html.indexOf('<div class="main-content">');
+const endContent = html.indexOf('</main>'); // We stop at </main> since <div class="main-content"> closes just before it usually.
+// Wait, looking at the structure, the <main class="main-wrap"> contains <header> and <div class="main-content">.
+// Then main-content closes, then </main>.
+// So the end of main content is exactly before </main>.
 
-            }
-        }
-    </script>
-</body>
+if (startContent !== -1 && endContent !== -1) {
+    const beforeContent = html.substring(0, startContent);
+    const afterContent = html.substring(endContent); // starting at </main>
+    html = beforeContent + premiumMainContent + '\n        ' + afterContent;
+}
 
-</html>
+// Also remove the budgetChart javascript logic if it exists since it's removed from UI.
+const scriptRegex = /\/\/ Budget Allocation Doughnut[\s\S]*?\}\);[\s\S]*?\}/;
+if (scriptRegex.test(html)) {
+    html = html.replace(scriptRegex, '}');
+}
+
+fs.writeFileSync(directorIndex, html, 'utf-8');
+console.log('Successfully upgraded Director dashboard view UI');
