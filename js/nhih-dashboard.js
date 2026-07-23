@@ -177,3 +177,76 @@ function showToast(message, type = 'info') {
         setTimeout(() => toast.remove(), 300);
     }, 4000);
 }
+
+// Meeting Minutes Template Logic
+function addMinuteRow() {
+    const tbody = document.getElementById('minTableBody');
+    if (!tbody) return;
+    
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td style="border:1px solid var(--border-color); padding:4px;"><input type="text" class="min-input issue" style="width:100%; border:none; outline:none; background:transparent; color:var(--text-main);" placeholder="New issue..."></td>
+        <td style="border:1px solid var(--border-color); padding:4px;"><textarea class="min-input disc" style="width:100%; border:none; outline:none; background:transparent; color:var(--text-main); resize:vertical; min-height:40px; font-family:inherit;"></textarea></td>
+        <td style="border:1px solid var(--border-color); padding:4px;"><textarea class="min-input action" style="width:100%; border:none; outline:none; background:transparent; color:var(--text-main); resize:vertical; min-height:40px; font-family:inherit;"></textarea></td>
+    `;
+    tbody.appendChild(tr);
+}
+
+async function submitMinutes() {
+    const payload = {
+        date: document.getElementById('minDate')?.value || '',
+        time: document.getElementById('minTime')?.value || '',
+        venue: document.getElementById('minVenue')?.value || '',
+        chairedBy: document.getElementById('minChair')?.value || '',
+        preparedBy: document.getElementById('minPreparedBy')?.value || '',
+        agenda: document.getElementById('minAgenda')?.value || '',
+        items: []
+    };
+
+    const rows = document.querySelectorAll('#minTableBody tr');
+    let currentCategory = '';
+    
+    rows.forEach(row => {
+        if (row.cells.length === 1) {
+            // It's a category header row
+            currentCategory = row.cells[0].innerText;
+        } else if (row.cells.length === 3) {
+            // It's a data row
+            const issueInput = row.querySelector('.issue');
+            const discInput = row.querySelector('.disc');
+            const actionInput = row.querySelector('.action');
+            
+            // Only add if there is some data in the row
+            if ((issueInput && issueInput.value.trim()) || 
+                (discInput && discInput.value.trim()) || 
+                (actionInput && actionInput.value.trim()) || currentCategory) {
+                
+                payload.items.push({
+                    category: currentCategory,
+                    issue: issueInput ? issueInput.value.trim() : '',
+                    discussion: discInput ? discInput.value.trim() : '',
+                    action: actionInput ? actionInput.value.trim() : ''
+                });
+            }
+        }
+    });
+
+    try {
+        const response = await fetch('/api/minutes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        if (response.ok) {
+            showToast('Minutes saved successfully!', 'success');
+            document.getElementById('minutesModal').classList.remove('show');
+            // Optional: reset form
+        } else {
+            showToast('Failed to save minutes. Server error.', 'error');
+        }
+    } catch (err) {
+        console.error('Error submitting minutes:', err);
+        showToast('Connection error. Is the backend server running?', 'error');
+    }
+}
